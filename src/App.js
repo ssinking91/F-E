@@ -1,9 +1,11 @@
-import KakaoMap from "./components/utilities/KakaoMap";
+import Reset from "./components/utilities/GlobalStyle";
+import Router from "./components/pages/Router";
 
 function App() {
   return (
     <>
-      <KakaoMap />
+      <Reset />
+      <Router />
     </>
   );
 }
