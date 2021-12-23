@@ -1,15 +1,24 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import Main from "./Main";
 import Detail from "./Detail";
+import Login from "./Login";
 
-export default function Router() {
+export default function router() {
   return (
     <>
-      <BrowserRouter>
+      <Router>
         <Switch>
           <Route path="/detail/1" component={Detail} />
-          <Route path="/" />
+          <Route path="/login" component={Login} />
+          <Route exact path="/" component={Main} />
+          <Redirect from="*" to="/" />
         </Switch>
-      </BrowserRouter>
+      </Router>
     </>
   );
 }
