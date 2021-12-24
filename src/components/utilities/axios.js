@@ -13,7 +13,7 @@ const instance = axios.create({
 
 export const apis = {
   // 카카오 로그인
-  login: (email) => instance.post("/api/users/login", email),
+  login: (userkey) => instance.post("/api/users/login", userkey),
 
   // MainPage
   getMyPrivateInfo: (id) => instance.get(`/api/users/userId=${id}/privates`), // 민영 - 내가 지정한 지역정보
