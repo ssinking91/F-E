@@ -12,6 +12,7 @@ const Button = (props) => {
     padding,
     color,
     background_color,
+    border,
   } = props;
   if (is_float) {
     return (
@@ -27,6 +28,7 @@ const Button = (props) => {
     padding: padding,
     color: color,
     background_color: background_color,
+    border: border,
   };
 
   return (
@@ -48,6 +50,7 @@ Button.defaultProps = {
   padding: false,
   background_color: false,
   color: false,
+  border: "none",
 };
 
 const ElButton = styled.button`
@@ -58,7 +61,7 @@ const ElButton = styled.button`
   box-sizing: border-box;
   border-radius: 36px;
   font-size: 14px;
-  border: none;
+  border: ${(props) => props.border};
   ${(props) => (props.margin ? `margin: ${props.margin};` : "")}
 `;
 

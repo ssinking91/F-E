@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { ReactComponent as Logo } from "../../images/logo.svg";
 
-import { Grid, Image, Text, Button } from "../atoms/index";
+import { Grid } from "../atoms/index";
 
 export default function NavBar() {
   const history = useHistory();
