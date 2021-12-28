@@ -13,16 +13,16 @@ export default function KakaoMap() {
     // 지도를 생성합니다
     var map = new kakao.maps.Map(mapContainer, mapOption);
 
-    // // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
-    // var mapTypeControl = new kakao.maps.MapTypeControl();
+    // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+    var mapTypeControl = new kakao.maps.MapTypeControl();
 
-    // // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
-    // // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
-    // map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+    // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+    // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+    map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 
-    // // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
-    // var zoomControl = new kakao.maps.ZoomControl();
-    // map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+    // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+    var zoomControl = new kakao.maps.ZoomControl();
+    map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
     // 주소-좌표 변환 객체를 생성합니다
     var geocoder = new kakao.maps.services.Geocoder();
@@ -51,33 +51,7 @@ export default function KakaoMap() {
       }
     });
   }, []);
-  const [map, setMap] = useState();
-
-  const setMapType = (maptype) => {
-    if (!map) return;
-    var roadmapControl = document.getElementById("btnRoadmap");
-    var skyviewControl = document.getElementById("btnSkyview");
-    if (maptype === "roadmap") {
-      map.setMapTypeId(kakao.maps.MapTypeId.ROADMAP);
-      roadmapControl.className = "selected_btn";
-      skyviewControl.className = "btn";
-    } else {
-      map.setMapTypeId(kakao.maps.MapTypeId.HYBRID);
-      skyviewControl.className = "selected_btn";
-      roadmapControl.className = "btn";
-    }
-  };
-
-  // 지도 확대, 축소 컨트롤에서 확대 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
-  const zoomIn = () => {
-    if (!map) return;
-    map.setLevel(map.getLevel() - 1);
-  };
-  // 지도 확대, 축소 컨트롤에서 축소 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
-  const zoomOut = () => {
-    if (!map) return;
-    map.setLevel(map.getLevel() + 1);
-  };
+ 
 
   return (
     <>
@@ -91,40 +65,6 @@ export default function KakaoMap() {
             overflow: "hidden",
           }}
         ></div>
-
-        <div className="custom_typecontrol radius_border">
-          <span
-            id="btnRoadmap"
-            className="selected_btn"
-            onClick={() => setMapType("roadmap")}
-          >
-            지도
-          </span>
-          <span
-            id="btnSkyview"
-            className="btn"
-            onClick={() => {
-              setMapType("skyview");
-            }}
-          >
-            스카이뷰
-          </span>
-        </div>
-
-        <div className="custom_zoomcontrol radius_border">
-          <span onClick={zoomIn}>
-            <img
-              src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png"
-              alt="확대"
-            ></img>
-          </span>
-          <span onClick={zoomOut}>
-            <img
-              src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png"
-              alt="축소"
-            ></img>
-          </span>
-        </div>
       </div>
     </>
   );
