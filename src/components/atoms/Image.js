@@ -9,6 +9,9 @@ const Image = (props) => {
     size: size,
   };
 
+  if (shape === "logo") {
+    return <ImageLogo {...styles}></ImageLogo>;
+  }
   if (shape === "circle") {
     return <ImageCircle {...styles}></ImageCircle>;
   }
@@ -33,6 +36,14 @@ Image.defaultProps = {
   src: "https://upload.wikimedia.org/wikipedia/commons/3/33/UTMB_2015.jpg",
   size: 36,
 };
+
+const ImageLogo = styled.div`
+  --size: ${(props) => props.size}px;
+  width: var(--size);
+  height: var(--size);
+  background-image: url("${(props) => props.src}");
+  background-size: cover;
+`;
 
 const ImageDefault = styled.div`
   --size: ${(props) => props.size}px;
