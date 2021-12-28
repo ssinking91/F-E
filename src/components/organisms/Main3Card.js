@@ -26,7 +26,7 @@ const Main3Card = (props) => {
       </span>
       <div style={{ position: "relative" }}>
         <Imageitem />
-        <BmarkFill
+        <div
           style={{
             position: "absolute",
             width: "27px",
@@ -34,12 +34,12 @@ const Main3Card = (props) => {
             right: "14px",
             top: "16px",
           }}
-        />
-        onClick=
-        {() => {
-          setSave3(!save3);
-        }}
-        {save3 ? <BmarkFill /> : <BmarkNone />}
+          onClick={()=>{
+            setSave3(!save3)
+          }}
+        >
+          {save3 ? <BmarkFill /> : <BmarkNone />}
+        </div>
       </div>
       <span
         style={{

@@ -148,6 +148,7 @@ const Section3 = (props) => {
             전체리스트 보기
           </Button>
         </SectionWrap>
+        <Main3Card />
       </div>
     </>
   );

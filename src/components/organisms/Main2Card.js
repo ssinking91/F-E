@@ -47,22 +47,19 @@ const Main2Card = (props) => {
                 54,470 ~ 72,670만원
               </span>
             </Grid>
-            <Grid width={"32px"} height={"48px"} is_flex>
-              <BmarkFill width="20" height="29" />
-              <Grid
-                width={"32px"}
-                height={"48px"}
-                is_flex
-                _onClick={() => {
-                  setSave2(!save2);
-                }}
-              >
-                {save2 ? (
-                  <BmarkFill width="20" height="29" />
-                ) : (
-                  <BmarkNone width="20" height="29" />
-                )}
-              </Grid>
+            <Grid
+              width={"32px"}
+              height={"48px"}
+              is_flex
+              _onClick={() => {
+                setSave2(!save2);
+              }}
+            >
+              {save2 ? (
+                <BmarkFill width="20" height="29" />
+              ) : (
+                <BmarkNone width="20" height="29" />
+              )}
             </Grid>
           </Grid>
         </Item>
