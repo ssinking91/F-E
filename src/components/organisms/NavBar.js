@@ -12,8 +12,9 @@ export default function NavBar() {
   function logOut() {
     console.log("logOut");
     localStorage.removeItem("refreshToken");
-    localStorage.removeItem("userkey");
-    localStorage.removeItem("usernickname");
+    localStorage.removeItem("userKey");
+    localStorage.removeItem("userName");
+    localStorage.removeItem("userImage");
     sessionStorage.removeItem("accessToken");
     history.replace("/");
   }
