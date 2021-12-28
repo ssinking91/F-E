@@ -13,17 +13,6 @@ export default function Main() {
     <>
       <NavBar />
       <Fullpage></Fullpage>
-      {/* <Main2Card /> <br /> <br /> <br />
-      <Main3Card /> <br /> <br /> <br />
-      <iframe
-        width="490"
-        height="277"
-        src="https://www.youtube.com/embed/nEtiX7nN9qE"
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe> */}
     </>
   );
 }
@@ -56,3 +45,4 @@ const Fullpage = () => (
     }}
   />
 );
+
