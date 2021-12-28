@@ -1,6 +1,6 @@
 import { Text, Button } from "../atoms/index";
 import styled from "styled-components";
-
+import Main3Card from "./Main3Card"
 const Section03 = (props) => {
   return (
     <>
@@ -22,6 +22,7 @@ const Section03 = (props) => {
             전체리스트 보기
           </Button>
         </SectionWrap>
+        <Main3Card/>
       </div>
     </>
   );
@@ -34,5 +35,5 @@ const SectionWrap = styled.div`
   width: 100%;
   background-color: #f9f9f9;
   text-align: center;
-  position: absolute;
+  
 `;
