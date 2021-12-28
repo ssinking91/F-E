@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Grid } from "../atoms/index";
-import { ReactComponent as Bmark_fill } from "../../images/bmark_fill.svg";
-import { ReactComponent as Bmark_none } from "../../images/bmark_none.svg";
+import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
+import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 
 const Main2Card = (props) => {
   return (
@@ -46,7 +46,7 @@ const Main2Card = (props) => {
               </span>
             </Grid>
             <Grid width={"32px"} height={"48px"} is_flex>
-              <Bmark_fill width="20" height="29" />
+              <BmarkFill width="20" height="29" />
             </Grid>
           </Grid>
         </Item>
