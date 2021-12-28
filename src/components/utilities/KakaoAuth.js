@@ -6,9 +6,12 @@ import qs from "qs";
 export default function KakaoAuth() {
   const history = useHistory();
 
-  const REST_API_KEY = "503270600b71c914e4e3567370e19f4d";
-  const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
-  const CLIENT_SECRET = "Ds0KIay2piu26zN1e1KEe40z98NhkTSU";
+  const REST_API_KEY = "75adc3fd31a1e2d36b7d122383795fd7";
+  // local에서 작업할때
+  // const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
+  // 서버용입니다.
+  const REDIRECT_URI = "https://together-zip.netlify.app/oauth/kakao/callback";
+  const CLIENT_SECRET = "GmNPzWqReNj1l9p0Xz7JWprN6XUhi9yy";
 
   const code = new URL(window.location.href).searchParams.get("code");
 
@@ -23,15 +26,12 @@ export default function KakaoAuth() {
       client_secret: CLIENT_SECRET,
     });
     try {
-      // access token 가져오기
       const res = await axios.post(
         "https://kauth.kakao.com/oauth/token",
         payload
       );
 
-      // Kakao Javascript SDK 초기화
       window.Kakao.init(REST_API_KEY);
-      // access token 설정
       console.log(res.data);
       window.Kakao.Auth.setAccessToken(res.data.access_token);
       localStorage.setItem("refreshToken", res.data.refresh_token);
@@ -43,6 +43,7 @@ export default function KakaoAuth() {
   };
   useEffect(() => {
     getToken();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <div>{code}</div>;
