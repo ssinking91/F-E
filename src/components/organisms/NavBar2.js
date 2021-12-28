@@ -70,8 +70,7 @@ const Heading1 = styled.h1`
 
 const HeaderWrap = styled.div`
   width: 100%;
-  z-index: 1;
-  position: absolute;
-  margin: 30px auto;
+  margin: 0px auto 50px;
   display: flex;
+  padding-top: 30px;
 `;
