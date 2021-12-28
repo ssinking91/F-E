@@ -45,7 +45,8 @@ const Heading1 = styled.h1`
 `;
 
 const HeaderWrap = styled.div`
-  z-index: 1;
-  position: absolute;
   display: flex;
+  margin:  0 auto;
+  width: 100%;
+  height: 38px;
 `;

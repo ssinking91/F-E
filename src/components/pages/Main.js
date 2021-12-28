@@ -1,5 +1,5 @@
 import ReactFullpage from "@fullpage/react-fullpage";
-
+import styled from "styled-components";
 import NavBar from "../organisms/NavBar";
 // import Main2Card from "../organisms/Main2Card";
 // import Main3Card from "../organisms/Main3Card";
@@ -11,11 +11,13 @@ import Section04 from "../organisms/Section04";
 export default function Main() {
   return (
     <>
-      <NavBar />
+     
       <Fullpage></Fullpage>
     </>
   );
 }
+
+
 
 const anchors = ["page1", "page2", "page3", "page4"];
 

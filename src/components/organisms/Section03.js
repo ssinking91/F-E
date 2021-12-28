@@ -33,7 +33,9 @@ export default Section03;
 const SectionWrap = styled.div`
   margin-top: 118px;
   width: 100%;
+  height: 135px;
   background-color: #f9f9f9;
   text-align: center;
+
   
 `;

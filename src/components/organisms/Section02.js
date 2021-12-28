@@ -4,7 +4,7 @@ import Main2Card from "./Main2Card"
 const Section02 = (props) => {
   return (
     <>
-      <div className="section num2">
+      <div className="section num2" style={{height:"100vh"}}>
         <SectionWrap>
           <Text size="36px" color="#333333" margin="30px auto 10px auto" bold>
             000님의 관심 지역 청약은?📌
@@ -29,6 +29,7 @@ const Section02 = (props) => {
 const SectionWrap = styled.div`
   margin-top: 118px;
   width: 100%;
+  height: 185px;
   background-color: #f9f9f9;
   text-align: center;
 `;
