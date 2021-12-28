@@ -3,6 +3,7 @@ import styled from "styled-components";
 import GoogleLogin from "../utilities/GoogleLogin";
 import FacebookLogin from "../utilities/FacebookLogin";
 import { RiKakaoTalkFill } from "react-icons/ri";
+import NavBar from "../organisms/NavBar";
 
 export default function Login() {
   const history = useHistory();
@@ -18,15 +19,31 @@ export default function Login() {
 
   return (
     <>
-      <Kakao>
-        <RiKakaoTalkFill style={{ marginRight: "20px" }} size="30" />
-        <a href={KAKAO_AUTH_URL}>Sign In With KAKAO</a>
-      </Kakao>
-      <GoogleLogin />
-      <FacebookLogin />
+      <NavBar />
+      <SocialWrap>
+        <Logins>
+          <Kakao>
+            <RiKakaoTalkFill style={{ marginRight: "20px" }} size="30" />
+            <a href={KAKAO_AUTH_URL}>Sign In With KAKAO</a>
+          </Kakao>
+          <GoogleLogin />
+          <FacebookLogin />
+        </Logins>
+      </SocialWrap>
     </>
   );
 }
+
+const SocialWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Logins = styled.div`
+  position: relative;
+  top: 250px;
+`;
 
 const Kakao = styled.div`
   width: 300px;
@@ -35,7 +52,7 @@ const Kakao = styled.div`
   display: flex;
   align-items: center;
   border-radius: 4px;
-  margin: 3px 0;
+  margin: 20px 0;
   padding-left: 6px;
   outline: none;
   -webkit-box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);

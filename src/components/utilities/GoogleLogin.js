@@ -68,6 +68,7 @@ const GoogleLoginBtn = styled.button`
   display: flex;
   align-items: center;
   border-radius: 4px;
+  margin-bottom: 20px;
   border: none;
   cursor: pointer;
   -webkit-box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
