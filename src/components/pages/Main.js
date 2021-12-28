@@ -171,17 +171,11 @@ const Section2 = (props) => {
             관심지역
           </Button>
         </SectionWrap>
+        <Main2Card />
       </div>
     </>
   );
 };
-const SectionWrap = styled.div`
-  margin-top: 118px;
-  width: 100%;
-  background-color: #f9f9f9;
-  text-align: center;
-  position: absolute;
-`;
 
 const Section3 = (props) => {
   return (
@@ -225,3 +219,12 @@ const Section4 = (props) => {
     </>
   );
 };
+
+
+const SectionWrap = styled.div`
+  width: 100%;
+  height: 185px;
+  background-color: #f9f9f9;
+  text-align: center;
+  margin: 150px auto 30px;
+`;
