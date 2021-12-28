@@ -26,15 +26,6 @@ export default function Main() {
 
   return (
     <>
-      {(sessionStorage.getItem("accessToken") && (
-        <div style={{ fontSize: "30px" }} onClick={() => logOut()}>
-          로그아웃
-        </div>
-      )) || (
-        <div style={{ fontSize: "30px" }} onClick={() => logIn()}>
-          로그인
-        </div>
-      )}
       <HeaderWrap>
         <Heading1>로고</Heading1>
         <Heading1>관심지역.zip</Heading1>
