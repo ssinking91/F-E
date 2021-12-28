@@ -15,7 +15,7 @@ export default function KakaoAuth() {
 
   const code = new URL(window.location.href).searchParams.get("code");
 
-  localStorage.setItem("code", code);
+  // localStorage.setItem("code", code);
 
   const getToken = async () => {
     const payload = qs.stringify({

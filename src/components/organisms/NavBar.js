@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import { ReactComponent as Logo } from "../../images/logo.svg";
+
+import { Grid, Image, Text, Button } from "../atoms/index";
 
 export default function NavBar() {
   const history = useHistory();
@@ -12,8 +15,9 @@ export default function NavBar() {
   function logOut() {
     console.log("logOut");
     localStorage.removeItem("refreshToken");
-    localStorage.removeItem("userkey");
-    localStorage.removeItem("usernickname");
+    localStorage.removeItem("userKey");
+    localStorage.removeItem("userName");
+    localStorage.removeItem("userImage");
     sessionStorage.removeItem("accessToken");
     history.replace("/");
   }
@@ -21,30 +25,57 @@ export default function NavBar() {
   return (
     <>
       <HeaderWrap>
-        <Heading1>로고</Heading1>
-        <Heading1>관심지역.zip</Heading1>
-        <Heading1>뜨는청약.zip</Heading1>
-        <Heading1>청약정보.zip</Heading1>
-        {(sessionStorage.getItem("accessToken") && (
-          <div style={{ fontSize: "30px" }} onClick={() => logOut()}>
-            로그아웃
-          </div>
-        )) || (
-          <div style={{ fontSize: "30px" }} onClick={() => logIn()}>
-            로그인
-          </div>
-        )}
+        <Grid width="100%">
+          <Atag href="/#page1" style={{ width: "40px" }}>
+            <Logo width="40" />
+          </Atag>
+        </Grid>
+        <Grid is_flex>
+          <Atag href="/#page2">
+            <Heading1>관심지역.zip</Heading1>
+          </Atag>
+          <Atag href="/#page3">
+            <Heading1>뜨는청약.zip</Heading1>
+          </Atag>
+          <Atag href="/#page4">
+            <Heading1>청약정보.zip</Heading1>
+          </Atag>
+        </Grid>
+        <Grid>
+          {(sessionStorage.getItem("accessToken") && (
+            <Heading1 onClick={() => logOut()}>로그아웃</Heading1>
+          )) || (
+            <Heading1 style={{ margin: "auto" }} onClick={() => logIn()}>
+              로그인
+            </Heading1>
+          )}
+        </Grid>
       </HeaderWrap>
     </>
   );
 }
+const Atag = styled.a`
+  margin: auto;
+  display: block;
+`;
 
 const Heading1 = styled.h1`
   color: black;
   margin: 0 20px;
+  padding: 13px 0;
+  width: 70px;
+  height: 38px;
+  font-size: 12px;
 `;
 
 const HeaderWrap = styled.div`
+<<<<<<< HEAD
+=======
+  width: 100%;
+  z-index: 1;
+  position: absolute;
+  margin: 30px auto;
+>>>>>>> 66492f030334ff1a2471d92e2c14c6994c888425
   display: flex;
   margin:  0 auto;
   width: 100%;

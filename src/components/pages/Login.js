@@ -2,6 +2,7 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import GoogleLogin from "../utilities/GoogleLogin";
 import FacebookLogin from "../utilities/FacebookLogin";
+import { RiKakaoTalkFill } from "react-icons/ri";
 
 export default function Login() {
   const history = useHistory();
@@ -18,7 +19,8 @@ export default function Login() {
   return (
     <>
       <Kakao>
-        <a href={KAKAO_AUTH_URL}>KAKAO LOGIN</a>
+        <RiKakaoTalkFill style={{ marginRight: "20px" }} size="30" />
+        <a href={KAKAO_AUTH_URL}>Sign In With KAKAO</a>
       </Kakao>
       <GoogleLogin />
       <FacebookLogin />
@@ -27,15 +29,17 @@ export default function Login() {
 }
 
 const Kakao = styled.div`
-  width: 185px;
-  height: 30px;
+  width: 300px;
+  height: 45px;
   background-color: yellow;
   display: flex;
-  justify-content: center;
   align-items: center;
-  border-radius: 3px;
-  margin: 3px 2px;
+  border-radius: 4px;
+  margin: 3px 0;
+  padding-left: 6px;
+  outline: none;
   -webkit-box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
   box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
   cursor: pointer;
+  font-size: 16px;
 `;

@@ -11,8 +11,8 @@ export default function KakaoLogin() {
       let data = await window.Kakao.API.request({
         url: "/v2/user/me",
       });
-      localStorage.setItem("userkey", data.id);
-      localStorage.setItem("usernickname", data.properties.nickname);
+      localStorage.setItem("userKey", data.id);
+      localStorage.setItem("userName", data.properties.nickname);
       localStorage.setItem("userImage", data.properties.profile_image);
 
       const Alert = alert.mixin({
@@ -29,7 +29,7 @@ export default function KakaoLogin() {
 
       Alert.fire({
         icon: "success",
-        title: `${localStorage.getItem("usernickname")}님, 환영합니다.`,
+        title: `${localStorage.getItem("userName")}님, 환영합니다.`,
       });
 
       apis.login(data.id, data.properties.nickname);
