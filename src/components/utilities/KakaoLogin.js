@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { apis } from "./axios";
-import Swal from "sweetalert2";
+import alert from "sweetalert2";
 
 export default function KakaoLogin() {
   const history = useHistory();
@@ -15,19 +15,19 @@ export default function KakaoLogin() {
       localStorage.setItem("usernickname", data.properties.nickname);
       localStorage.setItem("userImage", data.properties.profile_image);
 
-      const Toast = Swal.mixin({
+      const Alert = alert.mixin({
         toast: true,
         position: "top-end",
         showConfirmButton: false,
         timer: 3000,
         timerProgressBar: true,
         didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
+          toast.addEventListener("mouseenter", alert.stopTimer);
+          toast.addEventListener("mouseleave", alert.resumeTimer);
         },
       });
 
-      Toast.fire({
+      Alert.fire({
         icon: "success",
         title: `${localStorage.getItem("usernickname")}님, 환영합니다.`,
       });
