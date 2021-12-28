@@ -1,5 +1,5 @@
 /* global kakao */
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./KakaoMap.css";
 
 export default function KakaoMap() {
@@ -51,7 +51,6 @@ export default function KakaoMap() {
       }
     });
   }, []);
- 
 
   return (
     <>

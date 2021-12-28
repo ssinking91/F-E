@@ -1,4 +1,7 @@
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import styled from "styled-components";
+import GoogleLogin from "../utilities/GoogleLogin";
+import FacebookLogin from "../utilities/FacebookLogin";
 
 export default function Login() {
   const history = useHistory();
@@ -13,7 +16,25 @@ export default function Login() {
 
   return (
     <>
-      <a href={KAKAO_AUTH_URL}>KAKAO LOGIN</a>
+      <Kakao>
+        <a href={KAKAO_AUTH_URL}>KAKAO LOGIN</a>
+      </Kakao>
+      <GoogleLogin />
+      <FacebookLogin />
     </>
   );
 }
+
+const Kakao = styled.div`
+  width: 185px;
+  height: 30px;
+  background-color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  margin: 3px 2px;
+  -webkit-box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
+  box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+`;

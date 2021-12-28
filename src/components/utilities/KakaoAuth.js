@@ -23,15 +23,12 @@ export default function KakaoAuth() {
       client_secret: CLIENT_SECRET,
     });
     try {
-      // access token 가져오기
       const res = await axios.post(
         "https://kauth.kakao.com/oauth/token",
         payload
       );
 
-      // Kakao Javascript SDK 초기화
       window.Kakao.init(REST_API_KEY);
-      // access token 설정
       console.log(res.data);
       window.Kakao.Auth.setAccessToken(res.data.access_token);
       localStorage.setItem("refreshToken", res.data.refresh_token);
@@ -43,6 +40,7 @@ export default function KakaoAuth() {
   };
   useEffect(() => {
     getToken();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <div>{code}</div>;
