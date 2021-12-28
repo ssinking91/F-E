@@ -25,14 +25,20 @@ export default function NavBar() {
     <>
       <HeaderWrap>
         <Grid width="100%">
-          <a href="/">
+          <Atag href="/#page1" style={{ width: "40px" }}>
             <Logo width="40" />
-          </a>
+          </Atag>
         </Grid>
         <Grid is_flex>
-          <Heading1>관심지역.zip</Heading1>
-          <Heading1>뜨는청약.zip</Heading1>
-          <Heading1>청약정보.zip</Heading1>
+          <Atag href="/#page2">
+            <Heading1>관심지역.zip</Heading1>
+          </Atag>
+          <Atag href="/#page3">
+            <Heading1>뜨는청약.zip</Heading1>
+          </Atag>
+          <Atag href="/#page4">
+            <Heading1>청약정보.zip</Heading1>
+          </Atag>
         </Grid>
         <Grid>
           {(sessionStorage.getItem("accessToken") && (
@@ -47,9 +53,9 @@ export default function NavBar() {
     </>
   );
 }
-const Atag = styled.div`
-  width: 40px;
-  height: 40px;
+const Atag = styled.a`
+  margin: auto;
+  display: block;
 `;
 
 const Heading1 = styled.h1`
