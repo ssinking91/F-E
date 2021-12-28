@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Text, Button } from "../atoms/index";
-
+import Main2Card from "./Main2Card"
 const Section02 = (props) => {
   return (
     <>
@@ -21,6 +21,7 @@ const Section02 = (props) => {
             관심지역
           </Button>
         </SectionWrap>
+        <Main2Card/>
       </div>
     </>
   );
@@ -30,7 +31,6 @@ const SectionWrap = styled.div`
   width: 100%;
   background-color: #f9f9f9;
   text-align: center;
-  position: absolute;
 `;
 
 export default Section02;
