@@ -2,7 +2,17 @@ import React from "react";
 import styled from "styled-components";
 
 const Button = (props) => {
-  const { text, _onClick, is_float, children, margin, width, padding } = props;
+  const {
+    text,
+    _onClick,
+    is_float,
+    children,
+    margin,
+    width,
+    padding,
+    color,
+    background_color,
+  } = props;
   if (is_float) {
     return (
       <React.Fragment>
@@ -15,6 +25,8 @@ const Button = (props) => {
     margin: margin,
     width: width,
     padding: padding,
+    color: color,
+    background_color: background_color,
   };
 
   return (
@@ -32,16 +44,20 @@ Button.defaultProps = {
   _onClick: () => {},
   is_float: false,
   margin: false,
-  width: "100%",
-  padding: "12px 0px",
+  width: false,
+  padding: false,
+  background_color: false,
+  color: false,
 };
 
 const ElButton = styled.button`
   width: ${(props) => props.width};
-  background-color: #212121;
-  color: #ffffff;
+  background-color: ${(props) => props.background_color};
+  color: ${(props) => props.color};
   padding: ${(props) => props.padding};
   box-sizing: border-box;
+  border-radius: 36px;
+  font-size: 14px;
   border: none;
   ${(props) => (props.margin ? `margin: ${props.margin};` : "")}
 `;

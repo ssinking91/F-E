@@ -11,7 +11,7 @@ const Text = (props) => {
 Text.defaultProps = {
   children: null,
   bold: false,
-  color: "#222831",
+  color: "#333333",
   size: "14px",
   margin: false,
 };
@@ -19,7 +19,7 @@ Text.defaultProps = {
 const P = styled.p`
   color: ${(props) => props.color};
   font-size: ${(props) => props.size};
-  font-weight: ${(props) => (props.bold ? "600" : "400")};
+  font-weight: ${(props) => (props.bold ? "800" : "400")};
   ${(props) => (props.margin ? `margin: ${props.margin};` : "")}
 `;
 
