@@ -49,10 +49,10 @@ const FaceBookLogin = () => {
           <ButtonInnerDiv onClick={renderProps.onClick}>
             <FaFacebookSquare
               style={{
-                marginRight: "23px",
-                fontSize: "26px",
+                marginRight: "20px",
                 color: "white",
               }}
+              size="30"
             />
             <ButtoninnerText>Sign In With Facebook</ButtoninnerText>
           </ButtonInnerDiv>
@@ -72,6 +72,11 @@ const FaceBookLoginButton = styled.button`
   outline: none;
   -webkit-box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
   box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
+  transition: 0.5s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 const ButtonInnerDiv = styled.div`
