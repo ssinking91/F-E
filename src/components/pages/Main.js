@@ -3,7 +3,8 @@ import { Grid, Text, Button } from "../atoms/index";
 import ReactFullpage from "@fullpage/react-fullpage";
 import styled from "styled-components";
 import Swal from "sweetalert2";
-
+import Main2Card from "../organisms/Main2-card";
+import Main3Card from "../organisms/Main3-card";
 export default function Main() {
   const history = useHistory();
 
@@ -38,8 +39,10 @@ export default function Main() {
           </div>
         )}
       </HeaderWrap>
-
       <Fullpage></Fullpage>
+      <Main2Card /> <br /> <br /> <br />
+      <Main3Card /> <br /> <br /> <br />
+      {/* <iframe width="490" height="277" src="https://www.youtube.com/embed/nEtiX7nN9qE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
     </>
   );
 }

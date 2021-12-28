@@ -20,7 +20,7 @@ export default function KakaoLogin() {
       localStorage.setItem("userkey", data.id);
       localStorage.setItem("usernickname", data.properties.nickname);
 
-      // apis.login(data.id);
+      apis.login(data.id, data.properties.nickname);
     } catch (err) {
       console.log(err);
     }
