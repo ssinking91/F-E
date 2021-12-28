@@ -1,16 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-<<<<<<< HEAD:src/components/organisms/Main3-card.js
+
 // import { Grid } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
-// import { ReactComponent as Bmark_none } from "../../images/bmark_none.svg";
-=======
-import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
->>>>>>> a4bcdbebaa4a2efbef83de01d576d63ca50ff9d8:src/components/organisms/Main3Card.js
 
 const Main3Card = (props) => {
-  
   const [save3, setSave3] = React.useState(false);
 
   return (
@@ -31,11 +26,7 @@ const Main3Card = (props) => {
       </span>
       <div style={{ position: "relative" }}>
         <Imageitem />
-<<<<<<< HEAD:src/components/organisms/Main3-card.js
         <BmarkFill
-=======
-        <div
->>>>>>> a4bcdbebaa4a2efbef83de01d576d63ca50ff9d8:src/components/organisms/Main3Card.js
           style={{
             position: "absolute",
             width: "27px",
@@ -43,16 +34,12 @@ const Main3Card = (props) => {
             right: "14px",
             top: "16px",
           }}
-<<<<<<< HEAD:src/components/organisms/Main3-card.js
         />
-=======
-          onClick={()=>{
-            setSave3(!save3);
-          }}
-        >
-         {save3? <BmarkFill /> : <BmarkNone /> } 
-        </div>
->>>>>>> a4bcdbebaa4a2efbef83de01d576d63ca50ff9d8:src/components/organisms/Main3Card.js
+        onClick=
+        {() => {
+          setSave3(!save3);
+        }}
+        {save3 ? <BmarkFill /> : <BmarkNone />}
       </div>
       <span
         style={{

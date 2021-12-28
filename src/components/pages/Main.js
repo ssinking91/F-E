@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 
-import Main2Card from "../organisms/Main2-card";
-import Main3Card from "../organisms/Main3-card";
+import Main2Card from "../organisms/Main2Card";
+import Main3Card from "../organisms/Main3Card";
 
 import { Grid, Text, Button } from "../atoms/index";
 import ReactFullpage from "@fullpage/react-fullpage";
