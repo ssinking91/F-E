@@ -5,6 +5,9 @@ import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 
 const Main2Card = (props) => {
+
+  const [save2, setSave2] = React.useState(false);
+
   return (
     <React.Fragment>
       <Container>
@@ -45,8 +48,8 @@ const Main2Card = (props) => {
                 54,470 ~ 72,670만원
               </span>
             </Grid>
-            <Grid width={"32px"} height={"48px"} is_flex>
-              <BmarkFill width="20" height="29" />
+            <Grid width={"32px"} height={"48px"} is_flex _onClick={()=>{setSave2(!save2)}} >
+              {save2 ? <BmarkFill width="20" height="29" /> : <BmarkNone width="20" height="29" /> }
             </Grid>
           </Grid>
         </Item>

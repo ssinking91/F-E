@@ -5,8 +5,8 @@ import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 
 const Main3Card = (props) => {
-
-  const [save, setSave] = React.useState("");
+  
+  const [save3, setSave3] = React.useState(false);
 
   return (
     <Container>
@@ -24,9 +24,22 @@ const Main3Card = (props) => {
       >
         01)
       </span>
-      <div style={{position: "relative"}}>
+      <div style={{ position: "relative" }}>
         <Imageitem />
-        <BmarkFill style={{position: "absolute", width:"27px", height:"39px", right: "14px", top: "16px"}}/>
+        <div
+          style={{
+            position: "absolute",
+            width: "27px",
+            height: "39px",
+            right: "14px",
+            top: "16px",
+          }}
+          onClick={()=>{
+            setSave3(!save3);
+          }}
+        >
+         {save3? <BmarkFill /> : <BmarkNone /> } 
+        </div>
       </div>
       <span
         style={{
