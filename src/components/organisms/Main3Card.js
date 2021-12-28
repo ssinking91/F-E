@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Grid } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 

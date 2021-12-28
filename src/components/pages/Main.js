@@ -1,5 +1,4 @@
 import { useHistory } from "react-router-dom";
-import Swal from "sweetalert2";
 import Main2Card from "../organisms/Main2Card";
 import Main3Card from "../organisms/Main3Card";
 export default function Main() {
