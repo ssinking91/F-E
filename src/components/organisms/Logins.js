@@ -3,7 +3,6 @@ import styled from "styled-components";
 import GoogleLogin from "../utilities/GoogleLogin";
 import FacebookLogin from "../utilities/FacebookLogin";
 import { RiKakaoTalkFill } from "react-icons/ri";
-import NavBar from "../organisms/NavBar";
 
 export default function Login() {
   const history = useHistory();
@@ -19,7 +18,6 @@ export default function Login() {
 
   return (
     <>
-      <NavBar />
       <SocialWrap>
         <Logins>
           <Kakao>
@@ -40,10 +38,7 @@ const SocialWrap = styled.div`
   align-items: center;
 `;
 
-const Logins = styled.div`
-  position: relative;
-  top: 250px;
-`;
+const Logins = styled.div``;
 
 const Kakao = styled.div`
   width: 300px;
@@ -59,4 +54,9 @@ const Kakao = styled.div`
   box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
   cursor: pointer;
   font-size: 16px;
+  transition: 0.5s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
