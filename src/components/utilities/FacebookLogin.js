@@ -23,7 +23,7 @@ const FaceBookLogin = ({ oAuthLoginHandler }) => {
 
   return (
     <FacebookLogin
-      appId={340400797583502}
+      appId={3024486014468635}
       autoLoad={false}
       fields="name,email,picture"
       callback={responseFacebook}
