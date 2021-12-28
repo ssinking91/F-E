@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Grid } from "../atoms/index";
-import { ReactComponent as Bmark_fill } from "../../images/bmark_fill.svg";
-import { ReactComponent as Bmark_none } from "../../images/bmark_none.svg";
+// import { Grid } from "../atoms/index";
+import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
+// import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 
 const Main3Card = (props) => {
   return (
@@ -21,9 +21,17 @@ const Main3Card = (props) => {
       >
         01)
       </span>
-      <div style={{position: "relative"}}>
+      <div style={{ position: "relative" }}>
         <Imageitem />
-        <Bmark_fill style={{position: "absolute", width:"27px", height:"39px", right: "14px", top: "16px"}}/>
+        <BmarkFill
+          style={{
+            position: "absolute",
+            width: "27px",
+            height: "39px",
+            right: "14px",
+            top: "16px",
+          }}
+        />
       </div>
       <span
         style={{

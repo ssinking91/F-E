@@ -2,7 +2,6 @@ import { useHistory } from "react-router-dom";
 import { Grid, Text, Button } from "../atoms/index";
 import ReactFullpage from "@fullpage/react-fullpage";
 import styled from "styled-components";
-import Swal from "sweetalert2";
 import Main2Card from "../organisms/Main2-card";
 import Main3Card from "../organisms/Main3-card";
 export default function Main() {
