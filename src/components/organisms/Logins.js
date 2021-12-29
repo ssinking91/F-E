@@ -2,6 +2,7 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import GoogleLogin from "../utilities/GoogleLogin";
 import FacebookLogin from "../utilities/FacebookLogin";
+import NaverLogin from "../utilities/NaverLogin";
 import { RiKakaoTalkFill } from "react-icons/ri";
 
 export default function Login() {
@@ -21,11 +22,19 @@ export default function Login() {
       <SocialWrap>
         <Logins>
           <Kakao>
-            <RiKakaoTalkFill style={{ marginRight: "20px" }} size="30" />
-            <a href={KAKAO_AUTH_URL}>Sign In With KAKAO</a>
+            <a
+              href={KAKAO_AUTH_URL}
+              style={{ display: "flex", alignItems: "center" }}
+            >
+              <RiKakaoTalkFill
+                style={{ marginRight: "20px", fontSize: "30px" }}
+              />
+              카카오 아이디로 로그인
+            </a>
           </Kakao>
           <GoogleLogin />
           <FacebookLogin />
+          <NaverLogin />
         </Logins>
       </SocialWrap>
     </>
@@ -36,16 +45,17 @@ const SocialWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 30px 50px;
 `;
 
 const Logins = styled.div``;
 
 const Kakao = styled.div`
-  width: 300px;
-  height: 45px;
+  width: 185px;
+  height: 40px;
   background-color: yellow;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   border-radius: 4px;
   margin: 20px 0;
   padding-left: 6px;
@@ -53,7 +63,8 @@ const Kakao = styled.div`
   -webkit-box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
   box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
   cursor: pointer;
-  font-size: 16px;
+  font-size: 12px;
+  font-weight: bold;
   transition: 0.5s;
 
   &:hover {

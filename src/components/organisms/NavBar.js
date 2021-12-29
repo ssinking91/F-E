@@ -44,8 +44,8 @@ export default function NavBar() {
             <Heading1
               style={{
                 margin: "auto",
-                position: "relative",
-                cursor: "pointer",
+                cursor: "default",
+                width: "32px",
               }}
             >
               <HandleOn>
@@ -85,6 +85,7 @@ const HeaderWrap = styled.div`
 
 const HandleOn = styled.div`
   transition: opacity 1s;
+  position: relative;
 
   &:hover .handle {
     transition: 1s;
@@ -97,4 +98,8 @@ const HandleOff = styled.div`
   transition: 0.5s;
   opacity: 0;
   pointer-events: none;
+
+  position: absolute;
+  top: -20px;
+  left: -128px;
 `;

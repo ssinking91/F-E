@@ -54,7 +54,7 @@ const FaceBookLogin = () => {
               }}
               size="30"
             />
-            <ButtoninnerText>Sign In With Facebook</ButtoninnerText>
+            <ButtoninnerText>페이스북 아이디로 로그인</ButtoninnerText>
           </ButtonInnerDiv>
         </FaceBookLoginButton>
       )}
@@ -63,7 +63,7 @@ const FaceBookLogin = () => {
 };
 
 const FaceBookLoginButton = styled.button`
-  width: 300px;
+  width: 185px;
   display: flex;
   background-color: cornflowerblue;
   cursor: pointer;
@@ -73,6 +73,7 @@ const FaceBookLoginButton = styled.button`
   -webkit-box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
   box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
   transition: 0.5s;
+  margin-bottom: 20px;
 
   &:hover {
     transform: scale(1.1);
@@ -82,12 +83,13 @@ const FaceBookLoginButton = styled.button`
 const ButtonInnerDiv = styled.div`
   display: flex;
   align-items: center;
-  height: 40px;
+  height: 35px;
 `;
 
 const ButtoninnerText = styled.h3`
   color: #fff;
-  font-size: 16px;
+  font-size: 12px;
+  font-weight: bold;
 `;
 
 export default FaceBookLogin;

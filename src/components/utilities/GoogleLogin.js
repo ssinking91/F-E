@@ -49,7 +49,7 @@ export default function Google() {
           disabled={renderProps.disabled}
         >
           <FcGoogle size="30" style={{ marginRight: "20px" }} />
-          Sign In With Google
+          구글 아이디로 로그인
         </GoogleLoginBtn>
       )}
       buttonText="Sign In With Google"
@@ -62,9 +62,9 @@ export default function Google() {
 }
 
 const GoogleLoginBtn = styled.button`
-  width: 300px;
-  height: 45px;
-  font-size: 16px;
+  width: 185px;
+  height: 40px;
+  font-size: 12px;
   display: flex;
   align-items: center;
   border-radius: 4px;
@@ -74,6 +74,7 @@ const GoogleLoginBtn = styled.button`
   -webkit-box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
   box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
   transition: 0.5s;
+  font-weight: bold;
 
   &:hover {
     transform: scale(1.1);
