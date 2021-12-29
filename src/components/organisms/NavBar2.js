@@ -1,12 +1,16 @@
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { ReactComponent as Logo } from "../../images/logo.svg";
-import Logins from "./Logins";
 
 import { Grid } from "../atoms/index";
 
 export default function NavBar() {
   const history = useHistory();
+
+  function logIn() {
+    console.log(11);
+    history.push("/login");
+  }
 
   function logOut() {
     console.log("logOut");
@@ -41,19 +45,8 @@ export default function NavBar() {
           {(sessionStorage.getItem("accessToken") && (
             <Heading1 onClick={() => logOut()}>로그아웃</Heading1>
           )) || (
-            <Heading1
-              style={{
-                margin: "auto",
-                position: "relative",
-                cursor: "pointer",
-              }}
-            >
-              <HandleOn>
-                로그인
-                <HandleOff className="handle">
-                  <Logins />
-                </HandleOff>
-              </HandleOn>
+            <Heading1 style={{ margin: "auto" }} onClick={() => logIn()}>
+              로그인
             </Heading1>
           )}
         </Grid>
@@ -77,24 +70,7 @@ const Heading1 = styled.h1`
 
 const HeaderWrap = styled.div`
   width: 100%;
-  z-index: 1;
-  position: absolute;
-  margin: 30px auto;
+  margin: 0px auto 50px;
   display: flex;
-`;
-
-const HandleOn = styled.div`
-  transition: opacity 1s;
-
-  &:hover .handle {
-    transition: 1s;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-  }
-`;
-
-const HandleOff = styled.div`
-  transition: 0.5s;
-  opacity: 0;
-  pointer-events: none;
+  padding-top: 30px;
 `;
