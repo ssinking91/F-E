@@ -31,6 +31,27 @@ export default function NaverLogin() {
         localStorage.setItem("userName", name);
         localStorage.setItem("userImage", profile_image);
 
+        getNaverToken();
+
+        history.replace("/");
+
+        const Alert = alert.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", alert.stopTimer);
+            toast.addEventListener("mouseleave", alert.resumeTimer);
+          },
+        });
+
+        Alert.fire({
+          icon: "success",
+          title: `${localStorage.getItem("userName")}님, 환영합니다.`,
+        });
+
         if (id === undefined) {
           alert("필수정보제공동의 필요");
           naverLogin.repromt();
@@ -40,26 +61,6 @@ export default function NaverLogin() {
         }
       }
     });
-
-    getNaverToken();
-    // history.replace("/");
-
-    // const Alert = alert.mixin({
-    //   toast: true,
-    //   position: "top-end",
-    //   showConfirmButton: false,
-    //   timer: 3000,
-    //   timerProgressBar: true,
-    //   didOpen: (toast) => {
-    //     toast.addEventListener("mouseenter", alert.stopTimer);
-    //     toast.addEventListener("mouseleave", alert.resumeTimer);
-    //   },
-    // });
-
-    // Alert.fire({
-    //   icon: "success",
-    //   title: `${localStorage.getItem("userName")}님, 환영합니다.`,
-    // });
   };
 
   const getNaverToken = () => {
