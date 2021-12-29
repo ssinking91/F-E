@@ -8,11 +8,6 @@ import { Grid } from "../atoms/index";
 export default function NavBar() {
   const history = useHistory();
 
-  function logIn() {
-    console.log(11);
-    history.push("/login");
-  }
-
   function logOut() {
     console.log("logOut");
     localStorage.removeItem("refreshToken");
@@ -52,7 +47,6 @@ export default function NavBar() {
                 position: "relative",
                 cursor: "pointer",
               }}
-              onClick={() => logIn()}
             >
               <HandleOn>
                 로그인
