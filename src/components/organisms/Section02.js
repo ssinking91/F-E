@@ -1,12 +1,16 @@
 import styled from "styled-components";
 import { Text, Button } from "../atoms/index";
 import Main2Card from "./Main2Card";
-import NavBar2 from "./NavBar2";
+import NavBar from "./NavBar";
+// import NavBar2 from "./NavBar2";
 const Section02 = (props) => {
   return (
     <>
-      <div className="section num2" style={{ width: "100%", height: "1000px" }}>
-        <NavBar2 />
+      <NavBar />
+      <div
+        className="section num2"
+        style={{ width: "100%", height: "1000px", paddingTop: "80px" }}
+      >
         <SectionWrap>
           <span
             style={{
