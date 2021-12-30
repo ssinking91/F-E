@@ -17,7 +17,7 @@ const Main3Card = (props) => {
           fontWeight: "bold",
           fontSize: "14px",
           lineHeight: "22px",
-          fontFamily: "NanumGothic",
+
           color: "#20D7FF",
           marginBottom: "10px",
         }}
@@ -34,8 +34,8 @@ const Main3Card = (props) => {
             right: "14px",
             top: "16px",
           }}
-          onClick={()=>{
-            setSave3(!save3)
+          onClick={() => {
+            setSave3(!save3);
           }}
         >
           {save3 ? <BmarkFill /> : <BmarkNone />}
@@ -48,7 +48,7 @@ const Main3Card = (props) => {
           fontWeight: "bold",
           fontSize: "18px",
           lineHeight: "25px",
-          fontFamily: "NanumGothic",
+
           marginBottom: "10px",
         }}
       >
@@ -62,7 +62,7 @@ const Main3Card = (props) => {
           height: "16px",
           fontSize: "12px",
           lineHeight: "20px",
-          fontFamily: "NanumGothic",
+
           color: "#A5AAB6",
           marginBottom: "20px",
         }}
@@ -75,7 +75,7 @@ const Main3Card = (props) => {
           height: "38px",
           fontSize: "12px",
           lineHeight: "20px",
-          fontFamily: "NanumGothic",
+
           display: "flex",
           alignItems: "center",
         }}

@@ -31,19 +31,21 @@ export default function NavBar() {
           </Atag>
         </Grid>
         <Grid is_flex>
-          <Atag href="/#page2">
+          <Atag href="/#page2" style={{ margin: "0 0 0 auto" }}>
             <Heading1>관심지역.zip</Heading1>
           </Atag>
-          <Atag href="/#page3">
+          <Atag href="/#page3" style={{ margin: "0" }}>
             <Heading1>뜨는청약.zip</Heading1>
           </Atag>
-          <Atag href="/#page4">
+          <Atag href="/#page4" style={{ margin: "0 auto 0 0" }}>
             <Heading1>청약정보.zip</Heading1>
           </Atag>
         </Grid>
         <Grid>
           {(sessionStorage.getItem("accessToken") && (
-            <Heading1 onClick={() => logOut()}>로그아웃</Heading1>
+            <Heading1 onClick={() => logOut()} style={{ margin: "auto" }}>
+              로그아웃
+            </Heading1>
           )) || (
             <Heading1 style={{ margin: "auto" }} onClick={() => logIn()}>
               로그인

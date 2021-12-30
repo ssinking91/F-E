@@ -11,7 +11,7 @@ const Section01 = (props) => {
         <Background
           style={{
             backgroundImage: `url(${mainBackgroundImage})`,
-            backgroundSize: "100% 100%",
+            backgroundSize: "cover",
             width: "100%",
             height: "100%",
           }}
@@ -24,7 +24,8 @@ const Section01 = (props) => {
               .zip
             </Text>
             <Button
-              padding="13px 31px"
+              width="157px"
+              padding="13px 0"
               margin="0 5px"
               size="12px"
               border="1px solid #333333"
@@ -33,7 +34,8 @@ const Section01 = (props) => {
               관심지역 설정하기
             </Button>
             <Button
-              padding="13px 31px"
+              width="157px"
+              padding="13px 0"
               margin="0 5px"
               size="12px"
               background_color="#333333"
