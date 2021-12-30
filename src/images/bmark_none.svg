@@ -3,12 +3,12 @@
 <svg version="1.1" id="레이어_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
 	 y="0px" viewBox="0 0 30 42" style="enable-background:new 0 0 30 42;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#333333;}
+	.st2{fill:#333333;}
 	.st1{fill:#20D7FF;}
 </style>
 <g>
 	<g>
-		<path class="st0" d="M28.57,41.67c-0.55,0-1-0.45-1-1V2.33H2.43v38.35c0,0.55-0.45,1-1,1s-1-0.45-1-1V1.33c0-0.55,0.45-1,1-1
+		<path class="st2" d="M28.57,41.67c-0.55,0-1-0.45-1-1V2.33H2.43v38.35c0,0.55-0.45,1-1,1s-1-0.45-1-1V1.33c0-0.55,0.45-1,1-1
 			h27.14c0.55,0,1,0.45,1,1v39.35C29.57,41.23,29.12,41.67,28.57,41.67z"/>
 	</g>
 	<g>
