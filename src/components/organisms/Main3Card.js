@@ -17,7 +17,6 @@ const Main3Card = (props) => {
           fontWeight: "bold",
           fontSize: "14px",
           lineHeight: "22px",
-
           color: "#20D7FF",
           marginBottom: "10px",
         }}
@@ -48,7 +47,6 @@ const Main3Card = (props) => {
           fontWeight: "bold",
           fontSize: "18px",
           lineHeight: "25px",
-
           marginBottom: "10px",
         }}
       >
@@ -62,7 +60,6 @@ const Main3Card = (props) => {
           height: "16px",
           fontSize: "12px",
           lineHeight: "20px",
-
           color: "#A5AAB6",
           marginBottom: "20px",
         }}
@@ -75,7 +72,6 @@ const Main3Card = (props) => {
           height: "38px",
           fontSize: "12px",
           lineHeight: "20px",
-
           display: "flex",
           alignItems: "center",
         }}
