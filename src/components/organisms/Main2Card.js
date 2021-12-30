@@ -17,7 +17,6 @@ const Main2Card = (props) => {
               fontWeight: "bold",
               fontSize: "16px",
               lineHeight: "22px",
-              fontFamily: "NanumGothic",
               marginBottom: "5px",
             }}
           >
@@ -27,7 +26,6 @@ const Main2Card = (props) => {
             style={{
               fontSize: "10px",
               lineHeight: "20px",
-              fontFamily: "NanumGothic",
               color: "#A5AAB6",
               marginBottom: "15px",
             }}

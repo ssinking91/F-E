@@ -45,7 +45,7 @@ export default function NavBar() {
               style={{
                 margin: "auto",
                 cursor: "default",
-                width: "32px",
+                width: "34px",
               }}
             >
               <HandleOn>
