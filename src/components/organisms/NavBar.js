@@ -27,28 +27,31 @@ export default function NavBar() {
           </Atag>
         </Grid>
         <Grid is_flex>
-          <Atag href="/#page2">
+          <Atag href="/#page2" style={{ margin: "0 0 0 auto" }}>
             <Heading1>관심지역.zip</Heading1>
           </Atag>
-          <Atag href="/#page3">
+          <Atag href="/#page3" style={{ margin: "0" }}>
             <Heading1>뜨는청약.zip</Heading1>
           </Atag>
-          <Atag href="/#page4">
+          <Atag href="/#page4" style={{ margin: "0 auto 0 0" }}>
             <Heading1>청약정보.zip</Heading1>
           </Atag>
         </Grid>
         <Grid>
           {(sessionStorage.getItem("accessToken") && (
-            <Heading1 onClick={() => logOut()}>로그아웃</Heading1>
+            <Heading1 onClick={() => logOut()} style={{ margin: "auto" }}>
+              로그아웃
+            </Heading1>
           )) || (
             <Heading1
               style={{
                 margin: "auto",
                 cursor: "default",
-                width: "34px",
+                width: "65px",
+                height: "38px",
               }}
             >
-              <HandleOn>
+              <HandleOn style={{ margin: "auto" }}>
                 로그인
                 <HandleOff className="handle">
                   <Logins />
@@ -68,7 +71,7 @@ const Atag = styled.a`
 
 const Heading1 = styled.h1`
   color: black;
-  margin: 0 20px;
+  margin: 0 15px;
   padding: 13px 0;
   width: 70px;
   height: 38px;

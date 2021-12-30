@@ -35,7 +35,7 @@ const Section02 = (props) => {
               marginBottom: "20px",
             }}
           >
-            000님이 선택한 관심 지역의 실시간 청약 정보를 알 수 있어요 :)
+            000님이 선택한 관심 지역의 실시간 청약 정보를 알 수 있어요. :)
           </span>
           <Text size="16px" color="#778899"></Text>
           <Button

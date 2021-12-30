@@ -21,7 +21,7 @@ const Fullpage = () => (
   <ReactFullpage
     anchors={anchors}
     navigation
-    navigationTooltips={anchors}
+    // navigationTooltips={anchors}
     verticalCentered={false}
     sectionsColor={["#fff", "#fff", "#fff", "#F9F9F9"]}
     onLeave={(origin, destination, direction) => {

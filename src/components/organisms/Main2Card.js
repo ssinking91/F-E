@@ -38,7 +38,6 @@ const Main2Card = (props) => {
                 style={{
                   fontSize: "10px",
                   lineHeight: "20px",
-                  fontFamily: "NanumGothic",
                 }}
               >
                 84m² ~ 116m²/60m²~85m² <br />
