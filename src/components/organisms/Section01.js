@@ -6,8 +6,8 @@ import NavBar from "./NavBar";
 const Section01 = (props) => {
   return (
     <>
-      <div className="section num1" style={{position: "relative"}}>
-      <NavBar />
+      <div className="section num1" style={{ position: "relative" }}>
+        <NavBar />
         <Background
           style={{
             backgroundImage: `url(${mainBackgroundImage})`,
