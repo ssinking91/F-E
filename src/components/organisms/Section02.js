@@ -44,28 +44,35 @@ const Section02 = (props) => {
           </Button>
         </SectionWrap>
         <CardWrap>
-         
           <PublicCards>
-          <span style={{
-              fontWeight: "bold",
-              fontSize: "12px",
-              height: "20px",
-              lineHeight: "22px",
-              color: "#20D7FF",
-            }}>공공분양</span>
+            <span
+              style={{
+                fontWeight: "bold",
+                fontSize: "12px",
+                height: "20px",
+                lineHeight: "22px",
+                color: "#20D7FF",
+              }}
+            >
+              공공분양
+            </span>
             <Main2Card />
             <Main2Card />
             <Main2Card />
           </PublicCards>
-          
+
           <PrivateCards>
-          <span style={{
-              fontWeight: "bold",
-              fontSize: "12px",
-              height: "20px",
-              lineHeight: "22px",
-              color: "#20D7FF",
-            }}>민간분양</span>
+            <span
+              style={{
+                fontWeight: "bold",
+                fontSize: "12px",
+                height: "20px",
+                lineHeight: "22px",
+                color: "#20D7FF",
+              }}
+            >
+              민간분양
+            </span>
             <Main2Card />
             <Main2Card />
             <Main2Card />
@@ -89,7 +96,7 @@ const CardWrap = styled.div`
   width: 1000px;
   height: 500px;
   margin: 0px auto;
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
 `;
 
@@ -100,9 +107,8 @@ const PublicCards = styled.div`
   display: flex;
   flex-direction: column;
   & :not(:last-child) {
-  margin-bottom: 20px;
-}
-
+    margin-bottom: 20px;
+  }
 `;
 const PrivateCards = styled.div`
   width: 460px;
@@ -111,7 +117,7 @@ const PrivateCards = styled.div`
   display: flex;
   flex-direction: column;
   & :not(:last-child) {
-  margin-bottom: 20px;
-}
+    margin-bottom: 20px;
+  }
 `;
 export default Section02;

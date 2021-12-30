@@ -9,8 +9,8 @@ import Section04 from "../organisms/Section04";
 
 export default function Main() {
   return (
-    <div style={{width:"100%", height :"100%"}}>
-      <Fullpage/>
+    <div style={{ width: "100%", height: "100%" }}>
+      <Fullpage />
     </div>
   );
 }
