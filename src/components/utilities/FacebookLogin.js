@@ -49,7 +49,7 @@ const FaceBookLogin = () => {
           <ButtonInnerDiv onClick={renderProps.onClick}>
             <FaFacebookSquare
               style={{
-                marginRight: "20px",
+                marginRight: "10px",
                 color: "white",
               }}
               size="30"

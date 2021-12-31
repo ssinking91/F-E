@@ -9,8 +9,8 @@ import Section04 from "../organisms/Section04";
 
 export default function Main() {
   return (
-    <div style={{width:"100%", height :"100%"}}>
-      <Fullpage/>
+    <div style={{ width: "100%", height: "100%" }}>
+      <Fullpage />
     </div>
   );
 }
@@ -21,7 +21,7 @@ const Fullpage = () => (
   <ReactFullpage
     anchors={anchors}
     navigation
-    navigationTooltips={anchors}
+    // navigationTooltips={anchors}
     verticalCentered={false}
     sectionsColor={["#fff", "#fff", "#fff", "#F9F9F9"]}
     onLeave={(origin, destination, direction) => {
@@ -43,4 +43,3 @@ const Fullpage = () => (
     }}
   />
 );
-

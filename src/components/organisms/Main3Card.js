@@ -33,8 +33,8 @@ const Main3Card = (props) => {
             right: "32px",
             top: "32px",
           }}
-          onClick={()=>{
-            setSave3(!save3)
+          onClick={() => {
+            setSave3(!save3);
           }}
         >
           {save3 ? <BmarkFill /> : <BmarkNone />}

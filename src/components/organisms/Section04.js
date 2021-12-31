@@ -58,7 +58,11 @@ const Section04 = (props) => {
             ></iframe>
           </Card>
         </CardWraps>
-        <div style={{ width: "36px", height: "31px", margin: "0px auto 50px" }}>
+
+        <Atag
+          href="/#page1"
+          style={{ width: "36px", height: "31px", margin: "0px auto 50px" }}
+        >
           <Top />
         </div>
         <Footer />
@@ -68,6 +72,10 @@ const Section04 = (props) => {
 };
 
 export default Section04;
+const Atag = styled.a`
+  margin: auto;
+  display: block;
+`;
 
 const SectionWrap = styled.div`
   width: 100%;

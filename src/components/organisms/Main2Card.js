@@ -41,6 +41,7 @@ const Main2Card = (props) => {
           </span>
           <span
             style={{
+
               width: "316px",
               height: "25px",
               fontWeight: "bold",
