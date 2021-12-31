@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { ReactComponent as Logo } from "../../images/logo.svg";
 import Logins from "./Logins";
 
@@ -52,7 +52,7 @@ export default function NavBar() {
               }}
             >
               <HandleOn style={{ margin: "auto" }}>
-                로그인
+                <Link to="/login">로그인</Link>
                 <HandleOff className="handle">
                   <Logins />
                 </HandleOff>
