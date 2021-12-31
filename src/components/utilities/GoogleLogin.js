@@ -4,6 +4,7 @@ import alert from "sweetalert2";
 import { useHistory } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import styled from "styled-components";
+import { apis } from "./axios";
 
 export default function Google() {
   const history = useHistory();
@@ -15,7 +16,12 @@ export default function Google() {
     localStorage.setItem("userImage", res.profileObj.imageUrl);
     sessionStorage.setItem("accessToken", res.accessToken);
 
+    const userKey = localStorage.getIetem("userKey");
+    const userName = localStorage.getItem("username");
+
     history.replace("/");
+
+    apis.login(userKey, userName);
 
     const Alert = alert.mixin({
       toast: true,

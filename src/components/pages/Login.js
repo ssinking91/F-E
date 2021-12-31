@@ -4,6 +4,7 @@ import GoogleLogin from "../utilities/GoogleLogin";
 import FacebookLogin from "../utilities/FacebookLogin";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import NavBar from "../organisms/NavBar";
+import SocialLogin from "../organisms/Logins";
 
 export default function Login() {
   const history = useHistory();
@@ -12,15 +13,15 @@ export default function Login() {
     history.replace("/");
   }
 
-  const REST_API_KEY = "75adc3fd31a1e2d36b7d122383795fd7";
-  const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
+  // const REST_API_KEY = "75adc3fd31a1e2d36b7d122383795fd7";
+  // // const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
   // const REDIRECT_URI = "https://together-zip.netlify.app/oauth/kakao/callback";
-  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+  // const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
   return (
     <>
       <NavBar />
-      <SocialWrap>
+      {/* <SocialWrap>
         <Logins>
           <Kakao>
             <RiKakaoTalkFill style={{ marginRight: "20px" }} size="30" />
@@ -29,7 +30,8 @@ export default function Login() {
           <GoogleLogin />
           <FacebookLogin />
         </Logins>
-      </SocialWrap>
+      </SocialWrap> */}
+      <SocialLogin />
     </>
   );
 }

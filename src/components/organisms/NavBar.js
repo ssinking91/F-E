@@ -51,12 +51,12 @@ export default function NavBar() {
                 height: "38px",
               }}
             >
-              <HandleOn style={{ margin: "auto" }}>
-                <Link to="/login">로그인</Link>
-                <HandleOff className="handle">
-                  <Logins />
-                </HandleOff>
-              </HandleOn>
+              {/* <HandleOn style={{ margin: "auto" }}> */}
+              <Link to="/login">로그인</Link>
+              <HandleOff className="handle">
+                <Logins />
+              </HandleOff>
+              {/* </HandleOn> */}
             </Heading1>
           )}
         </Grid>
