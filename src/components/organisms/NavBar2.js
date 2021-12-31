@@ -70,7 +70,10 @@ const Heading1 = styled.h1`
 
 const HeaderWrap = styled.div`
   width: 100%;
-  margin: 0px auto 50px;
+  height: 97px;
+  margin: 0px auto;
   display: flex;
   padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: white;
 `;
