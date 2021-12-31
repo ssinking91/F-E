@@ -64,7 +64,7 @@ const Section04 = (props) => {
           style={{ width: "36px", height: "31px", margin: "0px auto 50px" }}
         >
           <Top />
-        </div>
+        </Atag>
         <Footer />
       </div>
     </>
