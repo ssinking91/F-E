@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import NavBar2 from "./NavBar2";
+import Footer from "./Footer";
 import { ReactComponent as Top } from "../../images/top.svg";
 const Section04 = (props) => {
   return (
@@ -9,24 +10,25 @@ const Section04 = (props) => {
         <SectionWrap>
           <span
             style={{
-              margin: "0px auto 10px",
+              marginBottom: "18px",
               height: "43px",
               lineHeight: "43px",
+              fontSize: "36px"
             }}
           >
             <span
-              style={{ fontSize: "36px", fontWeight: "bold", color: "#333333" }}
+              style={{ fontWeight: "bold", color: "#333333" }}
             >
               영상으로 배우는 청약 노하우
             </span>
-            <span style={{ fontSize: "36px" }}>✨</span>
+            <span>✨</span>
           </span>
           <span
             style={{
-              fontSize: "16px",
-              color: "#778899",
-              height: "22px",
-              lineHeight: "22px",
+              fontSize: "18px",
+              color: "#A5AAB6",
+              height: "25px",
+              lineHeight: "25px",
             }}
           >
             청약 관련 정보를 담은 영상을 추천해드릴게요.
@@ -35,8 +37,8 @@ const Section04 = (props) => {
         <CardWraps>
           <Card>
             <iframe
-              width="489"
-              height="275"
+              width="595"
+              height="337"
               src="https://www.youtube.com/embed/nEtiX7nN9qE"
               title="YouTube video player"
               frameBorder="0"
@@ -46,8 +48,8 @@ const Section04 = (props) => {
           </Card>
           <Card>
             <iframe
-              width="489"
-              height="275"
+              width="595"
+              height="337"
               src="https://www.youtube.com/embed/Ibz6iWmjYHo"
               title="YouTube video player"
               frameBorder="0"
@@ -62,20 +64,8 @@ const Section04 = (props) => {
           style={{ width: "36px", height: "31px", margin: "0px auto 50px" }}
         >
           <Top />
-        </Atag>
-        <hr style={{ marginBottom: "30px " }} />
-        <span
-          style={{
-            width: "311px",
-            height: "20px",
-            marginLeft: "220px",
-            lineHeight: "68px",
-            fontSize: "12px",
-            color: "#95A1BB",
-          }}
-        >
-          ⓒ.ZIP.All rights reserved.
-        </span>
+        </div>
+        <Footer />
       </div>
     </>
   );
@@ -89,23 +79,23 @@ const Atag = styled.a`
 
 const SectionWrap = styled.div`
   width: 100%;
-  height: 135px;
+  height: 86px;
   background-color: #f9f9f9;
   text-align: center;
   display: flex;
   flex-direction: column;
-  margin: 80px auto 100px;
+  margin: 80px auto 80px;
 `;
 
 const CardWraps = styled.div`
-  width: 998px;
-  height: 275px;
+  width: 1200px;
+  height: 337px;
   display: flex;
   justify-content: space-between;
-  margin: 0px auto 139px;
+  margin: 0px auto 171px;
 `;
 
 const Card = styled.div`
-  width: 489px;
-  height: 275px;
+  width: 595px;
+  height: 337px;
 `;
