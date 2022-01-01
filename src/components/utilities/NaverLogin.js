@@ -15,8 +15,8 @@ export default function NaverLogin() {
   naverScript.onload = () => {
     const naverLogin = new window.naver.LoginWithNaverId({
       clientId: `ZRzqCFcqpiEhAdr5vdzG`,
-      callbackUrl: "https://together-zip.netlify.app",
-      callbackHandle: false,
+      callbackUrl: "https://together-zip.netlify.app/login",
+      callbackHandle: true,
       isPopup: false, // popup 형식으로 띄울것인지 설정
       loginButton: { color: "green", type: 3, height: "40" },
     });
