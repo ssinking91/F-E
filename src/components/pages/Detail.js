@@ -1,7 +1,6 @@
 // import KakaoMap from "../utilities/KakaoMap";
 import styled from "styled-components";
 import NavBar2 from "../organisms/NavBar2";
-// import { Text, Button } from "../atoms/index";
 import defaultImage from "../../images/defaultImage.png";
 
 export default function Detail() {
