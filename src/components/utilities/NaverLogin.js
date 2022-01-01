@@ -11,9 +11,9 @@ export default function Naver() {
 
   const responseNaver = (res) => {
     console.log(res);
-    localStorage.setItem("userKey", res.googleId);
-    localStorage.setItem("userName", res.profileObj.name);
-    localStorage.setItem("userImage", res.profileObj.imageUrl);
+    localStorage.setItem("userKey", res.Id);
+    localStorage.setItem("userName", res.name);
+    localStorage.setItem("userImage", res.imageUrl);
     sessionStorage.setItem("accessToken", res.accessToken);
 
     const userKey = localStorage.getIetem("userKey");
