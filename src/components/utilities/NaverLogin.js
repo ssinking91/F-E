@@ -10,10 +10,11 @@ export default function Naver() {
   const history = useHistory();
 
   const responseNaver = (res) => {
+    console.log("success");
     console.log(res);
-    localStorage.setItem("userKey", res.Id);
+    localStorage.setItem("userKey", res.id);
     localStorage.setItem("userName", res.name);
-    localStorage.setItem("userImage", res.imageUrl);
+    localStorage.setItem("userImage", res.profile_image);
     sessionStorage.setItem("accessToken", res.accessToken);
 
     const userKey = localStorage.getIetem("userKey");
@@ -51,15 +52,19 @@ export default function Naver() {
   return (
     <NaverLogin
       clientId="ZRzqCFcqpiEhAdr5vdzG"
+      callbackUrl="http://localhost:3000"
+      isPopup="false"
       render={(renderProps) => (
         <NaverLoginBtn
           onClick={renderProps.onClick}
           disabled={renderProps.disabled}
+          isPopup="false"
         >
           <SiNaver size="30" style={{ color: "white", marginRight: "20px" }} />
           네이버 아이디로 로그인
         </NaverLoginBtn>
       )}
+      buttonText="Sign In With Naver"
       onSuccess={responseNaver}
       onFailure={failureMsg}
       cookiePolicy={"single_host_origin"}

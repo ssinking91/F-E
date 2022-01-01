@@ -19,10 +19,10 @@ export default function Google() {
     const userKey = localStorage.getIetem("userKey");
     const userName = localStorage.getItem("username");
 
-    apis
-      .login(userKey, userName)
-      .then((res) => console.log(res))
-      .catch((e) => console.log(e));
+    // apis
+    //   .login(userKey, userName)
+    //   .then((res) => console.log(res))
+    //   .catch((e) => console.log(e));
 
     history.replace("/");
 
