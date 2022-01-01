@@ -1,8 +1,8 @@
 import { useHistory } from "react-router-dom";
-import styled from "styled-components";
-import GoogleLogin from "../utilities/GoogleLogin";
-import FacebookLogin from "../utilities/FacebookLogin";
-import { RiKakaoTalkFill } from "react-icons/ri";
+// import styled from "styled-components";
+// import GoogleLogin from "../utilities/GoogleLogin";
+// import FacebookLogin from "../utilities/FacebookLogin";
+// import { RiKakaoTalkFill } from "react-icons/ri";
 import NavBar from "../organisms/NavBar";
 import SocialLogin from "../organisms/Logins";
 
@@ -36,29 +36,29 @@ export default function Login() {
   );
 }
 
-const SocialWrap = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+// const SocialWrap = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// `;
 
-const Logins = styled.div`
-  position: relative;
-  top: 250px;
-`;
+// const Logins = styled.div`
+//   position: relative;
+//   top: 250px;
+// `;
 
-const Kakao = styled.div`
-  width: 300px;
-  height: 45px;
-  background-color: yellow;
-  display: flex;
-  align-items: center;
-  border-radius: 4px;
-  margin: 20px 0;
-  padding-left: 6px;
-  outline: none;
-  -webkit-box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
-  box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
-  cursor: pointer;
-  font-size: 16px;
-`;
+// const Kakao = styled.div`
+//   width: 300px;
+//   height: 45px;
+//   background-color: yellow;
+//   display: flex;
+//   align-items: center;
+//   border-radius: 4px;
+//   margin: 20px 0;
+//   padding-left: 6px;
+//   outline: none;
+//   -webkit-box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
+//   box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
+//   cursor: pointer;
+//   font-size: 16px;
+// `;

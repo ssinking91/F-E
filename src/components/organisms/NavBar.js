@@ -86,16 +86,16 @@ const HeaderWrap = styled.div`
   display: flex;
 `;
 
-const HandleOn = styled.div`
-  transition: opacity 1s;
-  position: relative;
+// const HandleOn = styled.div`
+//   transition: opacity 1s;
+//   position: relative;
 
-  &:hover .handle {
-    transition: 1s;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-  }
-`;
+//   &:hover .handle {
+//     transition: 1s;
+//     opacity: 1 !important;
+//     pointer-events: auto !important;
+//   }
+// `;
 
 const HandleOff = styled.div`
   transition: 0.5s;
