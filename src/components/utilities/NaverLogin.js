@@ -1,88 +1,90 @@
-import styled from "styled-components";
+import React from "react";
+import NaverLogin from "react-naver-login";
 import alert from "sweetalert2";
-import { useLocation, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import styled from "styled-components";
+import { SiNaver } from "react-icons/si";
+import { apis } from "./axios";
 
-export default function NaverLogin() {
-  const location = useLocation();
+export default function Naver() {
   const history = useHistory();
 
-  const naverScript = document.createElement("script");
-  naverScript.src =
-    "https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js";
-  naverScript.type = "text/javascript";
-  document.head.appendChild(naverScript);
+  const responseNaver = (res) => {
+    console.log(res);
+    localStorage.setItem("userKey", res.googleId);
+    localStorage.setItem("userName", res.profileObj.name);
+    localStorage.setItem("userImage", res.profileObj.imageUrl);
+    sessionStorage.setItem("accessToken", res.accessToken);
 
-  naverScript.onload = () => {
-    const naverLogin = new window.naver.LoginWithNaverId({
-      clientId: `ZRzqCFcqpiEhAdr5vdzG`,
-      callbackUrl: "https://together-zip.netlify.app/login",
-      callbackHandle: true,
-      isPopup: false, // popup 형식으로 띄울것인지 설정
-      loginButton: { color: "green", type: 3, height: "40" },
+    const userKey = localStorage.getIetem("userKey");
+    const userName = localStorage.getItem("username");
+
+    apis
+      .login(userKey, userName)
+      .then((res) => console.log(res))
+      .catch((e) => console.log(e));
+
+    history.replace("/");
+
+    const Alert = alert.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener("mouseenter", alert.stopTimer);
+        toast.addEventListener("mouseleave", alert.resumeTimer);
+      },
     });
 
-    naverLogin.init();
-    naverLogin.logout();
-    naverLogin.getLoginStatus((status) => {
-      if (status) {
-        console.log("naver 로그인 상태", naverLogin.user);
-        const { id, name, profile_image } = naverLogin.user;
-        localStorage.setItem("userKey", id);
-        localStorage.setItem("userName", name);
-        localStorage.setItem("userImage", profile_image);
-
-        getNaverToken();
-
-        history.replace("/");
-
-        const Alert = alert.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", alert.stopTimer);
-            toast.addEventListener("mouseleave", alert.resumeTimer);
-          },
-        });
-
-        Alert.fire({
-          icon: "success",
-          title: `${localStorage.getItem("userName")}님, 환영합니다.`,
-        });
-
-        if (id === undefined) {
-          alert("필수정보제공동의 필요");
-          naverLogin.repromt();
-          return;
-        } else {
-          console.log("naver 비로그인 상태");
-        }
-      }
+    Alert.fire({
+      icon: "success",
+      title: `${localStorage.getItem("userName")}님, 환영합니다.`,
     });
   };
 
-  const getNaverToken = () => {
-    if (!location.hash) return;
-    const token = location.hash.split("=")[1].split("&")[0];
-    console.log(token);
-    sessionStorage.setItem("accessToken", token);
+  const failureMsg = (res) => {
+    console.log(res);
   };
 
   return (
-    <>
-      <NaverLoginBtn id="naverIdLogin"></NaverLoginBtn>
-    </>
+    <NaverLogin
+      clientId="ZRzqCFcqpiEhAdr5vdzG"
+      render={(renderProps) => (
+        <NaverLoginBtn
+          onClick={renderProps.onClick}
+          disabled={renderProps.disabled}
+        >
+          <SiNaver size="30" style={{ color: "white", marginRight: "20px" }} />
+          네이버 아이디로 로그인
+        </NaverLoginBtn>
+      )}
+      onSuccess={responseNaver}
+      onFailure={failureMsg}
+      cookiePolicy={"single_host_origin"}
+      isSignedIn={false}
+    />
   );
 }
 
-const NaverLoginBtn = styled.div`
+const NaverLoginBtn = styled.button`
+  width: 185px;
   height: 40px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  border: none;
+  cursor: pointer;
   -webkit-box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
   box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
-  border-radius: 3px;
   transition: 0.5s;
+  font-weight: bold;
+  background-color: green;
+  color: #fff;
+
   &:hover {
     transform: scale(1.1);
   }

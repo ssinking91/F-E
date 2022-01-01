@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import alert from "sweetalert2";
 import { apis } from "./axios";
 
-import { FaFacebookSquare } from "react-icons/fa";
+import { BsFacebook } from "react-icons/bs";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 
 const FaceBookLogin = () => {
@@ -58,7 +58,7 @@ const FaceBookLogin = () => {
       render={(renderProps) => (
         <FaceBookLoginButton>
           <ButtonInnerDiv onClick={renderProps.onClick}>
-            <FaFacebookSquare
+            <BsFacebook
               style={{
                 marginRight: "10px",
                 color: "white",
