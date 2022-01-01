@@ -17,7 +17,7 @@ export default function Naver() {
     localStorage.setItem("userImage", res.profile_image);
     sessionStorage.setItem("accessToken", res.accessToken);
 
-    const userKey = localStorage.getIetem("userKey");
+    const userKey = localStorage.getItem("userKey");
     const userName = localStorage.getItem("username");
 
     apis

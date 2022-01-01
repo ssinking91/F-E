@@ -10,13 +10,14 @@ export default function Google() {
   const history = useHistory();
 
   const responseGoogle = (res) => {
+    console.log("google");
     console.log(res);
     localStorage.setItem("userKey", res.googleId);
     localStorage.setItem("userName", res.profileObj.name);
     localStorage.setItem("userImage", res.profileObj.imageUrl);
     sessionStorage.setItem("accessToken", res.accessToken);
 
-    const userKey = localStorage.getIetem("userKey");
+    const userKey = localStorage.getItem("userKey");
     const userName = localStorage.getItem("username");
 
     // apis
