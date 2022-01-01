@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Main2Card from "./Main2Card";
 import NavBar2 from "./NavBar2";
 // import NavBar2 from "./NavBar2";
+
 const Section02 = (props) => {
   return (
     <>
