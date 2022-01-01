@@ -17,10 +17,8 @@ const Section01 = (props) => {
           }}
         >
           <TitleSectionWrap>
-            <Text size="58px" bold>
-              집을 모아놓다
-            </Text>
-            <Text size="58px" bold margin="0 0 22px 0">
+            <Text h1>집을 모아놓다</Text>
+            <Text h1 margin="0 0 22px 0">
               .zip
             </Text>
             <Button
