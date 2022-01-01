@@ -52,7 +52,7 @@ export default function Naver() {
   return (
     <NaverLogin
       clientId="ZRzqCFcqpiEhAdr5vdzG"
-      callbackUrl="http://localhost:3000"
+      callbackUrl="https://together-zip.netlify.app"
       isPopup="false"
       render={(renderProps) => (
         <NaverLoginBtn
