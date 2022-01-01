@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import alert from "sweetalert2";
+import { apis } from "./axios";
 
 import { FaFacebookSquare } from "react-icons/fa";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
@@ -16,6 +17,16 @@ const FaceBookLogin = () => {
     localStorage.setItem("userName", name);
     localStorage.setItem("userImage", res.picture.data.url);
     sessionStorage.setItem("accessToken", accessToken);
+
+    const userKey = localStorage.getItem("userKey");
+    const userName = localStorage.getItem("username");
+
+    console.log(sessionStorage.getItem("accessToken"));
+    console.log(userKey, userName);
+    apis
+      .login(userKey, userName)
+      .then((res) => console.log(res))
+      .catch((e) => console.log(e));
 
     history.replace("/");
 

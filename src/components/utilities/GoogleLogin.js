@@ -19,9 +19,12 @@ export default function Google() {
     const userKey = localStorage.getIetem("userKey");
     const userName = localStorage.getItem("username");
 
-    history.replace("/");
+    apis
+      .login(userKey, userName)
+      .then((res) => console.log(res))
+      .catch((e) => console.log(e));
 
-    apis.login(userKey, userName);
+    history.replace("/");
 
     const Alert = alert.mixin({
       toast: true,
