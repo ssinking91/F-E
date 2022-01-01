@@ -86,11 +86,6 @@ const Image = styled.div`
   background-size: cover;
   margin: 0 50px 0 0;
 `;
-// const Grid = styled.div`
-//   width: 1200px;
-//   display: flex;
-//   margin: 80px auto 80px auto;
-// `;
 
 const DetailText = styled.div`
   width: 550px;

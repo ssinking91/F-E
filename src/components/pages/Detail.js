@@ -2,7 +2,7 @@
 import NavBar2 from "../organisms/NavBar2";
 import DetailInfo from "../organisms/DetailInfo";
 import DetailType from "../organisms/DetailType";
-import { Grid, Text, Div } from "../atoms/index";
+import { Grid } from "../atoms/index";
 
 export default function Detail() {
   return (
