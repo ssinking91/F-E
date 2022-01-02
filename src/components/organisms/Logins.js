@@ -45,10 +45,19 @@ const SocialWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px 50px;
+  padding: 150px 50px;
 `;
 
-const Logins = styled.div``;
+const Logins = styled.div`
+  transition: 0.5s;
+  padding: 50px;
+
+  &:hover {
+    border: 1px solid #999;
+    border-radius: 10px;
+    transform: scale(1.1);
+  }
+`;
 
 const Kakao = styled.div`
   width: 185px;
