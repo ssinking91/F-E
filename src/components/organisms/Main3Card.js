@@ -4,6 +4,8 @@ import styled from "styled-components";
 // import { Grid } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
+import defaultImage from "../../images/defaultImage.png";
+import Label from "../molecules/Label";
 
 const Main3Card = (props) => {
   const [save3, setSave3] = React.useState(false);
@@ -42,18 +44,7 @@ const Main3Card = (props) => {
       </Imageitem>
       <Item>
         <Info1>
-          <span
-            style={{
-              width: "64px",
-              height: "29px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              marginRight:"15px"
-            }}
-          >
-            접수중
-          </span>
+          <Label registration></Label>
           <span
             style={{
               width: "291px",
@@ -62,6 +53,7 @@ const Main3Card = (props) => {
               fontSize: "18px",
               lineHeight: "25px",
               color: "#333333",
+              margin: "0 0 0 15px",
             }}
           >
             인천 강화 서희스타힐스 1단지
@@ -157,7 +149,7 @@ const Image = styled.div`
   width: 370px;
   height: 370px;  
   border-radius: 20px;
-  background-image: url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png");
+  background-image: url("${defaultImage}");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
