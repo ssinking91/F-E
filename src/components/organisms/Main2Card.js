@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
+import Label from "../molecules/Label";
 
 const Main2Card = (props) => {
   const [save2, setSave2] = React.useState(false);
@@ -9,7 +10,7 @@ const Main2Card = (props) => {
   return (
     <Container>
       <Imageitem>
-        <Image/>
+        <Image />
         <div
           style={{
             position: "absolute",
@@ -18,8 +19,8 @@ const Main2Card = (props) => {
             left: "111.36px",
             bottom: "123.35px",
           }}
-          onClick={()=>{
-            setSave2(!save2)
+          onClick={() => {
+            setSave2(!save2);
           }}
         >
           {save2 ? <BmarkFill /> : <BmarkNone />}
@@ -27,27 +28,16 @@ const Main2Card = (props) => {
       </Imageitem>
       <Item>
         <Info1>
+          <Label registration></Label>
           <span
             style={{
-              width: "64px",
-              height: "29px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              marginRight:"15px"
-            }}
-          >
-            접수중
-          </span>
-          <span
-            style={{
-
               width: "316px",
               height: "25px",
               fontWeight: "bold",
               fontSize: "18px",
               lineHeight: "25px",
               color: "#333333",
+              margin: "0 0 0 15px",
             }}
           >
             인천 강화 서희스타힐스 1단지
@@ -161,6 +151,7 @@ const Info1 = styled.div`
   height: 29px;
   display: flex;
   margin-bottom: 15px;
+  align-items: center;
 `;
 
 const Info2 = styled.div`

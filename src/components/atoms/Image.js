@@ -1,14 +1,23 @@
 import styled from "styled-components";
 import React from "react";
+import defaultImage from "../../images/defaultImage.png";
 
 const Image = (props) => {
-  const { shape, src, size } = props;
+  const { shape, src, size, width, height, margin, padding, color } = props;
 
   const styles = {
     src: src,
     size: size,
+    width: width,
+    height: height,
+    margin: margin,
+    padding: padding,
+    color: color,
   };
 
+  if (shape === "default") {
+    return <DefaultImage {...styles}></DefaultImage>;
+  }
   if (shape === "logo") {
     return <ImageLogo {...styles}></ImageLogo>;
   }
@@ -33,9 +42,24 @@ const Image = (props) => {
 
 Image.defaultProps = {
   shape: "circle",
-  src: "https://upload.wikimedia.org/wikipedia/commons/3/33/UTMB_2015.jpg",
+  src: `${defaultImage}`,
   size: 36,
+  width: false,
+  height: false,
+  margin: false,
+  padding: false,
+  color: false,
 };
+
+const DefaultImage = styled.div`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  margin: ${(props) => props.margin};
+  padding: ${(props) => props.padding};
+  background-color: ${(props) => props.color};
+  background-image: url("${(props) => props.src}");
+  background-size: cover;
+`;
 
 const ImageLogo = styled.div`
   --size: ${(props) => props.size}px;
@@ -60,7 +84,7 @@ const AspectOutter = styled.div`
 
 const AspectInner = styled.div`
   position: relative;
-  padding-top: 75%;
+  padding-top: 100%;
   overflow: hidden;
   background-image: url("${(props) => props.src}");
   background-size: cover;
