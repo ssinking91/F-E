@@ -37,6 +37,5 @@ const ContentsArea = styled.div`
 `;
 
 const RightArea = styled.div`
-  width: 950px;
-  height: 930px;
+  width: 1000px;
 `;
