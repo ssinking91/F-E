@@ -39,7 +39,7 @@ const Label = (props) => {
           height="29px"
           color="#20D7FF"
           border="1px solid #778899"
-          background_color="#fff"
+          background_color="#00ff0000"
         >
           <Text margin="auto" color="#778899" bold>
             마감

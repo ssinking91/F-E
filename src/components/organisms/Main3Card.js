@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import Label from "../molecules/Label";
 // import { Grid } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
@@ -147,7 +147,7 @@ const Imageitem = styled.div`
 
 const Image = styled.div`
   width: 370px;
-  height: 370px;  
+  height: 370px;
   border-radius: 20px;
   background-image: url("${defaultImage}");
   background-size: cover;
