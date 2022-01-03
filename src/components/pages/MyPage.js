@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import NavBar2 from "../organisms/NavBar2";
+import NavBar from "../organisms/NavBar";
 import Main2Card from "../organisms/Main2Card";
 import Footer from "../organisms/Footer";
 
 const MyPage = (props) => {
   return (
     <>
-      <NavBar2 />
+      <NavBar />
       <MyCard>
         <MyCardImage />
         <MyCardList>
