@@ -1,68 +1,53 @@
 import styled from "styled-components";
 import { Grid, Text, Button } from "../atoms/index";
 import { ReactComponent as Scroll } from "../../images/scroll.svg";
-import mainBackgroundImage from "../../images/mainBackgroundImage.jpg";
-import NavBar from "./NavBar";
+// import mainBackgroundImage from "../../images/mainBackgroundImage.jpg";
+import NavBar2 from "./NavBar2";
 const Section01 = (props) => {
   return (
     <>
       <div className="section num1" style={{ position: "relative" }}>
-        <NavBar />
+        <NavBar2 />
+        <Hr />
+
         <Background
           style={{
-            backgroundImage: `url(${mainBackgroundImage})`,
+            // backgroundImage: `url(${mainBackgroundImage})`,
             backgroundSize: "cover",
             width: "100%",
             height: "100%",
           }}
         >
           <TitleSectionWrap>
-            <Text h1>집을 모아놓다</Text>
-            <Text h1 margin="0 0 22px 0">
-              .zip
+            <Text h1>집을 모아놓다.zip</Text>
+            <Text h2 color="#a5aab6" margin="15px 0 60px 0">
+              당신을 위한 청약 정보가{" "}
+              <span style={{ color: "#20d7ff" }}>21개</span> 모여있어요
             </Text>
-            <Button
-              width="157px"
-              padding="13px 0"
-              margin="0 5px"
-              size="12px"
-              border="1px solid #333333"
-              background_color="rgba(0,0,0,0)"
-            >
-              관심지역 설정하기
+            <Button background_color="#20d7ff" padding="13px 21px">
+              <Text h3 color="#fff">
+                청약 리스트 보러가기
+              </Text>
             </Button>
-            <Button
-              width="157px"
-              padding="13px 0"
-              margin="0 5px"
-              size="12px"
-              background_color="#333333"
-              color="#fff"
-            >
-              청약 하러가기
-            </Button>
-            <Grid>
-              <Button
-                size="12px"
-                color="#778899"
-                background_color="rgba(0,0,0,0)"
-                margin="148px auto 0 auto"
-              >
-                아래로 스크롤 해주세요
-              </Button>
+            <Grid width="236px" margin="280px auto 30px auto">
+              <Text h4 color="#20d7ff">
+                나만의 맞춤 청약을 확인하려면 아래로 스크롤 해주세요
+              </Text>
             </Grid>
-            <Scroll width="10" height="5" />
+            <Scroll width="20px" height="10px" />
           </TitleSectionWrap>
         </Background>
       </div>
     </>
   );
 };
+const Hr = styled.div`
+  border-top: 1px solid #e3e5eb;
+`;
 const TitleSectionWrap = styled.div`
   margin-top: 178px;
   width: 100%;
   text-align: center;
-  position: absolute;
 `;
 const Background = styled.div``;
 

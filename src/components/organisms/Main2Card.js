@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import Label from "../molecules/Label";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
-import Label from "../molecules/Label";
 
 const Main2Card = (props) => {
   const [save2, setSave2] = React.useState(false);

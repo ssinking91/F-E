@@ -64,6 +64,7 @@ export default function NavBar() {
     </>
   );
 }
+
 const Atag = styled.a`
   margin: auto;
   display: block;
