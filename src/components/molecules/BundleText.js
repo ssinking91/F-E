@@ -9,12 +9,12 @@ export default function BundleText(props) {
   return (
     <BundleTextWrap {...styles}>
       <Grid is_flex>
-        <Div width="140px">
+        <Grid width="140px">
           <Text boldText>{props.title}</Text>
-        </Div>
-        <Div>
+        </Grid>
+        <Grid>
           <Text regularText>{props.content}</Text>
-        </Div>
+        </Grid>
       </Grid>
     </BundleTextWrap>
   );

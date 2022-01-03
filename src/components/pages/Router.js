@@ -10,6 +10,7 @@ import Login from "./Login";
 import MyPage from "./MyPage";
 import KakaoAuth from "../utilities/KakaoAuth";
 import KakaoLogin from "../utilities/KakaoLogin";
+import Test from "./Test";
 
 export default function router() {
   return (
@@ -21,6 +22,7 @@ export default function router() {
           <Route path="/login" exact component={Login} />
           <Route path="/login/kakao" component={KakaoLogin} />
           <Route path="/oauth/kakao/callback" component={KakaoAuth} />
+          <Route path="/test" component={Test} />
           <Route exact path="/" component={Main} />
           <Redirect from="*" to="/" />
         </Switch>
