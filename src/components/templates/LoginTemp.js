@@ -20,7 +20,7 @@ export default function LoginTemp() {
           </ContentsArea>
         </LeftArea>
         <RightArea>
-          <Image shape="rectangle" src="img/image.png" alt="images" />
+          <img src="img/image.png" alt="images" style={{ width: "100%" }} />
         </RightArea>
       </Grid>
     </>
@@ -28,14 +28,16 @@ export default function LoginTemp() {
 }
 
 const LeftArea = styled.div`
-  width: 55%;
+  width: 50%;
+  height: 100%;
 `;
 
 const ContentsArea = styled.div`
   width: 40%;
+  height: 50%;
   margin: auto;
 `;
 
 const RightArea = styled.div`
-  width: 1000px;
+  width: 50%;
 `;
