@@ -49,7 +49,11 @@ const Comment = (props) => {
                 border: "none",
               }}
             />
-            <CommentButton>
+            <CommentButton
+              style={{
+                cursor:"pointer",
+              }}
+            >
               <span
                 style={{
                   width: "27px",
@@ -247,6 +251,9 @@ const CommentInput = styled.div`
   background-color: #ffffff;
   & > ::placeholder {
     color: #778899;
+  }
+  & > input:focus{
+    outline: none;
   }
 `;
 
