@@ -4,6 +4,7 @@ import Label from "../molecules/Label";
 // import { Grid } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
+import defaultImage from "../../images/defaultImage.png";
 
 const Main3Card = (props) => {
   const [save3, setSave3] = React.useState(false);
@@ -42,7 +43,7 @@ const Main3Card = (props) => {
       </Imageitem>
       <Item>
         <Info1>
-          <Label deadline></Label>
+          <Label registration></Label>
           <span
             style={{
               width: "291px",
@@ -147,7 +148,7 @@ const Image = styled.div`
   width: 370px;
   height: 370px;
   border-radius: 20px;
-  background-image: url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png");
+  background-image: url("${defaultImage}");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

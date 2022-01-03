@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import alert from "sweetalert2";
+import { apis } from "./axios";
 
-import { FaFacebookSquare } from "react-icons/fa";
+import { BsFacebook } from "react-icons/bs";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 
 const FaceBookLogin = () => {
@@ -16,6 +17,16 @@ const FaceBookLogin = () => {
     localStorage.setItem("userName", name);
     localStorage.setItem("userImage", res.picture.data.url);
     sessionStorage.setItem("accessToken", accessToken);
+
+    const userKey = localStorage.getItem("userKey");
+    const userName = localStorage.getItem("username");
+
+    console.log(sessionStorage.getItem("accessToken"));
+    console.log(userKey, userName);
+    apis
+      .login(userKey, userName)
+      .then((res) => console.log(res))
+      .catch((e) => console.log(e));
 
     history.replace("/");
 
@@ -39,15 +50,15 @@ const FaceBookLogin = () => {
 
   return (
     <FacebookLogin
-      // appId={3024486014468635}
-      appId={1354313235001903}
+      appId={3024486014468635}
+      // appId={1354313235001903}
       autoLoad={false}
       fields="name,email,picture"
       callback={responseFacebook}
       render={(renderProps) => (
         <FaceBookLoginButton>
           <ButtonInnerDiv onClick={renderProps.onClick}>
-            <FaFacebookSquare
+            <BsFacebook
               style={{
                 marginRight: "10px",
                 color: "white",

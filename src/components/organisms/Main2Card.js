@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Label from "../molecules/Label";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
+import defaultImage from "../../images/defaultImage.png";
 
 const Main2Card = (props) => {
   const [save2, setSave2] = React.useState(false);
@@ -133,7 +134,7 @@ const Image = styled.div`
   height: 160px;
   margin-top: 4px;
   border-radius: 20px;
-  background-image: url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png");
+  background-image: url("${defaultImage}");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

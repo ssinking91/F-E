@@ -13,8 +13,8 @@ export default function Login() {
   }
 
   const REST_API_KEY = "75adc3fd31a1e2d36b7d122383795fd7";
-  const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
-  // const REDIRECT_URI = "https://together-zip.netlify.app/oauth/kakao/callback";
+  // const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
+  const REDIRECT_URI = "https://together-zip.netlify.app/oauth/kakao/callback";
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
   return (
@@ -45,10 +45,19 @@ const SocialWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px 50px;
+  padding: 150px 50px;
 `;
 
-const Logins = styled.div``;
+const Logins = styled.div`
+  transition: 0.5s;
+  padding: 50px;
+
+  &:hover {
+    border: 1px solid #999;
+    border-radius: 10px;
+    transform: scale(1.1);
+  }
+`;
 
 const Kakao = styled.div`
   width: 185px;

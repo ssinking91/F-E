@@ -9727,6 +9727,11 @@ react-modal@^3.14.4:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
+react-naver-login@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/react-naver-login/-/react-naver-login-0.1.4.tgz#d5b5a15632d810c397909c33c642adde60d1656b"
+  integrity sha512-ZFciTw96TyqSmCNjNqTqa8VeP1Y0Hl7Ult9uN6+Y6egpBSjLU8IwB1Y3gfltZYrPQC9uoqr6nICi4SX4JYhoGQ==
+
 react-redux@^7.2.6:
   version "7.2.6"
   resolved "https://registry.npmjs.org/react-redux/-/react-redux-7.2.6.tgz"

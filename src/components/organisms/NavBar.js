@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useHistory, Link, NavLink } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { ReactComponent as Logo } from "../../images/logo.svg";
 import Logins from "./Logins";
 import { Grid } from "../atoms/index";
@@ -55,17 +55,12 @@ export default function NavBar() {
                 height: "38px",
               }}
             >
-              <HandleOn
-                onClick={() => {
-                  logIn();
-                }}
-                style={{ margin: "auto" }}
-              >
-                로그인
-                <HandleOff className="handle">
-                  <Logins />
-                </HandleOff>
-              </HandleOn>
+              {/* <HandleOn style={{ margin: "auto" }}> */}
+              <Link to="/login">로그인</Link>
+              <HandleOff className="handle">
+                <Logins />
+              </HandleOff>
+              {/* </HandleOn> */}
             </Heading1>
           )}
         </Grid>
@@ -102,16 +97,16 @@ const HeaderWrap = styled.div`
   background-color: white;
 `;
 
-const HandleOn = styled.div`
-  transition: opacity 1s;
-  position: relative;
+// const HandleOn = styled.div`
+//   transition: opacity 1s;
+//   position: relative;
 
-  &:hover .handle {
-    transition: 1s;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-  }
-`;
+//   &:hover .handle {
+//     transition: 1s;
+//     opacity: 1 !important;
+//     pointer-events: auto !important;
+//   }
+// `;
 
 const HandleOff = styled.div`
   transition: 0.5s;
