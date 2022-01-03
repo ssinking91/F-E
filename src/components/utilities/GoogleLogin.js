@@ -4,16 +4,26 @@ import alert from "sweetalert2";
 import { useHistory } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import styled from "styled-components";
+import { apis } from "./axios";
 
 export default function Google() {
   const history = useHistory();
 
   const responseGoogle = (res) => {
+    console.log("google");
     console.log(res);
     localStorage.setItem("userKey", res.googleId);
     localStorage.setItem("userName", res.profileObj.name);
     localStorage.setItem("userImage", res.profileObj.imageUrl);
     sessionStorage.setItem("accessToken", res.accessToken);
+
+    const userKey = localStorage.getItem("userKey");
+    const userName = localStorage.getItem("username");
+
+    apis
+      .login(userKey, userName)
+      .then((res) => console.log(res))
+      .catch((e) => console.log(e));
 
     history.replace("/");
 

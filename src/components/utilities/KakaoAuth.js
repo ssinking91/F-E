@@ -7,10 +7,8 @@ export default function KakaoAuth() {
   const history = useHistory();
 
   const REST_API_KEY = "75adc3fd31a1e2d36b7d122383795fd7";
-  // local에서 작업할때
-  const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
-  // 서버용입니다.
-  // const REDIRECT_URI = "https://together-zip.netlify.app/oauth/kakao/callback";
+  // const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
+  const REDIRECT_URI = "https://together-zip.netlify.app/oauth/kakao/callback";
   const CLIENT_SECRET = "GmNPzWqReNj1l9p0Xz7JWprN6XUhi9yy";
 
   const code = new URL(window.location.href).searchParams.get("code");
