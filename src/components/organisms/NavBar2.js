@@ -1,11 +1,13 @@
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { ReactComponent as Logo } from "../../images/logo.svg";
 
 import { Grid } from "../atoms/index";
 
 export default function NavBar() {
   const history = useHistory();
+  const location = useLocation();
+  console.log(location);
 
   function logIn() {
     console.log(11);
@@ -32,13 +34,25 @@ export default function NavBar() {
         </Grid>
         <Grid is_flex>
           <Atag href="/#page2" style={{ margin: "0 0 0 auto" }}>
-            <Heading1>관심지역.zip</Heading1>
+            {(location.hash === "#page2" && (
+              <Heading1 style={{ color: "#20D7FF", fontWeight: "800" }}>
+                관심지역.zip
+              </Heading1>
+            )) || <Heading1>관심지역.zip</Heading1>}
           </Atag>
           <Atag href="/#page3" style={{ margin: "0" }}>
-            <Heading1>뜨는청약.zip</Heading1>
+            {(location.hash === "#page3" && (
+              <Heading1 style={{ color: "#20D7FF", fontWeight: "800" }}>
+                뜨는청약.zip
+              </Heading1>
+            )) || <Heading1>뜨는청약.zip</Heading1>}
           </Atag>
           <Atag href="/#page4" style={{ margin: "0 auto 0 0" }}>
-            <Heading1>청약정보.zip</Heading1>
+            {(location.hash === "#page4" && (
+              <Heading1 style={{ color: "#20D7FF", fontWeight: "800" }}>
+                청약정보.zip
+              </Heading1>
+            )) || <Heading1>청약정보.zip</Heading1>}
           </Atag>
         </Grid>
         <Grid>
