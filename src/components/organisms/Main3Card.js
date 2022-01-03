@@ -5,7 +5,6 @@ import Label from "../molecules/Label";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 import defaultImage from "../../images/defaultImage.png";
-import Label from "../molecules/Label";
 
 const Main3Card = (props) => {
   const [save3, setSave3] = React.useState(false);
