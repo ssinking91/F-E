@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+import { Link } from "react-router-dom";
+
+import { Grid } from "../atoms/index";
 import { ReactComponent as Logo } from "../../images/logo.svg";
 import SocialLogin from "../organisms/Logins";
 import Image from "../atoms/Image";
@@ -7,25 +10,22 @@ import Image from "../atoms/Image";
 export default function LoginTemp() {
   return (
     <>
-      <Wrap>
+      <Grid is_flex>
         <LeftArea>
           <ContentsArea>
-            <Logo width="40px" />
+            <Link to="/">
+              <Logo width="40px" />
+            </Link>
             <SocialLogin />
           </ContentsArea>
         </LeftArea>
         <RightArea>
           <Image shape="rectangle" src="img/image.png" alt="images" />
         </RightArea>
-      </Wrap>
+      </Grid>
     </>
   );
 }
-
-const Wrap = styled.div`
-  display: flex;
-  width: 100%;
-`;
 
 const LeftArea = styled.div`
   width: 55%;
