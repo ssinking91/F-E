@@ -1,24 +1,22 @@
 import styled from "styled-components";
-import NavBar2 from "./NavBar2";
+import NavBar from "./NavBar";
 import Footer from "./Footer";
 import { ReactComponent as Top } from "../../images/top.svg";
 const Section04 = (props) => {
   return (
     <>
       <div className="section num4">
-        <NavBar2 />
+        <NavBar />
         <SectionWrap>
           <span
             style={{
               marginBottom: "18px",
               height: "43px",
               lineHeight: "43px",
-              fontSize: "36px"
+              fontSize: "36px",
             }}
           >
-            <span
-              style={{ fontWeight: "bold", color: "#333333" }}
-            >
+            <span style={{ fontWeight: "bold", color: "#333333" }}>
               영상으로 배우는 청약 노하우
             </span>
             <span>✨</span>
