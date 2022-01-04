@@ -25,7 +25,7 @@ export default function NavBar() {
   return (
     <>
       <HeaderWrap>
-        <Grid width="100%">
+        <Grid width="774px">
           <Atag href="/#page1" style={{ width: "40px" }}>
             <Logo width="40" color="black" />
           </Atag>
