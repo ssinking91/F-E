@@ -6,7 +6,7 @@ import defaultImage from "../../images/defaultImage.png";
 export default function DetailInfo() {
   return (
     <>
-      <Grid is_flex margin="80px auto">
+      <Grid is_flex width="1200px" margin="80px auto">
         <Image />
         <DetailText>
           <Grid margin="10px 0 0 0" is_flex>

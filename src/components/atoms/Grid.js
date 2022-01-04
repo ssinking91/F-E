@@ -19,7 +19,7 @@ const Grid = (props) => {
     text_align,
   } = props;
 
-  console.log(props);
+  // console.log(props);
 
   const styles = {
     is_flex: is_flex,
