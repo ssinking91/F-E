@@ -4,6 +4,7 @@ import GoogleLogin from "../utilities/GoogleLogin";
 import FacebookLogin from "../utilities/FacebookLogin";
 import NaverLogin from "../utilities/NaverLogin";
 import { RiKakaoTalkFill } from "react-icons/ri";
+import { Grid } from "../atoms/index";
 
 export default function Login() {
   const history = useHistory();
@@ -24,17 +25,24 @@ export default function Login() {
           <Kakao>
             <a
               href={KAKAO_AUTH_URL}
-              style={{ display: "flex", alignItems: "center" }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                textAlign: "center",
+                justifyContent: "center",
+              }}
             >
               <RiKakaoTalkFill
-                style={{ marginRight: "20px", fontSize: "30px" }}
+                style={{ marginRight: "5px", fontSize: "26px" }}
               />
-              카카오 아이디로 로그인
+              카카오 로그인
             </a>
           </Kakao>
-          <GoogleLogin />
-          <FacebookLogin />
-          <NaverLogin />
+          <Grid is_flex justify_content="space-between">
+            <GoogleLogin />
+            <FacebookLogin />
+            <NaverLogin />
+          </Grid>
         </Logins>
       </SocialWrap>
     </>
@@ -45,38 +53,19 @@ const SocialWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 150px 50px;
 `;
 
-const Logins = styled.div`
-  transition: 0.5s;
-  padding: 50px;
-
-  &:hover {
-    border: 1px solid #999;
-    border-radius: 10px;
-    transform: scale(1.1);
-  }
-`;
+const Logins = styled.div``;
 
 const Kakao = styled.div`
-  width: 185px;
-  height: 40px;
+  width: 360px;
+  height: 58px;
   background-color: yellow;
   display: flex;
-  /* align-items: center; */
-  border-radius: 4px;
-  margin: 20px 0;
+  justify-content: center;
+  border-radius: 5px;
+  margin: 43px 0 70px;
   padding-left: 6px;
-  outline: none;
-  -webkit-box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
-  box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
   cursor: pointer;
-  font-size: 12px;
-  font-weight: bold;
-  transition: 0.5s;
-
-  &:hover {
-    transform: scale(1.1);
-  }
+  font-size: 16px;
 `;

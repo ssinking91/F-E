@@ -2,7 +2,7 @@ import styled from "styled-components";
 import NavBarLink from "../organisms/NavBarLink";
 import Main2Card from "../organisms/Main2Card";
 import Footer from "../organisms/Footer";
-
+import { Text } from "../atoms/index";
 const MyPage = (props) => {
   return (
     <>
@@ -10,44 +10,16 @@ const MyPage = (props) => {
       <MyCard>
         <MyCardImage />
         <MyCardList>
-          <span
-            style={{
-              height: "43px",
-              fontWeight: "bold",
-              fontSize: "36px",
-              lineHeight: "43px",
-              color: "#333333",
-              marginBottom: "10px",
-            }}
-          >
+          <Text h2 margin="0 0 10px 0">
             스파르탄 님
-          </span>
-          <span
-            style={{
-              height: "25px",
-              fontWeight: "bold",
-              fontSize: "14px",
-              lineHeight: "25px",
-              color: "#333333",
-            }}
-          >
-            서울특별시
-          </span>
+          </Text>
+          <Text boldText>서울특별시</Text>
         </MyCardList>
       </MyCard>
       <MyPost>
-        <span
-          style={{
-            height: "25px",
-            fontWeight: "bold",
-            fontSize: "24px",
-            lineHeight: "25px",
-            color: "#333333",
-            marginBottom: "30px",
-          }}
-        >
+        <Text h3 margin="0 0 30px 0">
           저장한 청약 정보
-        </span>
+        </Text>
         <MyPostCardList>
           <Main2Card />
           <Main2Card />

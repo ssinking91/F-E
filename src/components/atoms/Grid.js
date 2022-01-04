@@ -14,7 +14,12 @@ const Grid = (props) => {
     _onClick,
     max_width,
     radius,
+    justify_content,
+    align_items,
+    text_align,
   } = props;
+
+  console.log(props);
 
   const styles = {
     is_flex: is_flex,
@@ -26,6 +31,9 @@ const Grid = (props) => {
     center: center,
     max_width: max_width,
     radius: radius,
+    justify_content,
+    align_items,
+    text_align,
   };
   return (
     <React.Fragment>
@@ -58,12 +66,16 @@ const GridBox = styled.div`
   box-sizing: border-box;
   ${(props) => (props.padding ? `padding: ${props.padding};` : "")}
   ${(props) => (props.margin ? `margin: ${props.margin};` : "")}
-    ${(props) =>
+  ${(props) =>
     props.background_color
       ? `background-color: ${props.background_color};`
       : ""}
-    ${(props) => (props.is_flex ? `display: flex;  ` : "")}
-        ${(props) => (props.center ? `text-align: center;` : "")}
+  ${(props) => (props.is_flex ? `display: flex;  ` : "")}
+  ${(props) => (props.center ? `text-align: center;` : "")}
+  ${(props) =>
+    props.justify_content && `justify-content : ${props.justify_content}`}
+  ${(props) => props.align_items && `align-items : ${props.align_items}`}
+  ${(props) => props.text_align && `text-align : ${props.text_align}`}
 `;
 
 export default Grid;

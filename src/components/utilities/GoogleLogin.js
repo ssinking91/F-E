@@ -58,8 +58,8 @@ export default function Google() {
           onClick={renderProps.onClick}
           disabled={renderProps.disabled}
         >
-          <FcGoogle size="30" style={{ marginRight: "20px" }} />
-          구글 아이디로 로그인
+          <FcGoogle size="30" />
+          {/* 구글 아이디로 로그인 */}
         </GoogleLoginBtn>
       )}
       buttonText="Sign In With Google"
@@ -72,21 +72,24 @@ export default function Google() {
 }
 
 const GoogleLoginBtn = styled.button`
-  width: 185px;
-  height: 40px;
-  font-size: 12px;
+  width: 100px;
+  height: 58px;
   display: flex;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #dadada;
   align-items: center;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  border: none;
+  text-align: center;
+  justify-content: center;
   cursor: pointer;
-  -webkit-box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
-  box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
-  transition: 0.5s;
-  font-weight: bold;
+  position: relative;
 
-  &:hover {
-    transform: scale(1.1);
+  &::before {
+    content: "";
+    position: absolute;
+    left: 5px;
+    width: 110px;
+    padding-top: 124px;
+    border-top: 1px solid #363940;
   }
 `;

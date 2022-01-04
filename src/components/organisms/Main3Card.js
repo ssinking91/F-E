@@ -1,127 +1,54 @@
 import React from "react";
 import styled from "styled-components";
 import Label from "../molecules/Label";
-// import { Grid } from "../atoms/index";
+import { Text } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
-import defaultImage from "../../images/defaultImage.png";
+import apt_tobe from "../../images/apt_tobe.svg";
 
 const Main3Card = (props) => {
   const [save3, setSave3] = React.useState(false);
 
   return (
     <Container>
-      <span
-        style={{
-          width: "57px",
-          height: "43px",
-          fontWeight: "bold",
-          fontSize: "36px",
-          lineHeight: "43px",
-          color: "#20D7FF",
-          marginBottom: "20px",
-        }}
-      >
+      <Text h4 color="#778899" margin="0 0 20px 0">
         01)
-      </span>
+      </Text>
       <Imageitem>
         <Image />
-        <div
-          style={{
-            position: "absolute",
-            width: "41px",
-            height: "59px",
-            right: "32px",
-            top: "32px",
-          }}
+        <ImageDiv
           onClick={() => {
             setSave3(!save3);
           }}
         >
           {save3 ? <BmarkFill /> : <BmarkNone />}
-        </div>
+        </ImageDiv>
       </Imageitem>
       <Item>
         <Info1>
           <Label registration></Label>
-          <span
-            style={{
-              width: "291px",
-              height: "25px",
-              fontWeight: "bold",
-              fontSize: "18px",
-              lineHeight: "25px",
-              color: "#333333",
-              margin: "0 0 0 15px",
-            }}
-          >
+          <Text h4 margin="0 0 0 15px">
             인천 강화 서희스타힐스 1단지
-          </span>
+          </Text>
         </Info1>
         <Info2>
           <Info2Item1>
-            <span
-              style={{
-                fontWeight: "bold",
-                fontSize: "14px",
-                lineHeight: "25px",
-                color: "#333333",
-              }}
-            >
-              접수 기간
-            </span>
-            <span
-              style={{
-                fontWeight: "bold",
-                fontSize: "14px",
-                lineHeight: "25px",
-                color: "#A5AAB6",
-              }}
-            >
+            <Text boldText>접수 기간</Text>
+            <Text regularText color="#A5AAB6">
               분양 면적
-            </span>
-            <span
-              style={{
-                fontWeight: "bold",
-                fontSize: "14px",
-                lineHeight: "25px",
-                color: "#A5AAB6",
-              }}
-            >
+            </Text>
+            <Text regularText color="#A5AAB6">
               분양 가격
-            </span>
+            </Text>
           </Info2Item1>
           <Info2Item2>
-            <span
-              style={{
-                fontWeight: "bold",
-                fontSize: "14px",
-                lineHeight: "25px",
-                color: "#333333",
-              }}
-            >
-              2021.12.21 ~ 2021.12.23
-            </span>
-            <span
-              style={{
-                fontWeight: "bold",
-                fontSize: "14px",
-                lineHeight: "25px",
-                color: "#A5AAB6",
-              }}
-            >
+            <Text boldText>2021.12.21 ~ 2021.12.23</Text>
+            <Text regularText color="#A5AAB6">
               84m² ~ 116m²/60m²~85m²
-            </span>
-            <span
-              style={{
-                fontWeight: "bold",
-                fontSize: "14px",
-                lineHeight: "25px",
-                color: "#A5AAB6",
-              }}
-            >
+            </Text>
+            <Text regularText color="#A5AAB6">
               54,470 ~ 72,670만원
-            </span>
+            </Text>
           </Info2Item2>
         </Info2>
       </Item>
@@ -148,10 +75,18 @@ const Image = styled.div`
   width: 370px;
   height: 370px;
   border-radius: 20px;
-  background-image: url("${defaultImage}");
+  background-image: url("${apt_tobe}");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+`;
+
+const ImageDiv = styled.div`
+  position: absolute;
+  width: 41px;
+  height: 59px;
+  right: 32px;
+  top: 32px;
 `;
 
 const Item = styled.div`
@@ -166,6 +101,7 @@ const Info1 = styled.div`
   width: 370px;
   height: 225px;
   display: flex;
+  align-items: center;
   margin-bottom: 15px;
 `;
 

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import NavBarAnchor from "./NavBarAnchor";
 import Footer from "./Footer";
+import { Text } from "../atoms/index";
 import { ReactComponent as Top } from "../../images/top.svg";
 const Section04 = (props) => {
   return (
@@ -8,29 +9,13 @@ const Section04 = (props) => {
       <div className="section num4">
         <NavBarAnchor />
         <SectionWrap>
-          <span
-            style={{
-              marginBottom: "18px",
-              height: "43px",
-              lineHeight: "43px",
-              fontSize: "36px",
-            }}
-          >
-            <span style={{ fontWeight: "bold", color: "#333333" }}>
-              영상으로 배우는 청약 노하우
-            </span>
+          <AllSpan>
+            <SpanBold>영상으로 배우는 청약 노하우</SpanBold>
             <span>✨</span>
-          </span>
-          <span
-            style={{
-              fontSize: "18px",
-              color: "#A5AAB6",
-              height: "25px",
-              lineHeight: "25px",
-            }}
-          >
+          </AllSpan>
+          <Text h4 color="#A5AAB6">
             청약 관련 정보를 담은 영상을 추천해드릴게요.
-          </span>
+          </Text>
         </SectionWrap>
         <CardWraps>
           <Card>
@@ -57,10 +42,7 @@ const Section04 = (props) => {
           </Card>
         </CardWraps>
 
-        <Atag
-          href="/#page1"
-          style={{ width: "36px", height: "31px", margin: "0px auto 50px" }}
-        >
+        <Atag href="/#page1">
           <Top />
         </Atag>
         <Footer />
@@ -70,10 +52,6 @@ const Section04 = (props) => {
 };
 
 export default Section04;
-const Atag = styled.a`
-  margin: auto;
-  display: block;
-`;
 
 const SectionWrap = styled.div`
   width: 100%;
@@ -82,7 +60,19 @@ const SectionWrap = styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
-  margin: 80px auto 80px;
+  margin: 50px auto;
+`;
+
+const AllSpan = styled.span`
+  margin: 0px auto 18px;
+  height: 43px;
+  line-height: 43px;
+  font-size: 36px;
+`;
+
+const SpanBold = styled.span`
+  font-weight: bold;
+  color: #333333; ;
 `;
 
 const CardWraps = styled.div`
@@ -90,10 +80,17 @@ const CardWraps = styled.div`
   height: 337px;
   display: flex;
   justify-content: space-between;
-  margin: 0px auto 171px;
+  margin: 0px auto;
 `;
 
 const Card = styled.div`
   width: 595px;
   height: 337px;
+`;
+
+const Atag = styled.a`
+  width: 36px;
+  height: 31px;
+  margin: 105px auto 105px;
+  display: block;
 `;

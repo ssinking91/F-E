@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Main2Card from "./Main2Card";
+
 import NavBarAnchor from "./NavBarAnchor";
+import { Text } from "../atoms/index";
 
 const Section02 = (props) => {
   return (
@@ -9,75 +11,31 @@ const Section02 = (props) => {
         <NavBarAnchor />
         <SectionWrap>
           <SectionItem>
-            <span
-              style={{
-                height: "43px",
-                lineHeight: "43px",
-                fontSize: "36px",
-                marginBottom: "18px",
-              }}
-            >
-              <span
-                style={{
-                  fontWeight: "bold",
-                  color: "#20D7FF",
-                }}
-              >
-                인천광역시 강화군
-              </span>
-              <span
-                style={{
-                  fontWeight: "bold",
-                  color: "#333333",
-                }}
-              >
-                의 청약은?
-              </span>
+            <AllSpan>
+              <Span1 className="a">인천광역시</Span1>
+              <Span1 className="b">강화군</Span1>
+              <Span2>의 청약은?</Span2>
               <span>📌</span>
-            </span>
-            <span
-              style={{
-                fontSize: "16px",
-                color: "#778899",
-                height: "22px",
-                lineHeight: "22px",
-              }}
-            >
+            </AllSpan>
+            <Text h4 color="#A5AAB6">
               000님이 선택한 관심 지역의 실시간 청약 정보를 알 수 있어요
-            </span>
+            </Text>
           </SectionItem>
 
           <CardWrap>
             <PublicCards>
-              <span
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "12px",
-                  width: "167px",
-                  height: "24px",
-                  lineHeight: "25px",
-                  color: "#778899",
-                }}
-              >
+              <Text h4 color="#778899">
                 공공 분양
-              </span>
+              </Text>
               <Main2Card />
               <Main2Card />
               <Main2Card />
             </PublicCards>
+
             <PrivateCards>
-              <span
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "12px",
-                  width: "167px",
-                  height: "24px",
-                  lineHeight: "25px",
-                  color: "#778899",
-                }}
-              >
+              <Text h4 color="#778899">
                 민간분양
-              </span>
+              </Text>
               <Main2Card />
               <Main2Card />
               <Main2Card />
@@ -102,7 +60,33 @@ const SectionItem = styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
-  margin: 80px auto;
+  margin: 46.5px auto;
+`;
+
+const AllSpan = styled.span`
+  height: 43px;
+  line-height: 43px;
+  font-size: 36px;
+  margin-bottom: 18px;
+  & > .a {
+    border-bottom: 2px solid #20d7ff;
+    padding-bottom: 5px;
+    margin-right: 12px;
+  }
+  & > .b {
+    border-bottom: 2px solid #20d7ff;
+    padding-bottom: 5px;
+  }
+`;
+
+const Span1 = styled.span`
+  font-weight: bold;
+  color: #20d7ff; ;
+`;
+
+const Span2 = styled.span`
+  font-weight: bold;
+  color: #333333;
 `;
 
 const CardWrap = styled.div`

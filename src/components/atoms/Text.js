@@ -95,7 +95,7 @@ const H3 = styled.p`
   padding: ${(props) => props.padding};
   color: ${(props) => props.color};
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 25px;
 `;
 const H4 = styled.p`
@@ -103,7 +103,7 @@ const H4 = styled.p`
   padding: ${(props) => props.padding};
   color: ${(props) => props.color};
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 25px;
 `;
 const Menu = styled.p`
@@ -119,7 +119,7 @@ const BoldText = styled.p`
   padding: ${(props) => props.padding};
   color: ${(props) => props.color};
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 25px;
 `;
 const RegularText = styled.p`
