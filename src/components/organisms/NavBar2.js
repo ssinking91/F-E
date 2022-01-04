@@ -82,6 +82,7 @@ const Heading1 = styled.h1`
   width: 70px;
   height: 38px;
   font-size: 12px;
+  cursor: pointer;
 `;
 
 const HeaderWrap = styled.div`

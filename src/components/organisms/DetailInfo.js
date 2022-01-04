@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Grid, Button, Text, Div } from "../atoms/index";
+import { Grid, Button, Text } from "../atoms/index";
 import BundleText from "../molecules/BundleText";
 import defaultImage from "../../images/defaultImage.png";
 
@@ -9,7 +9,7 @@ export default function DetailInfo() {
       <Grid is_flex margin="80px auto">
         <Image />
         <DetailText>
-          <Div margin="10px 0 0 0">
+          <Grid margin="10px 0 0 0" is_flex>
             <Text boldText color="#20D7FF">
               공고중
             </Text>
@@ -17,7 +17,7 @@ export default function DetailInfo() {
               |
             </Text>
             <Text boldText>공공분양</Text>
-          </Div>
+          </Grid>
           <Text h2>신림 파라곤 더밀리안</Text>
           <BundleText
             title={"주소"}
@@ -42,7 +42,7 @@ export default function DetailInfo() {
           <BundleText title={"당첨자 발표일"} content={"2022.01.21"} />
           <BundleText title={"당첨자 계약일"} content={"2022.02.12"} />
           <BundleText title={"분양 문의"} content={"02) 000 - 0000"} />
-          <Div margin="40px 0 0 0">
+          <Grid margin="40px 0 0 0">
             <Button
               width="240px"
               height="55px"
@@ -66,7 +66,7 @@ export default function DetailInfo() {
                 홈페이지로 이동하기
               </Text>
             </Button>
-          </Div>
+          </Grid>
         </DetailText>
       </Grid>
       <Line />

@@ -5,6 +5,7 @@ const Grid = (props) => {
   const {
     is_flex,
     width,
+    height,
     margin,
     padding,
     background_color,
@@ -12,16 +13,19 @@ const Grid = (props) => {
     center,
     _onClick,
     max_width,
+    radius,
   } = props;
 
   const styles = {
     is_flex: is_flex,
     width: width,
+    height: height,
     margin: margin,
     padding: padding,
     background_color: background_color,
     center: center,
     max_width: max_width,
+    radius: radius,
   };
   return (
     <React.Fragment>
@@ -35,19 +39,22 @@ const Grid = (props) => {
 Grid.defaultProps = {
   children: null,
   is_flex: false,
-  width: "100%",
+  width: false,
+  height: false,
   padding: false,
   margin: false,
   background_color: false,
   center: false,
   _onClick: () => {},
-  max_width: "100%",
+  max_width: false,
+  radius: false,
 };
 
 const GridBox = styled.div`
   width: ${(props) => props.width};
   max-width: ${(props) => props.max_width};
-  height: 100%;
+  height: ${(props) => props.height};
+  border-radius: ${(props) => props.radius};
   box-sizing: border-box;
   ${(props) => (props.padding ? `padding: ${props.padding};` : "")}
   ${(props) => (props.margin ? `margin: ${props.margin};` : "")}
