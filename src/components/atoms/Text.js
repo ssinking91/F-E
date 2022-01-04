@@ -119,7 +119,7 @@ const BoldText = styled.p`
   padding: ${(props) => props.padding};
   color: ${(props) => props.color};
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 25px;
 `;
 const RegularText = styled.p`

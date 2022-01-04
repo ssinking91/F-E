@@ -1,6 +1,5 @@
 import { useHistory } from "react-router-dom";
-import NavBar from "../organisms/NavBar";
-import SocialLogin from "../organisms/Logins";
+import LoginTemp from "../templates/LoginTemp";
 
 export default function Login() {
   const history = useHistory();
@@ -11,8 +10,7 @@ export default function Login() {
 
   return (
     <>
-      <NavBar />
-      <SocialLogin />
+      <LoginTemp />
     </>
   );
 }
