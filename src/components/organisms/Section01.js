@@ -2,28 +2,32 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Grid, Text, Button } from "../atoms/index";
 import { ReactComponent as Scroll } from "../../images/scroll.svg";
-// import mainBackgroundImage from "../../images/mainBackgroundImage.jpg";
+import mainBackgroundImage from "../../images/mainBackgroundImage.jpg";
 import NavBarAnchor from "./NavBarAnchor";
 const Section01 = (props) => {
   return (
     <>
-      <div className="section num1" style={{ position: "relative" }}>
+      <div
+        className="section num1"
+        style={{
+          backgroundImage: `url(${mainBackgroundImage})`,
+          backgroundSize: "cover",
+        }}
+      >
         <NavBarAnchor />
         <Hr />
 
-        <Background
-          style={{
-            // backgroundImage: `url(${mainBackgroundImage})`,
-            backgroundSize: "cover",
-            width: "100%",
-            height: "100%",
-          }}
-        >
+        <Background>
           <TitleSectionWrap>
-            <Text h1>집을 모아놓다.zip</Text>
-            <Text h2 color="#a5aab6" margin="15px 0 60px 0">
+            <Text h1 color="#fff">
+              집을 모아놓다.zip
+            </Text>
+            <Text h2 color="#fff" margin="15px 0 60px 0">
               당신을 위한 청약 정보가{" "}
-              <span style={{ color: "#20d7ff" }}>{props.total}</span> 모여있어요
+              <span style={{ color: "#fff", borderBottom: "3px solid #fff" }}>
+                {props.total} 21개
+              </span>{" "}
+              모여있어요
             </Text>
             <Button background_color="#20d7ff" padding="13px 21px">
               <Text h3 color="#fff">
