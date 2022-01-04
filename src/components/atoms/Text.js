@@ -19,6 +19,7 @@ export default function Text(props) {
     color,
     size,
     weight,
+    width
   } = props;
 
   const styles = {
@@ -27,6 +28,7 @@ export default function Text(props) {
     color: color,
     size: size,
     weight: weight,
+    width: width,
   };
 
   // text type
@@ -64,6 +66,7 @@ Text.defaultProps = {
   color: "#333333",
   size: "14px",
   weight: false,
+  width: false,
 };
 
 // text style
@@ -102,6 +105,7 @@ const H4 = styled.p`
   margin: ${(props) => props.margin};
   padding: ${(props) => props.padding};
   color: ${(props) => props.color};
+  width: ${(props) => props.width};
   font-size: 18px;
   font-weight: 700;
   line-height: 25px;
@@ -118,6 +122,7 @@ const BoldText = styled.p`
   margin: ${(props) => props.margin};
   padding: ${(props) => props.padding};
   color: ${(props) => props.color};
+  width: ${(props) => props.width};
   font-size: 14px;
   font-weight: 700;
   line-height: 25px;
@@ -126,6 +131,7 @@ const RegularText = styled.p`
   margin: ${(props) => props.margin};
   padding: ${(props) => props.padding};
   color: ${(props) => props.color};
+  width: ${(props) => props.width};
   font-size: 14px;
   font-weight: 400;
   line-height: 25px;

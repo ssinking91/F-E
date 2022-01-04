@@ -1,71 +1,26 @@
 import React from "react";
 import styled from "styled-components";
+import { Text } from "../atoms/index";
 
 const Comment = (props) => {
   return (
     <Container>
       <Item>
         <CommentWrite>
-          <span
-            style={{
-              width: "97px",
-              height: "24px",
-              margin: "0px 0px 19px 24px",
-            }}
-          >
-            <span
-              style={{
-                width: "36px",
-                height: "24px",
-                fontWeight: "bold",
-                fontSize: "18px",
-                lineHeight: "25px",
-                color: "#333333",
-              }}
-            >
+          <CommentWriteP>
+            <Text h4>
               댓글
-            </span>
-            <span
-              style={{
-                width: "36px",
-                height: "24px",
-                fontWeight: "bold",
-                fontSize: "18px",
-                lineHeight: "25px",
-                color: "#20D7FF",
-              }}
-            >
+            </Text>
+            <Text h4 color="#20D7FF">
               (3)
-            </span>
-          </span>
+            </Text>
+          </CommentWriteP>
           <CommentInput>
-            <input
-              type="text"
-              placeholder="댓글을 남겨주세요"
-              style={{
-                width: "1088px",
-                marginLeft: "24px",
-                minHeight: "24px",
-                border: "none",
-              }}
-            />
-            <CommentButton
-              style={{
-                cursor:"pointer",
-              }}
-            >
-              <span
-                style={{
-                  width: "27px",
-                  height: "24px",
-                  color: "#FFFFFF",
-                  fontSize : "14px",
-                  fontWeight: "bold",
-                  lineHeight: "25px",      
-                }}
-              >
+            <input type="text" placeholder="댓글을 남겨주세요" />
+            <CommentButton>
+              <Text boldText color="#FFFFFF">
                 등록
-              </span>
+              </Text>
             </CommentButton>
           </CommentInput>
         </CommentWrite>
@@ -73,107 +28,34 @@ const Comment = (props) => {
           <CommentOne>
             <CommentOneInfo>
               <Image />
-              <div
-                style={{
-                  width: "100px",
-                  minHeight: "24px",
-                  display: "flex",
-                  flexWrap: "wrap",
-                  alignItems: "flex-start",
-                }}
+              <Text boldText padding="3px 0 0 0" width="100px">
+                내댓글
+              </Text>
+              <CommentOneInfoP>
+                당첨이다~!!!!!ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+              </CommentOneInfoP>
+              <Text
+                regularText
+                width="56px"
+                margin="0 12px 0 0"
+                color="#A5AAB6"
               >
-                <span
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: "14px",
-                    lineHeight: "25px",
-                    width: "100px",
-                    height: "24px",
-                    display: "flex",
-                    flexWrap: "wrap",
-                  }}
-                >
-                  내댓글
-                </span>
-              </div>
-
-              <span
-                style={{
-                  fontSize: "14px",
-                  lineHeight: "25px",
-                  width: "850px",
-                  minHeight: "25px",
-                  display: "flex",
-                  flexWrap: "wrap",
-                  marginRight: "51px",
-                }}
-              >
-                진짜 이제는 당첨됐으면 ㅠㅠㅠ~~!
-              </span>
-              <span>
-                <span
-                  style={{
-                    fontSize: "14px",
-                    lineHeight: "25px",
-                    width: "60px",
-                    height: "25px",
-                    color: "#A5AAB6",
-                    marginRight: "12px",
-                  }}
-                >
-                  21.12.31
-                </span>
-                <span
-                  style={{
-                    fontSize: "14px",
-                    lineHeight: "25px",
-                    width: "60px",
-                    height: "25px",
-                    color: "#20D7FF",
-                  }}
-                >
-                  삭제
-                </span>
-              </span>
+                21.12.31
+              </Text>
+              <Text regularText width="27px" color="#20D7FF">
+                삭제
+              </Text>
             </CommentOneInfo>
           </CommentOne>
+          
           <CommentOne>
             <CommentOneInfo>
               <Image />
-              <div
-                style={{
-                  width: "100px",
-                  minHeight: "24px",
-                  display: "flex",
-                  flexWrap: "wrap",
-                }}
-              >
-                <span
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: "14px",
-                    lineHeight: "25px",
-                    width: "100px",
-                    height: "24px",
-                    display: "flex",
-                    flexWrap: "wrap",
-                  }}
-                >
-                  닉네임 001
-                </span>
-              </div>
+              <Text boldText padding="3px 0 0 0" width="100px">
+                닉네임 001
+              </Text>
 
-              <span
-                style={{
-                  fontSize: "14px",
-                  lineHeight: "25px",
-                  width: "850px",
-                  minHeight: "25px",
-                  display: "flex",
-                  flexWrap: "wrap",
-                  marginRight: "51px",
-                }}
-              >
+              <CommentOneInfoP>
                 중소기업 근로자인데 파견직이라 강남구로 출근했다가 종로구로
                 출근했다가 프로젝트마다 바뀌는데 1순위로 신청하면 안되겠죠?
                 아시는 분 없나요?? 쨋든 공고 되게 좋아보이네요 일단
@@ -183,37 +65,20 @@ const Comment = (props) => {
                 좋아보이네요 일단 신청해야겠어요~~~ 중소기업 근로자인데
                 파견직이라 강남구로 출근했다가 종로구로 출근했다가 프로젝트마다
                 바뀌는데 1순위로 신청하면 안되겠죠? 아시는 분 없나요?? 쨋든 공고
-                되게 좋아보이네요 일단 신청해야겠어요~~~ 중소기업 근로자인데
-                파견직이라 강남구로 출근했다가 종로구로 출근했다가 프로젝트마다
-                바뀌는데 1순위로 신청하면 안되겠죠? 아시는 분 없나요?? 쨋든 공고
                 되게 좋아보이네요 일단 신청해야겠어요~~~
-              </span>
+              </CommentOneInfoP>
 
-              <span>
-                <span
-                  style={{
-                    fontSize: "14px",
-                    lineHeight: "25px",
-                    width: "60px",
-                    height: "25px",
-                    color: "#A5AAB6",
-                    marginRight: "12px",
-                  }}
-                >
-                  21.12.31
-                </span>
-                <span
-                  style={{
-                    fontSize: "14px",
-                    lineHeight: "25px",
-                    width: "60px",
-                    height: "25px",
-                    color: "#A5AAB6",
-                  }}
-                >
-                  신고
-                </span>
-              </span>
+              <Text
+                regularText
+                width="56px"
+                margin="0 12px 0 0"
+                color="#A5AAB6"
+              >
+                21.12.31
+              </Text>
+              <Text regularText width="27px" color="#A5AAB6">
+                신고
+              </Text>
             </CommentOneInfo>
           </CommentOne>
         </CommentList>
@@ -241,6 +106,12 @@ const CommentWrite = styled.div`
   display: flex;
   flex-direction: column;
 `;
+const CommentWriteP = styled.p`
+  width: 100%;
+  height: 24px;
+  margin: 0px 0px 19px 24px;
+  display: flex;
+`;
 
 const CommentInput = styled.div`
   width: 100%;
@@ -252,8 +123,14 @@ const CommentInput = styled.div`
   & > ::placeholder {
     color: #778899;
   }
-  & > input:focus{
+  & > input:focus {
     outline: none;
+  }
+  & > input {
+    width: 1088px;
+    margin-left: 24px;
+    min-height: 24px;
+    border: none;
   }
 `;
 
@@ -265,6 +142,7 @@ const CommentButton = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #20d7ff;
+  cursor: pointer;
 `;
 
 const CommentList = styled.div`
@@ -293,6 +171,16 @@ const CommentOneInfo = styled.div`
   width: 1138px;
   min-height: 30px;
   display: flex;
+`;
+
+const CommentOneInfoP = styled.span`
+  font-size: 14px;
+  line-height: 25px;
+  width: 850px;
+  min-height: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 51px;
 `;
 
 const Image = styled.div`
