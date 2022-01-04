@@ -2,11 +2,15 @@ import styled from "styled-components";
 import { NavLink, Link, useHistory } from "react-router-dom";
 import { ReactComponent as Logo } from "../../images/logo.svg";
 import Logins from "./Logins";
-
 import { Grid } from "../atoms/index";
 
 export default function NavBar() {
   const history = useHistory();
+
+  // function logIn() {
+  //   console.log(11);
+  //   history.push("/login");
+  // }
 
   function logOut() {
     console.log("logOut");
@@ -23,7 +27,7 @@ export default function NavBar() {
       <HeaderWrap>
         <Grid width="100%">
           <Atag href="/#page1" style={{ width: "40px" }}>
-            <Logo width="40" />
+            <Logo width="40" color="black" />
           </Atag>
         </Grid>
         <Grid is_flex>
@@ -70,9 +74,13 @@ export default function NavBar() {
           )}
         </Grid>
       </HeaderWrap>
+      <Hr />
     </>
   );
 }
+const Hr = styled.div`
+  border-top: 1px solid #e3e5eb;
+`;
 
 const Atag = styled.a`
   margin: auto;
@@ -81,7 +89,7 @@ const Atag = styled.a`
 
 const Heading1 = styled.h1`
   color: black;
-  margin: 0 15px;
+  margin: 0 20px;
   padding: 13px 0;
   width: 70px;
   height: 38px;
@@ -90,10 +98,12 @@ const Heading1 = styled.h1`
 
 const HeaderWrap = styled.div`
   width: 100%;
-  z-index: 1;
-  position: absolute;
-  margin: 30px auto;
+  height: 97px;
+  margin: 0px auto;
   display: flex;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: white;
 `;
 
 // const HandleOn = styled.div`
@@ -111,7 +121,6 @@ const HandleOff = styled.div`
   transition: 0.5s;
   opacity: 0;
   pointer-events: none;
-
   position: absolute;
   top: -20px;
   left: -128px;

@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import Main3Card from "./Main3Card";
-import NavBar2 from "./NavBar2";
+import NavBar from "./NavBar";
 const Section03 = (props) => {
   return (
     <>
       <div className="section num3" style={{ width: "100%", height: "900px" }}>
-        <NavBar2 />
+        <NavBar />
         <SectionWrap>
           <SectionItem>
             <span
@@ -17,7 +17,7 @@ const Section03 = (props) => {
               }}
             >
               <span
-                style={{            
+                style={{
                   fontWeight: "bold",
                   color: "#333333",
                 }}
@@ -60,7 +60,7 @@ const SectionWrap = styled.div`
 `;
 
 const SectionItem = styled.div`
-  width: 800PX;
+  width: 800px;
   height: 86px;
   text-align: center;
   display: flex;
