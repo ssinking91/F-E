@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Label from "../molecules/Label";
+import { Text } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 import apt_tobe from "../../images/apt_tobe.svg";
@@ -12,102 +13,39 @@ const Main2Card = (props) => {
     <Container>
       <Imageitem>
         <Image />
-        <div
-          style={{
-            position: "absolute",
-            width: "27.27px",
-            height: "38.29px",
-            left: "111.36px",
-            bottom: "123.35px",
-          }}
+        <ImageDiv
           onClick={() => {
             setSave2(!save2);
           }}
         >
           {save2 ? <BmarkFill /> : <BmarkNone />}
-        </div>
+        </ImageDiv>
       </Imageitem>
       <Item>
         <Info1>
           <Label registration></Label>
-          <span
-            style={{
-              width: "316px",
-              height: "25px",
-              fontWeight: "bold",
-              fontSize: "18px",
-              lineHeight: "25px",
-              color: "#333333",
-              margin: "0 0 0 15px",
-            }}
-          >
+          <Text h4 margin="0 0 0 15px">
             인천 강화 서희스타힐스 1단지
-          </span>
+          </Text>
         </Info1>
         <Info2>
           <Info2Item1>
-            <span
-              style={{
-                fontWeight: "bold",
-                fontSize: "14px",
-                lineHeight: "25px",
-                color: "#333333",
-              }}
-            >
-              접수 기간
-            </span>
-            <span
-              style={{
-                fontWeight: "bold",
-                fontSize: "14px",
-                lineHeight: "25px",
-                color: "#A5AAB6",
-              }}
-            >
+            <Text boldText>접수 기간</Text>
+            <Text regularText color="#A5AAB6">
               분양 면적
-            </span>
-            <span
-              style={{
-                fontWeight: "bold",
-                fontSize: "14px",
-                lineHeight: "25px",
-                color: "#A5AAB6",
-              }}
-            >
+            </Text>
+            <Text regularText color="#A5AAB6">
               분양 가격
-            </span>
+            </Text>
           </Info2Item1>
           <Info2Item2>
-            <span
-              style={{
-                fontWeight: "bold",
-                fontSize: "14px",
-                lineHeight: "25px",
-                color: "#333333",
-              }}
-            >
-              2021.12.21 ~ 2021.12.23
-            </span>
-            <span
-              style={{
-                fontWeight: "bold",
-                fontSize: "14px",
-                lineHeight: "25px",
-                color: "#A5AAB6",
-              }}
-            >
+            <Text boldText>2021.12.21 ~ 2021.12.23</Text>
+            <Text regularText color="#A5AAB6">
               84m² ~ 116m²/60m²~85m²
-            </span>
-            <span
-              style={{
-                fontWeight: "bold",
-                fontSize: "14px",
-                lineHeight: "25px",
-                color: "#A5AAB6",
-              }}
-            >
+            </Text>
+            <Text regularText color="#A5AAB6">
               54,470 ~ 72,670만원
-            </span>
+            </Text>
           </Info2Item2>
         </Info2>
       </Item>
@@ -139,6 +77,15 @@ const Image = styled.div`
   background-repeat: no-repeat;
   background-position: center;
 `;
+
+const ImageDiv = styled.div`
+  position: absolute;
+  width: 27.27px;
+  height: 38.29px;
+  left: 111.36px;
+  bottom: 123.35px;
+`;
+
 const Item = styled.div`
   width: 395px;
   height: 120px;

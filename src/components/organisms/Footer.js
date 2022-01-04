@@ -1,24 +1,15 @@
 // import styled from "styled-components";
+import { Text, Grid } from "../atoms/index";
 
 const Footer = (props) => {
   return (
     <>
-      <div className="Footer" >
+      <Grid>
         <hr />
-        <span
-          style={{
-            width: "500",
-            height: "12px",
-            marginTop: "8px",
-            marginLeft: "360px",
-            lineHeight: "68px",
-            fontSize: "12px",
-            color: "#95A1BB",
-          }}
-        >
+        <Text footer color="#95A1BB" margin="8px 0 0 360px">
           ⓒ.ZIP.All rights reserved.
-        </span>
-      </div>
+        </Text>
+      </Grid>
     </>
   );
 };
