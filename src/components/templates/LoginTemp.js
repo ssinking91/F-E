@@ -10,15 +10,27 @@ export default function LoginTemp() {
       <Grid is_flex>
         <LeftArea>
           <ContentsArea>
-            <Contents>
-              <Link to="/">
-                <Logo width="40px" />
-              </Link>
-              <Text h1 style={{ fontSize: "43px" }}>
-                로그인
-              </Text>
-              <SocialLogin />
-            </Contents>
+            <Grid
+              is_flex
+              justify_content="center"
+              align_items="center"
+              margin="200px 0"
+            >
+              <Contents>
+                <Link to="/">
+                  <Logo width="40px" />
+                </Link>
+                <Text p size="36px" color="#363940" margin="30px 0">
+                  로그인
+                </Text>
+                <Text p size="16px" color="#95A1BB">
+                  반가워요:) 오늘 하루도 소중한 날 되시길 바랄게요
+                  <br />
+                  입장을 위한 로그인 부탁 드릴게요
+                </Text>
+                <SocialLogin />
+              </Contents>
+            </Grid>
           </ContentsArea>
         </LeftArea>
         <RightArea>
@@ -39,11 +51,10 @@ const ContentsArea = styled.div`
 `;
 
 const Contents = styled.div`
+  width: 360px;
   height: 420px;
-  background-color: #999;
 `;
 
 const RightArea = styled.div`
   width: 50%;
-
 `;

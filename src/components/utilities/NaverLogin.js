@@ -60,8 +60,8 @@ export default function Naver() {
           disabled={renderProps.disabled}
           isPopup="false"
         >
-          <SiNaver size="30" style={{ color: "white", marginRight: "20px" }} />
-          네이버 아이디로 로그인
+          <SiNaver size="30" />
+          {/* 네이버 아이디로 로그인 */}
         </NaverLoginBtn>
       )}
       buttonText="Sign In With Naver"
@@ -74,23 +74,25 @@ export default function Naver() {
 }
 
 const NaverLoginBtn = styled.button`
-  width: 185px;
-  height: 40px;
-  font-size: 12px;
+  width: 100px;
+  height: 58px;
   display: flex;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #dadada;
   align-items: center;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  border: none;
+  text-align: center;
+  justify-content: center;
   cursor: pointer;
-  -webkit-box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
-  box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
-  transition: 0.5s;
-  font-weight: bold;
-  background-color: green;
-  color: #fff;
+  color: green;
+  position: relative;
 
-  &:hover {
-    transform: scale(1.1);
+  &::before {
+    content: "";
+    position: absolute;
+    right: 5px;
+    width: 110px;
+    padding-top: 124px;
+    border-top: 1px solid #363940;
   }
 `;

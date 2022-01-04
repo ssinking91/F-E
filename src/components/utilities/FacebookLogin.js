@@ -58,14 +58,8 @@ const FaceBookLogin = () => {
       render={(renderProps) => (
         <FaceBookLoginButton>
           <ButtonInnerDiv onClick={renderProps.onClick}>
-            <BsFacebook
-              style={{
-                marginRight: "10px",
-                color: "white",
-              }}
-              size="30"
-            />
-            <ButtoninnerText>페이스북 아이디로 로그인</ButtoninnerText>
+            <BsFacebook size="30" />
+            {/* <ButtoninnerText>페이스북 아이디로 로그인</ButtoninnerText> */}
           </ButtonInnerDiv>
         </FaceBookLoginButton>
       )}
@@ -74,20 +68,24 @@ const FaceBookLogin = () => {
 };
 
 const FaceBookLoginButton = styled.button`
-  width: 185px;
+  width: 100px;
+  height: 58px;
   display: flex;
-  background-color: cornflowerblue;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #dadada;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
   cursor: pointer;
-  border: none;
-  border-radius: 4px;
-  outline: none;
-  -webkit-box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
-  box-shadow: 2px 5px 19px 1px rgba(0, 0, 0, 0.55);
-  transition: 0.5s;
-  margin-bottom: 20px;
+  color: #376aed;
 
-  &:hover {
-    transform: scale(1.1);
+  &::before {
+    content: "다른 방법 로그인";
+    position: absolute;
+    padding-bottom: 124px;
+    color: #363940;
+    font-size: 16px;
   }
 `;
 
@@ -97,10 +95,10 @@ const ButtonInnerDiv = styled.div`
   height: 35px;
 `;
 
-const ButtoninnerText = styled.h3`
-  color: #fff;
-  font-size: 12px;
-  font-weight: bold;
-`;
+// const ButtoninnerText = styled.h3`
+//   color: #fff;
+//   font-size: 12px;
+//   font-weight: bold;
+// `;
 
 export default FaceBookLogin;
