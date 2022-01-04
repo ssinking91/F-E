@@ -25,15 +25,15 @@ const Fullpage = () => (
     verticalCentered={false}
     sectionsColor={["#fff", "#fff", "#fff", "#F9F9F9"]}
     onLeave={(origin, destination, direction) => {
-      console.log("onLeave event", { origin, destination, direction });
+      // console.log("onLeave event", { origin, destination, direction });
     }}
     render={({ state, fullpageApi }) => {
-      console.log("render prop change", state, fullpageApi); // eslint-disable-line no-console
+      // console.log("render prop change", state, fullpageApi); // eslint-disable-line no-console
 
       return (
         <>
           <div>
-            <Section01 />
+            <Section01 total={"{total}"} />
             <Section02 />
             <Section03 />
             <Section04 />

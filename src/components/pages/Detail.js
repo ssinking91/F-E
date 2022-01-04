@@ -9,7 +9,7 @@ import { Grid } from "../atoms/index";
 export default function Detail() {
   return (
     <>
-      <Grid width="1200px" margin="auto">
+      <Grid margin="auto">
         <NavBarLink />
         <DetailInfo />
         <DetailType />

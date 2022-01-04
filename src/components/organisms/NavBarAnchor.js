@@ -7,7 +7,7 @@ import { Grid, Text } from "../atoms/index";
 export default function NavBarAnchor() {
   const history = useHistory();
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
 
   // function logIn() {
   //   console.log(11);
@@ -15,7 +15,7 @@ export default function NavBarAnchor() {
   // }
 
   function logOut() {
-    console.log("logOut");
+    // console.log("logOut");
     localStorage.removeItem("refreshToken");
     localStorage.removeItem("userKey");
     localStorage.removeItem("userName");

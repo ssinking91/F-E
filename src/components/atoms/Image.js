@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React from "react";
-import defaultImage from "../../images/defaultImage.png";
+// import defaultImage from "../../images/defaultImage.png";
+import apt_tobe from "../../images/apt_tobe.svg";
 
 const Image = (props) => {
   const { shape, src, size, width, height, margin, padding, color } = props;
@@ -15,6 +16,9 @@ const Image = (props) => {
     color: color,
   };
 
+  if (shape === "card") {
+    return <CardImage {...styles}></CardImage>;
+  }
   if (shape === "default") {
     return <DefaultImage {...styles}></DefaultImage>;
   }
@@ -42,14 +46,25 @@ const Image = (props) => {
 
 Image.defaultProps = {
   shape: "circle",
-  src: `${defaultImage}`,
-  size: 36,
+  src: `${apt_tobe}`,
+  size: false,
   width: false,
   height: false,
   margin: false,
   padding: false,
   color: false,
 };
+
+const CardImage = styled.div`
+  width: 160px;
+  height: 160px;
+  margin-top: 4px;
+  border-radius: 20px;
+  background-image: url("${(props) => props.src}");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
 
 const DefaultImage = styled.div`
   width: ${(props) => props.width};

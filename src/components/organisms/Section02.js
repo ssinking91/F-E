@@ -1,10 +1,19 @@
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { actionCreators as mainAction } from "../redux/modules/main";
 import Main2Card from "./Main2Card";
-
 import NavBarAnchor from "./NavBarAnchor";
 import { Text } from "../atoms/index";
 
 const Section02 = (props) => {
+  const dispatch = useDispatch();
+
+  const private_list = useSelector((state) => state.main.list);
+
+  useEffect(() => {
+    dispatch(mainAction.getInfoDB());
+  }, []);
   return (
     <>
       <div className="section num2" style={{ width: "100%", height: "100" }}>
@@ -27,18 +36,44 @@ const Section02 = (props) => {
               <Text h4 color="#778899">
                 공공 분양
               </Text>
-              <Main2Card />
-              <Main2Card />
+              <Main2Card
+                name={"{houseName}"}
+                startDate={"2021.12.21"}
+                endDate={"2021.12.23"}
+                size={"84m² ~ 116m²/60m²~85m²"}
+                price={"54,470 ~ 72,670만원"}
+              />
+              <Main2Card
+                name={"인천 강화 서희스타힐스 1단지"}
+                startDate={"2021.12.21"}
+                endDate={"2021.12.23"}
+                size={"84m² ~ 116m²/60m²~85m²"}
+                price={"54,470 ~ 72,670만원"}
+              />
               <Main2Card />
             </PublicCards>
 
             <PrivateCards>
               <Text h4 color="#778899">
-                민간분양
+                민간 분양
               </Text>
-              <Main2Card />
-              <Main2Card />
-              <Main2Card />
+              {private_list.map((item, index) => {
+                const houseName = item.houseName;
+                const receptStartDate = item.receptStartDate;
+                const receptEndDate = item.receptEndDate;
+                const imgUrl = item.ImgUrl;
+                return (
+                  <Main2Card
+                    key={index}
+                    image={imgUrl}
+                    name={houseName}
+                    startDate={receptStartDate}
+                    endDate={receptEndDate}
+                    size={"84m² ~ 116m²/60m²~85m²"}
+                    price={"54,470 ~ 72,670만원"}
+                  />
+                );
+              })}
             </PrivateCards>
           </CardWrap>
         </SectionWrap>
