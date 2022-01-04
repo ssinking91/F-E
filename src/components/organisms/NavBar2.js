@@ -4,7 +4,7 @@ import { ReactComponent as Logo } from "../../images/logo.svg";
 
 import { Grid } from "../atoms/index";
 
-export default function NavBar() {
+export default function NavBar2() {
   const history = useHistory();
   const location = useLocation();
   console.log(location);
