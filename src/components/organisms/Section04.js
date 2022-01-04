@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import NavBar from "./NavBar2";
+import NavBarAnchor from "./NavBarAnchor";
 import Footer from "./Footer";
 import { Text } from "../atoms/index";
 import { ReactComponent as Top } from "../../images/top.svg";
@@ -7,13 +7,15 @@ const Section04 = (props) => {
   return (
     <>
       <div className="section num4">
-        <NavBar />
+        <NavBarAnchor />
         <SectionWrap>
           <AllSpan>
             <SpanBold>영상으로 배우는 청약 노하우</SpanBold>
             <span>✨</span>
           </AllSpan>
-          <Text h4 color="#A5AAB6">청약 관련 정보를 담은 영상을 추천해드릴게요.</Text>
+          <Text h4 color="#A5AAB6">
+            청약 관련 정보를 담은 영상을 추천해드릴게요.
+          </Text>
         </SectionWrap>
         <CardWraps>
           <Card>
