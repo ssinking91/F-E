@@ -89,6 +89,6 @@ const Card = styled.div`
 const Atag = styled.a`
   width: 36px;
   height: 31px;
-  margin: 115px auto 115px;
+  margin: 105px auto 105px;
   display: block;
 `;
