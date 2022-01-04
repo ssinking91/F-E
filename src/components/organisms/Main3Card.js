@@ -66,6 +66,7 @@ const Main3Card = (props) => {
                 fontSize: "14px",
                 lineHeight: "25px",
                 color: "#333333",
+                whiteSpace: "nowrap",
               }}
             >
               접수 기간
@@ -76,6 +77,7 @@ const Main3Card = (props) => {
                 fontSize: "14px",
                 lineHeight: "25px",
                 color: "#A5AAB6",
+                whiteSpace: "nowrap",
               }}
             >
               분양 면적
@@ -86,6 +88,7 @@ const Main3Card = (props) => {
                 fontSize: "14px",
                 lineHeight: "25px",
                 color: "#A5AAB6",
+                whiteSpace: "nowrap",
               }}
             >
               분양 가격

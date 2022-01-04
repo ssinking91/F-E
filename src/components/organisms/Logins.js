@@ -24,12 +24,17 @@ export default function Login() {
           <Kakao>
             <a
               href={KAKAO_AUTH_URL}
-              style={{ display: "flex", alignItems: "center" }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                textAlign: "center",
+                justifyContent: "center",
+              }}
             >
               <RiKakaoTalkFill
-                style={{ marginRight: "20px", fontSize: "30px" }}
+                style={{ marginRight: "5px", fontSize: "20px" }}
               />
-              카카오 아이디로 로그인
+              카카오 로그인
             </a>
           </Kakao>
           <GoogleLogin />
@@ -45,26 +50,16 @@ const SocialWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 150px 50px;
 `;
 
-const Logins = styled.div`
-  transition: 0.5s;
-  padding: 50px;
-
-  &:hover {
-    border: 1px solid #999;
-    border-radius: 10px;
-    transform: scale(1.1);
-  }
-`;
+const Logins = styled.div``;
 
 const Kakao = styled.div`
-  width: 185px;
-  height: 40px;
+  width: 360px;
+  height: 58px;
   background-color: yellow;
   display: flex;
-  /* align-items: center; */
+  justify-content: center;
   border-radius: 4px;
   margin: 20px 0;
   padding-left: 6px;

@@ -9,7 +9,7 @@ const Section01 = (props) => {
       <div className="section num1" style={{ position: "relative" }}>
         <NavBar2 />
         <Hr />
-
+        
         <Background
           style={{
             // backgroundImage: `url(${mainBackgroundImage})`,

@@ -2,10 +2,9 @@ import styled from "styled-components";
 
 import { Link } from "react-router-dom";
 
-import { Grid } from "../atoms/index";
+import { Grid, Text } from "../atoms/index";
 import { ReactComponent as Logo } from "../../images/logo.svg";
 import SocialLogin from "../organisms/Logins";
-import Image from "../atoms/Image";
 
 export default function LoginTemp() {
   return (
@@ -13,10 +12,15 @@ export default function LoginTemp() {
       <Grid is_flex>
         <LeftArea>
           <ContentsArea>
-            <Link to="/">
-              <Logo width="40px" />
-            </Link>
-            <SocialLogin />
+            <Contents>
+              <Link to="/">
+                <Logo width="40px" />
+              </Link>
+              <Text h1 style={{ fontSize: "43px" }}>
+                로그인
+              </Text>
+              <SocialLogin />
+            </Contents>
           </ContentsArea>
         </LeftArea>
         <RightArea>
@@ -29,13 +33,16 @@ export default function LoginTemp() {
 
 const LeftArea = styled.div`
   width: 50%;
-  height: 100%;
 `;
 
 const ContentsArea = styled.div`
   width: 40%;
-  height: 50%;
   margin: auto;
+`;
+
+const Contents = styled.div`
+  height: 420px;
+  background-color: #999;
 `;
 
 const RightArea = styled.div`
