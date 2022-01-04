@@ -34,18 +34,21 @@ export default function NavBar() {
           <NavLink
             to="/#page2"
             activeStyle={{ color: "#20D7FF", fontWeight: "900" }}
+            style={{ margin: "0 0 0 auto" }}
           >
             <Heading1>관심지역.zip</Heading1>
           </NavLink>
           <NavLink
             to="/#page3"
             activeStyle={{ color: "#20D7FF", fontWeight: "900" }}
+            style={{ margin: "0" }}
           >
             <Heading1>뜨는청약.zip</Heading1>
           </NavLink>
           <NavLink
             to="/#page4"
             activeStyle={{ color: "#20D7FF", fontWeight: "900" }}
+            style={{ margin: "0 auto 0 0" }}
           >
             <Heading1>청약정보.zip</Heading1>
           </NavLink>

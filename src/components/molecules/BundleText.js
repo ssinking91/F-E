@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Grid, Text, Div } from "../atoms/index";
+import { Grid, Text } from "../atoms/index";
 
 export default function BundleText(props) {
   const { margin } = props;
