@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Main3Card from "./Main3Card";
 import NavBar from "./NavBar2";
+import { Text } from "../atoms/index";
+
 const Section03 = (props) => {
   return (
     <>
@@ -8,35 +10,14 @@ const Section03 = (props) => {
         <NavBar />
         <SectionWrap>
           <SectionItem>
-            <span
-              style={{
-                margin: "0px auto 18px",
-                height: "43px",
-                lineHeight: "43px",
-                fontSize: "36px",
-              }}
-            >
-              <span
-                style={{
-                  fontWeight: "bold",
-                  color: "#333333",
-                }}
-              >
-                요즘 뜨고 있는 청약은?
-              </span>
+            <AllSpan>
+              <SpanBold>요즘 뜨고 있는 청약은?</SpanBold>
               <span>👀</span>
-            </span>
-            <span
-              style={{
-                fontSize: "18px",
-                color: "#A5AAB6",
-                height: "25px",
-                lineHeight: "25px",
-              }}
-            >
+            </AllSpan>
+            <Text h4 color="#A5AAB6">
               사람들이 가장 눈여겨보는 청약순으로 조회/관심/매매 총 합으로
               나뉘어진 청약 정보예요.
-            </span>
+            </Text>
           </SectionItem>
           <CardWrap>
             <Main3Card />
@@ -65,7 +46,19 @@ const SectionItem = styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
-  margin: 70px auto;
+  margin: 50px auto;
+`;
+
+const AllSpan = styled.span`
+  margin: 0px auto 18px;
+  height: 43px;
+  line-height: 43px;
+  font-size: 36px;
+`;
+
+const SpanBold = styled.span`
+  font-weight: bold;
+  color: #333333; ;
 `;
 
 const CardWrap = styled.div`
