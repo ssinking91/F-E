@@ -1,7 +1,5 @@
 import styled from "styled-components";
-
 import { Link } from "react-router-dom";
-
 import { Grid, Text } from "../atoms/index";
 import { ReactComponent as Logo } from "../../images/logo.svg";
 import SocialLogin from "../organisms/Logins";
@@ -47,4 +45,5 @@ const Contents = styled.div`
 
 const RightArea = styled.div`
   width: 50%;
+
 `;

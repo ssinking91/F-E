@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Label from "../molecules/Label";
+import Text from "../atoms/Text";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 import defaultImage from "../../images/defaultImage.png";
@@ -30,19 +31,10 @@ const Main2Card = (props) => {
       <Item>
         <Info1>
           <Label registration></Label>
-          <span
-            style={{
-              width: "316px",
-              height: "25px",
-              fontWeight: "bold",
-              fontSize: "18px",
-              lineHeight: "25px",
-              color: "#333333",
-              margin: "0 0 0 15px",
-            }}
-          >
-            인천 강화 서희스타힐스 1단지
-          </span>
+          <Text 
+          h4
+          margin="0 0 0 15px"
+          >인천 강화 서희스타힐스 1단지</Text>
         </Info1>
         <Info2>
           <Info2Item1>
