@@ -2,12 +2,12 @@ import styled from "styled-components";
 import { Grid, Text, Button } from "../atoms/index";
 import { ReactComponent as Scroll } from "../../images/scroll.svg";
 // import mainBackgroundImage from "../../images/mainBackgroundImage.jpg";
-import NavBar from "./NavBar";
+import NavBarAnchor from "./NavBarAnchor";
 const Section01 = (props) => {
   return (
     <>
       <div className="section num1" style={{ position: "relative" }}>
-        <NavBar />
+        <NavBarAnchor />
         <Hr />
 
         <Background

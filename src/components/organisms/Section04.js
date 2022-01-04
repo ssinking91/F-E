@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import NavBar from "./NavBar";
+import NavBarAnchor from "./NavBarAnchor";
 import Footer from "./Footer";
 import { ReactComponent as Top } from "../../images/top.svg";
 const Section04 = (props) => {
   return (
     <>
       <div className="section num4">
-        <NavBar />
+        <NavBarAnchor />
         <SectionWrap>
           <span
             style={{

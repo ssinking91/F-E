@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import Main2Card from "./Main2Card";
-import NavBar from "./NavBar";
+import NavBarAnchor from "./NavBarAnchor";
 
 const Section02 = (props) => {
   return (
     <>
       <div className="section num2" style={{ width: "100%", height: "100" }}>
-        <NavBar />
+        <NavBarAnchor />
         <SectionWrap>
           <SectionItem>
             <span

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import NavBar from "../organisms/NavBar2";
+import NavBar from "../organisms/NavBarAnchor";
 
 export default function Test() {
   return (
