@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Main2Card from "./Main2Card";
-import NavBar from "./NavBar";
+import NavBar from "./NavBar2";
 
 const Section02 = (props) => {
   return (

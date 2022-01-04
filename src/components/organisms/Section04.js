@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import NavBar from "./NavBar";
+import NavBar from "./NavBar2";
 import Footer from "./Footer";
 import { ReactComponent as Top } from "../../images/top.svg";
 const Section04 = (props) => {
