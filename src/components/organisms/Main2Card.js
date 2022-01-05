@@ -6,11 +6,10 @@ import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 
 const Main2Card = (props) => {
-  const { _onClick } = props;
   const [save2, setSave2] = React.useState(false);
 
   return (
-    <Container onClick={_onClick}>
+    <Container>
       <Imageitem>
         <Image shape="card" src={props.image} />
         <ImageDiv
@@ -53,9 +52,6 @@ const Main2Card = (props) => {
       </Item>
     </Container>
   );
-};
-Main2Card.defaultProps = {
-  _onClick: () => {},
 };
 
 const Container = styled.div`

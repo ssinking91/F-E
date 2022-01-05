@@ -3,7 +3,7 @@ import axios from "axios";
 const instance = axios.create({
   // 기본적으로 우리가 바라볼 서버의 주소
   // baseURL: "https://dotzip.shop",
-  baseURL: "http://13.125.234.204",
+  baseURL: "http://52.78.27.210",
 
   // 헤더에 넣을 정보
   headers: {
@@ -19,7 +19,6 @@ export const apis = {
     instance.post("/api/users/login", { userkey, nickname: userName }),
 
   // MainPage
-  getTotalNum: () => instance.get(`/api/main/total`), // 전체 청약갯수
   getPrivateInfo: () => instance.get(`/api/main/privateSido`), // 민영 - 청약정보
   getMyPrivateInfo: (id) => instance.get(`/api/users/userId=${id}/privates`), // 민영 - 내가 지정한 지역정보
   getMyPublicInfo: (id) => instance.get(`/api/users/userId=${id}/publics`), // 공공 - 내가 지정한 지역정보
