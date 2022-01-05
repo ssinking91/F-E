@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
+import { history } from "../redux/configStore";
 import { actionCreators as mainAction } from "../redux/modules/main";
 import Main2Card from "./Main2Card";
 import NavBarAnchor from "./NavBarAnchor";
@@ -10,9 +11,10 @@ const Section02 = (props) => {
   const dispatch = useDispatch();
 
   const private_list = useSelector((state) => state.main.list);
+  const private_regionInfo = private_list.slice(0, 3);
 
   useEffect(() => {
-    dispatch(mainAction.getInfoDB());
+    dispatch(mainAction.getPrivateInfoDB());
   }, []);
   return (
     <>
@@ -37,6 +39,9 @@ const Section02 = (props) => {
                 공공 분양
               </Text>
               <Main2Card
+                // _onClick={() => {
+                //   history.push(`/detail/${props.detailId}`);
+                // }}
                 name={"{houseName}"}
                 startDate={"2021.12.21"}
                 endDate={"2021.12.23"}
@@ -57,11 +62,12 @@ const Section02 = (props) => {
               <Text h4 color="#778899">
                 민간 분양
               </Text>
-              {private_list.map((item, index) => {
+              {private_regionInfo.map((item, index) => {
                 const houseName = item.houseName;
                 const receptStartDate = item.receptStartDate;
                 const receptEndDate = item.receptEndDate;
                 const imgUrl = item.ImgUrl;
+
                 return (
                   <Main2Card
                     key={index}
@@ -69,8 +75,12 @@ const Section02 = (props) => {
                     name={houseName}
                     startDate={receptStartDate}
                     endDate={receptEndDate}
+                    // 데이터 받아야 함.
                     size={"84m² ~ 116m²/60m²~85m²"}
                     price={"54,470 ~ 72,670만원"}
+                    _onClick={() => {
+                      history.push(`/detail/${props.detailId}`);
+                    }}
                   />
                 );
               })}
