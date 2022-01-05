@@ -1,22 +1,22 @@
-// import React, { useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Grid, Text, Button } from "../atoms/index";
-// import { useDispatch, useSelector } from "react-redux";
-// import { actionCreators as mainAction } from "../redux/modules/main";
+import { useDispatch, useSelector } from "react-redux";
+import { actionCreators as mainAction } from "../redux/modules/main";
 import { ReactComponent as Scroll } from "../../images/scroll.svg";
 import mainBackgroundImage from "../../images/mainBackgroundImage.jpg";
 import NavBarAnchor from "./NavBarAnchor";
 
 const Section01 = (props) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const infoNum = useSelector((state) => state.main.total);
-  // const totalNum = infoNum.total;
+  const infoNum = useSelector((state) => state.main.total);
+  const totalNum = infoNum.total;
 
-  // useEffect(() => {
-  //   dispatch(mainAction.getTotalDB());
-  // }, []);
+  useEffect(() => {
+    dispatch(mainAction.getTotalDB());
+  }, []);
   return (
     <>
       <div
