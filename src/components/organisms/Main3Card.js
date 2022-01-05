@@ -15,7 +15,7 @@ const Main3Card = (props) => {
         01)
       </Text>
       <Imageitem>
-        <Image />
+        <Image src={""} />
         <ImageDiv
           onClick={() => {
             setSave3(!save3);
@@ -59,7 +59,6 @@ const Main3Card = (props) => {
 const Container = styled.div`
   width: 370px;
   height: 593px;
-  /* background-color: lemonchiffon; */
   display: flex;
   flex-direction: column;
 `;
@@ -75,7 +74,7 @@ const Image = styled.div`
   width: 370px;
   height: 370px;
   border-radius: 20px;
-  background-image: url("${apt_tobe}");
+  background-image: url("${(props) => props.src||apt_tobe}");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
