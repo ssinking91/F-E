@@ -15,6 +15,7 @@ const Section02 = (props) => {
 
   useEffect(() => {
     dispatch(mainAction.getPrivateInfoDB());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>

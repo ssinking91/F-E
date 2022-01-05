@@ -59,7 +59,6 @@ const FaceBookLogin = () => {
         <FaceBookLoginButton>
           <ButtonInnerDiv onClick={renderProps.onClick}>
             <BsFacebook size="30" />
-            {/* <ButtoninnerText>페이스북 아이디로 로그인</ButtoninnerText> */}
           </ButtonInnerDiv>
         </FaceBookLoginButton>
       )}
@@ -83,9 +82,10 @@ const FaceBookLoginButton = styled.button`
   &::before {
     content: "다른 방법 로그인";
     position: absolute;
-    padding-bottom: 124px;
     color: #363940;
     font-size: 16px;
+    margin-top: -63px;
+    pointer-events: none;
   }
 `;
 
@@ -94,11 +94,5 @@ const ButtonInnerDiv = styled.div`
   align-items: center;
   height: 35px;
 `;
-
-// const ButtoninnerText = styled.h3`
-//   color: #fff;
-//   font-size: 12px;
-//   font-weight: bold;
-// `;
 
 export default FaceBookLogin;

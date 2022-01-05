@@ -92,7 +92,8 @@ const NaverLoginBtn = styled.button`
     position: absolute;
     right: 5px;
     width: 110px;
-    padding-top: 124px;
+    margin-top: -63px;
     border-top: 1px solid #363940;
+    pointer-events: none;
   }
 `;
