@@ -3,31 +3,31 @@ import produce from "immer";
 import { apis } from "../../utilities/axios";
 // import axios from "axios";
 
-// const GET_TOTAL = "GET_TOTAL";
+const GET_TOTAL = "GET_TOTAL";
 const GET_PRIVATEINFO = "GET_PRIVATEINFO";
 
-// const getTotal = createAction(GET_TOTAL, (total) => ({ total }));
+const getTotal = createAction(GET_TOTAL, (total) => ({ total }));
 const getPrivateInfo = createAction(GET_PRIVATEINFO, (list) => ({ list }));
 
 const initialState = {
   list: [],
-  total: "",
+  total: {},
 };
 
-// const getTotalDB = () => {
-//   return function (dispatch, getState, { history }) {
-//     apis
-//       .getTotalNum()
-//       .then((res) => {
-//         console.log("getTotalDB 접근");
-//         console.log(res.data);
-//         dispatch(getTotal(res.data));
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   };
-// };
+const getTotalDB = () => {
+  return function (dispatch, getState, { history }) {
+    apis
+      .getTotalNum()
+      .then((res) => {
+        console.log("getTotalDB 접근");
+        console.log(res.data);
+        dispatch(getTotal(res.data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
 const getPrivateInfoDB = () => {
   return function (dispatch, getState, { history }) {
     apis
@@ -44,12 +44,12 @@ const getPrivateInfoDB = () => {
 };
 
 export default handleActions(
-  // {
-  //   [GET_TOTAL]: (state, action) =>
-  //     produce(state, (draft) => {
-  //       draft.total = action.payload.total;
-  //     }),
-  // },
+  {
+    [GET_TOTAL]: (state, action) =>
+      produce(state, (draft) => {
+        draft.total = action.payload.total;
+      }),
+  },
   {
     [GET_PRIVATEINFO]: (state, action) =>
       produce(state, (draft) => {
@@ -60,8 +60,8 @@ export default handleActions(
 );
 
 const actionCreators = {
-  // getTotal,
-  // getTotalDB,
+  getTotal,
+  getTotalDB,
   getPrivateInfo,
   getPrivateInfoDB,
 };
