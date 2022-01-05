@@ -49,8 +49,6 @@ export default handleActions(
       produce(state, (draft) => {
         draft.total = action.payload.total;
       }),
-  },
-  {
     [GET_PRIVATEINFO]: (state, action) =>
       produce(state, (draft) => {
         draft.list = action.payload.list;

@@ -10,13 +10,13 @@ import { Text } from "../atoms/index";
 const Section02 = (props) => {
   const dispatch = useDispatch();
 
-  const private_list = useSelector((state) => state.main.list);
-  const private_regionInfo = private_list.slice(0, 3);
-
   useEffect(() => {
     dispatch(mainAction.getPrivateInfoDB());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const private_list = useSelector((state) => state.main.list);
+  const private_regionInfo = private_list.slice(0, 3);
+
   return (
     <>
       <div className="section num2" style={{ width: "100%", height: "100" }}>
