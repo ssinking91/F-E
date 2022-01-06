@@ -54,19 +54,26 @@ const Section02 = (props) => {
                 const imgUrl = item.ImgUrl;
 
                 return (
-                  <Main2Card
+                  <Link
+                    to={{
+                      pathname: `/public/${item.panId}`,
+                    }}
                     key={index}
-                    image={imgUrl}
-                    name={houseName}
-                    startDate={receptStartDate}
-                    endDate={receptEndDate}
-                    // 데이터 받아야 함.
-                    size={"84m² ~ 116m²/60m²~85m²"}
-                    price={"54,470 ~ 72,670만원"}
-                    // _onClick={() => {
-                    //   history.push(`/detail/${props.detailId}`);
-                    // }}
-                  />
+                  >
+                    <Main2Card
+                      key={index}
+                      image={imgUrl}
+                      name={houseName}
+                      startDate={receptStartDate}
+                      endDate={receptEndDate}
+                      // 데이터 받아야 함.
+                      size={"84m² ~ 116m²/60m²~85m²"}
+                      price={"54,470 ~ 72,670만원"}
+                      // _onClick={() => {
+                      //   history.push(`/detail/${props.detailId}`);
+                      // }}
+                    />
+                  </Link>
                 );
               })}
             </PublicCards>
