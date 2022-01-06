@@ -20,9 +20,7 @@ export default function BundleText(props) {
   );
 }
 
-BundleText.defaultProps = {
-  margin: false,
-};
+BundleText.defaultProps = {};
 
 const BundleTextWrap = styled.div`
   margin: ${(props) => props.margin};

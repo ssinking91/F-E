@@ -13,14 +13,13 @@ const GET_DETAILINFO = `/GET_DETAILINFO/`;
 const getDetailInfo = createAction(GET_DETAILINFO, (info) => ({ info }));
 
 // middleware thunk
-export function getDetailInfoDB(pageNum, operation) {
+export function getDetailInfoDB(locate) {
   return function (dispatch, getState, { history }) {
-    console.log(pageNum, operation);
     apis
-      .getDetailInfo(pageNum, operation)
+      .getDetailInfo(locate)
       .then((res) => {
-        console.log(res.data);
-        dispatch(getDetailInfo(res.data));
+        const info = res.data;
+        dispatch(getDetailInfo(info));
       })
       .catch((err) => {
         console.log(err);
@@ -34,7 +33,7 @@ export default handleActions(
     [GET_DETAILINFO]: (state, action) => {
       return {
         ...state,
-        list: action.payload.list,
+        info: action.payload.info,
       };
     },
   },

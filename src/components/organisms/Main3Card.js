@@ -26,7 +26,9 @@ const Main3Card = (props) => {
       </Imageitem>
       <Item>
         <Info1>
-          <Label registration></Label>
+          <LabelDiv>
+            <Label registration></Label>
+          </LabelDiv>
           <Text h4 margin="0 0 0 15px">
             {props.name}
           </Text>
@@ -90,6 +92,11 @@ const ImageDiv = styled.div`
   top: 32px;
 `;
 
+const LabelDiv = styled.div`
+  width: 64px;
+  height: 29px;
+`;
+
 const Item = styled.div`
   width: 370px;
   height: 120px;
@@ -102,6 +109,7 @@ const Info1 = styled.div`
   width: 370px;
   height: 225px;
   display: flex;
+  flex: wrap;
   align-items: center;
   margin-bottom: 15px;
 `;

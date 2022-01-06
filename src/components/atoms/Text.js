@@ -95,10 +95,8 @@ export default function Text(props) {
 }
 
 Text.defaultProps = {
-  children: null,
   color: "#333333",
   size: "14px",
-  _onClick: () => {},
 };
 
 // text style

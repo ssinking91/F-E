@@ -1,16 +1,35 @@
 import React from "react";
 import styled from "styled-components";
+// import { useDispatch, useSelector } from "react-redux";
+// import { history } from "../redux/configStore";
+// import { commentActions } from "../redux/modules/comment";
+
 import { Text } from "../atoms/index";
 
 const Comment = (props) => {
+  // const dispatch = useDispatch();
+
+  // React.useEffect(() => {
+
+  //   const userKey = localStorage.getItem("userKey");
+  //   dispatch(commentActions.getCommentsFB(userKey));
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
+
+  // const userImage = localStorage.getItem("userImage");
+
+  // const sido = useSelector((state) => state.mypage.list.sido);
+  // const publicInfo = useSelector((state) => state.mypage.list.likes[0].공공);
+  // console.log(publicInfo);
+  // const privateInfo = useSelector((state) => state.mypage.list.likes[0].민영);
+  // console.log(privateInfo);
+
   return (
     <Container>
       <Item>
         <CommentWrite>
           <CommentWriteP>
-            <Text h4>
-              댓글
-            </Text>
+            <Text h4>댓글</Text>
             <Text h4 color="#20D7FF">
               (3)
             </Text>
@@ -47,7 +66,7 @@ const Comment = (props) => {
               </Text>
             </CommentOneInfo>
           </CommentOne>
-          
+
           <CommentOne>
             <CommentOneInfo>
               <Image />

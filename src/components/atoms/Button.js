@@ -40,11 +40,7 @@ const Button = (props) => {
   );
 };
 
-Button.defaultProps = {
-  children: null,
-  _onClick: () => {},
-  border: "none",
-};
+Button.defaultProps = {};
 
 const ElButton = styled.button`
   width: ${(props) => props.width};

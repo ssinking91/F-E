@@ -110,7 +110,7 @@ export default handleActions(
     // Section 03
     [GET_PUBLICHOT]: (state, action) =>
       produce(state, (draft) => {
-        draft.getPublicHot = action.payload.getPublicHot;
+        draft.public_list_hot = action.payload.public_list_hot;
       }),
   },
   initialState

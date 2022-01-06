@@ -45,9 +45,7 @@ const Grid = (props) => {
 };
 
 Grid.defaultProps = {
-  children: null,
   width: "100%",
-  _onClick: () => {},
 };
 
 const GridBox = styled.div`
