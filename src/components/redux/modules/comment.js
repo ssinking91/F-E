@@ -22,6 +22,7 @@ const getCommentsFB = (aptNo) => {
     try {
       console.log("getCommentsFB 시작");
       const response = await apis.getComments(aptNo);
+      console.log(response.data);
 
       dispatch(getComment(response.data));
     } catch (error) {
@@ -76,6 +77,7 @@ export default handleActions(
   {
     [GET_COMMENT]: (state, action) =>
       produce(state, (draft) => {
+        console.log(action.payload.comments);
         draft.list = action.payload.comments;
       }),
   },

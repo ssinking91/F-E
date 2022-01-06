@@ -73,7 +73,7 @@ const MyPage = (props) => {
                     size={"84m² ~ 116m²/60m²~85m²"}
                     price={"54,470 ~ 72,670만원"}
                     _onClick={() => {
-                      history.push(`/public/${publicInfo.panId}}`);
+                      history.push(`/public/${item.panId}`);
                     }}
                   />
                 );
@@ -108,7 +108,7 @@ const MyPage = (props) => {
                     size={"84m² ~ 116m²/60m²~85m²"}
                     price={"54,470 ~ 72,670만원"}
                     _onClick={() => {
-                      history.push(`/private/${privateInfo.pblancNo}`);
+                      history.push(`/private/${item.pblancNo}`);
                     }}
                   />
                 );
