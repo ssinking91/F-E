@@ -33,7 +33,7 @@ const Fullpage = () => (
       return (
         <>
           <div>
-            <Section01 total={"{total}"} />
+            <Section01 />
             <Section02 />
             <Section03 />
             <Section04 />

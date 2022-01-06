@@ -38,6 +38,7 @@ export const apis = {
     instance.get(`/api/main/publicSido`, {
       userKey: localStorage.getItem("userKey"),
     }), // 공공 - 청약정보
+  getPublicHot: () => instance.get(`/api/main/publicHot`), // 공공 - 찜하기 순
   // getMyPrivateInfo: (id) => instance.get(`/api/users/userId=${id}/privates`), // 민영 - 내가 지정한 지역정보
   // getMyPublicInfo: (id) => instance.get(`/api/users/userId=${id}/publics`), // 공공 - 내가 지정한 지역정보
   manySaved: () =>

@@ -23,7 +23,7 @@ const Section01 = () => {
   return (
     <>
       <div
-        className="section num1"
+        className="section"
         style={{
           backgroundImage: `url(${mainBackgroundImage})`,
           backgroundSize: "cover",
