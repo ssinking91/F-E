@@ -45,7 +45,6 @@ const Image = (props) => {
 };
 
 Image.defaultProps = {
-  shape: "circle",
   src: `${apt_tobe}`,
 };
 

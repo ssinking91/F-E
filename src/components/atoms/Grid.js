@@ -17,6 +17,7 @@ const Grid = (props) => {
     justify_content,
     align_items,
     text_align,
+    cursor,
   } = props;
 
   // console.log(props);
@@ -34,6 +35,7 @@ const Grid = (props) => {
     justify_content,
     align_items,
     text_align,
+    cursor: cursor,
   };
   return (
     <React.Fragment>
@@ -66,6 +68,8 @@ const GridBox = styled.div`
     props.justify_content && `justify-content : ${props.justify_content}`}
   ${(props) => props.align_items && `align-items : ${props.align_items}`}
   ${(props) => props.text_align && `text-align : ${props.text_align}`}
+  ${(props) => (props.radius ? `border-radius: ${props.radius}` : "")}
+  ${(props) => (props.cursor ? `cursor: ${props.cursor}` : "")}
 `;
 
 export default Grid;

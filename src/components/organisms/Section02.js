@@ -58,7 +58,10 @@ const Section02 = (props) => {
                 const panId = item.panId;
 
                 return (
-                  <Main2Card
+                  <Link
+                    to={{
+                      pathname: `/public/${item.panId}`,
+                    }}
                     key={index}
                     image={imgUrl}
                     name={houseName}
