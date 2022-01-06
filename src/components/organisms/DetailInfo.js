@@ -1,20 +1,13 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { Grid, Button, Text } from "../atoms/index";
 import BundleText from "../molecules/BundleText";
 import defaultImage from "../../images/defaultImage.png";
-import { getDetailInfoDB } from "../redux/modules/detail";
+
 // import DetailType from "./DetailType";
 
 export default function DetailInfo(props) {
-  const dispatch = useDispatch();
   console.log(props);
-  const pageNum = props.pageNum;
-  const operation = props.operation === "민영" ? "private" : "public";
-  useEffect(() => {
-    dispatch(getDetailInfoDB(pageNum, operation));
-  });
 
   const detailInfo = useSelector((state) => state);
   console.log(detailInfo);

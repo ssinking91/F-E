@@ -84,11 +84,7 @@ const Section02 = (props) => {
                 return (
                   <Link
                     to={{
-                      pathname: `/detail/${item.pblancNo}`,
-                      state: {
-                        pblancNo: item.pblancNo,
-                        operation: item.operation,
-                      },
+                      pathname: `/private/${item.pblancNo}`,
                     }}
                   >
                     <Main2Card
