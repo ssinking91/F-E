@@ -13,10 +13,17 @@ const instance = axios.create({
   },
 });
 
+instance.interceptors.request.use(function (config) {
+  config.headers.common["Authorization"] = `Bearer ${sessionStorage.getItem(
+    "accessToken"
+  )}`;
+  return config;
+});
+
 export const apis = {
   // 카카오 로그인
-  login: (userkey, nickName) =>
-    instance.post("/api/users/login", userkey, nickName),
+  login: (userKey, nickname) =>
+    instance.post("/api/users/login", { userKey, nickname }),
 
   // MainPage
   getTotalNum: () => instance.get(`/api/main/total`), // 전체 청약갯수

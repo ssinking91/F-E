@@ -15,11 +15,13 @@ const getDetailInfo = createAction(GET_DETAILINFO, (info) => ({ info }));
 // middleware thunk
 export function getDetailInfoDB(locate) {
   return function (dispatch, getState, { history }) {
+    console.log("getDetail");
+    console.log(locate);
     apis
       .getDetailInfo(locate)
       .then((res) => {
-        console.log(res.data);
-        dispatch(getDetailInfo(res.data));
+        console.log(res);
+        // dispatch(getDetailInfo(res.data));
       })
       .catch((err) => {
         console.log(err);
