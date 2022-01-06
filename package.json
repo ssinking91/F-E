@@ -64,5 +64,6 @@
   },
   "devDependencies": {
     "webpack": "4.44.2"
-  }
+  },
+  "proxy": "http://13.125.234.204"
 }

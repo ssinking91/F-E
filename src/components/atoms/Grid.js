@@ -46,16 +46,16 @@ const Grid = (props) => {
 
 Grid.defaultProps = {
   children: null,
-  is_flex: false,
+  is_flex: "false",
   width: "100%",
-  height: false,
-  padding: false,
-  margin: false,
-  background_color: false,
-  center: false,
+  height: "false",
+  padding: "false",
+  margin: "false",
+  background_color: "false",
+  center: "false",
   _onClick: () => {},
-  max_width: false,
-  radius: false,
+  max_width: "false",
+  radius: "false",
 };
 
 const GridBox = styled.div`
