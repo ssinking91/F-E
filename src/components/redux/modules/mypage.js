@@ -1,6 +1,6 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
-import { getUserInfos, editUserInfos } from "../../utilities/axios/apis";
+import { apis } from "../../utilities/axios";
 
 // action type
 const GET_USERINFO = " GET_USERINFO";
@@ -15,7 +15,7 @@ const getUserInfosFB = (userKey) => {
   return async function (dispatch, getState, { history }) {
     try {
       console.log("getCommentsFB 시작");
-      const response = await getUserInfos(userKey);
+      const response = await apis.getUserInfos(userKey);
 
       dispatch(getUserInfo(response.data));
     } catch (error) {
@@ -29,7 +29,7 @@ const editUserInfosFB = (userName) => {
     try {
       console.log("addCommentsFB 시작");
 
-      const response = await editUserInfos(userName);
+      const response = await apis.editUserInfos(userName);
       console.log(response);
 
       dispatch(editUserInfo(response)); // 댓글 목록 다시 요청
