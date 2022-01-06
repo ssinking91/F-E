@@ -20,7 +20,7 @@ export default function router() {
         <Switch>
           <Route exact path="/" component={Main} />
           <Route path="/list" component={List} />
-          <Route path="/detail/:id" component={Detail} />
+          <Route path="/detail/:aptNo" component={Detail} />
           <Route path="/MyPage" component={MyPage} />
           <Route path="/login" exact component={Login} />
           <Route path="/login/kakao" component={KakaoLogin} />
