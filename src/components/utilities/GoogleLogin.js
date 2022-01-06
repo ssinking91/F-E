@@ -18,10 +18,10 @@ export default function Google() {
     sessionStorage.setItem("accessToken", res.accessToken);
 
     const userKey = localStorage.getItem("userKey");
-    const userName = localStorage.getItem("username");
-
+    const nickName = localStorage.getItem("userName");
+    console.log(userKey, nickName);
     apis
-      .login(userKey, userName)
+      .login(userKey, nickName)
       .then((res) => console.log(res))
       .catch((e) => console.log(e));
 

@@ -4,6 +4,7 @@ import { createBrowserHistory } from "history";
 import { connectRouter } from "connected-react-router";
 
 import Main from "./modules/main";
+import Detail from "./modules/detail";
 
 //---- Reducer ----
 
@@ -13,6 +14,7 @@ export const history = createBrowserHistory();
 //---- rootReducer ----
 const rootReducer = combineReducers({
   main: Main,
+  detail: Detail,
   router: connectRouter(history),
 });
 

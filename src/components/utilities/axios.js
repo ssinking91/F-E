@@ -15,8 +15,8 @@ const instance = axios.create({
 
 export const apis = {
   // 카카오 로그인
-  login: (userkey, userName) =>
-    instance.post("/api/users/login", { userkey, nickname: userName }),
+  login: (userkey, nickName) =>
+    instance.post("/api/users/login", userkey, nickName),
 
   // MainPage
   getTotalNum: () => instance.get(`/api/main/total`), // 전체 청약갯수
@@ -27,6 +27,8 @@ export const apis = {
   youtubeLink: () => instance.get("/api/youtube"), // 유튜브 링크 (예정)
 
   // DetailPage
+  getDetailInfo: (pageNum, operation) =>
+    instance.get(`/api/${operation}/${pageNum}`),
   getPrivateDetailInfo: (apt_id) =>
     instance.get(`/api/private/aptNo=${apt_id}`), // 민영 - 상세페이지 정보
   getPublicDetailInfo: (apt_id) => instance.get(`/api/public/aptNo=${apt_id}`), // 공공 - 상세페이지 정보

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { history } from "../redux/configStore";
 import { actionCreators as mainAction } from "../redux/modules/main";
@@ -70,19 +71,29 @@ const Section02 = (props) => {
                 const imgUrl = item.ImgUrl;
 
                 return (
-                  <Main2Card
-                    key={index}
-                    image={imgUrl}
-                    name={houseName}
-                    startDate={receptStartDate}
-                    endDate={receptEndDate}
-                    // 데이터 받아야 함.
-                    size={"84m² ~ 116m²/60m²~85m²"}
-                    price={"54,470 ~ 72,670만원"}
-                    _onClick={() => {
-                      history.push(`/detail/${props.detailId}`);
+                  <Link
+                    to={{
+                      pathname: `/detail/${item.pblancNo}`,
+                      state: {
+                        pblancNo: item.pblancNo,
+                        operation: item.operation,
+                      },
                     }}
-                  />
+                  >
+                    <Main2Card
+                      key={index}
+                      image={imgUrl}
+                      name={houseName}
+                      startDate={receptStartDate}
+                      endDate={receptEndDate}
+                      // 데이터 받아야 함.
+                      size={"84m² ~ 116m²/60m²~85m²"}
+                      price={"54,470 ~ 72,670만원"}
+                      _onClick={() => {
+                        history.push(`/detail/${props.detailId}`);
+                      }}
+                    />
+                  </Link>
                 );
               })}
             </PrivateCards>
