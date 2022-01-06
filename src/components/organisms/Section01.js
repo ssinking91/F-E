@@ -11,13 +11,15 @@ import NavBarAnchor from "./NavBarAnchor";
 const Section01 = () => {
   const dispatch = useDispatch();
 
-  const infoNum = useSelector((state) => state.main.total);
-  const totalNum = infoNum.total;
-
   useEffect(() => {
     dispatch(mainAction.getTotalDB());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // 청약 총 갯수
+  const infoNum = useSelector((state) => state.main.total);
+  const totalNum = infoNum.total;
+
   return (
     <>
       <div

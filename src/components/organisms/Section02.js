@@ -10,18 +10,20 @@ import { Text } from "../atoms/index";
 const Section02 = (props) => {
   const dispatch = useDispatch();
 
-  const private_list = useSelector((state) => state.main.private_list);
-  const private_regionInfo = private_list.slice(0, 3);
-
-  const public_list = useSelector((state) => state.main.public_list);
-  const public_regionInfo = public_list.slice(0, 3);
-  console.log(public_regionInfo);
-
   useEffect(() => {
     dispatch(mainAction.getPrivateInfoDB());
     dispatch(mainAction.getPublicInfoDB());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // 민영 공고 3개
+  const private_list = useSelector((state) => state.main.private_list);
+  const private_regionInfo = private_list.slice(0, 3);
+
+  // 공공 공고 3개
+  const public_list = useSelector((state) => state.main.public_list);
+  const public_regionInfo = public_list.slice(0, 3);
+
   return (
     <>
       <div className="section num2" style={{ width: "100%", height: "100" }}>
