@@ -42,8 +42,8 @@ export const apis = {
     instance.delete(`/api/comments/${aptNo}/${commentId}`), // 댓글삭제
 
   // MyPage
-  getUserInfo: (userKey) => instance.get(`/api/user/${userKey}`), // 유저정보 조회
-  editUserInfo: (userName) => instance.put(`/api/user/${userName}`), // 유저정보 수정
+  getUserInfos: (userKey) => instance.get(`/api/user/${userKey}`), // 유저정보 조회
+  editUserInfos: (userName) => instance.put(`/api/user/${userName}`), // 유저정보 수정
 
   // Saved
   seved: (id) => instance.post(`/api/userId=${id}/likes`), // 청약정보 저장하기

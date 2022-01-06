@@ -8,7 +8,7 @@ import {
 
 
 // action type
-const GET_COMMENT = "SET_COMMENT";
+const GET_COMMENT = "GET_COMMENT";
 // const ADD_COMMENT = "EDIT_COMMENT";
 // const DELETE_COMMENT = "DELETE_COMMENT";
 
