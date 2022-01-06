@@ -37,6 +37,7 @@ const MyPage = (props) => {
   return (
     <>
       <NavBarLink />
+      <Container>
       <MyCard >
         <MyCardImage src={userImage} />
         <MyCardList>
@@ -78,10 +79,17 @@ const MyPage = (props) => {
           <Main2Card />
         </MyPostCardList>
       </MyPost>
+      </Container>
       <Footer />
     </>
   );
 };
+
+const Container = styled.div`
+width: 100%;
+padding-top : 100px
+`;
+
 const MyCard = styled.div`
   width: 1195px;
   height: 207px;

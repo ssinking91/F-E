@@ -26,9 +26,11 @@ const Main3Card = (props) => {
       </Imageitem>
       <Item>
         <Info1>
-          <Label registration></Label>
+          <LabelDiv>
+            <Label registration></Label>
+          </LabelDiv>
           <Text h4 margin="0 0 0 15px">
-            인천 강화 서희스타힐스 1단지
+            인천 강화 서희스타힐스 1단지인천 강화 서희스타힐스
           </Text>
         </Info1>
         <Info2>
@@ -74,7 +76,7 @@ const Image = styled.div`
   width: 370px;
   height: 370px;
   border-radius: 20px;
-  background-image: url("${(props) => props.src||apt_tobe}");
+  background-image: url("${(props) => props.src || apt_tobe}");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -86,6 +88,11 @@ const ImageDiv = styled.div`
   height: 59px;
   right: 32px;
   top: 32px;
+`;
+
+const LabelDiv = styled.div`
+  width: 64px;
+  height: 29px;
 `;
 
 const Item = styled.div`
@@ -100,6 +107,7 @@ const Info1 = styled.div`
   width: 370px;
   height: 225px;
   display: flex;
+  flex: wrap;
   align-items: center;
   margin-bottom: 15px;
 `;
