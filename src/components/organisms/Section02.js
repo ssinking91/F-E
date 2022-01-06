@@ -50,10 +50,7 @@ const Section02 = (props) => {
               </Text>
               {public_regionInfo.map((item, index) => {
                 return (
-                  <Link
-                    to={{
-                      pathname: `/public/${item.panId}`,
-                    }}
+                  <Main2Card
                     key={index}
                     image={item.ImgUrl}
                     name={item.panName}
