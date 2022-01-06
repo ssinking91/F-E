@@ -1,15 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-// import { Link } from "react-router-dom";
 import Label from "../molecules/Label";
 import { Text, Image } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 
 const Main2Card = (props) => {
-  const { _onClick } = props;
+  const { detailView } = props;
   const [save2, setSave2] = React.useState(false);
-  console.log(props);
 
   return (
     <Container>
@@ -23,16 +21,16 @@ const Main2Card = (props) => {
           {save2 ? <BmarkFill /> : <BmarkNone />}
         </ImageDiv>
       </Imageitem>
-      {/* {private_regionInfo.map} */}
       <Item>
-        <Info1 onClick={_onClick}>
+        <Info1 onClick={detailView}>
           <LabelDiv>
-          <Label registration></Label>
+            <Label registration></Label>
           </LabelDiv>
           <Text h4 margin="0 0 0 15px" width="316px">
             {props.name}
           </Text>
         </Info1>
+
         <Info2>
           <Info2Item1>
             <Text boldText>접수 기간</Text>
@@ -94,6 +92,7 @@ const ImageDiv = styled.div`
   height: 38.29px;
   left: 111.36px;
   bottom: 123.35px;
+  cursor: pointer;
 `;
 
 const LabelDiv = styled.div`
@@ -119,7 +118,7 @@ const Info1 = styled.div`
   :hover {
     cursor: pointer;
   }
-  & > p:hover {       
+  & > p:hover {
     color: #20d7ff;
   }
 `;

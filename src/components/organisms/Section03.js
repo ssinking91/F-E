@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as mainAction } from "../redux/modules/main";
+import { history } from "../redux/configStore";
 import Main3Card from "./Main3Card";
 import NavBarAnchor from "./NavBarAnchor";
 import { Text } from "../atoms/index";
@@ -16,7 +17,6 @@ const Section03 = (props) => {
   // 공공 Hot
   const public_list_hot = useSelector((state) => state.main.public_list_hot);
   const public_regionInfo_hot = public_list_hot.slice(2, 5);
-  console.log(public_regionInfo_hot);
 
   return (
     <>
@@ -41,6 +41,7 @@ const Section03 = (props) => {
               const receptEndDate = item.closeDate;
               const size = item.size;
               const aisTypeName = item.aisTypeName;
+              const panId = item.panId;
 
               return (
                 <Main3Card
@@ -52,6 +53,9 @@ const Section03 = (props) => {
                   endDate={receptEndDate}
                   size={`${size} m²`}
                   price={aisTypeName}
+                  detailView={() => {
+                    history.push(`/public/${panId}`);
+                  }}
                 />
               );
             })}

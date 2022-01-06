@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-// import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as mainAction } from "../redux/modules/main";
+import { history } from "../redux/configStore";
 import Main2Card from "./Main2Card";
 import NavBarAnchor from "./NavBarAnchor";
 import { Text } from "../atoms/index";
@@ -55,6 +55,7 @@ const Section02 = (props) => {
                 const receptEndDate = item.closeDate;
                 const size = item.size;
                 const aisTypeName = item.aisTypeName;
+                const panId = item.panId;
 
                 return (
                   <Main2Card
@@ -65,9 +66,9 @@ const Section02 = (props) => {
                     endDate={receptEndDate}
                     size={`${size} m²`}
                     price={aisTypeName}
-                    // _onClick={() => {
-                    //   history.push(`/detail/${props.detailId}`);
-                    // }}
+                    detailView={() => {
+                      history.push(`/public/${panId}`);
+                    }}
                   />
                 );
               })}
@@ -87,13 +88,6 @@ const Section02 = (props) => {
                 const pblancNo = item.pblancNo;
 
                 return (
-                  // <Link
-                  //   to={{
-
-                  //     pathname: `/private/${pblancNo}`,
-                  //   }}
-                  //   key={index}
-                  // >
                   <Main2Card
                     key={index}
                     aptNo={pblancNo}
@@ -103,8 +97,10 @@ const Section02 = (props) => {
                     endDate={receptEndDate}
                     size={`${size} m²`}
                     price={`${supplyAmount} 만원`}
+                    detailView={() => {
+                      history.push(`/private/${pblancNo}`);
+                    }}
                   />
-                  // </Link>
                 );
               })}
             </PrivateCards>
