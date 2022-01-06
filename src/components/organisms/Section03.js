@@ -1,11 +1,26 @@
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { actionCreators as mainAction } from "../redux/modules/main";
 import Main3Card from "./Main3Card";
 import NavBarAnchor from "./NavBarAnchor";
 import { Text } from "../atoms/index";
 const Section03 = (props) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(mainAction.getPublicHotDB());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // 공공 Hot
+  const public_list_hot = useSelector((state) => state.main.public_list_hot);
+  const public_regionInfo_hot = public_list_hot.slice(2, 5);
+  console.log(public_regionInfo_hot);
+
   return (
     <>
-      <div className="section num3" style={{ width: "100%", height: "900px" }}>
+      <div className="section" style={{ width: "100%", height: "900px" }}>
         <NavBarAnchor />
         <SectionWrap>
           <SectionItem>
@@ -19,9 +34,27 @@ const Section03 = (props) => {
             </Text>
           </SectionItem>
           <CardWrap>
-            <Main3Card />
-            <Main3Card />
-            <Main3Card />
+            {public_regionInfo_hot.map((item, index) => {
+              const imgUrl = item.ImgUrl;
+              const houseName = item.panName;
+              const receptStartDate = item.startDate;
+              const receptEndDate = item.closeDate;
+              const size = item.size;
+              const aisTypeName = item.aisTypeName;
+
+              return (
+                <Main3Card
+                  key={index}
+                  number={`0${index + 1})`}
+                  image={imgUrl}
+                  name={houseName}
+                  startDate={receptStartDate}
+                  endDate={receptEndDate}
+                  size={`${size} m²`}
+                  price={aisTypeName}
+                />
+              );
+            })}
           </CardWrap>
         </SectionWrap>
       </div>

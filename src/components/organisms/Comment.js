@@ -1,20 +1,40 @@
 import React from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { history } from "../redux/configStore";
+import { commentActions } from "../redux/modules/comment";
+
 import { Text } from "../atoms/index";
 
 const Comment = (props) => {
+  const dispatch = useDispatch();
+
+  React.useEffect(async() => {
+    await dispatch(commentActions.getCommentsFB());
+  }, []);
+
+  const useParam = useParams();
+  const aptNo = useParam.aptNo;
+  //console.log(aptNo);
+
+  const userKey = localStorage.getItem("userKey");
+  const userImage = localStorage.getItem("userImage");
+
+  const list = useSelector((state) => state.comment.list);
+  console.log(list);
+  console.log(list.length);
+  
   return (
     <Container>
       <Item>
         <CommentWrite>
-          <CommentWriteP>
-            <Text h4>
-              댓글
-            </Text>
+          <CommentWriteDiv>
+            <Text h4>댓글</Text>
             <Text h4 color="#20D7FF">
-              (3)
+              ({list.length || 0 })
             </Text>
-          </CommentWriteP>
+          </CommentWriteDiv>
           <CommentInput>
             <input type="text" placeholder="댓글을 남겨주세요" />
             <CommentButton>
@@ -47,7 +67,7 @@ const Comment = (props) => {
               </Text>
             </CommentOneInfo>
           </CommentOne>
-          
+
           <CommentOne>
             <CommentOneInfo>
               <Image />
@@ -106,7 +126,7 @@ const CommentWrite = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const CommentWriteP = styled.p`
+const CommentWriteDiv = styled.div`
   width: 100%;
   height: 24px;
   margin: 0px 0px 19px 24px;
@@ -188,7 +208,8 @@ const Image = styled.div`
   height: 30px;
   border-radius: 25px;
   margin-right: 7px;
-  background-image: url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png");
+  /* background-image: url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"); */
+  background-image: url("${(props) => props.src || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"}");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
