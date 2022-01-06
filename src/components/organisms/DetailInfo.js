@@ -14,10 +14,11 @@ export default function DetailInfo() {
   const detailImg = useSelector((store) => store.detail.img);
 
   // public
-  const publicInfo = useSelector((store) => store.detail.info);
-  const publicTopInfo = publicInfo.detail;
+  const publicInfo = useSelector((store) => store.detail.info.detail);
   const publicImg = useSelector((store) => store.detail.img);
+
   if (publicInfo) {
+    console.log(publicInfo);
     return (
       <>
         {publicInfo && (
@@ -40,38 +41,61 @@ export default function DetailInfo() {
               <DetailText>
                 <Grid margin="10px 0 0 0" is_flex>
                   <Text boldText color="#20D7FF">
-                    {/* {publicInfo} */}
+                    {publicInfo.panState}
                   </Text>
                   <Text boldText margin="0px 10px" color="#20D7FF">
                     |
                   </Text>
                   <Text boldText>공공분양</Text>
                 </Grid>
-                <Text h2>{123}</Text>
+                <Text h2>{`[${publicInfo.aisTypeName}] ${
+                  publicInfo.address.split(" ")[0]
+                } ${publicInfo.address.split(" ")[1]} `}</Text>
                 <BundleText
                   title={"주소"}
-                  content={`${123}`}
+                  content={`${publicInfo.address}`}
                   margin="50px 0 0 0"
                 />
-                <BundleText title={"세대 수"} content={`${123} 세대`} />
-                <BundleText title={"전용 면적"} content={`${123}`} />
+                <BundleText
+                  title={"세대 수"}
+                  content={`${publicInfo.houseCnt} 세대`}
+                />
+                <BundleText
+                  title={"임대 형식"}
+                  content={`${publicInfo.aisTypeName}`}
+                />
+                <BundleText
+                  title={"난방 방식"}
+                  content={`${publicInfo.heatMethod}`}
+                />
+                <BundleText
+                  title={"전용 면적"}
+                  content={`${publicInfo.size}`}
+                />
                 <BundleText
                   title={"분양 가격"}
                   content={"54,470 ~ 72,670 만원"}
                 />
                 <BundleText
                   title={"모집 공고일"}
-                  content={`${123}`}
+                  content={`${publicInfo.panUploadDate}`}
                   margin="35px 0 0 0"
                 />
-                <BundleText title={"청약 기간"} content={`${123} ~ ${123}`} />
-                <BundleText title={"특별 접수"} content={`${123} ~ ${123}`} />
-                <BundleText title={"1순위 접수일"} content={`${123}`} />
-                <BundleText title={"2순위 접수일"} content={`${123}`} />
-                <BundleText title={"당첨자 발표일"} content={`${123}`} />
+                <BundleText
+                  title={"청약 기간"}
+                  content={`${publicInfo.startDate} ~ ${publicInfo.closeDate}`}
+                />
+                <BundleText
+                  title={"당첨자 발표일"}
+                  content={`${publicInfo.announceDate}`}
+                />
+                <BundleText
+                  title={"서류제출기간"}
+                  content={`${publicInfo.submitStartDate} ~ ${publicInfo.submitEndDate}`}
+                />
                 <BundleText
                   title={"당첨자 계약일"}
-                  content={`${123} ~ ${123}`}
+                  content={`${publicInfo.contractEndDate} ~ ${publicInfo.contractStartDate}`}
                 />
                 <BundleText title={"분양 문의"} content={"02) 000 - 0000"} />
                 <Grid margin="40px 0 0 0">
@@ -84,7 +108,9 @@ export default function DetailInfo() {
                     border="2px solid #20D7FF"
                   >
                     <Text h4 color="#20D7FF">
-                      해당 공고 즐겨찾기
+                      <a href={`${publicInfo.fileLink}`}>
+                        모집 공고문 다운로드
+                      </a>
                     </Text>
                   </Button>
                   <Button
@@ -94,15 +120,15 @@ export default function DetailInfo() {
                     background_color="#20D7FF"
                     border="2px solid #fff"
                   >
-                    {/* <a
-                      href={`${}`}
+                    <a
+                      href={`${publicInfo.detailUrl}`}
                       target="_blank"
                       rel="noreferrer"
-                    > */}
-                    <Text h4 color="#fff">
-                      홈페이지로 이동하기
-                    </Text>
-                    {/* </a> */}
+                    >
+                      <Text h4 color="#fff">
+                        홈페이지로 이동하기
+                      </Text>
+                    </a>
                   </Button>
                 </Grid>
               </DetailText>
