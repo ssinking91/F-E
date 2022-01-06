@@ -7,9 +7,6 @@ export default function DetailType() {
   // const sido = ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10"];
   const typeInfo = useSelector((store) => store.detail.info.detail2);
   const [type, setType] = useState(1);
-  console.log(type);
-
-  console.log(typeInfo);
 
   return (
     <>
@@ -26,7 +23,8 @@ export default function DetailType() {
               width="800px"
               margin="auto"
               background_color="#eee"
-              radius="36px"
+              // cursor="pointer"
+              // radius="36px"
             >
               {typeInfo &&
                 typeInfo.map((item, index) => {
@@ -38,11 +36,13 @@ export default function DetailType() {
                         width="100%"
                         height="30px"
                         margin="auto"
-                        radius="36px"
+                        // radius="36px"
                         cursor="pointer"
+                        background_color={
+                          item.modelNo === type ? "#20D7FF" : ""
+                        }
                         _onClick={() => {
                           setType(item.modelNo);
-                          console.log(index + 1);
                         }}
                       >
                         <Text h4 color="#000" margin="auto" padding="3px">
@@ -55,14 +55,18 @@ export default function DetailType() {
                   );
                 })}
             </Grid>
-            <Grid width="500px" margin="30px auto">
+            <Grid width="370px" margin="30px auto">
               {typeInfo &&
                 typeInfo.map((item, key) => {
                   return (
                     <React.Fragment key={key}>
                       {item.modelNo === type && (
                         <>
-                          <Grid is_flex>
+                          <Grid
+                            is_flex
+                            justify_content="center"
+                            align_items="center"
+                          >
                             <Grid>
                               <Grid is_flex>
                                 <Text boldText margin="0 15px 0 0">
@@ -73,24 +77,32 @@ export default function DetailType() {
                                   {item.spSupplySize}
                                 </Text>
                               </Grid>
-                              <BundleText
-                                title="모델 번호"
-                                content={`${item.modelNo}`}
-                              />
-                              <BundleText
-                                title="모델 타입"
-                                content={`${item.type}`}
-                              />
+                              <Grid is_flex>
+                                <Text boldText margin="0 15px 0 0">
+                                  모델 번호
+                                </Text>
+                                <Text regularText>{item.modelNo}</Text>
+                              </Grid>
+                              <Grid is_flex>
+                                <Text boldText margin="0 15px 0 0">
+                                  모델 타입
+                                </Text>
+                                <Text regularText>{item.type}</Text>
+                              </Grid>
                             </Grid>
                             <Grid>
-                              <BundleText
-                                title="전용 면적"
-                                content={`${item.supplyAreaSize}`}
-                              />
-                              <BundleText
-                                title="공급 금액"
-                                content={`${item.supplyAmount}`}
-                              />
+                              <Grid is_flex>
+                                <Text boldText margin="0 15px 0 0">
+                                  전용 면적
+                                </Text>
+                                <Text regularText>{item.supplyAreaSize}</Text>
+                              </Grid>
+                              <Grid is_flex>
+                                <Text boldText margin="0 15px 0 0">
+                                  공급 금액
+                                </Text>
+                                <Text regularText>{item.supplyAmount}</Text>
+                              </Grid>
                             </Grid>
                           </Grid>
                         </>
