@@ -90,9 +90,9 @@ const Section02 = (props) => {
                         operation: item.operation,
                       },
                     }}
+                    key={index}
                   >
                     <Main2Card
-                      key={index}
                       image={imgUrl}
                       name={houseName}
                       startDate={receptStartDate}
