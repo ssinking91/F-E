@@ -56,7 +56,7 @@ const MyPage = (props) => {
             <Text h4 color="#778899" width="1195px" margin="30px 0 30px 0">
               공공 분양
             </Text>
-            {publicInfo.length !== 0  ? (
+            {publicInfo.length !== 0 ? (
               publicInfo.map((item, idx) => {
                 const houseName = item.panName;
                 const receptStartDate = item.startDate;
@@ -78,19 +78,18 @@ const MyPage = (props) => {
                   />
                 );
               })
-            ) : ( 
+            ) : (
               <Text h4 width="1195px" margin="30px 0 30px 0">
                 😎 공공 분양저장된 청약정보가 없습니다
               </Text>
             )}
-
           </MyPostCardList>
           <MyPostCardList>
             <Text h4 color="#778899" width="1195px" margin="30px 0 30px 0">
               민간 분양
             </Text>
 
-            {privateInfo.length !== 0  ? (
+            {privateInfo.length !== 0 ? (
               privateInfo.map((item, idx) => {
                 const houseName = item.houseName;
                 const receptStartDate = item.receptStartDate;
@@ -113,12 +112,11 @@ const MyPage = (props) => {
                   />
                 );
               })
-            ) : ( 
+            ) : (
               <Text h4 width="1195px" margin="30px 0 30px 0">
                 😎 민간 분양 저장된 청약정보가 없습니다
               </Text>
             )}
-            
           </MyPostCardList>
         </MyPost>
       </Container>

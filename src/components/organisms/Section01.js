@@ -8,8 +8,11 @@ import { ReactComponent as Scroll } from "../../images/scroll.svg";
 import mainBackgroundImage from "../../images/mainBackgroundImage.jpg";
 import NavBarAnchor from "./NavBarAnchor";
 
-const Section01 = () => {
+const Section01 = (props) => {
   const dispatch = useDispatch();
+
+  // Main > Sections01 유저이름 데이터 확인
+  console.log(props.userName);
 
   useEffect(() => {
     dispatch(mainAction.getTotalDB());
@@ -39,7 +42,8 @@ const Section01 = () => {
             </Text>
             {totalNum ? (
               <Text h2 color="#fff" margin="15px 0 60px 0">
-                당신을 위한 청약 정보가{" "}
+                {props.userName !== null ? `${props.userName}님을 위한 ` : ""}
+                청약 정보가{" "}
                 <span style={{ color: "#fff", borderBottom: "3px solid #fff" }}>
                   {totalNum}개
                 </span>{" "}

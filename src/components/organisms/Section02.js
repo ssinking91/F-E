@@ -10,6 +10,9 @@ import { Text } from "../atoms/index";
 const Section02 = (props) => {
   const dispatch = useDispatch();
 
+  // Main > Sections02 유저이름 데이터 확인
+  // console.log(props.userName);
+
   useEffect(() => {
     dispatch(mainAction.getPrivateInfoDB());
     dispatch(mainAction.getPublicInfoDB());
@@ -39,7 +42,8 @@ const Section02 = (props) => {
               <span>📌</span>
             </AllSpan>
             <Text h4 color="#A5AAB6">
-              000님이 선택한 관심 지역의 실시간 청약 정보를 알 수 있어요
+              {props.userName}님이 선택한 관심 지역의 실시간 청약 정보를 알 수
+              있어요
             </Text>
           </SectionItem>
 
@@ -49,11 +53,14 @@ const Section02 = (props) => {
                 공공 분양
               </Text>
               {public_regionInfo.map((item, index) => {
+                const panName = `[${item.aisTypeName}] ${
+                  item.address.split(" ")[0]
+                } ${item.address.split(" ")[1]}`;
                 return (
                   <Main2Card
                     key={index}
                     image={item.ImgUrl}
-                    name={item.panName}
+                    name={panName}
                     startDate={item.startDate}
                     endDate={item.closeDate}
                     size={`${item.size} m²`}
@@ -71,6 +78,7 @@ const Section02 = (props) => {
               <Text h4 color="#778899">
                 민간 분양
               </Text>
+
               {private_regionInfo.map((item, index) => {
                 return (
                   <Main2Card
@@ -88,6 +96,31 @@ const Section02 = (props) => {
                   />
                 );
               })}
+              {private_regionInfo.length !== 0 ? (
+                private_regionInfo.map((item, index) => {
+                  return (
+                    <Main2Card
+                      key={index}
+                      image={item.ImgUrl}
+                      name={item.houseName}
+                      startDate={item.receptStartDate}
+                      endDate={item.receptEndDate}
+                      size={`${item.size} m²`}
+                      price={`${item.supplyAmount} 만원`}
+                      //민간 청약정보 ID 값
+                      _onClick={() => {
+                        history.push(`/private/${item.pblancNo}`);
+                      }}
+                    />
+                  );
+                })
+              ) : (
+                <Text h4 margin="100px 0">
+                  <Span>🏚️..</Span> 실시간 민간 분양 청약정보가 없어요
+                  <Span>😭</Span>
+                  <Text>다른 관심지역을 선택해서 청약정보를 찾아보아요</Text>
+                </Text>
+              )}
             </PrivateCards>
           </CardWrap>
         </SectionWrap>
@@ -95,6 +128,9 @@ const Section02 = (props) => {
     </>
   );
 };
+const Span = styled.span`
+  font-weight: 400;
+`;
 const SectionWrap = styled.div`
   width: 100%;
   height: 100%;

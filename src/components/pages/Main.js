@@ -16,8 +16,9 @@ export default function Main() {
 }
 
 const anchors = ["page1", "page2", "page3", "page4"];
-
-const Fullpage = () => (
+const userName = localStorage.getItem("userName");
+console.log(userName);
+const Fullpage = (props) => (
   <ReactFullpage
     anchors={anchors}
     navigation
@@ -33,8 +34,8 @@ const Fullpage = () => (
       return (
         <>
           <div>
-            <Section01 />
-            <Section02 />
+            <Section01 userName={userName} />
+            <Section02 userName={userName} />
             <Section03 />
             <Section04 />
           </div>
