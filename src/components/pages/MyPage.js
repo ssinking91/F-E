@@ -7,11 +7,11 @@ const MyPage = (props) => {
   return (
     <>
       <NavBarLink />
-      <MyCard>
+      <MyCard src={localStorage.getItem('userImage')}>
         <MyCardImage />
         <MyCardList>
           <Text h2 margin="0 0 10px 0">
-            스파르탄 님
+            {localStorage.getItem('userName')} 님
           </Text>
           <Text boldText>서울특별시</Text>
         </MyCardList>
