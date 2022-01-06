@@ -28,8 +28,7 @@ export const apis = {
   youtubeLink: () => instance.get("/api/youtube"), // 유튜브 링크 (예정)
 
   // DetailPage
-  getDetailInfo: (pageNum, operation) =>
-    instance.get(`/api/${operation}/${pageNum}`),
+  getDetailInfo: (locate) => instance.get(`/api${locate}`),
   getPrivateDetailInfo: (apt_id) =>
     instance.get(`/api/private/aptNo=${apt_id}`), // 민영 - 상세페이지 정보
   getPublicDetailInfo: (apt_id) => instance.get(`/api/public/aptNo=${apt_id}`), // 공공 - 상세페이지 정보
