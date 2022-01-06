@@ -24,7 +24,7 @@ const Main2Card = (props) => {
       <Item>
         <Info1>
           <Label registration></Label>
-          <Text h4 margin="0 0 0 15px">
+          <Text h4 margin="0 0 0 15px" width="331px">
             {props.name}
           </Text>
         </Info1>
@@ -101,7 +101,7 @@ const Item = styled.div`
 
 const Info1 = styled.div`
   width: 395px;
-  height: 29px;
+  height: 50px;
   display: flex;
   margin-bottom: 15px;
   align-items: center;

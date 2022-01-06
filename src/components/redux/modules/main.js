@@ -5,13 +5,20 @@ import { apis } from "../../utilities/axios";
 
 const GET_TOTAL = "GET_TOTAL";
 const GET_PRIVATEINFO = "GET_PRIVATEINFO";
+const GET_PUBLICINFO = "GET_PUBLICINFO";
 
 const getTotal = createAction(GET_TOTAL, (total) => ({ total }));
-const getPrivateInfo = createAction(GET_PRIVATEINFO, (list) => ({ list }));
+const getPrivateInfo = createAction(GET_PRIVATEINFO, (private_list) => ({
+  private_list,
+}));
+const getPublicInfo = createAction(GET_PUBLICINFO, (public_list) => ({
+  public_list,
+}));
 
 const initialState = {
-  list: [],
   total: {},
+  private_list: [],
+  public_list: [],
 };
 
 const getTotalDB = () => {
@@ -42,6 +49,20 @@ const getPrivateInfoDB = () => {
       });
   };
 };
+const getPublicInfoDB = () => {
+  return function (dispatch, getState, { history }) {
+    apis
+      .getPublicInfo()
+      .then((res) => {
+        console.log("getPublicInfoDB 접근");
+        console.log(res.data);
+        dispatch(getPublicInfo(res.data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
 
 export default handleActions(
   {
@@ -51,7 +72,11 @@ export default handleActions(
       }),
     [GET_PRIVATEINFO]: (state, action) =>
       produce(state, (draft) => {
-        draft.list = action.payload.list;
+        draft.private_list = action.payload.private_list;
+      }),
+    [GET_PUBLICINFO]: (state, action) =>
+      produce(state, (draft) => {
+        draft.public_list = action.payload.public_list;
       }),
   },
   initialState
@@ -62,6 +87,8 @@ const actionCreators = {
   getTotalDB,
   getPrivateInfo,
   getPrivateInfoDB,
+  getPublicInfo,
+  getPublicInfoDB,
 };
 
 export { actionCreators };
