@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+// import { Link } from "react-router-dom";
 import Label from "../molecules/Label";
 import { Text, Image } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
@@ -8,6 +9,7 @@ import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 const Main2Card = (props) => {
   const { _onClick } = props;
   const [save2, setSave2] = React.useState(false);
+  console.log(props);
 
   return (
     <Container onClick={_onClick}>
@@ -21,6 +23,7 @@ const Main2Card = (props) => {
           {save2 ? <BmarkFill /> : <BmarkNone />}
         </ImageDiv>
       </Imageitem>
+      {/* {private_regionInfo.map} */}
       <Item>
         <Info1>
           <Label registration height="29px"></Label>

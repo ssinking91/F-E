@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as mainAction } from "../redux/modules/main";
 import Main2Card from "./Main2Card";
@@ -84,23 +84,27 @@ const Section02 = (props) => {
                 const receptEndDate = item.receptEndDate;
                 const size = item.size;
                 const supplyAmount = item.supplyAmount;
+                const pblancNo = item.pblancNo;
 
                 return (
-                  <Link
-                    to={{
-                      pathname: `/private/${item.pblancNo}`,
-                    }}
+                  // <Link
+                  //   to={{
+
+                  //     pathname: `/private/${pblancNo}`,
+                  //   }}
+                  //   key={index}
+                  // >
+                  <Main2Card
                     key={index}
-                  >
-                    <Main2Card
-                      image={imgUrl}
-                      name={houseName}
-                      startDate={receptStartDate}
-                      endDate={receptEndDate}
-                      size={`${size} m²`}
-                      price={`${supplyAmount} 만원`}
-                    />
-                  </Link>
+                    aptNo={pblancNo}
+                    image={imgUrl}
+                    name={houseName}
+                    startDate={receptStartDate}
+                    endDate={receptEndDate}
+                    size={`${size} m²`}
+                    price={`${supplyAmount} 만원`}
+                  />
+                  // </Link>
                 );
               })}
             </PrivateCards>
