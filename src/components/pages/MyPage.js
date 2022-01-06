@@ -25,10 +25,12 @@ const MyPage = (props) => {
 
   const userImage = localStorage.getItem("userImage");
 
-  const sido = useSelector((state) => state.mypage.list.sido);
-  const publicInfo = useSelector((state) => state.mypage.list.likes[0].공공);
+  const existuser = useSelector((state) => state.mypage.list.existuser);
+
+  const publicInfo = useSelector((state) => state.mypage.list.public);
   console.log(publicInfo);
-  const privateInfo = useSelector((state) => state.mypage.list.likes[0].민영);
+
+  const privateInfo = useSelector((state) => state.mypage.list.private);
   console.log(privateInfo);
 
   return (
@@ -42,7 +44,7 @@ const MyPage = (props) => {
               {localStorage.getItem("userName")} 님
             </Text>
             <Text h4 boldText>
-              {sido}
+              {existuser.sido}
             </Text>
           </MyCardList>
         </MyCard>
@@ -71,7 +73,7 @@ const MyPage = (props) => {
                     size={"84m² ~ 116m²/60m²~85m²"}
                     price={"54,470 ~ 72,670만원"}
                     _onClick={() => {
-                      history.push(`/public/:aptNo`);
+                      history.push(`/public/${publicInfo.panId}}`);
                     }}
                   />
                 );
@@ -82,8 +84,6 @@ const MyPage = (props) => {
               </Text>
             )}
 
-            <Main2Card />
-
           </MyPostCardList>
           <MyPostCardList>
             <Text h4 color="#778899" width="1195px" margin="30px 0 30px 0">
@@ -92,10 +92,11 @@ const MyPage = (props) => {
 
             {privateInfo.length !== 0  ? (
               privateInfo.map((item, idx) => {
-                const houseName = item.panName;
-                const receptStartDate = item.startDate;
-                const receptEndDate = item.closeDate;
+                const houseName = item.houseName;
+                const receptStartDate = item.receptStartDate;
+                const receptEndDate = item.receptEndDate;
                 const imgUrl = item.ImgUrl;
+                // const size = item.size;
                 return (
                   <Main2Card
                     key={idx}
@@ -107,7 +108,7 @@ const MyPage = (props) => {
                     size={"84m² ~ 116m²/60m²~85m²"}
                     price={"54,470 ~ 72,670만원"}
                     _onClick={() => {
-                      history.push(`/private/:aptNo`);
+                      history.push(`/private/${privateInfo.pblancNo}`);
                     }}
                   />
                 );
@@ -118,8 +119,6 @@ const MyPage = (props) => {
               </Text>
             )}
             
-            <Main2Card />
-         
           </MyPostCardList>
         </MyPost>
       </Container>
