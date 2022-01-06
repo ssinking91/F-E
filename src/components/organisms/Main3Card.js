@@ -27,6 +27,7 @@ const Main3Card = (props) => {
       </Imageitem>
       <Item>
         <Info1 onClick={detailView}>
+
           <LabelDiv>
             <Label registration></Label>
           </LabelDiv>
@@ -117,6 +118,7 @@ const Info1 = styled.div`
     cursor: pointer;
   }
   & > p:hover {
+
     color: #20d7ff;
   }
 `;

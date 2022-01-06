@@ -2,13 +2,14 @@
 import NavBarLink from "../organisms/NavBarLink";
 import DetailInfo from "../organisms/DetailInfo";
 import DetailType from "../organisms/DetailType";
+import DetailImg from "../organisms/DetailImg";
 import Comment from "../organisms/Comment";
 import Footer from "../organisms/Footer";
 import { Grid } from "../atoms/index";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getDetailInfoDB } from "../redux/modules/detail";
+import { getDetailInfoDB, getDetailImgDB } from "../redux/modules/detail";
 
 export default function DetailTemp(props) {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ export default function DetailTemp(props) {
 
   useEffect(() => {
     dispatch(getDetailInfoDB(locate));
+    dispatch(getDetailImgDB(locate));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -28,6 +30,7 @@ export default function DetailTemp(props) {
       <Grid padding="50px 0 0 0">
         <DetailInfo />
         <DetailType />
+        <DetailImg />
         {/* <KakaoMap /> */}
         <div
           style={{

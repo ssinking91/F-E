@@ -51,14 +51,8 @@ const Input = (props) => {
 };
 
 Input.defaultProps = {
-  multiLine: false,
-  label: false,
   placeholder: "텍스트를 입력해주세요",
-  _onChange: () => {},
   type: "text",
-  value: "",
-  is_submit: false,
-  onSubmit: () => {},
 };
 
 const ElTextarea = styled.textarea`
