@@ -40,18 +40,7 @@ const Button = (props) => {
   );
 };
 
-Button.defaultProps = {
-  text: "false",
-  children: null,
-  _onClick: () => {},
-  is_float: "false",
-  margin: "false",
-  width: "false",
-  padding: "false",
-  background_color: "false",
-  color: "false",
-  border: "none",
-};
+Button.defaultProps = {};
 
 const ElButton = styled.button`
   width: ${(props) => props.width};

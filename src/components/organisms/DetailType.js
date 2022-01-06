@@ -1,10 +1,13 @@
 import { Grid, Text } from "../atoms/index";
+import { useSelector } from "react-redux";
 
 export default function DetailType() {
   const sido = ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10"];
+  const typeInfo = useSelector((store) => store.detail.info.detail2);
+  console.log(typeInfo);
   return (
     <>
-      <Grid width="1200px">
+      <Grid width="1200px" margin="auto">
         <Grid is_flex>
           <Text h3 margin="80px auto 22px auto">
             타입 유형별 상세정보

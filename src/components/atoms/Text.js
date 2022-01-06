@@ -93,14 +93,8 @@ export default function Text(props) {
 }
 
 Text.defaultProps = {
-  children: null,
-  margin: "false",
-  padding: "false",
   color: "#333333",
   size: "14px",
-  weight: "false",
-  width: "false",
-  _onClick: () => {},
 };
 
 // text style

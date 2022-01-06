@@ -19,7 +19,8 @@ export default function DetailTemp(props) {
 
   useEffect(() => {
     dispatch(getDetailInfoDB(locate));
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
