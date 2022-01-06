@@ -23,8 +23,10 @@ const Main2Card = (props) => {
       </Imageitem>
       <Item>
         <Info1 onClick={_onClick}>
+          <LabelDiv>
           <Label registration></Label>
-          <Text h4 margin="0 0 0 15px" width="331px">
+          </LabelDiv>
+          <Text h4 margin="0 0 0 15px" width="316px">
             {props.name}
           </Text>
         </Info1>
@@ -91,6 +93,11 @@ const ImageDiv = styled.div`
   bottom: 123.35px;
 `;
 
+const LabelDiv = styled.div`
+  width: 64px;
+  height: 29px;
+`;
+
 const Item = styled.div`
   width: 395px;
   height: 120px;
@@ -101,8 +108,9 @@ const Item = styled.div`
 
 const Info1 = styled.div`
   width: 395px;
-  height: 50px;
+  min-height: 50px;
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 15px;
   align-items: center;
   :hover {
