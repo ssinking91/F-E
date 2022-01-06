@@ -8,7 +8,7 @@ import { ReactComponent as Scroll } from "../../images/scroll.svg";
 import mainBackgroundImage from "../../images/mainBackgroundImage.jpg";
 import NavBarAnchor from "./NavBarAnchor";
 
-const Section01 = (props) => {
+const Section01 = () => {
   const dispatch = useDispatch();
 
   const infoNum = useSelector((state) => state.main.total);
@@ -16,6 +16,7 @@ const Section01 = (props) => {
 
   useEffect(() => {
     dispatch(mainAction.getTotalDB());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
@@ -37,7 +38,7 @@ const Section01 = (props) => {
             <Text h2 color="#fff" margin="15px 0 60px 0">
               당신을 위한 청약 정보가{" "}
               <span style={{ color: "#fff", borderBottom: "3px solid #fff" }}>
-                166개
+                {totalNum}개
               </span>{" "}
               모여있어요
             </Text>

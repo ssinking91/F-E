@@ -10,11 +10,16 @@ import { Text } from "../atoms/index";
 const Section02 = (props) => {
   const dispatch = useDispatch();
 
-  const private_list = useSelector((state) => state.main.list);
+  const private_list = useSelector((state) => state.main.private_list);
   const private_regionInfo = private_list.slice(0, 3);
+
+  const public_list = useSelector((state) => state.main.public_list);
+  const public_regionInfo = public_list.slice(0, 3);
+  console.log(public_regionInfo);
 
   useEffect(() => {
     dispatch(mainAction.getPrivateInfoDB());
+    dispatch(mainAction.getPublicInfoDB());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
@@ -39,24 +44,28 @@ const Section02 = (props) => {
               <Text h4 color="#778899">
                 공공 분양
               </Text>
-              <Main2Card
-                // _onClick={() => {
-                //   history.push(`/detail/${props.detailId}`);
-                // }}
-                name={"{houseName}"}
-                startDate={"2021.12.21"}
-                endDate={"2021.12.23"}
-                size={"84m² ~ 116m²/60m²~85m²"}
-                price={"54,470 ~ 72,670만원"}
-              />
-              <Main2Card
-                name={"인천 강화 서희스타힐스 1단지"}
-                startDate={"2021.12.21"}
-                endDate={"2021.12.23"}
-                size={"84m² ~ 116m²/60m²~85m²"}
-                price={"54,470 ~ 72,670만원"}
-              />
-              <Main2Card />
+              {public_regionInfo.map((item, index) => {
+                const houseName = item.panName;
+                const receptStartDate = item.startDate;
+                const receptEndDate = item.closeDate;
+                const imgUrl = item.ImgUrl;
+
+                return (
+                  <Main2Card
+                    key={index}
+                    image={imgUrl}
+                    name={houseName}
+                    startDate={receptStartDate}
+                    endDate={receptEndDate}
+                    // 데이터 받아야 함.
+                    size={"84m² ~ 116m²/60m²~85m²"}
+                    price={"54,470 ~ 72,670만원"}
+                    _onClick={() => {
+                      history.push(`/detail/${props.detailId}`);
+                    }}
+                  />
+                );
+              })}
             </PublicCards>
 
             <PrivateCards>

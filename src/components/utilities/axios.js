@@ -21,8 +21,9 @@ export const apis = {
   // MainPage
   getTotalNum: () => instance.get(`/api/main/total`), // 전체 청약갯수
   getPrivateInfo: () => instance.get(`/api/main/privateSido`), // 민영 - 청약정보
-  getMyPrivateInfo: (id) => instance.get(`/api/users/userId=${id}/privates`), // 민영 - 내가 지정한 지역정보
-  getMyPublicInfo: (id) => instance.get(`/api/users/userId=${id}/publics`), // 공공 - 내가 지정한 지역정보
+  getPublicInfo: () => instance.get(`/api/main/publicSido`), // 공공 - 청약정보
+  // getMyPrivateInfo: (id) => instance.get(`/api/users/userId=${id}/privates`), // 민영 - 내가 지정한 지역정보
+  // getMyPublicInfo: (id) => instance.get(`/api/users/userId=${id}/publics`), // 공공 - 내가 지정한 지역정보
   manySaved: () => instance.get("/api/likes"), // 저장된 청약정보 많은 순
   youtubeLink: () => instance.get("/api/youtube"), // 유튜브 링크 (예정)
 
