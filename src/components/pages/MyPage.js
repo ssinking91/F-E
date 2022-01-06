@@ -144,7 +144,6 @@ const MyCardImage = styled.div`
   width: 207px;
   height: 207px;
   border-radius: 20px;
-  /* background-image: url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"); */
   background-image: url(${(props) =>
     props.src ||
     "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"});
