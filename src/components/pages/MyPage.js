@@ -17,12 +17,26 @@ const MyPage = (props) => {
         </MyCardList>
       </MyCard>
       <MyPost>
-        <Text h3 margin="0 0 30px 0">
+        <Text h3 margin="0 0 15px 0">
           저장한 청약 정보
         </Text>
         <MyPostCardList>
+          <Text h4 color="#778899" width="1195px" margin="30px 0 30px 0">
+            공공 분양
+          </Text>
           <Main2Card />
           <Main2Card />
+          <Main2Card />
+          <Main2Card />
+          <Main2Card />
+          <Main2Card />
+          <Main2Card />
+          <Main2Card />
+        </MyPostCardList>
+        <MyPostCardList>
+          <Text h4 color="#778899" width="1195px" margin="30px 0 30px 0">
+            민간 분양
+          </Text>
           <Main2Card />
           <Main2Card />
           <Main2Card />
@@ -48,7 +62,8 @@ const MyCardImage = styled.div`
   width: 207px;
   height: 207px;
   border-radius: 20px;
-  background-image: url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png");
+  /* background-image: url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"); */
+  background-image: url("${(props) => props.src||"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"}");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -66,7 +81,7 @@ const MyPost = styled.div`
   width: 1195px;
   display: flex;
   flex-direction: column;
-  margin: 0px auto;
+  margin: 0px auto 80px;
 `;
 
 const MyPostCardList = styled.div`
