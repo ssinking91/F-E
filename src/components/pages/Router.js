@@ -4,6 +4,8 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import { ConnectedRouter } from "connected-react-router";
+import { history } from "../redux/configStore";
 import Main from "./Main";
 import List from "./List";
 import Detail from "./Detail";
@@ -15,8 +17,8 @@ import Test from "./Test";
 
 export default function router() {
   return (
-    <>
-      <Router>
+ 
+      <ConnectedRouter history={history}>
         <Switch>
           <Route exact path="/" component={Main} />
           <Route path="/list" component={List} />
@@ -29,7 +31,7 @@ export default function router() {
           <Route path="/test" component={Test} />
           <Redirect from="*" to="/" />
         </Switch>
-      </Router>
-    </>
+      </ConnectedRouter>
+   
   );
 }

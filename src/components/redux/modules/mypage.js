@@ -14,7 +14,7 @@ const editUserInfo = createAction(EDIT_USERINFO, (sido) => ({ sido }));
 const getUserInfosFB = (userKey) => {
   return async function (dispatch, getState, { history }) {
     try {
-      console.log("getCommentsFB 시작");
+      console.log("getUserInfosFB 시작");
       const response = await apis.getUserInfos(userKey);
 
       dispatch(getUserInfo(response.data));
@@ -27,14 +27,14 @@ const getUserInfosFB = (userKey) => {
 const editUserInfosFB = (userName) => {
   return async function (dispatch, getState, { history }) {
     try {
-      console.log("addCommentsFB 시작");
+      console.log("editUserInfosFB 시작");
 
       const response = await apis.editUserInfos(userName);
       console.log(response);
 
       dispatch(editUserInfo(response)); // 댓글 목록 다시 요청
     } catch (error) {
-      console.log("addCommentsFB error");
+      console.log("editUserInfosFB error");
     }
   };
 };
@@ -43,7 +43,7 @@ const editUserInfosFB = (userName) => {
 const initialState = {
   list: {
     email: "",
-    sido: "",
+    sido: "인천광역시",
     likes: [
       {
         공공: [{}],
