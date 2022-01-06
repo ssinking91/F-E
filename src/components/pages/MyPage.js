@@ -17,7 +17,7 @@ const MyPage = (props) => {
         </MyCardList>
       </MyCard>
       <MyPost>
-        <Text h3>
+        <Text h3 margin="0 0 15px 0">
           저장한 청약 정보
         </Text>
         <MyPostCardList>
@@ -81,7 +81,7 @@ const MyPost = styled.div`
   width: 1195px;
   display: flex;
   flex-direction: column;
-  margin: 0px auto;
+  margin: 0px auto 80px;
 `;
 
 const MyPostCardList = styled.div`
