@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as mainAction } from "../redux/modules/main";
+import { history } from "../redux/configStore";
 import Main2Card from "./Main2Card";
 import NavBarAnchor from "./NavBarAnchor";
 import { Text } from "../atoms/index";
@@ -55,6 +55,7 @@ const Section02 = (props) => {
                 const receptEndDate = item.closeDate;
                 const size = item.size;
                 const aisTypeName = item.aisTypeName;
+                const panId = item.panId;
 
                 return (
                   <Link
@@ -62,19 +63,16 @@ const Section02 = (props) => {
                       pathname: `/public/${item.panId}`,
                     }}
                     key={index}
-                  >
-                    <Main2Card
-                      image={imgUrl}
-                      name={houseName}
-                      startDate={receptStartDate}
-                      endDate={receptEndDate}
-                      size={`${size} m²`}
-                      price={aisTypeName}
-                      // _onClick={() => {
-                      //   history.push(`/detail/${props.detailId}`);
-                      // }}
-                    />
-                  </Link>
+                    image={imgUrl}
+                    name={houseName}
+                    startDate={receptStartDate}
+                    endDate={receptEndDate}
+                    size={`${size} m²`}
+                    price={aisTypeName}
+                    detailView={() => {
+                      history.push(`/public/${panId}`);
+                    }}
+                  />
                 );
               })}
             </PublicCards>
@@ -90,23 +88,22 @@ const Section02 = (props) => {
                 const receptEndDate = item.receptEndDate;
                 const size = item.size;
                 const supplyAmount = item.supplyAmount;
+                const pblancNo = item.pblancNo;
 
                 return (
-                  <Link
-                    to={{
-                      pathname: `/private/${item.pblancNo}`,
-                    }}
+                  <Main2Card
                     key={index}
-                  >
-                    <Main2Card
-                      image={imgUrl}
-                      name={houseName}
-                      startDate={receptStartDate}
-                      endDate={receptEndDate}
-                      size={`${size} m²`}
-                      price={`${supplyAmount} 만원`}
-                    />
-                  </Link>
+                    aptNo={pblancNo}
+                    image={imgUrl}
+                    name={houseName}
+                    startDate={receptStartDate}
+                    endDate={receptEndDate}
+                    size={`${size} m²`}
+                    price={`${supplyAmount} 만원`}
+                    detailView={() => {
+                      history.push(`/private/${pblancNo}`);
+                    }}
+                  />
                 );
               })}
             </PrivateCards>

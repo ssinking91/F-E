@@ -7,7 +7,7 @@ import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 import apt_tobe from "../../images/apt_tobe.svg";
 
 const Main3Card = (props) => {
-  const { _onClick } = props;
+  const { detailView } = props;
   const [save3, setSave3] = React.useState(false);
 
   return (
@@ -26,7 +26,8 @@ const Main3Card = (props) => {
         </ImageDiv>
       </Imageitem>
       <Item>
-        <Info1 onClick={_onClick}>
+        <Info1 onClick={detailView}>
+
           <LabelDiv>
             <Label registration></Label>
           </LabelDiv>
@@ -116,7 +117,8 @@ const Info1 = styled.div`
   :hover {
     cursor: pointer;
   }
-  & > p:hover {       
+  & > p:hover {
+
     color: #20d7ff;
   }
 `;
