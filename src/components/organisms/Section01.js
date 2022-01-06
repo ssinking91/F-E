@@ -37,13 +37,19 @@ const Section01 = () => {
             <Text h1 color="#fff">
               집을 모아놓다.zip
             </Text>
-            <Text h2 color="#fff" margin="15px 0 60px 0">
-              당신을 위한 청약 정보가{" "}
-              <span style={{ color: "#fff", borderBottom: "3px solid #fff" }}>
-                {totalNum}개
-              </span>{" "}
-              모여있어요
-            </Text>
+            {totalNum ? (
+              <Text h2 color="#fff" margin="15px 0 60px 0">
+                당신을 위한 청약 정보가{" "}
+                <span style={{ color: "#fff", borderBottom: "3px solid #fff" }}>
+                  {totalNum}개
+                </span>{" "}
+                모여있어요
+              </Text>
+            ) : (
+              <Text h2 color="#fff" margin="15px 0 60px 0">
+                당신을 위한 청약 정보가 모여있어요
+              </Text>
+            )}
             <Button background_color="#20d7ff" padding="13px 21px">
               <Text h3 color="#fff">
                 <Link to="/list">청약 리스트 보러가기</Link>

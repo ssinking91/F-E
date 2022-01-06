@@ -47,12 +47,12 @@ const Image = (props) => {
 Image.defaultProps = {
   shape: "circle",
   src: `${apt_tobe}`,
-  size: false,
-  width: false,
-  height: false,
-  margin: false,
-  padding: false,
-  color: false,
+  size: "false",
+  width: "false",
+  height: "false",
+  margin: "false",
+  padding: "false",
+  color: "false",
 };
 
 const CardImage = styled.div`

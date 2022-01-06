@@ -86,9 +86,9 @@ const Section02 = (props) => {
                     to={{
                       pathname: `/private/${item.pblancNo}`,
                     }}
+                    key={index}
                   >
                     <Main2Card
-                      key={index}
                       image={imgUrl}
                       name={houseName}
                       startDate={receptStartDate}
