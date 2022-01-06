@@ -10,7 +10,7 @@ const Main2Card = (props) => {
   const [save2, setSave2] = React.useState(false);
 
   return (
-    <Container onClick={_onClick}>
+    <Container>
       <Imageitem>
         <Image shape="card" src={props.image} />
         <ImageDiv
@@ -22,9 +22,9 @@ const Main2Card = (props) => {
         </ImageDiv>
       </Imageitem>
       <Item>
-        <Info1>
-          <Label registration height="29px"></Label>
-          <Text h4 margin="0 0 0 15px" width="331px" height="50px">
+        <Info1 onClick={_onClick}>
+          <Label registration></Label>
+          <Text h4 margin="0 0 0 15px" width="331px">
             {props.name}
           </Text>
         </Info1>
@@ -104,7 +104,10 @@ const Info1 = styled.div`
   height: 50px;
   display: flex;
   margin-bottom: 15px;
-  // align-items: center; // 라벨 가운데 정렬시
+  align-items: center;
+  :hover {
+    cursor: pointer;
+}
 `;
 
 const Info2 = styled.div`
