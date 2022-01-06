@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { history } from "../redux/configStore";
+// import { history } from "../redux/configStore";
 import { actionCreators as mainAction } from "../redux/modules/main";
 import Main2Card from "./Main2Card";
 import NavBarAnchor from "./NavBarAnchor";
@@ -62,9 +62,9 @@ const Section02 = (props) => {
                     // 데이터 받아야 함.
                     size={"84m² ~ 116m²/60m²~85m²"}
                     price={"54,470 ~ 72,670만원"}
-                    _onClick={() => {
-                      history.push(`/detail/${props.detailId}`);
-                    }}
+                    // _onClick={() => {
+                    //   history.push(`/detail/${props.detailId}`);
+                    // }}
                   />
                 );
               })}
@@ -90,9 +90,9 @@ const Section02 = (props) => {
                     // 데이터 받아야 함.
                     size={"84m² ~ 116m²/60m²~85m²"}
                     price={"54,470 ~ 72,670만원"}
-                    _onClick={() => {
-                      history.push(`/detail/${props.detailId}`);
-                    }}
+                    // _onClick={() => {
+                    //   history.push(`/detail/${props.detailId}`);
+                    // }}
                   />
                 );
               })}
