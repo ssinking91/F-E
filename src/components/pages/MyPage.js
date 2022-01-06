@@ -35,49 +35,93 @@ const MyPage = (props) => {
     <>
       <NavBarLink />
       <Container>
-      <MyCard >
-        <MyCardImage src={userImage} />
-        <MyCardList>
-          <Text h2 margin="0 0 10px 0">
-            {localStorage.getItem("userName")} 님
+        <MyCard>
+          <MyCardImage src={userImage} />
+          <MyCardList>
+            <Text h2 margin="0 0 10px 0">
+              {localStorage.getItem("userName")} 님
+            </Text>
+            <Text h4 boldText>
+              {sido}
+            </Text>
+          </MyCardList>
+        </MyCard>
+        <MyPost>
+          <Text h3 margin="0 0 15px 0">
+            저장한 청약 정보
           </Text>
-          <Text h4 boldText>
-            {sido}
-          </Text>
-        </MyCardList>
-      </MyCard>
-      <MyPost>
-        <Text h3 margin="0 0 15px 0">
-          저장한 청약 정보
-        </Text>
-        <MyPostCardList>
-          <Text h4 color="#778899" width="1195px" margin="30px 0 30px 0">
-            공공 분양
-          </Text>
-          {}
-          <Main2Card />
-          <Main2Card />
-          <Main2Card />
-          <Main2Card />
-          <Main2Card />
-          <Main2Card />
-          <Main2Card />
-          <Main2Card />
-        </MyPostCardList>
-        <MyPostCardList>
-          <Text h4 color="#778899" width="1195px" margin="30px 0 30px 0">
-            민간 분양
-          </Text>
-          <Main2Card />
-          <Main2Card />
-          <Main2Card />
-          <Main2Card />
-          <Main2Card />
-          <Main2Card />
-          <Main2Card />
-          <Main2Card />
-        </MyPostCardList>
-      </MyPost>
+          <MyPostCardList>
+            <Text h4 color="#778899" width="1195px" margin="30px 0 30px 0">
+              공공 분양
+            </Text>
+            {publicInfo.length !== 0  ? (
+              publicInfo.map((item, idx) => {
+                const houseName = item.panName;
+                const receptStartDate = item.startDate;
+                const receptEndDate = item.closeDate;
+                const imgUrl = item.ImgUrl;
+                return (
+                  <Main2Card
+                    key={idx}
+                    image={imgUrl}
+                    name={houseName}
+                    startDate={receptStartDate}
+                    endDate={receptEndDate}
+                    // 데이터 받아야 함.
+                    size={"84m² ~ 116m²/60m²~85m²"}
+                    price={"54,470 ~ 72,670만원"}
+                    _onClick={() => {
+                      history.push(`/public/:aptNo`);
+                    }}
+                  />
+                );
+              })
+            ) : ( 
+              <Text h4 width="1195px" margin="30px 0 30px 0">
+                😎 공공 분양저장된 청약정보가 없습니다
+              </Text>
+            )}
+
+            <Main2Card />
+
+          </MyPostCardList>
+          <MyPostCardList>
+            <Text h4 color="#778899" width="1195px" margin="30px 0 30px 0">
+              민간 분양
+            </Text>
+
+            {privateInfo.length !== 0  ? (
+              privateInfo.map((item, idx) => {
+                const houseName = item.panName;
+                const receptStartDate = item.startDate;
+                const receptEndDate = item.closeDate;
+                const imgUrl = item.ImgUrl;
+                return (
+                  <Main2Card
+                    key={idx}
+                    image={imgUrl}
+                    name={houseName}
+                    startDate={receptStartDate}
+                    endDate={receptEndDate}
+                    // 데이터 받아야 함.
+                    size={"84m² ~ 116m²/60m²~85m²"}
+                    price={"54,470 ~ 72,670만원"}
+                    _onClick={() => {
+                      history.push(`/private/:aptNo`);
+                    }}
+                  />
+                );
+              })
+            ) : ( 
+              <Text h4 width="1195px" margin="30px 0 30px 0">
+                😎 민간 분양 저장된 청약정보가 없습니다
+              </Text>
+            )}
+            
+            <Main2Card />
+         
+          </MyPostCardList>
+        </MyPost>
       </Container>
       <Footer />
     </>
@@ -85,8 +129,8 @@ const MyPage = (props) => {
 };
 
 const Container = styled.div`
-width: 100%;
-padding-top : 100px
+  width: 100%;
+  padding-top: 100px;
 `;
 
 const MyCard = styled.div`
