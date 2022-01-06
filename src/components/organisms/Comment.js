@@ -21,7 +21,7 @@ const Comment = (props) => {
   const list = useSelector((state) => state.comment.list);
   console.log(list);
   console.log(list.length);
-  console.log(list[0].createdAt);
+  //console.log(list[0].createdAt);
 
   return (
     <Container>

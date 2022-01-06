@@ -59,7 +59,7 @@ const Section02 = (props) => {
                     size={`${item.size} m²`}
                     price={item.aisTypeName}
                     //공공 청약정보 ID 값
-                    detailView={() => {
+                    _onClick={() => {
                       history.push(`/public/${item.panId}`);
                     }}
                   />
@@ -82,7 +82,7 @@ const Section02 = (props) => {
                     size={`${item.size} m²`}
                     price={`${item.supplyAmount} 만원`}
                     //민간 청약정보 ID 값
-                    detailView={() => {
+                    _onClick={() => {
                       history.push(`/private/${item.pblancNo}`);
                     }}
                   />
