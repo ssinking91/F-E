@@ -9,41 +9,40 @@ import Footer from "../organisms/Footer";
 import { Text } from "../atoms/index";
 import { mypagetActions } from "../redux/modules/mypage";
 
-
 const MyPage = (props) => {
-
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    if(!localStorage.getItem('userKey')){
+    if (!localStorage.getItem("userKey")) {
       window.alert("로그인 먼저 해주세요😎");
-     return history.push("/login");
+      return history.push("/login");
     }
 
-   const userKey = localStorage.getItem('userKey') 
+    const userKey = localStorage.getItem("userKey");
     dispatch(mypagetActions.getUserInfosFB(userKey));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const userImage = localStorage.getItem('userImage'); 
-  
-  const sido = useSelector(state => state.mypage.list.sido);
-  const publicInfo = useSelector(state => state.mypage.list.likes[0].공공);
-  console.log(publicInfo);
-  const privateInfo = useSelector(state => state.mypage.list.likes[0].민영);
-  console.log(privateInfo);
+  const userImage = localStorage.getItem("userImage");
 
-  
+  const sido = useSelector((state) => state.mypage.list.sido);
+  const publicInfo = useSelector((state) => state.mypage.list.likes[0].공공);
+  console.log(publicInfo);
+  const privateInfo = useSelector((state) => state.mypage.list.likes[0].민영);
+  console.log(privateInfo);
 
   return (
     <>
       <NavBarLink />
-      <MyCard >
+      <MyCard>
         <MyCardImage src={userImage} />
         <MyCardList>
           <Text h2 margin="0 0 10px 0">
-            {localStorage.getItem('userName')} 님
+            {localStorage.getItem("userName")} 님
           </Text>
-          <Text h4 boldText>{sido}</Text>
+          <Text h4 boldText>
+            {sido}
+          </Text>
         </MyCardList>
       </MyCard>
       <MyPost>
@@ -94,7 +93,9 @@ const MyCardImage = styled.div`
   height: 207px;
   border-radius: 20px;
   /* background-image: url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"); */
-  background-image: url(${(props) => props.src || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"});
+  background-image: url(${(props) =>
+    props.src ||
+    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
