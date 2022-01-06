@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import { history } from "../redux/configStore";
 import { actionCreators as mainAction } from "../redux/modules/main";
 import Main2Card from "./Main2Card";
 import NavBarAnchor from "./NavBarAnchor";
@@ -17,23 +16,25 @@ const Section02 = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // 민영 공고 3개
+  // 민간 공고 3개
   const private_list = useSelector((state) => state.main.private_list);
   const private_regionInfo = private_list.slice(0, 3);
+  // console.log(private_regionInfo);
 
   // 공공 공고 3개
   const public_list = useSelector((state) => state.main.public_list);
-  const public_regionInfo = public_list.slice(0, 3);
+  const public_regionInfo = public_list.slice(2, 5);
+  // console.log(public_regionInfo);
 
   return (
     <>
-      <div className="section num2" style={{ width: "100%", height: "100" }}>
+      <div className="section" style={{ width: "100%", height: "100" }}>
         <NavBarAnchor />
         <SectionWrap>
           <SectionItem>
             <AllSpan>
               <Span1 className="a">인천광역시</Span1>
-              <Span1 className="b">강화군</Span1>
+              {/* <Span1 className="b">강화군</Span1> */}
               <Span2>의 청약은?</Span2>
               <span>📌</span>
             </AllSpan>
@@ -48,10 +49,12 @@ const Section02 = (props) => {
                 공공 분양
               </Text>
               {public_regionInfo.map((item, index) => {
+                const imgUrl = item.ImgUrl;
                 const houseName = item.panName;
                 const receptStartDate = item.startDate;
                 const receptEndDate = item.closeDate;
-                const imgUrl = item.ImgUrl;
+                const size = item.size;
+                const aisTypeName = item.aisTypeName;
 
                 return (
                   <Main2Card
@@ -60,9 +63,8 @@ const Section02 = (props) => {
                     name={houseName}
                     startDate={receptStartDate}
                     endDate={receptEndDate}
-                    // 데이터 받아야 함.
-                    size={"84m² ~ 116m²/60m²~85m²"}
-                    price={"54,470 ~ 72,670만원"}
+                    size={`${size} m²`}
+                    price={aisTypeName}
                     // _onClick={() => {
                     //   history.push(`/detail/${props.detailId}`);
                     // }}
@@ -76,10 +78,12 @@ const Section02 = (props) => {
                 민간 분양
               </Text>
               {private_regionInfo.map((item, index) => {
+                const imgUrl = item.ImgUrl;
                 const houseName = item.houseName;
                 const receptStartDate = item.receptStartDate;
                 const receptEndDate = item.receptEndDate;
-                const imgUrl = item.ImgUrl;
+                const size = item.size;
+                const supplyAmount = item.supplyAmount;
 
                 return (
                   <Link
@@ -93,9 +97,8 @@ const Section02 = (props) => {
                       name={houseName}
                       startDate={receptStartDate}
                       endDate={receptEndDate}
-                      // 데이터 받아야 함.
-                      size={"84m² ~ 116m²/60m²~85m²"}
-                      price={"54,470 ~ 72,670만원"}
+                      size={`${size} m²`}
+                      price={`${supplyAmount} 만원`}
                     />
                   </Link>
                 );

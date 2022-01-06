@@ -23,8 +23,8 @@ const Main2Card = (props) => {
       </Imageitem>
       <Item>
         <Info1>
-          <Label registration></Label>
-          <Text h4 margin="0 0 0 15px" width="331px">
+          <Label registration height="29px"></Label>
+          <Text h4 margin="0 0 0 15px" width="331px" height="50px">
             {props.name}
           </Text>
         </Info1>
@@ -104,7 +104,7 @@ const Info1 = styled.div`
   height: 50px;
   display: flex;
   margin-bottom: 15px;
-  align-items: center;
+  // align-items: center; // 라벨 가운데 정렬시
 `;
 
 const Info2 = styled.div`

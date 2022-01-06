@@ -6,7 +6,7 @@ import { ReactComponent as Top } from "../../images/top.svg";
 const Section04 = (props) => {
   return (
     <>
-      <div className="section num4">
+      <div className="section">
         <NavBarAnchor />
         <SectionWrap>
           <AllSpan>

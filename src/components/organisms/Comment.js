@@ -1,17 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { history } from "../redux/configStore";
-import { commentActions } from "../redux/modules/comment";
+// import { useDispatch, useSelector } from "react-redux";
+// import { history } from "../redux/configStore";
+// import { commentActions } from "../redux/modules/comment";
 
 import { Text } from "../atoms/index";
 
 const Comment = (props) => {
-
   // const dispatch = useDispatch();
 
   // React.useEffect(() => {
- 
+
   //   const userKey = localStorage.getItem("userKey");
   //   dispatch(commentActions.getCommentsFB(userKey));
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -30,9 +29,7 @@ const Comment = (props) => {
       <Item>
         <CommentWrite>
           <CommentWriteP>
-            <Text h4>
-              댓글
-            </Text>
+            <Text h4>댓글</Text>
             <Text h4 color="#20D7FF">
               (3)
             </Text>
@@ -69,7 +66,7 @@ const Comment = (props) => {
               </Text>
             </CommentOneInfo>
           </CommentOne>
-          
+
           <CommentOne>
             <CommentOneInfo>
               <Image />
