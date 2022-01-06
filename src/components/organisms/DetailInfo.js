@@ -5,6 +5,7 @@ import { Grid, Button, Text } from "../atoms/index";
 import BundleText from "../molecules/BundleText";
 import defaultImage from "../../images/defaultImage.png";
 import { getDetailInfoDB } from "../redux/modules/detail";
+// import DetailType from "./DetailType";
 
 export default function DetailInfo(props) {
   const dispatch = useDispatch();
