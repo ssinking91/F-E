@@ -49,25 +49,18 @@ const Section02 = (props) => {
                 공공 분양
               </Text>
               {public_regionInfo.map((item, index) => {
-                const imgUrl = item.ImgUrl;
-                const houseName = item.panName;
-                const receptStartDate = item.startDate;
-                const receptEndDate = item.closeDate;
-                const size = item.size;
-                const aisTypeName = item.aisTypeName;
-                const panId = item.panId;
-
                 return (
                   <Main2Card
                     key={index}
-                    image={imgUrl}
-                    name={houseName}
-                    startDate={receptStartDate}
-                    endDate={receptEndDate}
-                    size={`${size} m²`}
-                    price={aisTypeName}
+                    image={item.ImgUrl}
+                    name={item.panName}
+                    startDate={item.startDate}
+                    endDate={item.closeDate}
+                    size={`${item.size} m²`}
+                    price={item.aisTypeName}
+                    //공공 청약정보 ID 값
                     detailView={() => {
-                      history.push(`/public/${panId}`);
+                      history.push(`/public/${item.panId}`);
                     }}
                   />
                 );
@@ -79,26 +72,18 @@ const Section02 = (props) => {
                 민간 분양
               </Text>
               {private_regionInfo.map((item, index) => {
-                const imgUrl = item.ImgUrl;
-                const houseName = item.houseName;
-                const receptStartDate = item.receptStartDate;
-                const receptEndDate = item.receptEndDate;
-                const size = item.size;
-                const supplyAmount = item.supplyAmount;
-                const pblancNo = item.pblancNo;
-
                 return (
                   <Main2Card
                     key={index}
-                    aptNo={pblancNo}
-                    image={imgUrl}
-                    name={houseName}
-                    startDate={receptStartDate}
-                    endDate={receptEndDate}
-                    size={`${size} m²`}
-                    price={`${supplyAmount} 만원`}
+                    image={item.ImgUrl}
+                    name={item.houseName}
+                    startDate={item.receptStartDate}
+                    endDate={item.receptEndDate}
+                    size={`${item.size} m²`}
+                    price={`${item.supplyAmount} 만원`}
+                    //민간 청약정보 ID 값
                     detailView={() => {
-                      history.push(`/private/${pblancNo}`);
+                      history.push(`/private/${item.pblancNo}`);
                     }}
                   />
                 );

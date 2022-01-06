@@ -35,26 +35,19 @@ const Section03 = (props) => {
           </SectionItem>
           <CardWrap>
             {public_regionInfo_hot.map((item, index) => {
-              const imgUrl = item.ImgUrl;
-              const houseName = item.panName;
-              const receptStartDate = item.startDate;
-              const receptEndDate = item.closeDate;
-              const size = item.size;
-              const aisTypeName = item.aisTypeName;
-              const panId = item.panId;
-
               return (
                 <Main3Card
                   key={index}
                   number={`0${index + 1})`}
-                  image={imgUrl}
-                  name={houseName}
-                  startDate={receptStartDate}
-                  endDate={receptEndDate}
-                  size={`${size} m²`}
-                  price={aisTypeName}
+                  image={item.ImgUrl}
+                  name={item.panName}
+                  startDate={item.startDate}
+                  endDate={item.closeDate}
+                  size={`${item.size} m²`}
+                  price={item.aisTypeName}
+                  //공공 청약정보 ID 값
                   detailView={() => {
-                    history.push(`/public/${panId}`);
+                    history.push(`/public/${item.panId}`);
                   }}
                 />
               );
