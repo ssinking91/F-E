@@ -1,10 +1,6 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
-import {
-  getComments,
-  addComments,
-  deleteComments,
-} from "../../utilities/axios/apis";
+import { apis } from "../../utilities/axios";
 
 
 // action type
@@ -28,7 +24,7 @@ const getCommentsFB = (aptNo) => {
   return async function (dispatch, getState, { history }) {
     try {
       console.log("getCommentsFB 시작");
-      const response = await getComments(aptNo);
+      const response = await apis.getComments(aptNo);
 
       dispatch(getComment(response.data));
     } catch (error) {
@@ -42,7 +38,7 @@ const addCommentsFB = (aptNo, commentInfo) => {
     try {
       console.log("addCommentsFB 시작");
       console.log(aptNo, commentInfo);
-      const response = await addComments(aptNo, commentInfo);
+      const response = await apis.addComments(aptNo, commentInfo);
       console.log(response);
 
       dispatch(getCommentsFB(aptNo)); // 댓글 목록 다시 요청
@@ -56,7 +52,7 @@ const deleteCommentsFB = (aptNo, commentInfo) => {
   return async (dispatch, getState, { history }) => {
     try {
       console.log("deleteCommentsFB 시작");
-      const response = await deleteComments(aptNo, commentInfo);
+      const response = await apis.deleteComments(aptNo, commentInfo);
       console.log(response);
 
       window.alert("댓글이 삭제 되었습니다.");
