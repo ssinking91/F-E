@@ -82,7 +82,6 @@ const Section02 = (props) => {
                 const imgUrl = item.ImgUrl;
 
                 return (
-<<<<<<< HEAD
                   <Link
                     to={{
                       pathname: `/detail/${item.pblancNo}`,
@@ -101,26 +100,8 @@ const Section02 = (props) => {
                       // 데이터 받아야 함.
                       size={"84m² ~ 116m²/60m²~85m²"}
                       price={"54,470 ~ 72,670만원"}
-                      _onClick={() => {
-                        history.push(`/detail/${props.detailId}`);
-                      }}
                     />
                   </Link>
-=======
-                  <Main2Card
-                    key={index}
-                    image={imgUrl}
-                    name={houseName}
-                    startDate={receptStartDate}
-                    endDate={receptEndDate}
-                    // 데이터 받아야 함.
-                    size={"84m² ~ 116m²/60m²~85m²"}
-                    price={"54,470 ~ 72,670만원"}
-                    // _onClick={() => {
-                    //   history.push(`/detail/${props.detailId}`);
-                    // }}
-                  />
->>>>>>> 3f1d80f5256f67d0caca20f1b2491db87986aa16
                 );
               })}
             </PrivateCards>
