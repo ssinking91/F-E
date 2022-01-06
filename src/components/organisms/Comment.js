@@ -2,29 +2,27 @@ import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { history } from "../redux/configStore";
 import { commentActions } from "../redux/modules/comment";
 
 import { Text } from "../atoms/index";
 
 const Comment = (props) => {
   const dispatch = useDispatch();
-
-  React.useEffect(async() => {
-    await dispatch(commentActions.getCommentsFB());
-  }, []);
-
   const useParam = useParams();
   const aptNo = useParam.aptNo;
-  //console.log(aptNo);
+  console.log(aptNo);
+
+  React.useEffect(() => {
+    dispatch(commentActions.getCommentsFB(aptNo));
+  }, []);
 
   const userKey = localStorage.getItem("userKey");
-  const userImage = localStorage.getItem("userImage");
 
   const list = useSelector((state) => state.comment.list);
   console.log(list);
   console.log(list.length);
-  
+  console.log(list[0].createdAt);
+
   return (
     <Container>
       <Item>
@@ -32,7 +30,7 @@ const Comment = (props) => {
           <CommentWriteDiv>
             <Text h4>댓글</Text>
             <Text h4 color="#20D7FF">
-              ({list.length || 0 })
+              ({list.length || 0})
             </Text>
           </CommentWriteDiv>
           <CommentInput>
@@ -45,62 +43,40 @@ const Comment = (props) => {
           </CommentInput>
         </CommentWrite>
         <CommentList>
-          <CommentOne>
-            <CommentOneInfo>
-              <Image />
-              <Text boldText padding="3px 0 0 0" width="100px">
-                내댓글
-              </Text>
-              <CommentOneInfoP>
-                당첨이다~!!!!!ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
-              </CommentOneInfoP>
-              <Text
-                regularText
-                width="56px"
-                margin="0 12px 0 0"
-                color="#A5AAB6"
-              >
-                21.12.31
-              </Text>
-              <Text regularText width="27px" color="#20D7FF">
-                삭제
-              </Text>
-            </CommentOneInfo>
-          </CommentOne>
+          {list.map((item, idx) => {
+            const createdAt = item.createdAt;
+            const theDay =createdAt.split(" ");
+            console.log(theDay[0].split("-").join(".").substring(2))
+            return (
+              <CommentOne>
+                <CommentOneInfo>
+                  <Image />
+                  <Text boldText padding="3px 0 0 0" width="100px">
+                    {userKey === list[idx].fk_userKey
+                      ? "내댓글"
+                      : list[idx].nickname}
+                  </Text>
+                  <CommentOneInfoP>{list[idx].content}</CommentOneInfoP>
+                  <Text
+                    regularText
+                    width="56px"
+                    margin="0 12px 0 0"
+                    color="#A5AAB6"
+                  >
+                    {theDay[0].split("-").join(".").substring(2)}
+                  </Text>
+                  {userKey === list[idx].fk_userKey ? (
+                    <Text regularText width="27px" color="#20D7FF">
+                      삭제
+                    </Text>
+                  ) : (
+                    <Text regularText width="27px" color="#20D7FF"></Text>
+                  )}
+                </CommentOneInfo>
+              </CommentOne>
+            );
+          })}
 
-          <CommentOne>
-            <CommentOneInfo>
-              <Image />
-              <Text boldText padding="3px 0 0 0" width="100px">
-                닉네임 001
-              </Text>
-
-              <CommentOneInfoP>
-                중소기업 근로자인데 파견직이라 강남구로 출근했다가 종로구로
-                출근했다가 프로젝트마다 바뀌는데 1순위로 신청하면 안되겠죠?
-                아시는 분 없나요?? 쨋든 공고 되게 좋아보이네요 일단
-                신청해야겠어요~~~ 중소기업 근로자인데 파견직이라 강남구로
-                출근했다가 종로구로 출근했다가 프로젝트마다 바뀌는데 1순위로
-                신청하면 안되겠죠? 아시는 분 없나요?? 쨋든 공고 되게
-                좋아보이네요 일단 신청해야겠어요~~~ 중소기업 근로자인데
-                파견직이라 강남구로 출근했다가 종로구로 출근했다가 프로젝트마다
-                바뀌는데 1순위로 신청하면 안되겠죠? 아시는 분 없나요?? 쨋든 공고
-                되게 좋아보이네요 일단 신청해야겠어요~~~
-              </CommentOneInfoP>
-
-              <Text
-                regularText
-                width="56px"
-                margin="0 12px 0 0"
-                color="#A5AAB6"
-              >
-                21.12.31
-              </Text>
-              <Text regularText width="27px" color="#A5AAB6">
-                신고
-              </Text>
-            </CommentOneInfo>
-          </CommentOne>
         </CommentList>
       </Item>
     </Container>
@@ -209,7 +185,9 @@ const Image = styled.div`
   border-radius: 25px;
   margin-right: 7px;
   /* background-image: url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"); */
-  background-image: url("${(props) => props.src || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"}");
+  background-image: url(${(props) =>
+    props.src ||
+    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

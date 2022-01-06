@@ -77,8 +77,8 @@ export default handleActions(
   {
     [GET_COMMENT]: (state, action) =>
       produce(state, (draft) => {
-        console.log(action.payload.comments);
-        draft.list = action.payload.comments;
+        console.log(action.payload.comments.comments);
+        draft.list = action.payload.comments.comments;
       }),
   },
   initialState
