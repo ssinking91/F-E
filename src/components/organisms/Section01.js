@@ -1,10 +1,23 @@
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Grid, Text, Button } from "../atoms/index";
+import { useDispatch, useSelector } from "react-redux";
+import { actionCreators as mainAction } from "../redux/modules/main";
 import { ReactComponent as Scroll } from "../../images/scroll.svg";
 import mainBackgroundImage from "../../images/mainBackgroundImage.jpg";
 import NavBarAnchor from "./NavBarAnchor";
+
 const Section01 = (props) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(mainAction.getTotalDB());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const infoNum = useSelector((state) => state.main.total);
+  const totalNum = infoNum.total;
+
   return (
     <>
       <div
@@ -25,7 +38,7 @@ const Section01 = (props) => {
             <Text h2 color="#fff" margin="15px 0 60px 0">
               당신을 위한 청약 정보가{" "}
               <span style={{ color: "#fff", borderBottom: "3px solid #fff" }}>
-                {props.total} 21개
+                {totalNum}
               </span>{" "}
               모여있어요
             </Text>
