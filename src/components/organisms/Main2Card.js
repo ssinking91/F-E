@@ -107,7 +107,10 @@ const Info1 = styled.div`
   align-items: center;
   :hover {
     cursor: pointer;
-}
+  }
+  & > p:hover {       
+    color: #20d7ff;
+  }
 `;
 
 const Info2 = styled.div`
