@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as mainAction } from "../redux/modules/main";
+import { history } from "../redux/configStore";
 import Main3Card from "./Main3Card";
 import NavBarAnchor from "./NavBarAnchor";
 import { Text } from "../atoms/index";
@@ -16,7 +17,6 @@ const Section03 = (props) => {
   // 공공 Hot
   const public_list_hot = useSelector((state) => state.main.public_list_hot);
   const public_regionInfo_hot = public_list_hot.slice(2, 5);
-  console.log(public_regionInfo_hot);
 
   return (
     <>
@@ -35,23 +35,20 @@ const Section03 = (props) => {
           </SectionItem>
           <CardWrap>
             {public_regionInfo_hot.map((item, index) => {
-              const imgUrl = item.ImgUrl;
-              const houseName = item.panName;
-              const receptStartDate = item.startDate;
-              const receptEndDate = item.closeDate;
-              const size = item.size;
-              const aisTypeName = item.aisTypeName;
-
               return (
                 <Main3Card
                   key={index}
                   number={`0${index + 1})`}
-                  image={imgUrl}
-                  name={houseName}
-                  startDate={receptStartDate}
-                  endDate={receptEndDate}
-                  size={`${size} m²`}
-                  price={aisTypeName}
+                  image={item.ImgUrl}
+                  name={item.panName}
+                  startDate={item.startDate}
+                  endDate={item.closeDate}
+                  size={`${item.size} m²`}
+                  price={item.aisTypeName}
+                  //공공 청약정보 ID 값
+                  detailView={() => {
+                    history.push(`/public/${item.panId}`);
+                  }}
                 />
               );
             })}

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as mainAction } from "../redux/modules/main";
+import { history } from "../redux/configStore";
 import Main2Card from "./Main2Card";
 import NavBarAnchor from "./NavBarAnchor";
 import { Text } from "../atoms/index";
@@ -49,32 +49,20 @@ const Section02 = (props) => {
                 공공 분양
               </Text>
               {public_regionInfo.map((item, index) => {
-                const imgUrl = item.ImgUrl;
-                const houseName = item.panName;
-                const receptStartDate = item.startDate;
-                const receptEndDate = item.closeDate;
-                const size = item.size;
-                const aisTypeName = item.aisTypeName;
-
                 return (
-                  <Link
-                    to={{
-                      pathname: `/public/${item.panId}`,
-                    }}
+                  <Main2Card
                     key={index}
-                  >
-                    <Main2Card
-                      image={imgUrl}
-                      name={houseName}
-                      startDate={receptStartDate}
-                      endDate={receptEndDate}
-                      size={`${size} m²`}
-                      price={aisTypeName}
-                      // _onClick={() => {
-                      //   history.push(`/detail/${props.detailId}`);
-                      // }}
-                    />
-                  </Link>
+                    image={item.ImgUrl}
+                    name={item.panName}
+                    startDate={item.startDate}
+                    endDate={item.closeDate}
+                    size={`${item.size} m²`}
+                    price={item.aisTypeName}
+                    //공공 청약정보 ID 값
+                    detailView={() => {
+                      history.push(`/public/${item.panId}`);
+                    }}
+                  />
                 );
               })}
             </PublicCards>
@@ -84,29 +72,20 @@ const Section02 = (props) => {
                 민간 분양
               </Text>
               {private_regionInfo.map((item, index) => {
-                const imgUrl = item.ImgUrl;
-                const houseName = item.houseName;
-                const receptStartDate = item.receptStartDate;
-                const receptEndDate = item.receptEndDate;
-                const size = item.size;
-                const supplyAmount = item.supplyAmount;
-
                 return (
-                  <Link
-                    to={{
-                      pathname: `/private/${item.pblancNo}`,
-                    }}
+                  <Main2Card
                     key={index}
-                  >
-                    <Main2Card
-                      image={imgUrl}
-                      name={houseName}
-                      startDate={receptStartDate}
-                      endDate={receptEndDate}
-                      size={`${size} m²`}
-                      price={`${supplyAmount} 만원`}
-                    />
-                  </Link>
+                    image={item.ImgUrl}
+                    name={item.houseName}
+                    startDate={item.receptStartDate}
+                    endDate={item.receptEndDate}
+                    size={`${item.size} m²`}
+                    price={`${item.supplyAmount} 만원`}
+                    //민간 청약정보 ID 값
+                    detailView={() => {
+                      history.push(`/private/${item.pblancNo}`);
+                    }}
+                  />
                 );
               })}
             </PrivateCards>
