@@ -21,7 +21,7 @@ export function getDetailInfoDB(locate) {
       .getDetailInfo(locate)
       .then((res) => {
         console.log(res);
-        // dispatch(getDetailInfo(res.data));
+        dispatch(getDetailInfo(res.data));
       })
       .catch((err) => {
         console.log(err);

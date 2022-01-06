@@ -23,21 +23,21 @@ export default function DetailTemp(props) {
 
   return (
     <>
-      <Grid margin="auto">
-        <NavBarLink />
+      <NavBarLink />
+      <Grid padding="50px 0 0 0">
         <DetailInfo />
         <DetailType />
         {/* <KakaoMap /> */}
+        <div
+          style={{
+            backgroundColor: "#f9f9f9",
+            borderRadius: "40px 40px 0px 0px",
+          }}
+        >
+          <Comment />
+          <Footer />
+        </div>
       </Grid>
-      <div
-        style={{
-          backgroundColor: "#f9f9f9",
-          borderRadius: "40px 40px 0px 0px",
-        }}
-      >
-        <Comment />
-        <Footer />
-      </div>
     </>
   );
 }
