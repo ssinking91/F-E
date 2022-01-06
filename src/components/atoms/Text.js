@@ -19,7 +19,8 @@ export default function Text(props) {
     color,
     size,
     weight,
-    width
+    width,
+    _onClick,
   } = props;
 
   const styles = {
@@ -33,28 +34,28 @@ export default function Text(props) {
 
   // text type
   if (h1) {
-    return <H1 {...styles}>{children}</H1>;
+    return <H1 {...styles}  onClick={_onClick} >{children}</H1>;
   }
   if (h2) {
-    return <H2 {...styles}>{children}</H2>;
+    return <H2 {...styles}  onClick={_onClick} >{children}</H2>;
   }
   if (h3) {
-    return <H3 {...styles}>{children}</H3>;
+    return <H3 {...styles}  onClick={_onClick} >{children}</H3>;
   }
   if (h4) {
-    return <H4 {...styles}>{children}</H4>;
+    return <H4 {...styles}  onClick={_onClick} >{children}</H4>;
   }
   if (menu) {
-    return <Menu {...styles}>{children}</Menu>;
+    return <Menu {...styles}  onClick={_onClick} >{children}</Menu>;
   }
   if (boldText) {
-    return <BoldText {...styles}>{children}</BoldText>;
+    return <BoldText {...styles}  onClick={_onClick} >{children}</BoldText>;
   }
   if (regularText) {
-    return <RegularText {...styles}>{children}</RegularText>;
+    return <RegularText {...styles}  onClick={_onClick} >{children}</RegularText>;
   }
   if (footer) {
-    return <Footer {...styles}>{children}</Footer>;
+    return <Footer {...styles}  onClick={_onClick} >{children}</Footer>;
   }
   return <P {...styles}>{children}</P>;
 }
@@ -67,6 +68,7 @@ Text.defaultProps = {
   size: "14px",
   weight: false,
   width: false,
+  _onClick: () => {},
 };
 
 // text style
