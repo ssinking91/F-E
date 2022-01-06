@@ -14,6 +14,7 @@ const Comment = (props) => {
 
   React.useEffect(() => {
     dispatch(commentActions.getCommentsFB(aptNo));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const userKey = localStorage.getItem("userKey");
@@ -21,7 +22,7 @@ const Comment = (props) => {
   const list = useSelector((state) => state.comment.list);
   console.log(list);
   console.log(list.length);
-  console.log(list[0].createdAt);
+  // console.log(list[0].createdAt);
 
   return (
     <Container>
@@ -45,8 +46,8 @@ const Comment = (props) => {
         <CommentList>
           {list.map((item, idx) => {
             const createdAt = item.createdAt;
-            const theDay =createdAt.split(" ");
-            console.log(theDay[0].split("-").join(".").substring(2))
+            const theDay = createdAt.split(" ");
+            console.log(theDay[0].split("-").join(".").substring(2));
             return (
               <CommentOne>
                 <CommentOneInfo>
@@ -76,7 +77,6 @@ const Comment = (props) => {
               </CommentOne>
             );
           })}
-
         </CommentList>
       </Item>
     </Container>

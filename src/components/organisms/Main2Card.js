@@ -6,7 +6,7 @@ import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 
 const Main2Card = (props) => {
-  const { detailView } = props;
+  const { _onClick } = props;
   const [save2, setSave2] = React.useState(false);
 
   return (
@@ -22,7 +22,7 @@ const Main2Card = (props) => {
         </ImageDiv>
       </Imageitem>
       <Item>
-        <Info1 onClick={detailView}>
+        <Info1 onClick={_onClick}>
           <LabelDiv>
             <Label registration></Label>
           </LabelDiv>
