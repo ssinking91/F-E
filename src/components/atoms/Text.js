@@ -20,6 +20,7 @@ export default function Text(props) {
     size,
     weight,
     width,
+    height,
     _onClick,
   } = props;
 
@@ -30,6 +31,7 @@ export default function Text(props) {
     size: size,
     weight: weight,
     width: width,
+    height: height,
   };
 
   // text type
@@ -94,12 +96,8 @@ export default function Text(props) {
 
 Text.defaultProps = {
   children: null,
-  margin: "false",
-  padding: "false",
   color: "#333333",
   size: "14px",
-  weight: "false",
-  width: "false",
   _onClick: () => {},
 };
 
@@ -140,6 +138,7 @@ const H4 = styled.p`
   padding: ${(props) => props.padding};
   color: ${(props) => props.color};
   width: ${(props) => props.width};
+  height: ${(props) => props.height};
   font-size: 18px;
   font-weight: 700;
   line-height: 25px;

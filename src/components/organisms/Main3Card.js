@@ -12,10 +12,10 @@ const Main3Card = (props) => {
   return (
     <Container>
       <Text h4 color="#778899" margin="0 0 20px 0">
-        01)
+        {props.number}
       </Text>
       <Imageitem>
-        <Image src={""} />
+        <Image src={props.image} />
         <ImageDiv
           onClick={() => {
             setSave3(!save3);
@@ -28,7 +28,7 @@ const Main3Card = (props) => {
         <Info1>
           <Label registration></Label>
           <Text h4 margin="0 0 0 15px">
-            인천 강화 서희스타힐스 1단지
+            {props.name}
           </Text>
         </Info1>
         <Info2>
@@ -38,16 +38,18 @@ const Main3Card = (props) => {
               분양 면적
             </Text>
             <Text regularText color="#A5AAB6">
-              분양 가격
+              모집 유형
             </Text>
           </Info2Item1>
           <Info2Item2>
-            <Text boldText>2021.12.21 ~ 2021.12.23</Text>
-            <Text regularText color="#A5AAB6">
-              84m² ~ 116m²/60m²~85m²
+            <Text boldText>
+              {props.startDate} ~ {props.endDate}
             </Text>
             <Text regularText color="#A5AAB6">
-              54,470 ~ 72,670만원
+              {props.size}
+            </Text>
+            <Text regularText color="#A5AAB6">
+              {props.price}
             </Text>
           </Info2Item2>
         </Info2>
@@ -74,7 +76,7 @@ const Image = styled.div`
   width: 370px;
   height: 370px;
   border-radius: 20px;
-  background-image: url("${(props) => props.src||apt_tobe}");
+  background-image: url("${(props) => props.src || apt_tobe}");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

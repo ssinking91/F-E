@@ -20,8 +20,9 @@ export const apis = {
 
   // MainPage
   getTotalNum: () => instance.get(`/api/main/total`), // 전체 청약갯수
-  getPrivateInfo: () => instance.get(`/api/main/privateSido`), // 민영 - 청약정보
+  getPrivateInfo: () => instance.get(`/api/main/privateSido`), // 민간 - 청약정보
   getPublicInfo: () => instance.get(`/api/main/publicSido`), // 공공 - 청약정보
+  getPublicHot: () => instance.get(`/api/main/publicHot`), // 공공 - 찜하기 순
   // getMyPrivateInfo: (id) => instance.get(`/api/users/userId=${id}/privates`), // 민영 - 내가 지정한 지역정보
   // getMyPublicInfo: (id) => instance.get(`/api/users/userId=${id}/publics`), // 공공 - 내가 지정한 지역정보
   manySaved: () => instance.get("/api/likes"), // 저장된 청약정보 많은 순

@@ -3,10 +3,13 @@ import produce from "immer";
 import { apis } from "../../utilities/axios";
 // import axios from "axios";
 
+// const IS_SAVED = "IS_SAVED";
 const GET_TOTAL = "GET_TOTAL";
 const GET_PRIVATEINFO = "GET_PRIVATEINFO";
 const GET_PUBLICINFO = "GET_PUBLICINFO";
+const GET_PUBLICHOT = "GET_PUBLICHOT";
 
+// const saved = createAction(IS_SAVED, (userKey) => ({ userKey }));
 // Section 01
 const getTotal = createAction(GET_TOTAL, (total) => ({ total }));
 // Section 02
@@ -17,11 +20,15 @@ const getPublicInfo = createAction(GET_PUBLICINFO, (public_list) => ({
   public_list,
 }));
 // Section 03
+const getPublicHot = createAction(GET_PUBLICHOT, (public_list_hot) => ({
+  public_list_hot,
+}));
 
 const initialState = {
   total: {},
   private_list: [],
   public_list: [],
+  public_list_hot: [],
 };
 
 // Section 01
@@ -69,6 +76,20 @@ const getPublicInfoDB = () => {
   };
 };
 // Section 03
+const getPublicHotDB = () => {
+  return function (dispatch, getState, { history }) {
+    apis
+      .getPublicHot()
+      .then((res) => {
+        console.log("getPublicHotDB 접근");
+        // console.log(res.data);
+        dispatch(getPublicHot(res.data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
 
 export default handleActions(
   {
@@ -87,6 +108,10 @@ export default handleActions(
         draft.public_list = action.payload.public_list;
       }),
     // Section 03
+    [GET_PUBLICHOT]: (state, action) =>
+      produce(state, (draft) => {
+        draft.getPublicHot = action.payload.getPublicHot;
+      }),
   },
   initialState
 );
@@ -101,6 +126,8 @@ const actionCreators = {
   getPublicInfo,
   getPublicInfoDB,
   // Section 03
+  getPublicHot,
+  getPublicHotDB,
 };
 
 export { actionCreators };
