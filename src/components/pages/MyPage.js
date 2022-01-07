@@ -32,6 +32,8 @@ const MyPage = (props) => {
   const privateInfo = useSelector((state) => state.mypage.list.private);
   console.log(privateInfo);
 
+  const Page = "myPage"
+
   return (
     <>
       <NavBarLink />
@@ -82,6 +84,7 @@ const MyPage = (props) => {
                     _public={publics}
                     aptNo={item.panId}
                     islike={item.islike}
+                    Page={Page}
                     //공공 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/public/${item.panId}`);
@@ -113,6 +116,7 @@ const MyPage = (props) => {
                     price={`${item.supplyAmount} 만원`}
                     aptNo={item.pblancNo}
                     islike={item.islike}
+                    Page={Page}
                     //민간 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/private/${item.pblancNo}`);

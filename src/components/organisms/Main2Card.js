@@ -20,16 +20,17 @@ const Main2Card = (props) => {
   const islike = JSON.parse(props.islike);
   console.log(islike);
 
-  const userKey = localStorage.getItem("userKey");
   const [save2, setSave2] = React.useState(islike);
+  // const [save2, setSave2] = React.useState(false);
 
   // 카드 저장
   const saveCard = () => {
+    const userKey = localStorage.getItem("userKey");
     if (userKey === null) {
       window.alert("로그인 후 사용이 가능합니다😎");
       return;
     }
-    const Page = "myPage"
+    const Page = props.Page
     dispatch(savedActions.savedFB(aptNo, Page));
   };
 
@@ -49,7 +50,7 @@ const Main2Card = (props) => {
       <Item>
         <Info1 onClick={_onClick}>
           <LabelDiv>
-            <Label LabelPanState={CardPanState}></Label>
+            <Label LabelPanState={props.CardPanState}></Label>
           </LabelDiv>
           <Text h4 margin="0 0 0 15px" width="316px">
             {props.name}
