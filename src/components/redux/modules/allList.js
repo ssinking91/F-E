@@ -24,7 +24,6 @@ export const getPrivateListDB = () => {
       .then((res) => {
         const privateList = res.data.result[0];
         dispatch(getPrivateList(privateList));
-        console.log(privateList);
       })
       .catch((e) => console.log(e));
   };
@@ -37,7 +36,6 @@ export const getPublicListDB = () => {
       .then((res) => {
         const publicList = res.data.result[0];
         dispatch(getPublicList(publicList));
-        console.log(publicList);
       })
       .catch((e) => console.log(e));
   };
