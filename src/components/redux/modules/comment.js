@@ -46,11 +46,11 @@ const addCommentsFB = (aptNo, commentInfo) => {
   };
 };
 
-const deleteCommentsFB = (aptNo, commentInfo) => {
+const deleteCommentsFB = (aptNo, commentId) => {
   return async (dispatch, getState, { history }) => {
     try {
       console.log("deleteCommentsFB 시작");
-      const response = await apis.deleteComments(aptNo, commentInfo);
+      const response = await apis.deleteComments(aptNo, commentId);
       console.log(response);
 
       window.alert("댓글이 삭제 되었습니다.");
