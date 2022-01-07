@@ -17,10 +17,8 @@ const MyPage = (props) => {
       window.alert("로그인 먼저 해주세요😎");
       return history.push("/login");
     }
-
     const userKey = localStorage.getItem("userKey");
     dispatch(mypagetActions.getUserInfosFB(userKey));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const userImage = localStorage.getItem("userImage");
@@ -33,6 +31,8 @@ const MyPage = (props) => {
 
   const privateInfo = useSelector((state) => state.mypage.list.private);
   console.log(privateInfo);
+
+  const Page = "myPage";
 
   return (
     <>
@@ -50,7 +50,7 @@ const MyPage = (props) => {
               </Text>
             ) : (
               <>
-                <Text h4 boldText>
+                <Text h4 boldText width="160px">
                   선택한 지역이 없습니다
                 </Text>
                 <span>🤯</span>
@@ -82,6 +82,9 @@ const MyPage = (props) => {
                     size={`${item.size} m²`}
                     price={item.aisTypeName}
                     _public={publics}
+                    aptNo={item.panId}
+                    islike={item.islike}
+                    Page={Page}
                     //공공 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/public/${item.panId}`);
@@ -111,6 +114,9 @@ const MyPage = (props) => {
                     endDate={item.receptEndDate}
                     size={`${item.size} m²`}
                     price={`${item.supplyAmount} 만원`}
+                    aptNo={item.pblancNo}
+                    islike={item.islike}
+                    Page={Page}
                     //민간 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/private/${item.pblancNo}`);

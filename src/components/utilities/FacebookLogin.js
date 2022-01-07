@@ -84,7 +84,7 @@ const FaceBookLoginButton = styled.button`
     position: absolute;
     color: #363940;
     font-size: 16px;
-    margin-top: -63px;
+    margin-top: -126px;
     pointer-events: none;
   }
 `;

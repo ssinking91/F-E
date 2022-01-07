@@ -17,6 +17,9 @@ instance.interceptors.request.use(function (config) {
   config.headers.common["Authorization"] = `Bearer ${sessionStorage.getItem(
     "accessToken"
   )}`;
+  config.headers.common["userKey"] = `Bearer ${localStorage.getItem(
+    "userKey"
+  )}`;
   return config;
 });
 
@@ -94,7 +97,7 @@ export const apis = {
     }), // 유저정보 수정
 
   // Saved
-  seved: (aptNo) =>
+  saved: (aptNo) =>
     instance.post(`/api/likes/${aptNo}`, {
       userKey: localStorage.getItem("userKey"),
     }), // 청약정보 저장하기

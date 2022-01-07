@@ -120,9 +120,12 @@ export default function AllListTemp() {
                     endDate={item.closeDate}
                     size={`${item.size} m²`}
                     price={item.aisTypeName}
+                    aptNo={item.panId}
+                    islike={item.islike}
                     //공공 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/public/${item.panId}`);
+                      console.log(item);
                     }}
                   />
                 </>
@@ -146,9 +149,12 @@ export default function AllListTemp() {
                     endDate={item.receptEndDate}
                     size={`${item.size} m²`}
                     price={`${item.supplyAmount} 만원`}
+                    aptNo={item.pblancNo}
+                    islike={item.islike}
                     //민간 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/private/${item.pblancNo}`);
+                      console.log(item);
                     }}
                   />
                 </>

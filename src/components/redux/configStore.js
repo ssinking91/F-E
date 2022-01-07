@@ -7,7 +7,9 @@ import Main from "./modules/main";
 import Detail from "./modules/detail";
 import Mypage from "./modules/mypage";
 import Comment from "./modules/comment";
+import CardSave from "./modules/cardSave";
 import allList from "./modules/allList";
+
 
 //---- Reducer ----
 
@@ -20,6 +22,7 @@ const rootReducer = combineReducers({
   detail: Detail,
   mypage: Mypage,
   comment: Comment,
+  cardSave: CardSave,
   allList: allList,
   router: connectRouter(history),
 });
