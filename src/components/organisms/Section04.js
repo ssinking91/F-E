@@ -7,7 +7,10 @@ const Section04 = (props) => {
   console.log("page4");
   return (
     <>
-      <div className="section">
+      <div
+        className="section"
+        style={{ paddingTop: "97px", backgroundColor: "#f9f9f9" }}
+      >
         {/* <NavBarAnchor /> */}
         <SectionWrap>
           <AllSpan>

@@ -22,7 +22,15 @@ const Section03 = (props) => {
 
   return (
     <>
-      <div className="section" style={{ width: "100%", height: "900px" }}>
+      <div
+        className="section"
+        style={{
+          width: "100%",
+          height: "900px",
+          paddingTop: "97px",
+          backgroundColor: "#f9f9f9",
+        }}
+      >
         {/* <NavBarAnchor /> */}
         <SectionWrap>
           <SectionItem>
