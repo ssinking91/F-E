@@ -40,7 +40,7 @@ const Comment = (props) => {
     }
   };
 
-  // 게시글 작성
+  // 댓글 작성
   const commentWrite = () => {
     if (userKey === null) {
       window.alert("로그인 후 사용이 가능합니다😎");
@@ -55,11 +55,10 @@ const Comment = (props) => {
     setContent(""); // 댓글을 입력하면 input의 value를 날려준다.
   };
 
-  // 게시글 작성
+  // 댓글 삭제
   const commentDelete = (commentId) => {
-
     dispatch(commentActions.deleteCommentsFB(aptNo, commentId));
-    window.alert("댓글이 삭제되었습니다😎");
+   // window.alert("댓글이 삭제되었습니다😎");
   };
 
   return (
@@ -120,16 +119,19 @@ const Comment = (props) => {
                   >
                     {theDayAt}
                   </Text>
-                  {userKey === list[idx].fk_userKey ? (
-                    <Text
-                      className="delete"
-                      regularText
-                      width="27px"
-                      color="#20D7FF"
-                      _onClick={()=>{commentDelete(item.commentId)}}
-                    >
-                      삭제
-                    </Text>
+                  {userKey === list[idx].userKey ? (
+                    <DeleteButton>
+                      <Text
+                        regularText
+                        width="27px"
+                        color="#20d7ff"
+                        _onClick={() => {
+                          commentDelete(item.commentId);
+                        }}
+                      >
+                        삭제
+                      </Text>
+                    </DeleteButton>
                   ) : (
                     <Text regularText width="27px" color="#20D7FF"></Text>
                   )}
@@ -202,6 +204,19 @@ const CommentButton = styled.button`
   cursor: pointer;
 `;
 
+const DeleteButton = styled.button`
+  width: 27px;
+  border: none;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  & > p:hover{
+    color: red;
+  }
+`;
+
 const CommentList = styled.div`
   width: 100%;
   display: flex;
@@ -222,16 +237,12 @@ const CommentOne = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-
 `;
 
 const CommentOneInfo = styled.div`
   width: 1138px;
   min-height: 30px;
   display: flex;
-  & > .delete:hover {
-    cursor:pointer;
-  }
 `;
 
 const CommentOneInfoP = styled.span`
