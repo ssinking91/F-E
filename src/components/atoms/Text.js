@@ -22,6 +22,8 @@ export default function Text(props) {
     width,
     height,
     _onClick,
+    white_space,
+    cursor,
   } = props;
 
   const styles = {
@@ -32,6 +34,8 @@ export default function Text(props) {
     weight: weight,
     width: width,
     height: height,
+    white_space,
+    cursor,
   };
 
   // text type
@@ -97,6 +101,7 @@ export default function Text(props) {
 Text.defaultProps = {
   color: "#333333",
   size: "14px",
+  white_space: "nowrap",
 };
 
 // text style
@@ -140,6 +145,7 @@ const H4 = styled.p`
   font-size: 18px;
   font-weight: 700;
   line-height: 25px;
+  cursor: ${(props) => (props.cursor ? `cursor: ${props.cursor}` : "")};
 `;
 const Menu = styled.p`
   margin: ${(props) => props.margin};
@@ -157,6 +163,7 @@ const BoldText = styled.p`
   font-size: 14px;
   font-weight: 700;
   line-height: 25px;
+  white-space: ${(props) => props.white_space};
 `;
 const RegularText = styled.p`
   margin: ${(props) => props.margin};
@@ -166,6 +173,7 @@ const RegularText = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 25px;
+  white-space: ${(props) => props.white_space};
 `;
 const Footer = styled.p`
   margin: ${(props) => props.margin};

@@ -17,6 +17,7 @@ const Comment = (props) => {
 
   React.useEffect(() => {
     dispatch(commentActions.getCommentsFB(aptNo));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const userKey = localStorage.getItem("userKey");
@@ -24,7 +25,6 @@ const Comment = (props) => {
   const list = useSelector((state) => state.comment.list);
   console.log(list);
   console.log(list.length);
-  //console.log(list[0].createdAt);
 
   // 글 내용
   const changeContent = (e) => {
