@@ -21,7 +21,7 @@ export default function AllListTemp() {
   const privateList = useSelector((store) => store.allList.privateList);
 
   const [ftbg, setFtbg] = useState(0);
-  const [ftSido, setFtSido] = useState("경기도");
+  const [ftSido] = useState("경기도");
   //   const [ftprivateSido, setFtprivateSido] = useState("경기");
 
   const getDB = (item) => {
