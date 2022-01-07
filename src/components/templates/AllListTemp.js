@@ -49,7 +49,7 @@ export default function AllListTemp() {
             height="30px"
             margin="auto"
             background_color={index === ftbg ? `#20D7FF` : ``}
-            radius="36px"
+            cursor="pointer"
             _onClick={() => {
               setFtbg(index);
               //   setFtSido(item);
@@ -81,7 +81,7 @@ export default function AllListTemp() {
             height="30px"
             margin="auto"
             background_color={index + 6 === ftbg ? `#20D7FF` : ``}
-            radius="36px"
+            cursor="pointer"
             _onClick={() => {
               setFtbg(index + 6);
               //   setFtSido(item);
@@ -110,7 +110,7 @@ export default function AllListTemp() {
               const panName = `[${item.aisTypeName}] ${
                 item.address.split(" ")[0]
               } ${item.address.split(" ")[1]}`;
-              const publicSales= "publicSales"
+              const publicSales = "publicSales";
               return (
                 <>
                   <Card

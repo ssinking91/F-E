@@ -51,6 +51,7 @@ export const apis = {
   // DetailPage
   getDetailInfo: (locate) =>
     instance.get(`/api${locate}`, { userKey: localStorage.getItem("userKey") }),
+
   getDetailImg: (locate) =>
     instance.get(`/api${locate}/img`, {
       userKey: localStorage.getItem("userKey"),

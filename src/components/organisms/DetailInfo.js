@@ -73,10 +73,10 @@ export default function DetailInfo() {
                   title={"전용 면적"}
                   content={`${publicInfo.size}`}
                 />
-                <BundleText
+                {/* <BundleText
                   title={"분양 가격"}
                   content={"54,470 ~ 72,670 만원"}
-                />
+                /> */}
                 <BundleText
                   title={"모집 공고일"}
                   content={`${publicInfo.panUploadDate}`}
@@ -181,17 +181,17 @@ export default function DetailInfo() {
                 title={"세대 수"}
                 content={`${topInfo.supplySize} 세대`}
               />
-              <BundleText
+              {/* <BundleText
                 title={"전용 면적"}
                 content={`${topInfo.supplyAreaSize}`}
-              />
-              <BundleText
+              /> */}
+              {/* <BundleText
                 title={"분양 가격"}
                 content={"54,470 ~ 72,670 만원"}
-              />
+              /> */}
               <BundleText
                 title={"모집 공고일"}
-                content={`${topInfo.recruitDate}`}
+                content={`${topInfo.recruitDate.split("")}`}
                 margin="35px 0 0 0"
               />
               <BundleText
