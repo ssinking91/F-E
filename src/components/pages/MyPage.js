@@ -26,6 +26,7 @@ const MyPage = (props) => {
   const userImage = localStorage.getItem("userImage");
 
   const existuser = useSelector((state) => state.mypage.list.existuser);
+
   // console.log(existuser);
 
   const publicInfo = useSelector((state) => state.mypage.list.public);
@@ -44,9 +45,18 @@ const MyPage = (props) => {
             <Text h2 margin="0 0 10px 0">
               {localStorage.getItem("userName")} 님
             </Text>
-            <Text h4 boldText>
-              {existuser.sido}
-            </Text>
+            {existuser ? (
+              <Text h4 boldText>
+                {existuser.sido}
+              </Text>
+            ) : (
+              <>
+                <Text h4 boldText>
+                  선택한 지역이 없습니다
+                </Text>
+                <span>🤯</span>
+              </>
+            )}
           </MyCardList>
         </MyCard>
         <MyPost>
@@ -59,20 +69,21 @@ const MyPage = (props) => {
             </Text>
             {publicInfo.length !== 0 ? (
               publicInfo.map((item, idx) => {
-                const houseName = item.panName;
-                const receptStartDate = item.startDate;
-                const receptEndDate = item.closeDate;
-                const imgUrl = item.ImgUrl;
+                const publics = "public";
+                const panName = `[${item.aisTypeName}] ${
+                  item.address.split(" ")[0]
+                } ${item.address.split(" ")[1]}`;
                 return (
                   <Main2Card
                     key={idx}
-                    image={imgUrl}
-                    name={houseName}
-                    startDate={receptStartDate}
-                    endDate={receptEndDate}
-                    // 데이터 받아야 함.
-                    size={"84m² ~ 116m²/60m²~85m²"}
-                    price={"54,470 ~ 72,670만원"}
+                    image={item.ImgUrl}
+                    name={panName}
+                    startDate={item.startDate}
+                    endDate={item.closeDate}
+                    size={`${item.size} m²`}
+                    price={item.aisTypeName}
+                    _public={publics}
+                    //공공 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/public/${item.panId}`);
                     }}
@@ -92,21 +103,16 @@ const MyPage = (props) => {
 
             {privateInfo.length !== 0 ? (
               privateInfo.map((item, idx) => {
-                const houseName = item.houseName;
-                const receptStartDate = item.receptStartDate;
-                const receptEndDate = item.receptEndDate;
-                const imgUrl = item.ImgUrl;
-                // const size = item.size;
                 return (
                   <Main2Card
                     key={idx}
-                    image={imgUrl}
-                    name={houseName}
-                    startDate={receptStartDate}
-                    endDate={receptEndDate}
-                    // 데이터 받아야 함.
-                    size={"84m² ~ 116m²/60m²~85m²"}
-                    price={"54,470 ~ 72,670만원"}
+                    image={item.ImgUrl}
+                    name={item.houseName}
+                    startDate={item.receptStartDate}
+                    endDate={item.receptEndDate}
+                    size={`${item.size} m²`}
+                    price={`${item.supplyAmount} 만원`}
+                    //민간 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/private/${item.pblancNo}`);
                     }}

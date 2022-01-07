@@ -60,10 +60,10 @@ export const apis = {
     instance.get(`/api/comments/${aptNo}`, {
       userKey: localStorage.getItem("userKey"),
     }), // 댓글보기
-  addComments: (aptNo, commentInfo) =>
+  addComments: (aptNo, content) =>
     instance.post(`/api/comments/${aptNo}`, {
       userKey: localStorage.getItem("userKey"),
-      commentInfo,
+      content,
     }), // 댓글등록
   editComments: (aptNo, commentId) =>
     instance.patch(`/api/comments/${aptNo}/${commentId}`, {
@@ -74,6 +74,15 @@ export const apis = {
       userKey: localStorage.getItem("userKey"),
     }), // 댓글삭제
 
+  // allList
+  getPrivateLists: (ftSido) =>
+    instance.get(`/api/private?sido=${ftSido}`, {
+      userKey: localStorage.getItem("userKey"),
+    }),
+  getPublicLists: (ftSido) =>
+    instance.get(`/api/public?sidoName=${ftSido}`, {
+      userKey: localStorage.getItem("userKey"),
+    }),
   // MyPage
   getUserInfos: (userKey) =>
     instance.get(`/api/users/${userKey}`, {
