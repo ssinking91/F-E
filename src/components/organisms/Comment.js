@@ -22,7 +22,6 @@ const Comment = (props) => {
   const list = useSelector((state) => state.comment.list);
   console.log(list);
   console.log(list.length);
-  // console.log(list[0].createdAt);
 
   return (
     <Container>
@@ -49,7 +48,7 @@ const Comment = (props) => {
             const theDay = createdAt.split(" ");
             console.log(theDay[0].split("-").join(".").substring(2));
             return (
-              <CommentOne>
+              <CommentOne key={idx}>
                 <CommentOneInfo>
                   <Image />
                   <Text boldText padding="3px 0 0 0" width="100px">
