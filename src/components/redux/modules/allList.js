@@ -17,24 +17,26 @@ const getPublicList = createAction(GET_PUBLIC_LIST, (publicList) => ({
 }));
 
 // middleware thunk
-export const getPrivateListDB = () => {
+export const getPrivateListDB = (ftSido) => {
   return (dispatch, getState, { history }) => {
     apis
-      .getPrivateLists()
+      .getPrivateLists(ftSido)
       .then((res) => {
         const privateList = res.data.result[0];
+        console.log(privateList);
         dispatch(getPrivateList(privateList));
       })
       .catch((e) => console.log(e));
   };
 };
 
-export const getPublicListDB = () => {
+export const getPublicListDB = (ftSido) => {
   return (dispatch, getState, { history }) => {
     apis
-      .getPublicLists()
+      .getPublicLists(ftSido)
       .then((res) => {
         const publicList = res.data.result[0];
+        console.log(publicList);
         dispatch(getPublicList(publicList));
       })
       .catch((e) => console.log(e));

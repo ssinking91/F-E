@@ -75,12 +75,12 @@ export const apis = {
     }), // 댓글삭제
 
   // allList
-  getPrivateLists: () =>
-    instance.get(`/api/private?sido=`, {
+  getPrivateLists: (ftSido) =>
+    instance.get(`/api/private?sido=${ftSido}`, {
       userKey: localStorage.getItem("userKey"),
     }),
-  getPublicLists: () =>
-    instance.get(`/api/public?sidoName=`, {
+  getPublicLists: (ftSido) =>
+    instance.get(`/api/public?sidoName=${ftSido}`, {
       userKey: localStorage.getItem("userKey"),
     }),
   // MyPage
