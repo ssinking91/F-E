@@ -5,10 +5,12 @@ import { apis } from "../../utilities/axios";
 // action type
 const GET_USERINFO = " GET_USERINFO";
 const EDIT_USERINFO = "EDIT_USERINFO";
+const SAVE_CARD = "SAVE_CARD";
 
 // action creator
 const getUserInfo = createAction(GET_USERINFO, (userInfo) => ({ userInfo }));
 const editUserInfo = createAction(EDIT_USERINFO, (sido) => ({ sido }));
+const savedCard = createAction(SAVE_CARD, (result) => ({ result }));
 
 // middleware
 const getUserInfosFB = (userKey) => {
@@ -40,13 +42,31 @@ const editUserInfosFB = (userName) => {
   };
 };
 
+const savedFB = (aptNo, status) => {
+  return async (dispatch, getState, { history }) => {
+    try {
+      console.log("savedFB 시작");
+      const response = await apis.saved(aptNo);
+      console.log(response);
+
+      let result = response.data.data;
+      await dispatch(savedCard(result));
+
+      console.log("savedFB 끝");
+        
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 // initial state
 const initialState = {
   list: {
     existuser: {},
 
     public: [],
-    
+
     private: [],
   },
 };
@@ -57,9 +77,15 @@ export default handleActions(
       produce(state, (draft) => {
         draft.list = action.payload.userInfo;
       }),
+
     [EDIT_USERINFO]: (state, action) =>
       produce(state, (draft) => {
         draft.list.sido = action.payload.sido;
+      }),
+
+    [SAVE_CARD]: (state, action) =>
+      produce(state, (draft) => {
+        draft.result = action.payload.result;
       }),
   },
   initialState
@@ -68,6 +94,7 @@ export default handleActions(
 const mypagetActions = {
   getUserInfosFB,
   editUserInfosFB,
+  savedFB,
 };
 
 export { mypagetActions };
