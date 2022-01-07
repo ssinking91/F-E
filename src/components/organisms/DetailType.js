@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { Grid, Text } from "../atoms/index";
 import { useSelector } from "react-redux";
-import BundleText from "../molecules/BundleText";
 
 export default function DetailType() {
-  // const sido = ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10"];
   const typeInfo = useSelector((store) => store.detail.info.detail2);
-  //console.log(typeInfo);
   const [type, setType] = useState(1);
 
   return (
