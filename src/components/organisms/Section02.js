@@ -10,24 +10,29 @@ import { Text } from "../atoms/index";
 const Section02 = (props) => {
   const dispatch = useDispatch();
 
-  // Main > Sections02 유저이름 데이터 확인
-  // console.log(props.userName);
-
   useEffect(() => {
     dispatch(mainAction.getPrivateInfoDB());
     dispatch(mainAction.getPublicInfoDB());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Main > Sections02 유저이름 데이터 확인
+  const userName = props.userName;
+  // console.log(userName);
+
+  // 로그인한 유저데이터
+  const existuser = useSelector((state) => state.mypage.list.existuser);
+  // console.log(existuser);
+
   // 민간 공고 3개
   const private_list = useSelector((state) => state.main.private_list);
   const private_regionInfo = private_list.slice(0, 3);
-  // console.log(private_regionInfo);
+  console.log(private_list);
 
   // 공공 공고 3개
   const public_list = useSelector((state) => state.main.public_list);
-  const public_regionInfo = public_list.slice(2, 5);
-  // console.log(public_regionInfo);
+  const public_regionInfo = public_list.slice(6, 9);
+  // console.log(public_list);
 
   return (
     <>
@@ -36,15 +41,20 @@ const Section02 = (props) => {
         <SectionWrap>
           <SectionItem>
             <AllSpan>
-              <Span1 className="a">인천광역시</Span1>
-              {/* <Span1 className="b">강화군</Span1> */}
-              <Span2>의 청약은?</Span2>
+              <Span1 className="a">{existuser.sido}</Span1>
+              <Span2>지역의 청약은?</Span2>
               <span>📌</span>
             </AllSpan>
-            <Text h4 color="#A5AAB6">
-              {props.userName}님이 선택한 관심 지역의 실시간 청약 정보를 알 수
-              있어요
-            </Text>
+            {userName !== null ? (
+              <Text h4 color="#A5AAB6">
+                {userName}님이 선택한 {existuser.sido} 지역의 실시간 청약 정보를
+                알 수 있어요
+              </Text>
+            ) : (
+              <Text h4 color="#A5AAB6">
+                로그인 하시면 관심 지역의 실시간 청약 정보를 알 수 있어요
+              </Text>
+            )}
           </SectionItem>
 
           <CardWrap>
@@ -53,7 +63,8 @@ const Section02 = (props) => {
                 공공 분양
               </Text>
               {public_regionInfo.map((item, index) => {
-                const panName = `[${item.aisTypeName}] ${
+                // 공공 이름 편집 ex. [행복주택] 경기도 하남시
+                const panName = `[${item.aisTypeName.split("(")[0]}] ${
                   item.address.split(" ")[0]
                 } ${item.address.split(" ")[1]}`;
                 return (
@@ -65,6 +76,7 @@ const Section02 = (props) => {
                     endDate={item.closeDate}
                     size={`${item.size} m²`}
                     price={item.aisTypeName}
+                    CardPanState={item.panState}
                     //공공 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/public/${item.panId}`);

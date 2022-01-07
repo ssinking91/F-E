@@ -18,13 +18,10 @@ const Grid = (props) => {
     align_items,
     text_align,
     cursor,
+    border,
   } = props;
 
-<<<<<<< HEAD
   // console.log(props);
-=======
-  //console.log(props);
->>>>>>> d36c4182f8b9dea69a86aba3dc433fc51446b790
 
   const styles = {
     is_flex: is_flex,
@@ -35,6 +32,7 @@ const Grid = (props) => {
     background_color: background_color,
     center: center,
     max_width: max_width,
+    border: border,
     radius: radius,
     justify_content: justify_content,
     align_items: align_items,
@@ -58,6 +56,7 @@ const GridBox = styled.div`
   width: ${(props) => props.width};
   max-width: ${(props) => props.max_width};
   height: ${(props) => props.height};
+  border: ${(props) => props.border};
   border-radius: ${(props) => props.radius};
   box-sizing: border-box;
   ${(props) => (props.padding ? `padding: ${props.padding};` : "")}

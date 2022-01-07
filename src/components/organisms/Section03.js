@@ -16,7 +16,8 @@ const Section03 = (props) => {
 
   // 공공 Hot
   const public_list_hot = useSelector((state) => state.main.public_list_hot);
-  const public_regionInfo_hot = public_list_hot.slice(2, 5);
+  const public_regionInfo_hot = public_list_hot.slice(1, 4);
+  console.log(public_regionInfo_hot);
 
   return (
     <>

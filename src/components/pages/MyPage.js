@@ -26,6 +26,7 @@ const MyPage = (props) => {
   const userImage = localStorage.getItem("userImage");
 
   const existuser = useSelector((state) => state.mypage.list.existuser);
+  // console.log(existuser);
 
   const publicInfo = useSelector((state) => state.mypage.list.public);
   console.log(publicInfo);
