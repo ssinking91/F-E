@@ -125,7 +125,7 @@ export default function AllListTemp() {
                     //공공 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/public/${item.panId}`);
-                      console.log(item);
+                      // console.log(item);
                     }}
                   />
                 </>

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { savedActions } from "../redux/modules/cardSave";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 import Label from "../molecules/Label";
 import { Text, Image } from "../atoms/index";
@@ -14,24 +14,23 @@ const Main2Card = (props) => {
   const { _onClick } = props;
   const dispatch = useDispatch();
 
-  const aptNo = props.aptNo;
-  console.log(aptNo);
-
   const islike = JSON.parse(props.islike);
   console.log(islike);
 
   const [save2, setSave2] = React.useState(islike);
-  // const [save2, setSave2] = React.useState(false);
+  
+  const aptNo = props.aptNo;
+  console.log(aptNo);
 
   // 카드 저장
-  const saveCard = () => {
+  const saveCard = async() => {
     const userKey = localStorage.getItem("userKey");
     if (userKey === null) {
       window.alert("로그인 후 사용이 가능합니다😎");
       return;
     }
     const Page = props.Page
-    dispatch(savedActions.savedFB(aptNo, Page));
+    await dispatch(savedActions.savedFB(aptNo, Page));
   };
 
   return (
@@ -64,7 +63,7 @@ const Main2Card = (props) => {
               분양 면적
             </Text>
             <Text regularText color="#A5AAB6">
-              분양 가격
+             {props.publicSales? "모집 유형" : "분양 가격"} 
             </Text>
           </Info2Item1>
           <Info2Item2>
