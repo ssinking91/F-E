@@ -24,6 +24,7 @@ export default function Text(props) {
     _onClick,
     white_space,
     cursor,
+    line_height,
   } = props;
 
   const styles = {
@@ -36,6 +37,7 @@ export default function Text(props) {
     height: height,
     white_space,
     cursor,
+    line_height,
   };
 
   // text type
@@ -111,6 +113,7 @@ const P = styled.p`
   color: ${(props) => props.color};
   font-size: ${(props) => props.size};
   font-weight: ${(props) => props.weight};
+  line-height: ${(props) => props.line_height};
 `;
 const H1 = styled.p`
   margin: ${(props) => props.margin};

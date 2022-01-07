@@ -89,7 +89,7 @@ const GoogleLoginBtn = styled.button`
     position: absolute;
     left: 5px;
     width: 110px;
-    margin-top: -63px;
+    margin-top: -126px;
     border-top: 1px solid #363940;
     pointer-events: none;
   }

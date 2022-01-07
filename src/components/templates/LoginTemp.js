@@ -20,10 +20,16 @@ export default function LoginTemp() {
                 <Link to="/">
                   <Logo width="40px" />
                 </Link>
-                <Text p size="36px" color="#363940" margin="30px 0">
+                <Text
+                  p
+                  size="36px"
+                  color="#363940"
+                  margin="30px 0"
+                  weight="900"
+                >
                   로그인
                 </Text>
-                <Text p size="16px" color="#95A1BB">
+                <Text p size="16px" color="#95A1BB" line_height="1.4">
                   반가워요:) 오늘 하루도 소중한 날 되시길 바랄게요
                   <br />
                   입장을 위한 로그인 부탁 드릴게요
