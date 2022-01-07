@@ -1,4 +1,5 @@
 // import KakaoMap from "../utilities/KakaoMap";
+import styled from "styled-components";
 import NavBarLink from "../organisms/NavBarLink";
 import DetailInfo from "../organisms/DetailInfo";
 import DetailType from "../organisms/DetailType";
@@ -32,16 +33,16 @@ export default function DetailTemp(props) {
         <DetailType />
         <DetailImg />
         {/* <KakaoMap /> */}
-        <div
-          style={{
-            backgroundColor: "#f9f9f9",
-            borderRadius: "40px 40px 0px 0px",
-          }}
-        >
+        <Container>
           <Comment />
           <Footer />
-        </div>
+        </Container>
       </Grid>
     </>
   );
 }
+
+const Container = styled.div`
+  background-color: #f9f9f9;
+  border-radius: 40px 40px 0px 0px;
+`;
