@@ -23,7 +23,7 @@ const Section03 = (props) => {
   return (
     <>
       <div className="section" style={{ width: "100%", height: "900px" }}>
-        <NavBarAnchor />
+        {/* <NavBarAnchor /> */}
         <SectionWrap>
           <SectionItem>
             <AllSpan>
@@ -48,7 +48,7 @@ const Section03 = (props) => {
                   size={`${item.size} m²`}
                   price={item.aisTypeName}
                   aptNo={item.panId}
-                    islike={item.islike}
+                  islike={item.islike}
                   //공공 청약정보 ID 값
                   _onClick={() => {
                     history.push(`/public/${item.panId}`);
