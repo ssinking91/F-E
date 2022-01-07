@@ -63,30 +63,38 @@ const Section02 = (props) => {
               <Text h4 color="#778899">
                 공공 분양
               </Text>
-              {public_regionInfo.map((item, index) => {
-                // 공공 이름 편집 ex. [행복주택] 경기도 하남시
-                const panName = `[${item.aisTypeName.split("(")[0]}] ${
-                  item.address.split(" ")[0]
-                } ${item.address.split(" ")[1]}`;
-                return (
-                  <Main2Card
-                    key={index}
-                    image={item.ImgUrl}
-                    name={panName}
-                    startDate={item.startDate}
-                    endDate={item.closeDate}
-                    size={`${item.size} m²`}
-                    price={item.aisTypeName}
-                    aptNo={item.panId}
-                    islike={item.islike}
-                    CardPanState={item.panState}
-                    //공공 청약정보 ID 값
-                    _onClick={() => {
-                      history.push(`/public/${item.panId}`);
-                    }}
-                  />
-                );
-              })}
+              {public_regionInfo.length !== 0 ? (
+                public_regionInfo.map((item, index) => {
+                  // 공공 이름 편집 ex. [행복주택] 경기도 하남시
+                  const panName = `[${item.aisTypeName.split("(")[0]}] ${
+                    item.address.split(" ")[0]
+                  } ${item.address.split(" ")[1]}`;
+                  return (
+                    <Main2Card
+                      key={index}
+                      image={item.ImgUrl}
+                      name={panName}
+                      startDate={item.startDate}
+                      endDate={item.closeDate}
+                      size={`${item.size} m²`}
+                      price={item.aisTypeName}
+                      aptNo={item.panId}
+                      islike={item.islike}
+                      CardPanState={item.panState}
+                      //공공 청약정보 ID 값
+                      _onClick={() => {
+                        history.push(`/public/${item.panId}`);
+                      }}
+                    />
+                  );
+                })
+              ) : (
+                <Text h4 margin="100px 0">
+                  <Span>🏚️..</Span> 실시간 공공 분양 청약정보가 없어요
+                  <Span>😭</Span>
+                  <Text>다른 관심지역을 선택해서 청약정보를 찾아보아요</Text>
+                </Text>
+              )}
             </PublicCards>
 
             <PrivateCards>
@@ -114,11 +122,12 @@ const Section02 = (props) => {
                   );
                 })
               ) : (
-                <Text h4 margin="100px 0">
-                  <Span>🏚️..</Span> 실시간 민간 분양 청약정보가 없어요
+                <TextDiv>
+                  <Span>🏚️..</Span>
+                  <Text h4>실시간 민간 분양 청약정보가 없어요</Text>
                   <Span>😭</Span>
-                  <Text>다른 관심지역을 선택해서 청약정보를 찾아보아요</Text>
-                </Text>
+                  <Text h4>다른 관심지역을 선택해서 청약정보를 찾아보아요</Text>
+                </TextDiv>
               )}
             </PrivateCards>
           </CardWrap>
@@ -171,6 +180,12 @@ const Span1 = styled.span`
 const Span2 = styled.span`
   font-weight: bold;
   color: #333333;
+`;
+
+const TextDiv = styled.div`
+  width: 100%
+  display : flex;
+  margin: 100px 0;
 `;
 
 const CardWrap = styled.div`

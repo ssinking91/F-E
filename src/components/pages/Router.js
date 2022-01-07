@@ -2,7 +2,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
 import { history } from "../redux/configStore";
 import Main from "./Main";
-import List from "./List";
+import List from "./List.jsx";
 import Detail from "./Detail";
 import Login from "./Login";
 import MyPage from "./MyPage";

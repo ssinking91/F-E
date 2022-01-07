@@ -47,8 +47,10 @@ const Section03 = (props) => {
                   endDate={item.closeDate}
                   size={`${item.size} m²`}
                   price={item.aisTypeName}
+                  aptNo={item.panId}
+                    islike={item.islike}
                   //공공 청약정보 ID 값
-                  detailView={() => {
+                  _onClick={() => {
                     history.push(`/public/${item.panId}`);
                   }}
                 />

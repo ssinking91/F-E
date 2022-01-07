@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { savedActions } from "../redux/modules/cardSave";
+import { useDispatch, useSelector } from "react-redux";
 import Label from "../molecules/Label";
 import { Text } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
@@ -7,8 +9,27 @@ import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 import apt_tobe from "../../images/apt_tobe.svg";
 
 const Main3Card = (props) => {
-  const { detailView } = props;
-  const [save3, setSave3] = React.useState(false);
+  const { _onClick } = props;
+  const dispatch = useDispatch();
+
+  const islike = JSON.parse(props.islike);
+  console.log(islike);
+
+  const [save3, setSave3] = React.useState(islike);
+
+  const aptNo = props.aptNo;
+  console.log(aptNo);
+
+  // 카드 저장
+  const saveCard = () => {
+    const userKey = localStorage.getItem("userKey");
+    if (userKey === null) {
+      window.alert("로그인 후 사용이 가능합니다😎");
+      return;
+    }
+    const Page = props.Page
+    dispatch(savedActions.savedFB(aptNo, Page));
+  };
 
   return (
     <Container>
@@ -20,14 +41,14 @@ const Main3Card = (props) => {
         <ImageDiv
           onClick={() => {
             setSave3(!save3);
+            saveCard();
           }}
         >
           {save3 ? <BmarkFill /> : <BmarkNone />}
         </ImageDiv>
       </Imageitem>
       <Item>
-        <Info1 onClick={detailView}>
-
+        <Info1 onClick={_onClick}>
           <LabelDiv>
             <Label registration></Label>
           </LabelDiv>
