@@ -36,7 +36,7 @@ const Section01 = (props) => {
           backgroundSize: "cover",
         }}
       >
-        <NavBarAnchor />
+        {/* <NavBarAnchor />/ */}
         <Hr />
 
         <Background>

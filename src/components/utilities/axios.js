@@ -43,12 +43,6 @@ export const apis = {
     }), // 공공 - 청약정보
   // getPrivateHot: () => instance.get(`/api/main/privateHot`), // 공공 - 찜하기 순
   getPublicHot: () => instance.get(`/api/main/publicHot`), // 공공 - 찜하기 순
-  // getMyPrivateInfo: (id) => instance.get(`/api/users/userId=${id}/privates`), // 민영 - 내가 지정한 지역정보
-  // getMyPublicInfo: (id) => instance.get(`/api/users/userId=${id}/publics`), // 공공 - 내가 지정한 지역정보
-  // manySaved: () =>
-  //   instance.get("/api/likes", { userKey: localStorage.getItem("userKey") }), // 저장된 청약정보 많은 순
-  // youtubeLink: () =>
-  //   instance.get("/api/youtube", { userKey: localStorage.getItem("userKey") }), // 유튜브 링크 (예정)
 
   // DetailPage
   getDetailInfo: (locate) =>

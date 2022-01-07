@@ -38,7 +38,7 @@ const Section02 = (props) => {
   return (
     <>
       <div className="section" style={{ width: "100%", height: "100" }}>
-        <NavBarAnchor />
+        {/* <NavBarAnchor /> */}
         <SectionWrap>
           <SectionItem>
             <AllSpan>

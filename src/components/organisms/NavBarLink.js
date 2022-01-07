@@ -150,7 +150,7 @@ const HeaderWrap = styled.div`
   padding-top: 30px;
   padding-bottom: 30px;
   background-color: white;
-  position: fixed;
+  position: absolute;
   z-index: 800;
 `;
 

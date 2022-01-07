@@ -8,7 +8,7 @@ const Section04 = (props) => {
   return (
     <>
       <div className="section">
-        <NavBarAnchor />
+        {/* <NavBarAnchor /> */}
         <SectionWrap>
           <AllSpan>
             <SpanBold>영상으로 배우는 청약 노하우</SpanBold>

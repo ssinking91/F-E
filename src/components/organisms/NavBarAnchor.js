@@ -156,6 +156,8 @@ const HeaderWrap = styled.div`
   padding-top: 30px;
   padding-bottom: 30px;
   background-color: white;
+  position: absolute;
+  z-index: 3;
 `;
 const HandleOff = styled.div`
   transition: 0.5s;
