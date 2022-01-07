@@ -12,6 +12,9 @@ const Comment = (props) => {
   const aptNo = useParam.aptNo;
   console.log(aptNo);
 
+  const [active, setActive] = React.useState(true); // 버튼 활성화 유무
+  const [content, setContent] = React.useState(""); // 글 내용 작성
+
   React.useEffect(() => {
     dispatch(commentActions.getCommentsFB(aptNo));
   }, []);
@@ -22,6 +25,37 @@ const Comment = (props) => {
   console.log(list);
   console.log(list.length);
   //console.log(list[0].createdAt);
+
+  // 글 내용
+  const changeContent = (e) => {
+    setContent(e.target.value);
+  };
+
+  // 버튼 활성화 / 비활성화 유무 확인
+  const checkActive = () => {
+    if (content === "") {
+      setActive(true);
+    } else {
+      setActive(false);
+    }
+  };
+
+  // 게시글 작성
+  const commentWrite = () => {
+    if (content === undefined || content === "") {
+      window.alert("댓글을 입력 해주세요😎");
+      return;
+    }
+    dispatch(commentActions.addCommentsFB(aptNo, content));
+    setContent(""); // 댓글을 입력하면 input의 value를 날려준다.
+  };
+
+  // 게시글 작성
+  const commentDelete = (commentId) => {
+
+    dispatch(commentActions.deleteCommentsFB(aptNo, commentId));
+    window.alert("댓글이 삭제되었습니다😎");
+  };
 
   return (
     <Container>
@@ -34,8 +68,23 @@ const Comment = (props) => {
             </Text>
           </CommentWriteDiv>
           <CommentInput>
-            <input type="text" placeholder="댓글을 남겨주세요" />
-            <CommentButton>
+            <input
+              type="text"
+              placeholder="댓글을 남겨주세요"
+              value={content}
+              onChange={changeContent}
+              onKeyUp={checkActive}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  commentWrite(e);
+                }
+              }}
+            />
+            <CommentButton
+              onClick={commentWrite}
+              active={active}
+              disabled={active}
+            >
               <Text boldText color="#FFFFFF">
                 등록
               </Text>
@@ -45,10 +94,11 @@ const Comment = (props) => {
         <CommentList>
           {list.map((item, idx) => {
             const createdAt = item.createdAt;
-            const theDay =createdAt.split(" ");
-            console.log(theDay[0].split("-").join(".").substring(2))
+            const theDay = createdAt.split(" ");
+            //console.log(theDay[0].split("-").join(".").substring(2))
+            const theDayAt = theDay[0].split("-").join(".").substring(2);
             return (
-              <CommentOne>
+              <CommentOne key={idx}>
                 <CommentOneInfo>
                   <Image />
                   <Text boldText padding="3px 0 0 0" width="100px">
@@ -63,10 +113,16 @@ const Comment = (props) => {
                     margin="0 12px 0 0"
                     color="#A5AAB6"
                   >
-                    {theDay[0].split("-").join(".").substring(2)}
+                    {theDayAt}
                   </Text>
                   {userKey === list[idx].fk_userKey ? (
-                    <Text regularText width="27px" color="#20D7FF">
+                    <Text
+                      className="delete"
+                      regularText
+                      width="27px"
+                      color="#20D7FF"
+                      _onClick={()=>{commentDelete(item.commentId)}}
+                    >
                       삭제
                     </Text>
                   ) : (
@@ -76,7 +132,6 @@ const Comment = (props) => {
               </CommentOne>
             );
           })}
-
         </CommentList>
       </Item>
     </Container>
@@ -130,14 +185,15 @@ const CommentInput = styled.div`
   }
 `;
 
-const CommentButton = styled.div`
+const CommentButton = styled.button`
   width: 78px;
   height: 35px;
   border-radius: 21.5px;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #20d7ff;
+  background-color: ${(props) => (props.active ? "aliceblue" : "#20d7ff")};
   cursor: pointer;
 `;
 
@@ -161,12 +217,16 @@ const CommentOne = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+
 `;
 
 const CommentOneInfo = styled.div`
   width: 1138px;
   min-height: 30px;
   display: flex;
+  & > .delete:hover {
+    cursor:pointer;
+  }
 `;
 
 const CommentOneInfoP = styled.span`
