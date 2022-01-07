@@ -9,6 +9,7 @@ import { Text } from "../atoms/index";
 
 const Section02 = (props) => {
   const dispatch = useDispatch();
+  console.log("page2");
 
   // Main > Sections02 유저이름 데이터 확인
   // console.log(props.userName);

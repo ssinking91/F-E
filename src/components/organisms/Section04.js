@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import { Text } from "../atoms/index";
 import { ReactComponent as Top } from "../../images/top.svg";
 const Section04 = (props) => {
+  console.log("page4");
   return (
     <>
       <div className="section">

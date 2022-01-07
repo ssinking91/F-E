@@ -8,6 +8,7 @@ import NavBarAnchor from "./NavBarAnchor";
 import { Text } from "../atoms/index";
 const Section03 = (props) => {
   const dispatch = useDispatch();
+  console.log("page3");
 
   useEffect(() => {
     dispatch(mainAction.getPublicHotDB());
