@@ -7,6 +7,7 @@ import Main from "./modules/main";
 import Detail from "./modules/detail";
 import Mypage from "./modules/mypage";
 import Comment from "./modules/comment";
+import allList from "./modules/allList";
 
 //---- Reducer ----
 
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   detail: Detail,
   mypage: Mypage,
   comment: Comment,
+  allList: allList,
   router: connectRouter(history),
 });
 

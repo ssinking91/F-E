@@ -31,12 +31,12 @@ const getCommentsFB = (aptNo) => {
   };
 };
 
-const addCommentsFB = (aptNo, commentInfo) => {
+const addCommentsFB = (aptNo, content) => {
   return async function (dispatch, getState, { history }) {
     try {
       console.log("addCommentsFB 시작");
-      console.log(aptNo, commentInfo);
-      const response = await apis.addComments(aptNo, commentInfo);
+      console.log(aptNo, content);
+      const response = await apis.addComments(aptNo, content);
       console.log(response);
 
       dispatch(getCommentsFB(aptNo)); // 댓글 목록 다시 요청
@@ -52,8 +52,6 @@ const deleteCommentsFB = (aptNo, commentId) => {
       console.log("deleteCommentsFB 시작");
       const response = await apis.deleteComments(aptNo, commentId);
       console.log(response);
-
-      window.alert("댓글이 삭제 되었습니다.");
       dispatch(getCommentsFB(aptNo));
     } catch (error) {
       console.log("deleteCommentsFB error");

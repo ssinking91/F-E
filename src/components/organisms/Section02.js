@@ -9,6 +9,7 @@ import { Text } from "../atoms/index";
 
 const Section02 = (props) => {
   const dispatch = useDispatch();
+  console.log("page2");
 
   useEffect(() => {
     dispatch(mainAction.getPrivateInfoDB());

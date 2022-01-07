@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { Grid, Text } from "../atoms/index";
 import { useSelector } from "react-redux";
-import BundleText from "../molecules/BundleText";
 
 export default function DetailType() {
-  // const sido = ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10"];
   const typeInfo = useSelector((store) => store.detail.info.detail2);
-  //console.log(typeInfo);
   const [type, setType] = useState(1);
 
   return (
@@ -23,7 +20,7 @@ export default function DetailType() {
               is_flex
               width="800px"
               margin="auto"
-              background_color="#eee"
+              background_color="#F9F9F9"
               // cursor="pointer"
               // radius="36px"
             >
@@ -46,7 +43,12 @@ export default function DetailType() {
                           setType(item.modelNo);
                         }}
                       >
-                        <Text h4 color="#000" margin="auto" padding="3px">
+                        <Text
+                          h4
+                          color={item.modelNo === type ? `#F9F9F9` : `#A5AAB6`}
+                          margin="auto"
+                          padding="3px"
+                        >
                           {item.type.split(".")[0].split("")[1]}
                           {item.type.split(".")[0].split("")[2]}
                           {item.type.split(".")[1].split("")[4]}
