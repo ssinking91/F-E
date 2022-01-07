@@ -94,8 +94,8 @@ export const apis = {
     }), // 유저정보 수정
 
   // Saved
-  seved: (id) =>
-    instance.post(`/api/userId=${id}/likes`, {
+  seved: (aptNo) =>
+    instance.post(`/api/likes/${aptNo}`, {
       userKey: localStorage.getItem("userKey"),
     }), // 청약정보 저장하기
 };
