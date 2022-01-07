@@ -26,7 +26,7 @@ const MyPage = (props) => {
   const userImage = localStorage.getItem("userImage");
 
   const existuser = useSelector((state) => state.mypage.list.existuser);
-
+  console.log(existuser);
   const publicInfo = useSelector((state) => state.mypage.list.public);
   console.log(publicInfo);
 
@@ -43,9 +43,18 @@ const MyPage = (props) => {
             <Text h2 margin="0 0 10px 0">
               {localStorage.getItem("userName")} 님
             </Text>
-            <Text h4 boldText>
-              {existuser.sido}
-            </Text>
+            {existuser ? (
+              <Text h4 boldText>
+                {existuser.sido}
+              </Text>
+            ) : (
+              <>
+                <Text h4 boldText>
+                  선택한 지역이 없습니다
+                </Text>
+                <span>🤯</span>
+              </>
+            )}
           </MyCardList>
         </MyCard>
         <MyPost>
@@ -58,7 +67,7 @@ const MyPage = (props) => {
             </Text>
             {publicInfo.length !== 0 ? (
               publicInfo.map((item, idx) => {
-                const publics= "public";
+                const publics = "public";
                 const panName = `[${item.aisTypeName}] ${
                   item.address.split(" ")[0]
                 } ${item.address.split(" ")[1]}`;
