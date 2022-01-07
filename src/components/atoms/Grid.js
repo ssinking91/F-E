@@ -20,7 +20,7 @@ const Grid = (props) => {
     cursor,
   } = props;
 
-  // console.log(props);
+  console.log(props);
 
   const styles = {
     is_flex: is_flex,
@@ -32,9 +32,9 @@ const Grid = (props) => {
     center: center,
     max_width: max_width,
     radius: radius,
-    justify_content,
-    align_items,
-    text_align,
+    justify_content: justify_content,
+    align_items: align_items,
+    text_align: align_items,
     cursor: cursor,
   };
   return (

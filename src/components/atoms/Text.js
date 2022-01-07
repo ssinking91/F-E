@@ -23,6 +23,7 @@ export default function Text(props) {
     height,
     _onClick,
     white_space,
+    cursor,
   } = props;
 
   const styles = {
@@ -34,6 +35,7 @@ export default function Text(props) {
     width: width,
     height: height,
     white_space,
+    cursor,
   };
 
   // text type
@@ -143,6 +145,7 @@ const H4 = styled.p`
   font-size: 18px;
   font-weight: 700;
   line-height: 25px;
+  cursor: ${(props) => (props.cursor ? `cursor: ${props.cursor}` : "")};
 `;
 const Menu = styled.p`
   margin: ${(props) => props.margin};
