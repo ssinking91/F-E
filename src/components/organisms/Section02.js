@@ -79,24 +79,6 @@ const Section02 = (props) => {
               <Text h4 color="#778899">
                 민간 분양
               </Text>
-
-              {private_regionInfo.map((item, index) => {
-                return (
-                  <Main2Card
-                    key={index}
-                    image={item.ImgUrl}
-                    name={item.houseName}
-                    startDate={item.receptStartDate}
-                    endDate={item.receptEndDate}
-                    size={`${item.size} m²`}
-                    price={`${item.supplyAmount} 만원`}
-                    //민간 청약정보 ID 값
-                    _onClick={() => {
-                      history.push(`/private/${item.pblancNo}`);
-                    }}
-                  />
-                );
-              })}
               {private_regionInfo.length !== 0 ? (
                 private_regionInfo.map((item, index) => {
                   return (
