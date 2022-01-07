@@ -21,7 +21,7 @@ console.log(userName);
 const Fullpage = (props) => (
   <ReactFullpage
     anchors={anchors}
-    navigation
+    // navigation
     // navigationTooltips={anchors}
     verticalCentered={false}
     sectionsColor={["#fff", "#fff", "#fff", "#F9F9F9"]}
