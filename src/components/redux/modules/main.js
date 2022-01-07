@@ -144,6 +144,7 @@ const actionCreators = {
   // Section 03
   getPublicHot,
   getPublicHotDB,
+  savedPost,
 };
 
 export { actionCreators };
