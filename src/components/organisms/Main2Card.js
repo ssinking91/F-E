@@ -1,5 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { savedActions } from "../redux/modules/cardSave";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+
 import Label from "../molecules/Label";
 import { Text, Image } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
@@ -7,7 +11,26 @@ import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 
 const Main2Card = (props) => {
   const { _onClick } = props;
-  const [save2, setSave2] = React.useState(false);
+  const dispatch = useDispatch();
+
+  const aptNo = props.aptNo;
+  console.log(aptNo);
+
+  const islike = JSON.parse(props.islike);
+  console.log(islike);
+
+  const userKey = localStorage.getItem("userKey");
+  const [save2, setSave2] = React.useState(islike);
+
+  // 카드 저장
+  const saveCard = () => {
+    if (userKey === null) {
+      window.alert("로그인 후 사용이 가능합니다😎");
+      return;
+    }
+    const Page = "myPage"
+    dispatch(savedActions.savedFB(aptNo, Page));
+  };
 
   return (
     <Container>
@@ -16,6 +39,7 @@ const Main2Card = (props) => {
         <ImageDiv
           onClick={() => {
             setSave2(!save2);
+            saveCard();
           }}
         >
           {save2 ? <BmarkFill /> : <BmarkNone />}

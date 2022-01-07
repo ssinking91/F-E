@@ -23,7 +23,7 @@ const Section02 = (props) => {
   // 민간 공고 3개
   const private_list = useSelector((state) => state.main.private_list);
   const private_regionInfo = private_list.slice(0, 3);
-  // console.log(private_regionInfo);
+  console.log(private_regionInfo);
 
   // 공공 공고 3개
   const public_list = useSelector((state) => state.main.public_list);
@@ -66,6 +66,8 @@ const Section02 = (props) => {
                     endDate={item.closeDate}
                     size={`${item.size} m²`}
                     price={item.aisTypeName}
+                    aptNo={item.panId}
+                    islike={item.islike}
                     //공공 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/public/${item.panId}`);
@@ -90,6 +92,8 @@ const Section02 = (props) => {
                       endDate={item.receptEndDate}
                       size={`${item.size} m²`}
                       price={`${item.supplyAmount} 만원`}
+                      aptNo={item.pblancNo}
+                      islike={item.islike}
                       //민간 청약정보 ID 값
                       _onClick={() => {
                         history.push(`/private/${item.pblancNo}`);
