@@ -20,7 +20,7 @@ export default function DetailType() {
               is_flex
               width="800px"
               margin="auto"
-              background_color="#eee"
+              background_color="#F9F9F9"
               // cursor="pointer"
               // radius="36px"
             >
@@ -43,7 +43,12 @@ export default function DetailType() {
                           setType(item.modelNo);
                         }}
                       >
-                        <Text h4 color="#000" margin="auto" padding="3px">
+                        <Text
+                          h4
+                          color={item.modelNo === type ? `#F9F9F9` : `#A5AAB6`}
+                          margin="auto"
+                          padding="3px"
+                        >
                           {item.type.split(".")[0].split("")[1]}
                           {item.type.split(".")[0].split("")[2]}
                           {item.type.split(".")[1].split("")[4]}

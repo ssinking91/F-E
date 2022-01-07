@@ -38,7 +38,7 @@ export default function AllListTemp() {
           전체 청약정보 보기
         </Text>
       </Grid>
-      <Grid is_flex width="800px" margin="auto" background_color="#eee">
+      <Grid is_flex width="800px" margin="auto" background_color="#F9F9F9">
         {dou.map((item, index) => (
           <Grid
             is_flex
@@ -52,7 +52,12 @@ export default function AllListTemp() {
               setFtbg(index);
             }}
           >
-            <Text h4 color="#fff" margin="auto" padding="3px">
+            <Text
+              h4
+              color={index === ftbg ? `#F9F9F9` : `#A5AAB6`}
+              margin="auto"
+              padding="3px"
+            >
               {item}
             </Text>
           </Grid>
@@ -62,7 +67,7 @@ export default function AllListTemp() {
         is_flex
         width="800px"
         margin="20px auto 100px auto"
-        background_color="#eee"
+        background_color="#F9F9F9"
       >
         {si.map((item, index) => (
           <Grid
@@ -77,7 +82,12 @@ export default function AllListTemp() {
               setFtbg(index + 6);
             }}
           >
-            <Text h4 color="#fff" margin="auto" padding="3px">
+            <Text
+              h4
+              color={index + 6 === ftbg ? `#F9F9F9` : `#A5AAB6`}
+              margin="auto"
+              padding="3px"
+            >
               {item}
             </Text>
           </Grid>
