@@ -9,7 +9,7 @@ const instance = axios.create({
   headers: {
     "content-type": "application/json;charset=UTF-8",
     accept: "application/json",
-    authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+    // authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
   },
 });
 
@@ -17,9 +17,7 @@ instance.interceptors.request.use(function (config) {
   config.headers.common["Authorization"] = `Bearer ${sessionStorage.getItem(
     "accessToken"
   )}`;
-  config.headers.common["userKey"] = `Bearer ${localStorage.getItem(
-    "userKey"
-  )}`;
+  config.headers.common["userKey"] = `${localStorage.getItem("userKey")}`;
   return config;
 });
 
