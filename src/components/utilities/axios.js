@@ -17,6 +17,9 @@ instance.interceptors.request.use(function (config) {
   config.headers.common["Authorization"] = `Bearer ${sessionStorage.getItem(
     "accessToken"
   )}`;
+  config.headers.common["userKey"] = `Bearer ${localStorage.getItem(
+    "userKey"
+  )}`;
   return config;
 });
 
