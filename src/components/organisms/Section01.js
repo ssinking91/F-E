@@ -10,7 +10,6 @@ import NavBarAnchor from "./NavBarAnchor";
 
 const Section01 = (props) => {
   const dispatch = useDispatch();
-
   console.log("page1");
   // Main > Sections01 유저이름 데이터 확인
   console.log(props.userName);
