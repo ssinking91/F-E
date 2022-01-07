@@ -32,7 +32,7 @@ const MyPage = (props) => {
   const privateInfo = useSelector((state) => state.mypage.list.private);
   console.log(privateInfo);
 
-  const Page = "myPage"
+  const Page = "myPage";
 
   return (
     <>
@@ -72,6 +72,7 @@ const MyPage = (props) => {
                 const panName = `[${item.aisTypeName}] ${
                   item.address.split(" ")[0]
                 } ${item.address.split(" ")[1]}`;
+                const publicSales = "publicSales";
                 return (
                   <Main2Card
                     key={idx}
@@ -85,6 +86,8 @@ const MyPage = (props) => {
                     aptNo={item.panId}
                     islike={item.islike}
                     Page={Page}
+                    CardPanState={item.panState}
+                    publicSales={publicSales}
                     //공공 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/public/${item.panId}`);
@@ -93,9 +96,16 @@ const MyPage = (props) => {
                 );
               })
             ) : (
-              <Text h4 width="1195px" margin="30px 0 30px 0">
-                😎 공공 분양저장된 청약정보가 없습니다
-              </Text>
+              <>
+                <TextDiv>
+                  <span>🏚️..</span>
+                  <Text h4>실시간 공공 분양 청약정보가 없어요</Text>
+                </TextDiv>
+                <TextDiv>
+                  <span>😭</span>
+                  <Text h4>다른 관심지역을 선택해서 청약정보를 찾아보아요</Text>
+                </TextDiv>
+              </>
             )}
           </MyPostCardList>
           <MyPostCardList>
@@ -125,9 +135,16 @@ const MyPage = (props) => {
                 );
               })
             ) : (
-              <Text h4 width="1195px" margin="30px 0 30px 0">
-                😎 민간 분양 저장된 청약정보가 없습니다
-              </Text>
+              <>
+                <TextDiv>
+                  <span>🏚️..</span>
+                  <Text h4>실시간 민간 분양 청약정보가 없어요</Text>
+                </TextDiv>
+                <TextDiv>
+                  <span>😭</span>
+                  <Text h4>다른 관심지역을 선택해서 청약정보를 찾아보아요</Text>
+                </TextDiv>
+              </>
             )}
           </MyPostCardList>
         </MyPost>
@@ -184,6 +201,13 @@ const MyPostCardList = styled.div`
   & > div {
     margin-bottom: 26px;
   }
+`;
+
+const TextDiv = styled.div`
+  width: 1195px;
+  margin: 30px 0 30px 0;
+  display: flex;
+  align-items: center;
 `;
 
 export default MyPage;

@@ -110,6 +110,7 @@ export default function AllListTemp() {
               const panName = `[${item.aisTypeName}] ${
                 item.address.split(" ")[0]
               } ${item.address.split(" ")[1]}`;
+              const publicSales= "publicSales"
               return (
                 <>
                   <Card
@@ -122,6 +123,8 @@ export default function AllListTemp() {
                     price={item.aisTypeName}
                     aptNo={item.panId}
                     islike={item.islike}
+                    CardPanState={item.panState}
+                    publicSales={publicSales}
                     //공공 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/public/${item.panId}`);
