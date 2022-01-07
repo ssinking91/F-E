@@ -74,6 +74,15 @@ export const apis = {
       userKey: localStorage.getItem("userKey"),
     }), // 댓글삭제
 
+  // allList
+  getPrivateLists: (ftSido) =>
+    instance.get(`/api/private?sido=${ftSido}`, {
+      userKey: localStorage.getItem("userKey"),
+    }),
+  getPublicLists: (ftSido) =>
+    instance.get(`/api/public?sidoName=${ftSido}`, {
+      userKey: localStorage.getItem("userKey"),
+    }),
   // MyPage
   getUserInfos: (userKey) =>
     instance.get(`/api/users/${userKey}`, {

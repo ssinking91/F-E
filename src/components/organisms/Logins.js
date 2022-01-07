@@ -68,4 +68,5 @@ const Kakao = styled.div`
   padding-left: 6px;
   cursor: pointer;
   font-size: 16px;
+  font-weight: bold;
 `;

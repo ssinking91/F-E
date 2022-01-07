@@ -10,6 +10,7 @@ import NavBarAnchor from "./NavBarAnchor";
 
 const Section01 = (props) => {
   const dispatch = useDispatch();
+
   console.log("page1");
   // Main > Sections01 유저이름 데이터 확인
   console.log(props.userName);
@@ -18,6 +19,10 @@ const Section01 = (props) => {
     dispatch(mainAction.getTotalDB());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Main > Sections01 유저이름 데이터 확인
+  const userName = props.userName;
+  // console.log(userName);
 
   // 청약 총 갯수
   const infoNum = useSelector((state) => state.main.total);
@@ -42,7 +47,7 @@ const Section01 = (props) => {
             </Text>
             {totalNum ? (
               <Text h2 color="#fff" margin="15px 0 60px 0">
-                {props.userName !== null ? `${props.userName}님을 위한 ` : ""}
+                {userName !== null ? `${userName}님을 위한 ` : ""}
                 청약 정보가{" "}
                 <span style={{ color: "#fff", borderBottom: "3px solid #fff" }}>
                   {totalNum}개

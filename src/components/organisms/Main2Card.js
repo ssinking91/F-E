@@ -10,6 +10,7 @@ import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 
 const Main2Card = (props) => {
+
   const { _onClick } = props;
   const dispatch = useDispatch();
 
@@ -48,7 +49,7 @@ const Main2Card = (props) => {
       <Item>
         <Info1 onClick={_onClick}>
           <LabelDiv>
-            <Label registration></Label>
+            <Label LabelPanState={CardPanState}></Label>
           </LabelDiv>
           <Text h4 margin="0 0 0 15px" width="316px">
             {props.name}
