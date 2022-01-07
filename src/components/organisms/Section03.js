@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as mainAction } from "../redux/modules/main";
 import { history } from "../redux/configStore";
 import Main3Card from "./Main3Card";
-import NavBarAnchor from "./NavBarAnchor";
 import { Text } from "../atoms/index";
 const Section03 = (props) => {
   const dispatch = useDispatch();

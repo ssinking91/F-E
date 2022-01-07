@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import NavBarAnchor from "./NavBarAnchor";
 import Footer from "./Footer";
 import { Text } from "../atoms/index";
 import { ReactComponent as Top } from "../../images/top.svg";

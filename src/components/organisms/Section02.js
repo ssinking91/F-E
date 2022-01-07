@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as mainAction } from "../redux/modules/main";
 import { history } from "../redux/configStore";
 import Main2Card from "./Main2Card";
-import NavBarAnchor from "./NavBarAnchor";
 import { Text } from "../atoms/index";
 
 const Section02 = (props) => {
@@ -51,13 +50,17 @@ const Section02 = (props) => {
           <SectionItem>
             <AllSpan>
               <Span1 className="a">{existuser.sido}</Span1>
-              <Span2>지역의 청약은?</Span2>
+              <Span2>
+                {localStorage.getItem("userName") &&
+                  `${localStorage.getItem("userName")}님의`}{" "}
+                관심 지역 청약은?
+              </Span2>
               <span>📌</span>
             </AllSpan>
-            {userName !== null ? (
+            {localStorage.getItem("userName") ? (
               <Text h4 color="#A5AAB6">
-                {userName}님이 선택한 {existuser.sido} 지역의 실시간 청약 정보를
-                알 수 있어요
+                {localStorage.getItem("userName")}님이 선택한 {existuser.sido}{" "}
+                지역의 실시간 청약 정보를 알 수 있어요
               </Text>
             ) : (
               <Text h4 color="#A5AAB6">
