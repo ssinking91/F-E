@@ -152,6 +152,8 @@ const HeaderWrap = styled.div`
   background-color: white;
   position: absolute;
   z-index: 800;
+  position: fixed;
+  opacity: 0.8;
 `;
 
 // const HandleOn = styled.div`

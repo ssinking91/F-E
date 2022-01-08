@@ -4,36 +4,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as mainAction } from "../redux/modules/main";
 import { history } from "../redux/configStore";
 import Main2Card from "./Main2Card";
-import NavBarAnchor from "./NavBarAnchor";
 import { Text } from "../atoms/index";
 
-const Section02 = (props) => {
+const Section02 = () => {
   const dispatch = useDispatch();
   console.log("page2");
 
   useEffect(() => {
+    console.log("@@@@@page2 ue2@@@@@");
     dispatch(mainAction.getPrivateInfoDB());
     dispatch(mainAction.getPublicInfoDB());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Main > Sections02 유저이름 데이터 확인
-  const userName = props.userName;
-  // console.log(userName);
-
   // 로그인한 유저데이터
   const existuser = useSelector((state) => state.mypage.list.existuser);
-  // console.log(existuser);
 
   // 민간 공고 3개
   const private_list = useSelector((state) => state.main.private_list);
   const private_regionInfo = private_list.slice(0, 3);
-  console.log(private_regionInfo);
 
   // 공공 공고 3개
   const public_list = useSelector((state) => state.main.public_list);
   const public_regionInfo = public_list.slice(6, 9);
-  // console.log(public_list);
 
   return (
     <>
@@ -51,13 +44,17 @@ const Section02 = (props) => {
           <SectionItem>
             <AllSpan>
               <Span1 className="a">{existuser.sido}</Span1>
-              <Span2>지역의 청약은?</Span2>
+              <Span2>
+                {localStorage.getItem("userName") &&
+                  `${localStorage.getItem("userName")}님의`}{" "}
+                관심 지역 청약은?
+              </Span2>
               <span>📌</span>
             </AllSpan>
-            {userName !== null ? (
+            {localStorage.getItem("userName") ? (
               <Text h4 color="#A5AAB6">
-                {userName}님이 선택한 {existuser.sido} 지역의 실시간 청약 정보를
-                알 수 있어요
+                {localStorage.getItem("userName")}님이 선택한 {existuser.sido}{" "}
+                지역의 실시간 청약 정보를 알 수 있어요
               </Text>
             ) : (
               <Text h4 color="#A5AAB6">
