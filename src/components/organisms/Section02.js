@@ -94,10 +94,10 @@ const Section02 = () => {
                   );
                 })
               ) : (
-                <Text h4 margin="100px 0">
+                <Text h4 margin="100px 0 0 0">
                   <Span>🏚️..</Span> 실시간 공공 분양 청약정보가 없어요
                   <Span>😭</Span>
-                  <Text>다른 관심지역을 선택해서 청약정보를 찾아보아요</Text>
+                  <Text h4>다른 관심지역을 선택해서 청약정보를 찾아보아요</Text>
                 </Text>
               )}
             </PublicCards>
@@ -127,12 +127,11 @@ const Section02 = () => {
                   );
                 })
               ) : (
-                <TextDiv>
-                  <Span>🏚️..</Span>
-                  <Text h4>실시간 민간 분양 청약정보가 없어요</Text>
+                <Text h4 margin="100px 0 0 0">
+                  <Span>🏚️..</Span> 실시간 공공 분양 청약정보가 없어요
                   <Span>😭</Span>
                   <Text h4>다른 관심지역을 선택해서 청약정보를 찾아보아요</Text>
-                </TextDiv>
+                </Text>
               )}
             </PrivateCards>
           </CardWrap>
