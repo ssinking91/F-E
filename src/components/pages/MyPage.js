@@ -50,7 +50,7 @@ const MyPage = (props) => {
               </Text>
             ) : (
               <>
-                <Text h4 boldText width="160px">
+                <Text h4 boldText width="200px">
                   선택한 지역이 없습니다
                 </Text>
                 <span>🤯</span>
