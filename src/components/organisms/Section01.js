@@ -7,20 +7,15 @@ import { actionCreators as mainAction } from "../redux/modules/main";
 import { ReactComponent as Scroll } from "../../images/scroll.svg";
 import mainBackgroundImage from "../../images/mainBackgroundImage.jpg";
 
-const Section01 = (props) => {
+const Section01 = () => {
   const dispatch = useDispatch();
   console.log("page1");
-  // Main > Sections01 유저이름 데이터 확인
-  console.log(props.userName);
 
   useEffect(() => {
+    console.log("@@@@@@page1 ue@@@@@");
     dispatch(mainAction.getTotalDB());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // Main > Sections01 유저이름 데이터 확인
-  const userName = props.userName;
-  // console.log(userName);
 
   // 청약 총 갯수
   const infoNum = useSelector((state) => state.main.total);

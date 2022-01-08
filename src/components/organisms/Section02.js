@@ -6,33 +6,27 @@ import { history } from "../redux/configStore";
 import Main2Card from "./Main2Card";
 import { Text } from "../atoms/index";
 
-const Section02 = (props) => {
+const Section02 = () => {
   const dispatch = useDispatch();
   console.log("page2");
 
   useEffect(() => {
+    console.log("@@@@@page2 ue2@@@@@");
     dispatch(mainAction.getPrivateInfoDB());
     dispatch(mainAction.getPublicInfoDB());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Main > Sections02 유저이름 데이터 확인
-  const userName = props.userName;
-  // console.log(userName);
-
   // 로그인한 유저데이터
   const existuser = useSelector((state) => state.mypage.list.existuser);
-  // console.log(existuser);
 
   // 민간 공고 3개
   const private_list = useSelector((state) => state.main.private_list);
   const private_regionInfo = private_list.slice(0, 3);
-  console.log(private_regionInfo);
 
   // 공공 공고 3개
   const public_list = useSelector((state) => state.main.public_list);
   const public_regionInfo = public_list.slice(6, 9);
-  // console.log(public_list);
 
   return (
     <>
