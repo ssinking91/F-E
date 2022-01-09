@@ -186,11 +186,11 @@ const Span2 = styled.span`
   color: #333333;
 `;
 
-const TextDiv = styled.div`
-  width: 100%
-  display : flex;
-  margin: 100px 0;
-`;
+// const TextDiv = styled.div`
+//   width: 100%
+//   display : flex;
+//   margin: 100px 0;
+// `;
 
 const CardWrap = styled.div`
   width: 1200px;

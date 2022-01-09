@@ -38,7 +38,7 @@ export const getPublicListDB = (ftSido) => {
   return (dispatch, getState, { history }) => {
     apis
       .getPublicLists(ftSido)
-      .then((res) => {
+      .then(async (res) => {
         const publicList = res.data.result[0];
         const publicAdress = [];
         console.log(publicList);
@@ -46,7 +46,7 @@ export const getPublicListDB = (ftSido) => {
           publicAdress.push(publicList[i].address);
         }
         dispatch(getPublicList(publicList));
-        dispatch(getPublicAdress(publicAdress));
+        await dispatch(getPublicAdress(publicAdress));
       })
       .catch((e) => console.log(e));
   };
