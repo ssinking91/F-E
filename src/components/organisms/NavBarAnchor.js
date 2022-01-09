@@ -112,12 +112,18 @@ export default function NavBarAnchor() {
                   로그인
                 </Text>
               </Link>
+
               <HandleOff className="handle">
                 <Logins />
               </HandleOff>
               {/* </HandleOn> */}
             </LogWrap>
           )}
+          <Link to="/test">
+            <Text h4 margin="auto" color="#a5aab6">
+              TestPage
+            </Text>
+          </Link>
         </Grid>
         {/* <Grid>
           {(sessionStorage.getItem("accessToken") && (

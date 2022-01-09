@@ -1,13 +1,42 @@
 /* global kakao */
+import { useDispatch } from "react-redux";
+import { getPrivateListDB, getPublicListDB } from "../redux/modules/allList";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
+
 import "./KakaoMap.css";
 
 export default function KakaoMap() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // dispatch(getPrivateListDB(""));
+    dispatch(getPublicListDB(""));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  // const privateList = useSelector((store) => store.allList.privateList);
+  const location = useSelector((store) => store.allList.adress);
+  console.log(location);
+
+  // var geocoder = new kakao.maps.services.Geocoder();
+  let locates = [];
+  // // 주소로 좌표를 검색합니다
+  // for (let i = 0; i < location.length; i++) {
+  //   geocoder.addressSearch(location[i], function (result, status) {
+  //     // 정상적으로 검색이 완료됐으면
+  //     if (status === kakao.maps.services.Status.OK) {
+  //       locates.push([result[0].y, result[0].x]);
+  //       if (i === location.length - 1) {
+  //         console.log(locates);
+  //       }
+  //     }
+  //   });
+  // }
+
   useEffect(() => {
     var mapContainer = document.getElementById("map"), // 지도를 표시할 div
       mapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 2, // 지도의 확대 레벨
+        center: new kakao.maps.LatLng(37.56682, 126.97865), // 지도의 중심좌표
+        level: 11, // 지도의 확대 레벨
       };
 
     // 지도를 생성합니다
@@ -28,30 +57,34 @@ export default function KakaoMap() {
     var geocoder = new kakao.maps.services.Geocoder();
 
     // 주소로 좌표를 검색합니다
-    geocoder.addressSearch("서울특별시 마포구", function (result, status) {
-      // 정상적으로 검색이 완료됐으면
-      if (status === kakao.maps.services.Status.OK) {
-        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+    for (let i = 0; i < location.length; i++) {
+      geocoder.addressSearch(location[i], function (result, status) {
+        // 정상적으로 검색이 완료됐으면
+        if (status === kakao.maps.services.Status.OK) {
+          // var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+          locates.push([result[0].y, result[0].x]);
 
-        // 결과값으로 받은 위치를 마커로 표시합니다
-        var marker = new kakao.maps.Marker({
-          map: map,
-          position: coords,
-        });
+          if (i === location.length - 1) {
+            var clusterer = new kakao.maps.MarkerClusterer({
+              map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
+              averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
+              minLevel: 5, // 클러스터 할 최소 지도 레벨
+            });
 
-        // 인포윈도우로 장소에 대한 설명을 표시합니다
-        var infowindow = new kakao.maps.InfoWindow({
-          content:
-            '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>',
-        });
-        infowindow.open(map, marker);
+            var markers = locates.map((location) => {
+              return new kakao.maps.Marker({
+                position: new kakao.maps.LatLng(location[0], location[1]),
+              });
+            });
 
-        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-        map.setCenter(coords);
-      }
-    });
+            clusterer.addMarkers(markers);
+          }
+        }
+      });
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   return (
     <>
       <div className="map_wrap">

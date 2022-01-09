@@ -14,12 +14,10 @@ const Main2Card = (props) => {
   const dispatch = useDispatch();
 
   const islike = JSON.parse(props.islike);
-  console.log(islike);
 
   const [save2, setSave2] = React.useState(islike);
 
   const aptNo = props.aptNo;
-  console.log(aptNo);
 
   // 카드 저장
   const saveCard = async () => {
