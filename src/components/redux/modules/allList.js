@@ -40,13 +40,15 @@ export const getPublicListDB = (ftSido) => {
       .getPublicLists(ftSido)
       .then(async (res) => {
         const publicList = res.data.result[0];
-        const publicAdress = [];
-        console.log(publicList);
+        let publicAdress = [];
         for (let i = 0; i < publicList.length; i++) {
           publicAdress.push(publicList[i].address);
         }
+        new Set(publicAdress);
+        publicAdress = [...publicAdress];
+        console.log(publicAdress);
         dispatch(getPublicList(publicList));
-        await dispatch(getPublicAdress(publicAdress));
+        dispatch(getPublicAdress(publicAdress));
       })
       .catch((e) => console.log(e));
   };

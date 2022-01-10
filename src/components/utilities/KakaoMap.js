@@ -6,21 +6,20 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 import "./style.css";
-import axios from "axios";
 
 export default function KakaoMap() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     // dispatch(getPrivateListDB(""));
     dispatch(getPublicListDB(""));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const publicList = useSelector((stto) => stto.allList.publicList);
+  // const publicList = useSelector((stto) => stto.allList.publicList);
   const location = useSelector((state) => state.allList.adress);
-  console.log(publicList);
   let locates = [];
-
+  // console.log(publicList);
   useEffect(() => {
     mapFunc();
 
@@ -31,7 +30,7 @@ export default function KakaoMap() {
     var mapContainer = document.getElementById("map"), // 지도를 표시할 div
       mapOption = {
         center: new kakao.maps.LatLng(37.56682, 126.97865), // 지도의 중심좌표
-        level: 9, // 지도의 확대 레벨
+        level: 12, // 지도의 확대 레벨
       };
 
     // 지도를 생성합니다
@@ -75,8 +74,8 @@ export default function KakaoMap() {
             // 정상적으로 검색이 완료됐으면
             if (status === kakao.maps.services.Status.OK) {
               // var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-              locates.push([result[0].y, result[0].x]);
-              console.log(`${i}번째, ${location[i]}, ${publicList[i].address}`);
+              locates.push([i + 1, result[0].y, result[0].x]);
+              // console.log(`${i}번째, ${result[0].y} , ${result[0].x}`);
 
               var markerImageUrl =
                   "https://www.habitat.org/sites/default/files/styles/780w/public/2018-05/icon-house.png?itok=beg84oiG",
@@ -91,20 +90,17 @@ export default function KakaoMap() {
                 markerImageSize,
                 markerImageOptions
               );
-              if (i === publicList.length - 1) {
-                // var markers = locates.map((location) => {
-                //   return new kakao.maps.Marker({
-                //     position: new kakao.maps.LatLng(location[0], location[1]),
-                //     clickable: true,
-                //     image: markerImage,
-                //   });
+              if (i === location.length - 1) {
+                // const results = await Promise.all(locates);
+                // results.sort((a, b) => {
+                //   return a - b;
                 // });
                 console.log(locates);
                 for (let j = 0; j < locates.length; j++) {
                   marker = new kakao.maps.Marker({
                     position: new kakao.maps.LatLng(
-                      locates[j][0],
-                      locates[j][1]
+                      locates[j][1],
+                      locates[j][2]
                     ),
                     clickable: true,
                     image: markerImage,
@@ -114,22 +110,10 @@ export default function KakaoMap() {
                   kakao.maps.event.addListener(marker, "click", function () {
                     console.log(locates[j]);
                     console.log(location[j]);
-                    console.log(publicList[j].address);
+                    // console.log(publicList[j].address);
                   });
                 }
               }
-
-              // kakao.maps.event.addListener(
-              //   clusterer,
-              //   "clusterclick",
-              //   function (cluster) {
-              //     // 현재 지도 레벨에서 1레벨 확대한 레벨
-              //     var level = map.getLevel() - 1;
-
-              //     // 지도를 클릭된 클러스터의 마커의 위치를 기준으로 확대합니다
-              //     map.setLevel(level, { anchor: cluster.getCenter() });
-              //   }
-              // );
 
               // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
               // map.setCenter(coords);

@@ -10,18 +10,7 @@ import KakaoAuth from "../utilities/KakaoAuth";
 import KakaoLogin from "../utilities/KakaoLogin";
 import Test from "./Test";
 
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getPrivateListDB, getPublicListDB } from "../redux/modules/allList";
-
 export default function Router() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    console.log("test");
-    dispatch(getPrivateListDB(""));
-    dispatch(getPublicListDB(""));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   return (
     <ConnectedRouter history={history}>
       <Switch>

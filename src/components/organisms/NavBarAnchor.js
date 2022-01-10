@@ -81,7 +81,7 @@ export default function NavBarAnchor() {
           </Grid>
         </Grid>
         <Grid is_flex>
-          {(sessionStorage.getItem("accessToken") && (
+          {(localStorage.getItem("userKey") && (
             <Grid is_flex>
               <Grid
                 padding="6px 0"
