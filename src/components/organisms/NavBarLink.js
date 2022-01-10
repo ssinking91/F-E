@@ -118,6 +118,11 @@ export default function NavBar() {
             </LogWrap>
           )}
         </Grid>
+        <Link to="/test">
+          <Text h4 margin="auto" color="#a5aab6">
+            TestPage
+          </Text>
+        </Link>
       </HeaderWrap>
       <Hr />
     </>
