@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { savedActions } from "../redux/modules/cardSave";
+import { mypagetActions } from "../redux/modules/mypage";
 import { useDispatch, useSelector } from "react-redux";
 // import { useParams } from "react-router-dom";
 
@@ -10,7 +11,6 @@ import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 
 const Main2Card = (props) => {
-
   const { _onClick } = props;
   const dispatch = useDispatch();
 
@@ -18,19 +18,26 @@ const Main2Card = (props) => {
   console.log(islike);
 
   const [save2, setSave2] = React.useState(islike);
-  
-  const aptNo = props.aptNo;
-  console.log(aptNo);
 
   // 카드 저장
-  const saveCard = async() => {
+  const saveCard = async () => {
     const userKey = localStorage.getItem("userKey");
+    const Page = props.Page;
+    const status = props.status;
+    const aptNo = props.aptNo;
+    // console.log(aptNo);
     if (userKey === null) {
       window.alert("로그인 후 사용이 가능합니다😎");
       return;
     }
-    const Page = props.Page
-    await dispatch(savedActions.savedFB(aptNo, Page));
+
+    if (status) {
+      return (
+        dispatch(mypagetActions.savedFB(aptNo, Page, status)), setSave2(!save2)
+      );
+    } else {
+      return dispatch(savedActions.savedFB(aptNo, Page)), setSave2(!save2);
+    }
   };
 
   return (
@@ -39,7 +46,6 @@ const Main2Card = (props) => {
         <Image shape="card" src={props.image} />
         <ImageDiv
           onClick={() => {
-            setSave2(!save2);
             saveCard();
           }}
         >
@@ -63,7 +69,7 @@ const Main2Card = (props) => {
               분양 면적
             </Text>
             <Text regularText color="#A5AAB6">
-             {props.publicSales? "모집 유형" : "분양 가격"} 
+              {props.publicSales ? "모집 유형" : "분양 가격"}
             </Text>
           </Info2Item1>
           <Info2Item2>

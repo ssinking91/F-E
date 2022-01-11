@@ -10,7 +10,10 @@ const SAVE_CARD = "SAVE_CARD";
 // action creator
 const getUserInfo = createAction(GET_USERINFO, (userInfo) => ({ userInfo }));
 const editUserInfo = createAction(EDIT_USERINFO, (sido) => ({ sido }));
-const savedCard = createAction(SAVE_CARD, (result) => ({ result }));
+const savedCard = createAction(SAVE_CARD, (aptNo, status) => ({
+  aptNo,
+  status,
+}));
 
 // middleware
 const getUserInfosFB = (userKey) => {
@@ -42,18 +45,18 @@ const editUserInfosFB = (userName) => {
   };
 };
 
-const savedFB = (aptNo, status) => {
+const savedFB = (aptNo, page, status) => {
   return async (dispatch, getState, { history }) => {
     try {
-      console.log("savedFB 시작");
+      console.log("mypage savedFB 시작");
       const response = await apis.saved(aptNo);
       console.log(response);
 
-      let result = response.data.data;
-      await dispatch(savedCard(result));
+      //let result = response.data.data;
 
-      console.log("savedFB 끝");
-        
+      dispatch(savedCard(aptNo, status));
+
+      console.log("mypage savedFB 끝");
     } catch (error) {
       console.log(error);
     }
@@ -85,7 +88,18 @@ export default handleActions(
 
     [SAVE_CARD]: (state, action) =>
       produce(state, (draft) => {
-        draft.result = action.payload.result;
+        console.log("mapage save_card 리듀서 시작");
+        if (action.payload.status === "public") {
+          draft.list.public = draft.list.public.filter((item, idx) => {
+            //console.log(action.payload.aptNo, typeof action.payload.aptNo);
+            return item.panId !== action.payload.aptNo;
+          });
+        } else if (action.payload.status === "private") {
+          draft.list.private = draft.list.private.filter((item, idx) => {
+            //console.log(action.payload.aptNo, typeof action.payload.aptNo);
+            return item.pblancNo !== action.payload.aptNo;
+          });
+        }
       }),
   },
   initialState

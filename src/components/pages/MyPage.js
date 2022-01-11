@@ -73,6 +73,7 @@ const MyPage = (props) => {
                   item.address.split(" ")[0]
                 } ${item.address.split(" ")[1]}`;
                 const publicSales = "publicSales";
+                const status = "public"
                 return (
                   <Main2Card
                     key={idx}
@@ -88,6 +89,7 @@ const MyPage = (props) => {
                     Page={Page}
                     CardPanState={item.panState}
                     publicSales={publicSales}
+                    status={status}
                     //공공 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/public/${item.panId}`);
@@ -115,6 +117,7 @@ const MyPage = (props) => {
 
             {privateInfo.length !== 0 ? (
               privateInfo.map((item, idx) => {
+                const status = "private"
                 return (
                   <Main2Card
                     key={idx}
@@ -127,6 +130,7 @@ const MyPage = (props) => {
                     aptNo={item.pblancNo}
                     islike={item.islike}
                     Page={Page}
+                    status={status}
                     //민간 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/private/${item.pblancNo}`);
