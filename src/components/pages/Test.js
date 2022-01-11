@@ -7,10 +7,10 @@ import styled from "styled-components";
 export default function Test() {
   return (
     <>
+      <NavBar />
+      <NavBarSub />
       <Wrap>
-        <NavBar />
         <Left>
-          <NavBarSub />
           <KakaoMap />
         </Left>
         <Right>
