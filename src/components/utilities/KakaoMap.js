@@ -18,11 +18,11 @@ export default function KakaoMap() {
 
   // const publicList = useSelector((stto) => stto.allList.publicList);
   const location = useSelector((state) => state.allList.adress);
+  console.log(location);
   let locates = [];
   // console.log(publicList);
   useEffect(() => {
     mapFunc();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location !== undefined]);
 
@@ -68,56 +68,51 @@ export default function KakaoMap() {
       );
       for (let i = 0; i < location.length; i++) {
         let marker;
-        await geocoder.addressSearch(
-          location[i],
-          async function (result, status) {
-            // 정상적으로 검색이 완료됐으면
-            if (status === kakao.maps.services.Status.OK) {
-              // var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-              locates.push([i + 1, result[0].y, result[0].x]);
-              // console.log(`${i}번째, ${result[0].y} , ${result[0].x}`);
+        geocoder.addressSearch(location[i], async function (result, status) {
+          // 정상적으로 검색이 완료됐으면
+          if (status === kakao.maps.services.Status.OK) {
+            // var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+            locates.push([i + 1, result[0].y, result[0].x]);
+            // console.log(`${i}번째, ${result[0].y} , ${result[0].x}`);
 
-              var markerImageUrl =
-                  "https://www.habitat.org/sites/default/files/styles/780w/public/2018-05/icon-house.png?itok=beg84oiG",
-                markerImageSize = new kakao.maps.Size(80, 60), // 마커 이미지의 크기
-                markerImageOptions = {
-                  offset: new kakao.maps.Point(20, 42), // 마커 좌표에 일치시킬 이미지 안의 좌표
-                };
+            var markerImageUrl =
+                "https://www.habitat.org/sites/default/files/styles/780w/public/2018-05/icon-house.png?itok=beg84oiG",
+              markerImageSize = new kakao.maps.Size(80, 60), // 마커 이미지의 크기
+              markerImageOptions = {
+                offset: new kakao.maps.Point(20, 42), // 마커 좌표에 일치시킬 이미지 안의 좌표
+              };
 
-              // 마커 이미지를 생성한다
-              var markerImage = new kakao.maps.MarkerImage(
-                markerImageUrl,
-                markerImageSize,
-                markerImageOptions
-              );
-              if (i === location.length - 1) {
-                const results = await Promise.all(locates);
-                results.sort((a, b) => a[0] - b[0]);
-                console.log(results);
-                for (let j = 0; j < results.length; j++) {
-                  marker = new kakao.maps.Marker({
-                    position: new kakao.maps.LatLng(
-                      results[j][1],
-                      results[j][2]
-                    ),
-                    clickable: true,
-                    image: markerImage,
-                  });
-                  clusterer.addMarker(marker);
+            // 마커 이미지를 생성한다
+            var markerImage = new kakao.maps.MarkerImage(
+              markerImageUrl,
+              markerImageSize,
+              markerImageOptions
+            );
+            if (i === location.length - 1) {
+              const results = await Promise.all(locates);
+              results.sort((a, b) => a[0] - b[0]);
+              console.log(locates);
+              console.log(results);
+              for (let j = 0; j < results.length; j++) {
+                marker = new kakao.maps.Marker({
+                  position: new kakao.maps.LatLng(results[j][1], results[j][2]),
+                  clickable: true,
+                  image: markerImage,
+                });
+                clusterer.addMarker(marker);
 
-                  kakao.maps.event.addListener(marker, "click", function () {
-                    console.log(results[j]);
-                    console.log(location[j]);
-                    // console.log(publicList[j].address);
-                  });
-                }
+                kakao.maps.event.addListener(marker, "click", function () {
+                  console.log(results[j]);
+                  console.log(location[j]);
+                  // console.log(publicList[j].address);
+                });
               }
-
-              // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-              // map.setCenter(coords);
             }
+
+            // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+            // map.setCenter(coords);
           }
-        );
+        });
       }
     }
   }
