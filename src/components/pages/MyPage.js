@@ -22,6 +22,8 @@ const MyPage = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const [selection, setSelection] = React.useState(false);
+
   const userImage = localStorage.getItem("userImage");
 
   const existuser = useSelector((state) => state.mypage.list.existuser);
@@ -52,9 +54,9 @@ const MyPage = (props) => {
             ) : (
               <>
                 <Text h4 boldText width="200px">
-                  선택한 지역이 없습니다
+                  지역을 선택해 주세요
                 </Text>
-                <span>🤯</span>
+                <span>😎</span>
               </>
             )}
           </MyCardList>
@@ -178,6 +180,7 @@ const MyCardList = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
 
 const MyPost = styled.div`
   width: 1195px;
