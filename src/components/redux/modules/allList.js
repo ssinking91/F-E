@@ -44,11 +44,11 @@ export const getPublicListDB = (ftSido) => {
         for (let i = 0; i < publicList.length; i++) {
           publicAdress.push(publicList[i].address);
         }
-        new Set(publicAdress);
-        publicAdress = [...publicAdress];
-        console.log(publicAdress);
+        const publicAd = new Set(publicAdress);
+        const publicLocation = [...publicAd];
+
         dispatch(getPublicList(publicList));
-        dispatch(getPublicAdress(publicAdress));
+        dispatch(getPublicAdress(publicLocation));
       })
       .catch((e) => console.log(e));
   };

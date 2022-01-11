@@ -30,7 +30,7 @@ export default function KakaoMap() {
     var mapContainer = document.getElementById("map"), // 지도를 표시할 div
       mapOption = {
         center: new kakao.maps.LatLng(37.56682, 126.97865), // 지도의 중심좌표
-        level: 12, // 지도의 확대 레벨
+        level: 9, // 지도의 확대 레벨
       };
 
     // 지도를 생성합니다
@@ -91,16 +91,14 @@ export default function KakaoMap() {
                 markerImageOptions
               );
               if (i === location.length - 1) {
-                // const results = await Promise.all(locates);
-                // results.sort((a, b) => {
-                //   return a - b;
-                // });
-                console.log(locates);
-                for (let j = 0; j < locates.length; j++) {
+                const results = await Promise.all(locates);
+                results.sort((a, b) => a[0] - b[0]);
+                console.log(results);
+                for (let j = 0; j < results.length; j++) {
                   marker = new kakao.maps.Marker({
                     position: new kakao.maps.LatLng(
-                      locates[j][1],
-                      locates[j][2]
+                      results[j][1],
+                      results[j][2]
                     ),
                     clickable: true,
                     image: markerImage,
@@ -108,7 +106,7 @@ export default function KakaoMap() {
                   clusterer.addMarker(marker);
 
                   kakao.maps.event.addListener(marker, "click", function () {
-                    console.log(locates[j]);
+                    console.log(results[j]);
                     console.log(location[j]);
                     // console.log(publicList[j].address);
                   });

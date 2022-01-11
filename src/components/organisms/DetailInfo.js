@@ -191,7 +191,7 @@ export default function DetailInfo() {
               /> */}
               <BundleText
                 title={"모집 공고일"}
-                content={`${topInfo.recruitDate.split("")}`}
+                content={`${topInfo.recruitDate.sp}`}
                 margin="35px 0 0 0"
               />
               <BundleText

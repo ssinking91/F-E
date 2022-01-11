@@ -19,7 +19,8 @@ export default function AllListTemp() {
 
   const publicList = useSelector((store) => store.allList.publicList);
   const privateList = useSelector((store) => store.allList.privateList);
-
+  console.log(publicList);
+  console.log(privateList);
   const [ftbg, setFtbg] = useState(0);
   const [ftSido] = useState("경기도");
   //   const [ftprivateSido, setFtprivateSido] = useState("경기");
