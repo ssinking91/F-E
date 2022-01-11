@@ -24,7 +24,7 @@ export default function KakaoMap() {
     mapFunc();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location !== undefined]);
+  }, [location !== undefined]); // 로케이션의 값이 바뀔 때 마다
 
   async function mapFunc() {
     var mapContainer = document.getElementById("map"), // 지도를 표시할 div
@@ -131,6 +131,6 @@ export default function KakaoMap() {
 
 const Div = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 83vh;
   position: relative;
 `;

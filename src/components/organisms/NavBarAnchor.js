@@ -162,7 +162,7 @@ const HeaderWrap = styled.div`
   padding-top: 30px;
   padding-bottom: 30px;
   background-color: white;
-  position: absolute;
+  // position: absolute;
   z-index: 3;
   opacity: 0.8;
 `;
