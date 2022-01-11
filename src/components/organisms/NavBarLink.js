@@ -80,7 +80,7 @@ export default function NavBar() {
           </Grid>
         </Grid>
         <Grid is_flex>
-          {(sessionStorage.getItem("accessToken") && (
+          {(localStorage.getItem("userKey") && (
             <Grid is_flex>
               <Grid
                 padding="6px 0"
@@ -118,6 +118,11 @@ export default function NavBar() {
             </LogWrap>
           )}
         </Grid>
+        <Link to="/test">
+          <Text h4 margin="auto" color="#a5aab6">
+            TestPage
+          </Text>
+        </Link>
       </HeaderWrap>
       <Hr />
     </>
@@ -150,8 +155,10 @@ const HeaderWrap = styled.div`
   padding-top: 30px;
   padding-bottom: 30px;
   background-color: white;
-  position: fixed;
+  position: absolute;
   z-index: 800;
+  position: fixed;
+  opacity: 0.8;
 `;
 
 // const HandleOn = styled.div`

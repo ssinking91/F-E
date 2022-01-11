@@ -19,6 +19,7 @@ const MyPage = (props) => {
     }
     const userKey = localStorage.getItem("userKey");
     dispatch(mypagetActions.getUserInfosFB(userKey));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const userImage = localStorage.getItem("userImage");
@@ -50,7 +51,7 @@ const MyPage = (props) => {
               </Text>
             ) : (
               <>
-                <Text h4 boldText width="160px">
+                <Text h4 boldText width="200px">
                   선택한 지역이 없습니다
                 </Text>
                 <span>🤯</span>
@@ -74,6 +75,7 @@ const MyPage = (props) => {
                 } ${item.address.split(" ")[1]}`;
                 const publicSales = "publicSales";
                 const status = "public"
+
                 return (
                   <Main2Card
                     key={idx}
@@ -90,6 +92,7 @@ const MyPage = (props) => {
                     CardPanState={item.panState}
                     publicSales={publicSales}
                     status={status}
+
                     //공공 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/public/${item.panId}`);
@@ -98,16 +101,9 @@ const MyPage = (props) => {
                 );
               })
             ) : (
-              <>
-                <TextDiv>
-                  <span>🏚️..</span>
-                  <Text h4>실시간 공공 분양 청약정보가 없어요</Text>
-                </TextDiv>
-                <TextDiv>
-                  <span>😭</span>
-                  <Text h4>다른 관심지역을 선택해서 청약정보를 찾아보아요</Text>
-                </TextDiv>
-              </>
+              <Text h4 width="1195px" margin="30px 0 30px 0">
+                😎 공공 분양저장된 청약정보가 없습니다
+              </Text>
             )}
           </MyPostCardList>
           <MyPostCardList>
@@ -139,16 +135,9 @@ const MyPage = (props) => {
                 );
               })
             ) : (
-              <>
-                <TextDiv>
-                  <span>🏚️..</span>
-                  <Text h4>실시간 민간 분양 청약정보가 없어요</Text>
-                </TextDiv>
-                <TextDiv>
-                  <span>😭</span>
-                  <Text h4>다른 관심지역을 선택해서 청약정보를 찾아보아요</Text>
-                </TextDiv>
-              </>
+              <Text h4 width="1195px" margin="30px 0 30px 0">
+                😎 민간 분양 저장된 청약정보가 없습니다
+              </Text>
             )}
           </MyPostCardList>
         </MyPost>
@@ -205,13 +194,6 @@ const MyPostCardList = styled.div`
   & > div {
     margin-bottom: 26px;
   }
-`;
-
-const TextDiv = styled.div`
-  width: 1195px;
-  margin: 30px 0 30px 0;
-  display: flex;
-  align-items: center;
 `;
 
 export default MyPage;

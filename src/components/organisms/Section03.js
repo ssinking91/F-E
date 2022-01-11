@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as mainAction } from "../redux/modules/main";
 import { history } from "../redux/configStore";
 import Main3Card from "./Main3Card";
-import NavBarAnchor from "./NavBarAnchor";
 import { Text } from "../atoms/index";
 const Section03 = (props) => {
   const dispatch = useDispatch();
   console.log("page3");
 
   useEffect(() => {
+    console.log("@@@@@page3 ue3");
     dispatch(mainAction.getPublicHotDB());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -18,12 +18,19 @@ const Section03 = (props) => {
   // 공공 Hot
   const public_list_hot = useSelector((state) => state.main.public_list_hot);
   const public_regionInfo_hot = public_list_hot.slice(1, 4);
-  console.log(public_regionInfo_hot);
 
   return (
     <>
-      <div className="section" style={{ width: "100%", height: "900px" }}>
-        <NavBarAnchor />
+      <div
+        className="section"
+        style={{
+          width: "100%",
+          height: "900px",
+          paddingTop: "97px",
+          backgroundColor: "#f9f9f9",
+        }}
+      >
+        {/* <NavBarAnchor /> */}
         <SectionWrap>
           <SectionItem>
             <AllSpan>
@@ -48,7 +55,7 @@ const Section03 = (props) => {
                   size={`${item.size} m²`}
                   price={item.aisTypeName}
                   aptNo={item.panId}
-                    islike={item.islike}
+                  islike={item.islike}
                   //공공 청약정보 ID 값
                   _onClick={() => {
                     history.push(`/public/${item.panId}`);

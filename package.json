@@ -1,6 +1,6 @@
 {
-  "name": "project-.zip",
-  "version": "0.1.0",
+  "name": "dotzip",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.16.5",
@@ -65,5 +65,10 @@
   "devDependencies": {
     "webpack": "4.44.2"
   },
-  "proxy": "http://13.125.234.204"
+  "proxy": "http://13.125.234.204",
+  "description": "'집을모으다'",
+  "main": "index.js",
+  "repository": "https://github.com/Team3-zip/F-E",
+  "author": "김형래 <khr157929@gmail.com>",
+  "license": "MIT"
 }

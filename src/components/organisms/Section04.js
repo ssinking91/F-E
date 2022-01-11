@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import NavBarAnchor from "./NavBarAnchor";
 import Footer from "./Footer";
 import { Text } from "../atoms/index";
 import { ReactComponent as Top } from "../../images/top.svg";
@@ -7,8 +6,11 @@ const Section04 = (props) => {
   console.log("page4");
   return (
     <>
-      <div className="section">
-        <NavBarAnchor />
+      <div
+        className="section"
+        style={{ paddingTop: "97px", backgroundColor: "#f9f9f9" }}
+      >
+        {/* <NavBarAnchor /> */}
         <SectionWrap>
           <AllSpan>
             <SpanBold>영상으로 배우는 청약 노하우</SpanBold>

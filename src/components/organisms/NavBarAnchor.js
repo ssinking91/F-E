@@ -81,7 +81,7 @@ export default function NavBarAnchor() {
           </Grid>
         </Grid>
         <Grid is_flex>
-          {(sessionStorage.getItem("accessToken") && (
+          {(localStorage.getItem("userKey") && (
             <Grid is_flex>
               <Grid
                 padding="6px 0"
@@ -112,12 +112,18 @@ export default function NavBarAnchor() {
                   로그인
                 </Text>
               </Link>
+
               <HandleOff className="handle">
                 <Logins />
               </HandleOff>
               {/* </HandleOn> */}
             </LogWrap>
           )}
+          <Link to="/test">
+            <Text h4 margin="auto" color="#a5aab6">
+              TestPage
+            </Text>
+          </Link>
         </Grid>
         {/* <Grid>
           {(sessionStorage.getItem("accessToken") && (
@@ -156,6 +162,9 @@ const HeaderWrap = styled.div`
   padding-top: 30px;
   padding-bottom: 30px;
   background-color: white;
+  position: absolute;
+  z-index: 3;
+  opacity: 0.8;
 `;
 const HandleOff = styled.div`
   transition: 0.5s;

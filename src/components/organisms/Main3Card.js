@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { savedActions } from "../redux/modules/cardSave";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Label from "../molecules/Label";
 import { Text } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
@@ -13,12 +13,10 @@ const Main3Card = (props) => {
   const dispatch = useDispatch();
 
   const islike = JSON.parse(props.islike);
-  console.log(islike);
 
   const [save3, setSave3] = React.useState(islike);
 
   const aptNo = props.aptNo;
-  console.log(aptNo);
 
   // 카드 저장
   const saveCard = () => {
@@ -27,7 +25,7 @@ const Main3Card = (props) => {
       window.alert("로그인 후 사용이 가능합니다😎");
       return;
     }
-    const Page = props.Page
+    const Page = props.Page;
     dispatch(savedActions.savedFB(aptNo, Page));
   };
 
@@ -139,7 +137,6 @@ const Info1 = styled.div`
     cursor: pointer;
   }
   & > p:hover {
-
     color: #20d7ff;
   }
 `;

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { savedActions } from "../redux/modules/cardSave";
 import { mypagetActions } from "../redux/modules/mypage";
 import { useDispatch, useSelector } from "react-redux";
+
 // import { useParams } from "react-router-dom";
 
 import Label from "../molecules/Label";
@@ -15,7 +16,6 @@ const Main2Card = (props) => {
   const dispatch = useDispatch();
 
   const islike = JSON.parse(props.islike);
-  console.log(islike);
 
   const [save2, setSave2] = React.useState(islike);
 

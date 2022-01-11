@@ -4,52 +4,57 @@ import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as mainAction } from "../redux/modules/main";
 import { history } from "../redux/configStore";
 import Main2Card from "./Main2Card";
-import NavBarAnchor from "./NavBarAnchor";
 import { Text } from "../atoms/index";
 
-const Section02 = (props) => {
+const Section02 = () => {
   const dispatch = useDispatch();
   console.log("page2");
 
   useEffect(() => {
+    console.log("@@@@@page2 ue2@@@@@");
     dispatch(mainAction.getPrivateInfoDB());
     dispatch(mainAction.getPublicInfoDB());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Main > Sections02 유저이름 데이터 확인
-  const userName = props.userName;
-  // console.log(userName);
-
   // 로그인한 유저데이터
   const existuser = useSelector((state) => state.mypage.list.existuser);
-  // console.log(existuser);
 
   // 민간 공고 3개
   const private_list = useSelector((state) => state.main.private_list);
   const private_regionInfo = private_list.slice(0, 3);
-  console.log(private_regionInfo);
 
   // 공공 공고 3개
   const public_list = useSelector((state) => state.main.public_list);
   const public_regionInfo = public_list.slice(6, 9);
-  // console.log(public_list);
 
   return (
     <>
-      <div className="section" style={{ width: "100%", height: "100" }}>
-        <NavBarAnchor />
+      <div
+        className="section"
+        style={{
+          width: "100%",
+          height: "100",
+          paddingTop: "97px",
+          backgroundColor: "#f9f9f9",
+        }}
+      >
+        {/* <NavBarAnchor /> */}
         <SectionWrap>
           <SectionItem>
             <AllSpan>
               <Span1 className="a">{existuser.sido}</Span1>
-              <Span2>지역의 청약은?</Span2>
+              <Span2>
+                {localStorage.getItem("userName") &&
+                  `${localStorage.getItem("userName")}님의`}{" "}
+                관심 지역 청약은?
+              </Span2>
               <span>📌</span>
             </AllSpan>
-            {userName !== null ? (
+            {localStorage.getItem("userName") ? (
               <Text h4 color="#A5AAB6">
-                {userName}님이 선택한 {existuser.sido} 지역의 실시간 청약 정보를
-                알 수 있어요
+                {localStorage.getItem("userName")}님이 선택한 {existuser.sido}{" "}
+                지역의 실시간 청약 정보를 알 수 있어요
               </Text>
             ) : (
               <Text h4 color="#A5AAB6">
@@ -63,32 +68,38 @@ const Section02 = (props) => {
               <Text h4 color="#778899">
                 공공 분양
               </Text>
-              {public_regionInfo.map((item, index) => {
-                // 공공 이름 편집 ex. [행복주택] 경기도 하남시
-                const panName = `[${item.aisTypeName.split("(")[0]}] ${
-                  item.address.split(" ")[0]
-                } ${item.address.split(" ")[1]}`;
-                const publicSales= "publicSales"
-                return (
-                  <Main2Card
-                    key={index}
-                    image={item.ImgUrl}
-                    name={panName}
-                    startDate={item.startDate}
-                    endDate={item.closeDate}
-                    size={`${item.size} m²`}
-                    price={item.aisTypeName}
-                    aptNo={item.panId}
-                    islike={item.islike}
-                    CardPanState={item.panState}
-                    publicSales={publicSales}
-                    //공공 청약정보 ID 값
-                    _onClick={() => {
-                      history.push(`/public/${item.panId}`);
-                    }}
-                  />
-                );
-              })}
+              {public_regionInfo.length !== 0 ? (
+                public_regionInfo.map((item, index) => {
+                  // 공공 이름 편집 ex. [행복주택] 경기도 하남시
+                  const panName = `[${item.aisTypeName.split("(")[0]}] ${
+                    item.address.split(" ")[0]
+                  } ${item.address.split(" ")[1]}`;
+                  return (
+                    <Main2Card
+                      key={index}
+                      image={item.ImgUrl}
+                      name={panName}
+                      startDate={item.startDate}
+                      endDate={item.closeDate}
+                      size={`${item.size} m²`}
+                      price={item.aisTypeName}
+                      aptNo={item.panId}
+                      islike={item.islike}
+                      CardPanState={item.panState}
+                      //공공 청약정보 ID 값
+                      _onClick={() => {
+                        history.push(`/public/${item.panId}`);
+                      }}
+                    />
+                  );
+                })
+              ) : (
+                <Text h4 margin="100px 0 0 0">
+                  <Span>🏚️..</Span> 실시간 공공 분양 청약정보가 없어요
+                  <Span>😭</Span>
+                  <Text h4>다른 관심지역을 선택해서 청약정보를 찾아보아요</Text>
+                </Text>
+              )}
             </PublicCards>
 
             <PrivateCards>
@@ -116,12 +127,11 @@ const Section02 = (props) => {
                   );
                 })
               ) : (
-                <TextDiv>
-                  <Span>🏚️..</Span>
-                  <Text h4>실시간 민간 분양 청약정보가 없어요</Text>
+                <Text h4 margin="100px 0 0 0">
+                  <Span>🏚️..</Span> 실시간 공공 분양 청약정보가 없어요
                   <Span>😭</Span>
                   <Text h4>다른 관심지역을 선택해서 청약정보를 찾아보아요</Text>
-                </TextDiv>
+                </Text>
               )}
             </PrivateCards>
           </CardWrap>
@@ -176,11 +186,11 @@ const Span2 = styled.span`
   color: #333333;
 `;
 
-const TextDiv = styled.div`
-  width: 100%
-  display : flex;
-  margin: 100px 0;
-`;
+// const TextDiv = styled.div`
+//   width: 100%
+//   display : flex;
+//   margin: 100px 0;
+// `;
 
 const CardWrap = styled.div`
   width: 1200px;

@@ -104,7 +104,9 @@ export default function DetailType() {
                                 <Text boldText margin="0 15px 0 0">
                                   공급 금액
                                 </Text>
-                                <Text regularText>{item.supplyAmount}</Text>
+                                <Text
+                                  regularText
+                                >{`${item.supplyAmount} 만원`}</Text>
                               </Grid>
                             </Grid>
                           </Grid>

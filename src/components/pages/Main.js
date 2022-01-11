@@ -6,10 +6,12 @@ import Section01 from "../organisms/Section01";
 import Section02 from "../organisms/Section02";
 import Section03 from "../organisms/Section03";
 import Section04 from "../organisms/Section04";
+import NavBarAnchor from "../organisms/NavBarAnchor";
 
 export default function Main() {
   return (
     <div style={{ width: "100%", height: "100%" }}>
+      <NavBarAnchor />
       <Fullpage />
     </div>
   );
@@ -21,7 +23,7 @@ console.log(userName);
 const Fullpage = (props) => (
   <ReactFullpage
     anchors={anchors}
-    navigation
+    // navigation
     // navigationTooltips={anchors}
     verticalCentered={false}
     sectionsColor={["#fff", "#fff", "#fff", "#F9F9F9"]}

@@ -9,7 +9,7 @@ const instance = axios.create({
   headers: {
     "content-type": "application/json;charset=UTF-8",
     accept: "application/json",
-    authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+    // authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
   },
 });
 
@@ -17,9 +17,7 @@ instance.interceptors.request.use(function (config) {
   config.headers.common["Authorization"] = `Bearer ${sessionStorage.getItem(
     "accessToken"
   )}`;
-  config.headers.common["userKey"] = `Bearer ${localStorage.getItem(
-    "userKey"
-  )}`;
+  config.headers.common["userKey"] = `${localStorage.getItem("userKey")}`;
   return config;
 });
 
@@ -34,25 +32,20 @@ export const apis = {
       userKey: localStorage.getItem("userKey"),
     }), // 전체 청약갯수
   getPrivateInfo: () =>
-    instance.get(`/api/main/privateSido`, {
+    instance.post(`/api/main/privateSido`, {
       userKey: localStorage.getItem("userKey"),
     }), // 민영 - 청약정보
   getPublicInfo: () =>
-    instance.get(`/api/main/publicSido`, {
+    instance.post(`/api/main/publicSido`, {
       userKey: localStorage.getItem("userKey"),
     }), // 공공 - 청약정보
   // getPrivateHot: () => instance.get(`/api/main/privateHot`), // 공공 - 찜하기 순
-  getPublicHot: () => instance.get(`/api/main/publicHot`), // 공공 - 찜하기 순
-  // getMyPrivateInfo: (id) => instance.get(`/api/users/userId=${id}/privates`), // 민영 - 내가 지정한 지역정보
-  // getMyPublicInfo: (id) => instance.get(`/api/users/userId=${id}/publics`), // 공공 - 내가 지정한 지역정보
-  // manySaved: () =>
-  //   instance.get("/api/likes", { userKey: localStorage.getItem("userKey") }), // 저장된 청약정보 많은 순
-  // youtubeLink: () =>
-  //   instance.get("/api/youtube", { userKey: localStorage.getItem("userKey") }), // 유튜브 링크 (예정)
+  getPublicHot: () => instance.post(`/api/main/publicHot`), // 공공 - 찜하기 순
 
   // DetailPage
   getDetailInfo: (locate) =>
     instance.get(`/api${locate}`, { userKey: localStorage.getItem("userKey") }),
+
   getDetailImg: (locate) =>
     instance.get(`/api${locate}/img`, {
       userKey: localStorage.getItem("userKey"),

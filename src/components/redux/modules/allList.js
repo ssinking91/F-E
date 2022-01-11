@@ -1,12 +1,14 @@
 import { createAction, handleActions } from "redux-actions";
 import { apis } from "../../utilities/axios";
+import produce from "immer";
 
 // state
 const state = {};
 
 // actions
 const GET_PRIVATE_LIST = "/GET_PRIVATE_LIST";
-const GET_PUBLIC_LIST = "/GET_PUBLIC_LISt";
+const GET_PUBLIC_LIST = "/GET_PUBLIC_LIST";
+const GET_PUBLIC_ADRESS = "/GET_PUBLIC_ADDRESS";
 
 // create actions
 const getPrivateList = createAction(GET_PRIVATE_LIST, (privateList) => ({
@@ -14,6 +16,9 @@ const getPrivateList = createAction(GET_PRIVATE_LIST, (privateList) => ({
 }));
 const getPublicList = createAction(GET_PUBLIC_LIST, (publicList) => ({
   publicList,
+}));
+const getPublicAdress = createAction(GET_PUBLIC_ADRESS, (publicAdress) => ({
+  publicAdress,
 }));
 
 // middleware thunk
@@ -23,7 +28,6 @@ export const getPrivateListDB = (ftSido) => {
       .getPrivateLists(ftSido)
       .then((res) => {
         const privateList = res.data.result[0];
-        console.log(privateList);
         dispatch(getPrivateList(privateList));
       })
       .catch((e) => console.log(e));
@@ -31,15 +35,34 @@ export const getPrivateListDB = (ftSido) => {
 };
 
 export const getPublicListDB = (ftSido) => {
-  return (dispatch, getState, { history }) => {
+  return async (dispatch, getState, { history }) => {
     apis
       .getPublicLists(ftSido)
-      .then((res) => {
+      .then(async (res) => {
         const publicList = res.data.result[0];
-        console.log(publicList);
+        let publicAdress = [];
+        for (let i = 0; i < publicList.length; i++) {
+          publicAdress.push(publicList[i].address);
+        }
+        const publicAd = new Set(publicAdress);
+        const publicLocation = [...publicAd];
+
         dispatch(getPublicList(publicList));
+        dispatch(getPublicAdress(publicAdress));
       })
       .catch((e) => console.log(e));
+
+    // const result = await apis.getPublicLists(ftSido);
+    // const publicList = result.data.result[0];
+    // let publicAdress = [];
+    // for (let i = 0; i < publicList.length; i++) {
+    //   publicAdress.push(publicList[i].address);
+    // }
+    // const publicAd = new Set(publicAdress);
+    // const publicLocation = [...publicAd];
+    // console.log(publicLocation);
+
+    // dispatch(getPublicAdress(publicLocation));
   };
 };
 
@@ -58,6 +81,17 @@ export default handleActions(
         publicList: action.payload.publicList,
       };
     },
+    // [GET_PUBLIC_ADRESS]: (state, action) => {
+    //   return {
+    //     ...state,
+    //     adress: action.payload.publicAdress,
+    //   };
+    // },
+
+    [GET_PUBLIC_ADRESS]: (state, action) =>
+      produce(state, (draft) => {
+        draft.adress = action.payload.publicAdress;
+      }),
   },
   state
 );
