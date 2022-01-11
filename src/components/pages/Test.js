@@ -9,8 +9,8 @@ export default function Test() {
     <>
       <Wrap>
         <NavBar />
+        <NavBarSub />
         <Left>
-          <NavBarSub />
           <KakaoMap />
         </Left>
         <Right>

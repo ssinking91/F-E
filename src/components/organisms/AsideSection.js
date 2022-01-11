@@ -20,5 +20,5 @@ const Wrap = styled.div`
 
 const ContentArea = styled.div`
   position: absolute;
-  top: 97px;
+  top: 162px;
 `;
