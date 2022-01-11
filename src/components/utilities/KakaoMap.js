@@ -126,6 +126,7 @@ export default function KakaoMap() {
 
 const Div = styled.div`
   width: 100%;
-  height: 83vh;
+  height: 84vh;
   position: relative;
+  top: 162px;
 `;

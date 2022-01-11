@@ -7,6 +7,10 @@ export default function NavBarSub() {
 
 const Div = styled.div`
   width: 100%;
-  height: 60px;
+  height: 65px;
+  position: absolute;
+  top: 97px;
+  z-index: 999;
   background-color: gray;
+  opacity: 0.1;
 `;
