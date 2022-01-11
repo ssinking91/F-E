@@ -45,7 +45,7 @@ export default function KakaoMap() {
 
     // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
     var zoomControl = new kakao.maps.ZoomControl();
-    map.addControl(zoomControl, kakao.maps.ControlPosition.BOTTOMRIGHT);
+    map.addControl(zoomControl, kakao.maps.ControlPosition.BOTTOMLEFT);
 
     // 주소-좌표 변환 객체를 생성합니다
     var geocoder = new kakao.maps.services.Geocoder();

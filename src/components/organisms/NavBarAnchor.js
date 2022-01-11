@@ -165,6 +165,11 @@ const HeaderWrap = styled.div`
   position: absolute;
   z-index: 3;
   opacity: 0.8;
+  transition: 0.5s;
+
+  &:hover {
+    opacity: 1;
+  }
 `;
 const HandleOff = styled.div`
   transition: 0.5s;

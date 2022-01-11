@@ -159,6 +159,11 @@ const HeaderWrap = styled.div`
   z-index: 800;
   position: fixed;
   opacity: 0.8;
+  transition: 0.5s;
+
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 // const HandleOn = styled.div`
