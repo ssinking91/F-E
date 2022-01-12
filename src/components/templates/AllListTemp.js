@@ -145,12 +145,17 @@ export default function AllListTemp() {
           {privateList && privateList.length !== 0 ? (
             privateList.map((item, index) => {
               let minPrize = item.supplyAmount.split("~")[0].replace(",", "");
-              // 5자리 기준
-              let minPrize1 = `${minPrize.split("")[minPrize.length - 5]}억 ${
+
+              let minPrize5 = `${minPrize.split("")[minPrize.length - 5]}억 ${
                 minPrize.split("")[1]
               }${minPrize.split("")[2]}${minPrize.split("")[3]}${
                 minPrize.split("")[4]
               }`;
+              console.log(minPrize5);
+              let minPrize4 = `${minPrize.split("")[minPrize.length - 4]}${
+                minPrize.split("")[1]
+              }${minPrize.split("")[2]}${minPrize.split("")[3]}`;
+              console.log(minPrize4);
 
               const maxPrize = item.supplyAmount.split("~")[1].replace(",", "");
               // 5자리 기준
@@ -168,7 +173,9 @@ export default function AllListTemp() {
                     startDate={item.receptStartDate}
                     endDate={item.receptEndDate}
                     size={`${item.size} m²`}
-                    price={`${minPrize1} ~ ${maxPrize1}`}
+                    price={`${
+                      minPrize.length === 5 ? minPrize5 : minPrize4
+                    } ~ ${maxPrize1}`}
                     aptNo={item.pblancNo}
                     islike={item.islike}
                     //민간 청약정보 ID 값
