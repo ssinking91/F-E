@@ -6,7 +6,7 @@ import { getPrivateListDB, getPublicListDB } from "../redux/modules/allList";
 import Card from "../organisms/Main2Card";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
-import { replace } from "connected-react-router";
+// import { replace } from "connected-react-router";
 
 export default function AllListTemp() {
   const dispatch = useDispatch();

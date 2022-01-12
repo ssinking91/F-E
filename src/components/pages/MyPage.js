@@ -22,7 +22,7 @@ const MyPage = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [selection, setSelection] = React.useState(false);
+  // const [selection, setSelection] = React.useState(false);
 
   const userImage = localStorage.getItem("userImage");
 
@@ -76,7 +76,7 @@ const MyPage = (props) => {
                   item.address.split(" ")[0]
                 } ${item.address.split(" ")[1]}`;
                 const publicSales = "publicSales";
-                const status = "public"
+                const status = "public";
 
                 return (
                   <Main2Card
@@ -94,7 +94,6 @@ const MyPage = (props) => {
                     CardPanState={item.panState}
                     publicSales={publicSales}
                     status={status}
-
                     //공공 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/public/${item.panId}`);
@@ -115,7 +114,7 @@ const MyPage = (props) => {
 
             {privateInfo.length !== 0 ? (
               privateInfo.map((item, idx) => {
-                const status = "private"
+                const status = "private";
                 return (
                   <Main2Card
                     key={idx}
@@ -180,7 +179,6 @@ const MyCardList = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
 
 const MyPost = styled.div`
   width: 1195px;

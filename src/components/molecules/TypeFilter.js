@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Grid, Button, Text } from "../atoms/index";
+// import { Grid, Button, Text } from "../atoms/index";
 
 export default function TypeFilter() {
   return (
