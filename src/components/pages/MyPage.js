@@ -6,7 +6,7 @@ import { history } from "../redux/configStore";
 import NavBarLink from "../organisms/NavBarLink";
 import Main2Card from "../organisms/Main2Card";
 import Footer from "../organisms/Footer";
-import { Text } from "../atoms/index";
+import { Text, Selection, DropDown } from "../atoms/index";
 import { mypagetActions } from "../redux/modules/mypage";
 
 const MyPage = (props) => {
@@ -19,7 +19,7 @@ const MyPage = (props) => {
     }
     const userKey = localStorage.getItem("userKey");
     dispatch(mypagetActions.getUserInfosFB(userKey));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, []);
 
   // const [selection, setSelection] = React.useState(false);
@@ -37,6 +37,23 @@ const MyPage = (props) => {
 
   const Page = "myPage";
 
+  const OPTIONS = [
+    { value: "경기도", name: "경기도" },
+    { value: "강원도", name: "강원도" },
+    { value: "충청도", name: "충청도" },
+    { value: "경상도", name: "경상도" },
+    { value: "전라도", name: "전라도" },
+    { value: "제주도", name: "제주도" },
+    { value: "서울특별시", name: "서울특별시" },
+    { value: "인천광역시", name: "인천광역시" },
+    { value: "부산광역시", name: "부산광역시" },
+    { value: "대구광역시", name: "대구광역시" },
+    { value: "대전광역시", name: "대전광역시" },
+    { value: "광주광역시", name: "광주광역시" },
+    { value: "울산광역시", name: "울산광역시" },
+    { value: "세종특별시", name: "세종특별시" },
+  ];
+
   return (
     <>
       <NavBarLink />
@@ -48,15 +65,21 @@ const MyPage = (props) => {
               {localStorage.getItem("userName")} 님
             </Text>
             {existuser ? (
-              <Text h4 boldText>
-                {existuser.sido}
-              </Text>
+              <TextDiv>
+                <Text h4 boldText margin="0 20px 0 0">
+                  {existuser.sido}
+                </Text>
+                <Selection options={OPTIONS} />
+                <DropDown options={OPTIONS} />
+              </TextDiv>
             ) : (
               <>
                 <Text h4 boldText width="200px">
                   지역을 선택해 주세요
                 </Text>
                 <span>😎</span>
+                <Selection options={OPTIONS} />
+                <DropDown options={OPTIONS} />
               </>
             )}
           </MyCardList>
@@ -174,10 +197,15 @@ const MyCardImage = styled.div`
 `;
 
 const MyCardList = styled.div`
-  width: 988px;
+  width: 888px;
   height: 207px;
   display: flex;
   flex-direction: column;
+`;
+
+const TextDiv = styled.div`
+  width: 988px;
+  display: flex;
 `;
 
 const MyPost = styled.div`
