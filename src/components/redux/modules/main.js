@@ -25,7 +25,10 @@ const getPublicHot = createAction(GET_PUBLICHOT, (public_list_hot) => ({
 
 const initialState = {
   total: {},
-  private_list: [],
+  private_list: {
+    privateSido1: [],
+    statusArr: [],
+  },
   public_list: [],
   public_list_hot: [],
 };
