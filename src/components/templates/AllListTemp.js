@@ -6,6 +6,7 @@ import { getPrivateListDB, getPublicListDB } from "../redux/modules/allList";
 import Card from "../organisms/Main2Card";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import NoneMain2Card from "../organisms/NoneMain2Card";
 // import { replace } from "connected-react-router";
 
 export default function AllListTemp() {
@@ -109,7 +110,7 @@ export default function AllListTemp() {
           <Text h4 color="#778899">
             공공 분양
           </Text>
-          {publicList &&
+          {publicList && publicList.length !== 0 ? (
             publicList.map((item, index) => {
               const panName = `[${item.aisTypeName}] ${
                 item.address.split(" ")[0]
@@ -137,7 +138,10 @@ export default function AllListTemp() {
                   />
                 </>
               );
-            })}
+            })
+          ) : (
+            <NoneMain2Card />
+          )}
         </PublicCards>
 
         <PrivateCards>
@@ -198,11 +202,7 @@ export default function AllListTemp() {
               );
             })
           ) : (
-            <Text h4 margin="100px 0">
-              <Span>🏚️..</Span> 실시간 민간 분양 청약정보가 없어요
-              <Span>😭</Span>
-              <Text>다른 관심지역을 선택해서 청약정보를 찾아보아요</Text>
-            </Text>
+            <NoneMain2Card />
           )}
         </PrivateCards>
       </CardWrap>

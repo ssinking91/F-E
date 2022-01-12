@@ -5,6 +5,7 @@ import { actionCreators as mainAction } from "../redux/modules/main";
 import { mypagetActions } from "../redux/modules/mypage";
 import { history } from "../redux/configStore";
 import Main2Card from "./Main2Card";
+import NoneMain2Card from "./NoneMain2Card";
 import { Text } from "../atoms/index";
 
 const Section02 = () => {
@@ -63,9 +64,7 @@ const Section02 = () => {
                 </>
               ) : (
                 <>
-                  <Span2>
-                     관심 지역 청약은?
-                  </Span2>
+                  <Span2>관심 지역 청약은?</Span2>
                   <span>📌</span>
                 </>
               )}
@@ -115,11 +114,7 @@ const Section02 = () => {
                   );
                 })
               ) : (
-                <Text h4 margin="100px 0 0 0">
-                  <Span>🏚️..</Span> 실시간 공공 분양 청약정보가 없어요
-                  <Span>😭</Span>
-                  <Text h4>다른 관심지역을 선택해서 청약정보를 찾아보아요</Text>
-                </Text>
+                <NoneMain2Card />
               )}
             </PublicCards>
 
@@ -148,11 +143,7 @@ const Section02 = () => {
                   );
                 })
               ) : (
-                <Text h4 margin="100px 0 0 0">
-                  <Span>🏚️..</Span> 실시간 공공 분양 청약정보가 없어요
-                  <Span>😭</Span>
-                  <Text h4>다른 관심지역을 선택해서 청약정보를 찾아보아요</Text>
-                </Text>
+                <NoneMain2Card />
               )}
             </PrivateCards>
           </CardWrap>
