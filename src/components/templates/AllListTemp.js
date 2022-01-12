@@ -164,6 +164,14 @@ export default function AllListTemp() {
               }${maxPrize.split("")[2]}${maxPrize.split("")[3]}${
                 maxPrize.split("")[4]
               }`;
+
+              let minSize = Math.ceil(item.size.split("~")[0]);
+              let pyeongMinSize = Math.ceil(0.3025 * minSize);
+              let maxSize = Math.ceil(item.size.split("~")[1]);
+              let pyeongMaxSize = Math.ceil(0.3025 * maxSize);
+              console.log(maxPrize);
+
+              let pyeongMaxPrize = Math.ceil(maxPrize / pyeongMaxSize);
               return (
                 <>
                   <Card
@@ -172,10 +180,10 @@ export default function AllListTemp() {
                     name={item.houseName}
                     startDate={item.receptStartDate}
                     endDate={item.receptEndDate}
-                    size={`${item.size} m²`}
+                    size={`${minSize} ~ ${maxSize} m² / ${pyeongMinSize} ~ ${pyeongMaxSize} 평`}
                     price={`${
                       minPrize.length === 5 ? minPrize5 : minPrize4
-                    } ~ ${maxPrize1}`}
+                    } ~ ${maxPrize1} / 평당 ${pyeongMaxPrize}만원`}
                     aptNo={item.pblancNo}
                     islike={item.islike}
                     //민간 청약정보 ID 값

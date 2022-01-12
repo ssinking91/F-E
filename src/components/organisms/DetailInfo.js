@@ -98,7 +98,7 @@ export default function DetailInfo() {
                   title={"당첨자 계약일"}
                   content={`${publicInfo.contractEndDate} ~ ${publicInfo.contractStartDate}`}
                 />
-                <BundleText title={"분양 문의"} content={"02) 000 - 0000"} />
+                {/* <BundleText title={"분양 문의"} content={"02) 000 - 0000"} /> */}
                 <Grid margin="40px 0 0 0">
                   <Button
                     width="240px"
@@ -191,7 +191,7 @@ export default function DetailInfo() {
               /> */}
               <BundleText
                 title={"모집 공고일"}
-                content={`${topInfo.recruitDate.sp}`}
+                content={`${topInfo.recruitDate}`}
                 margin="35px 0 0 0"
               />
               <BundleText
@@ -218,7 +218,7 @@ export default function DetailInfo() {
                 title={"당첨자 계약일"}
                 content={`${topInfo.contractStartDate} ~ ${topInfo.contractEndDate}`}
               />
-              <BundleText title={"분양 문의"} content={"02) 000 - 0000"} />
+              {/* <BundleText title={"분양 문의"} content={"02) 000 - 0000"} /> */}
               <Grid margin="40px 0 0 0">
                 <Button
                   width="240px"
