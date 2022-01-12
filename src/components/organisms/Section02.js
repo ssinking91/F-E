@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as mainAction } from "../redux/modules/main";
+import { mypagetActions } from "../redux/modules/mypage";
 import { history } from "../redux/configStore";
 import Main2Card from "./Main2Card";
 import { Text } from "../atoms/index";
@@ -13,13 +14,17 @@ const Section02 = () => {
   useEffect(() => {
     console.log("@@@@@page2 ue2@@@@@");
     dispatch(mainAction.getPrivateInfoDB());
-    dispatch(mainAction.getPublicInfoDB());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    dispatch(mainAction.getPrivateInfoDB());
+
+    if (localStorage.getItem("userKey")) {
+      const userKey = localStorage.getItem("userKey");
+      dispatch(mypagetActions.getUserInfosFB(userKey));
+    }
   }, []);
 
   // 로그인한 유저데이터
   const existuser = useSelector((state) => state.mypage.list.existuser);
-
+  console.log(existuser);
   // 민간 공고 3개
   const private_list = useSelector(
     (state) => state.main.private_list.privateSido1
@@ -46,13 +51,22 @@ const Section02 = () => {
         <SectionWrap>
           <SectionItem>
             <AllSpan>
-              <Span1 className="a">{existuser.sido}</Span1>
-              <Span2>
-                {localStorage.getItem("userName") &&
-                  localStorage.getItem("userName")}님의
-                관심 지역 청약은?
-              </Span2>
-              <span>📌</span>
+              {existuser.sido ? (
+                <>
+                  <Span2>
+                    <Span1 className="a">{existuser.sido}</Span1>
+                    지역 청약은?
+                  </Span2>
+                  <span>📌</span>
+                </>
+              ) : (
+                <>
+                  <Span2>
+                     관심 지역 청약은?
+                  </Span2>
+                  <span>📌</span>
+                </>
+              )}
             </AllSpan>
             {localStorage.getItem("userName") ? (
               <Text h4 color="#A5AAB6">
