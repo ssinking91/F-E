@@ -9,7 +9,6 @@ import Main2Card from "../organisms/Main2Card";
 import Footer from "../organisms/Footer";
 import { Text, DropDown } from "../atoms/index";
 
-
 const MyPage = (props) => {
   const dispatch = useDispatch();
   const [isActive, setIsActive] = React.useState(false);
@@ -22,25 +21,26 @@ const MyPage = (props) => {
     }
     const userKey = localStorage.getItem("userKey");
     dispatch(mypagetActions.getUserInfosFB(userKey));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // sido 변경
   const sidoChange = (e) => {
     setSido(e);
-   }
+  };
 
-   // sido 변경 api
-   const sidoChangeApi = () => {
-     console.log(sido);
-     if(sido === undefined){
-       window.alert("관심 지역 설정해 주세요😎");
-       return ;
-     }
+  // sido 변경 api
+  const sidoChangeApi = () => {
+    console.log(sido);
+    if (sido === undefined) {
+      window.alert("관심 지역 설정해 주세요😎");
+      return;
+    }
     const userName = localStorage.getItem("userName");
     dispatch(mypagetActions.editUserInfosFB(userName, sido));
     setIsActive(!isActive);
-   }
-  
+  };
+
   // const [selection, setSelection] = React.useState(false);
 
   const userImage = localStorage.getItem("userImage");
@@ -86,7 +86,11 @@ const MyPage = (props) => {
             {isActive ? (
               <TextDiv>
                 <DropDown options={OPTIONS} sidoChange={sidoChange} />
-                <MypageButton onClick={()=>{sidoChangeApi()}}>
+                <MypageButton
+                  onClick={() => {
+                    sidoChangeApi();
+                  }}
+                >
                   <Text boldText color="#FFFFFF">
                     완료
                   </Text>
@@ -94,10 +98,14 @@ const MyPage = (props) => {
               </TextDiv>
             ) : (
               <TextDiv>
-                <Text h4 boldText width="121px" >
+                <Text h4 boldText width="121px">
                   {existuser.sido}
                 </Text>
-                <MypageButton onClick={()=>{setIsActive(!isActive)}}>
+                <MypageButton
+                  onClick={() => {
+                    setIsActive(!isActive);
+                  }}
+                >
                   <Text boldText color="#FFFFFF">
                     수정
                   </Text>
