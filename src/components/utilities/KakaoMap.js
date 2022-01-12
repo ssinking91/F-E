@@ -11,20 +11,27 @@ export default function KakaoMap() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch(getPrivateListDB(""));
+    dispatch(getPrivateListDB(""));
     dispatch(getPublicListDB(""));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // const publicList = useSelector((stto) => stto.allList.publicList);
-  const location = useSelector((state) => state.allList.adress);
-  console.log(location);
+  const publicList = useSelector((state) => state.allList.publicList);
+  const privateList = useSelector((state) => state.allList.privateList);
+  console.log(publicList);
+  console.log(privateList);
+  const locate = useSelector((state) => state.allList);
+  const publicAdress = new Set(locate.publicAdress);
+  const privateAdress = new Set(locate.privateAdress);
+  const location = [...publicAdress, ...privateAdress];
   let locates = [];
   // console.log(publicList);
   useEffect(() => {
+    console.log("mapFunc실행");
+    console.log(location.length);
     mapFunc();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location !== undefined]); // 로케이션의 값이 바뀔 때 마다
+  }, [location.length >= 100]); // 로케이션의 값이 바뀔 때 마다
 
   async function mapFunc() {
     var mapContainer = document.getElementById("map"), // 지도를 표시할 div
@@ -61,7 +68,7 @@ export default function KakaoMap() {
       });
       kakao.maps.event.addListener(
         clusterer,
-        "clusterover",
+        "clusterclick",
         function (cluster) {
           console.log(cluster);
         }
@@ -72,14 +79,14 @@ export default function KakaoMap() {
           // 정상적으로 검색이 완료됐으면
           if (status === kakao.maps.services.Status.OK) {
             // var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-            locates.push([i + 1, result[0].y, result[0].x]);
+            locates.push([i + 1, result[0].y, result[0].x, location[i]]);
             // console.log(`${i}번째, ${result[0].y} , ${result[0].x}`);
 
             var markerImageUrl =
                 "https://www.habitat.org/sites/default/files/styles/780w/public/2018-05/icon-house.png?itok=beg84oiG",
-              markerImageSize = new kakao.maps.Size(80, 60), // 마커 이미지의 크기
+              markerImageSize = new kakao.maps.Size(60, 45), // 마커 이미지의 크기
               markerImageOptions = {
-                offset: new kakao.maps.Point(20, 42), // 마커 좌표에 일치시킬 이미지 안의 좌표
+                offset: new kakao.maps.Point(30, -20), // 마커 좌표에 일치시킬 이미지 안의 좌표
               };
 
             // 마커 이미지를 생성한다
@@ -88,23 +95,74 @@ export default function KakaoMap() {
               markerImageSize,
               markerImageOptions
             );
+
             if (i === location.length - 1) {
               const results = await Promise.all(locates);
               results.sort((a, b) => a[0] - b[0]);
-              console.log(locates);
-              console.log(results);
+              // console.log(locates);
+              // console.log(results);
               for (let j = 0; j < results.length; j++) {
-                marker = new kakao.maps.Marker({
+                // console.log(results[j]);
+                const marker = new kakao.maps.Marker({
                   position: new kakao.maps.LatLng(results[j][1], results[j][2]),
                   clickable: true,
                   image: markerImage,
                 });
+                console.log(results[j][3]);
+                const publicInfo = publicList.filter(
+                  (lists) => lists.address === `${results[j][3]}`
+                );
+                let privateInfo = [];
+                if (publicInfo.length > 0) {
+                  console.log(publicInfo);
+                } else {
+                  // results[j][3]을 공영데이터 기준으로 필터링했을때 결과를 찾아내지 못하면 민영데이터로 필터링 시작
+                  privateInfo = privateList.filter(
+                    (lists) => lists.address === `${results[j][3]}`
+                  );
+                  console.log(`민영자료`, privateInfo);
+                }
+
+                // clusterer 에 marker 를 하나씩 추가합니다.
                 clusterer.addMarker(marker);
 
-                kakao.maps.event.addListener(marker, "click", function () {
-                  console.log(results[j]);
-                  console.log(location[j]);
-                  // console.log(publicList[j].address);
+                // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
+                const iwContent = `<div style="height:100px; width:400px; text-align:center;">
+                                      <div style="">${
+                                        publicInfo.length > 0
+                                          ? publicInfo[0].panName
+                                          : privateInfo[0].houseName
+                                      }</div>
+                                      <div style="">${
+                                        publicInfo.length > 0 ? "공영" : "민영"
+                                      }</div>
+                                      <div style=""><a href=${
+                                        publicInfo.length > 0
+                                          ? `${publicInfo[0].detailUrl}`
+                                          : `${privateInfo[0].detailUrl}`
+                                      } target="_blank">청약하러가기</a></div>
+                                      <div style=""><a href=${
+                                        publicInfo.length > 0
+                                          ? `${publicInfo[0].fileUrl}`
+                                          : null
+                                      }>모집공고문 다운로드받기</a></div>
+                                    </div>
+                `, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                  iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+                // 인포윈도우를 생성합니다
+                const infowindow = new kakao.maps.InfoWindow({
+                  content: iwContent,
+                  removable: iwRemoveable,
+                });
+
+                // 마커에 클릭이벤트를 등록하며, 마커 위에 인포윈도우를 표시해줍니다.
+                kakao.maps.event.addListener(marker, "click", () => {
+                  infowindow.open(map, marker);
+                });
+                // 지도의 줌이 확대되거나 축소 이벤트가 발생할 경우, 인포윈도우가 닫힙니다.
+                kakao.maps.event.addListener(map, "zoom_changed", () => {
+                  infowindow.close();
                 });
               }
             }

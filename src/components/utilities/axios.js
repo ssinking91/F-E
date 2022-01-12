@@ -2,8 +2,8 @@ import axios from "axios";
 
 const instance = axios.create({
   // 기본적으로 우리가 바라볼 서버의 주소
-  // baseURL: "https://dotzip.shop",
-  baseURL: "http://13.125.234.204",
+  baseURL: "https://dotzip.shop",
+  // baseURL: "http://13.125.234.204",
 
   // 헤더에 넣을 정보
   headers: {
@@ -24,7 +24,11 @@ instance.interceptors.request.use(function (config) {
 export const apis = {
   // 카카오 로그인
   login: (userKey, nickname) =>
-    instance.post("/api/users/login", { userKey, nickname }),
+    instance.post("/api/users/login", {
+      userKey,
+      nickname,
+      profileImg: localStorage.getItem("userIamge"),
+    }),
 
   // MainPage
   getTotalNum: () =>
@@ -72,11 +76,11 @@ export const apis = {
 
   // allList
   getPrivateLists: (ftSido) =>
-    instance.get(`/api/private?sido=${ftSido}`, {
+    instance.post(`/api/private?sido=${ftSido}`, {
       userKey: localStorage.getItem("userKey"),
     }),
   getPublicLists: (ftSido) =>
-    instance.get(`/api/public?sidoName=${ftSido}`, {
+    instance.post(`/api/public?sidoName=${ftSido}`, {
       userKey: localStorage.getItem("userKey"),
     }),
   // MyPage
