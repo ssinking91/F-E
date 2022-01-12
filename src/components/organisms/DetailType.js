@@ -61,6 +61,17 @@ export default function DetailType() {
             <Grid width="370px" margin="30px auto">
               {typeInfo &&
                 typeInfo.map((item, key) => {
+                  let supplyAreaSize = Math.ceil(item.supplyAreaSize);
+                  let supplyAmount = item.supplyAmount.replace(",", "");
+                  let supplyAmount1 = `${
+                    supplyAmount.split("")[supplyAmount.length - 5]
+                  }억 ${supplyAmount.split("")[1]}${supplyAmount.split("")[2]}${
+                    supplyAmount.split("")[3]
+                  }${supplyAmount.split("")[4]}`;
+                  const modelType = `${item.type.split(".")[0].split("")[1]}${
+                    item.type.split(".")[0].split("")[2]
+                  }${item.type.split(".")[1].split("")[4]}`;
+                  let pyeongSize = Math.ceil(0.3025 * supplyAreaSize);
                   return (
                     <React.Fragment key={key}>
                       {item.modelNo === type && (
@@ -76,8 +87,8 @@ export default function DetailType() {
                                   공급 규모
                                 </Text>
                                 <Text regularText>
-                                  일반 공급 {item.geSupplySize} <br /> 특별 공급{" "}
-                                  {item.spSupplySize}
+                                  일반 {item.geSupplySize}세대 <br /> 특별{" "}
+                                  {item.spSupplySize}세대
                                 </Text>
                               </Grid>
                               <Grid is_flex>
@@ -90,7 +101,7 @@ export default function DetailType() {
                                 <Text boldText margin="0 15px 0 0">
                                   모델 타입
                                 </Text>
-                                <Text regularText>{item.type}</Text>
+                                <Text regularText>{modelType}</Text>
                               </Grid>
                             </Grid>
                             <Grid>
@@ -98,7 +109,9 @@ export default function DetailType() {
                                 <Text boldText margin="0 15px 0 0">
                                   전용 면적
                                 </Text>
-                                <Text regularText>{item.supplyAreaSize}</Text>
+                                <Text regularText>
+                                  {supplyAreaSize} m² / {pyeongSize} 평
+                                </Text>
                               </Grid>
                               <Grid is_flex>
                                 <Text boldText margin="0 15px 0 0">
@@ -106,7 +119,7 @@ export default function DetailType() {
                                 </Text>
                                 <Text
                                   regularText
-                                >{`${item.supplyAmount} 만원`}</Text>
+                                >{`${supplyAmount1} 만원`}</Text>
                               </Grid>
                             </Grid>
                           </Grid>
