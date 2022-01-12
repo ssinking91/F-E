@@ -2,7 +2,7 @@ import { createAction, handleActions } from "redux-actions";
 import { apis } from "../../utilities/axios";
 
 // state
-const state = {};
+const initialState = {};
 
 // actions
 const GET_PRIVATE_LIST = "/GET_PRIVATE_LIST";
@@ -30,7 +30,8 @@ export const getPrivateListDB = (ftSido) => {
     apis
       .getPrivateLists(ftSido)
       .then((res) => {
-        const privateList = res.data.result[0];
+        const privateList = res.data.result;
+        console.log(privateList);
         const privateAddress = [];
         for (let i = 0; i < privateList.length; i++) {
           privateAddress.push(privateList[i].address);
@@ -105,5 +106,5 @@ export default handleActions(
       };
     },
   },
-  state
+  initialState
 );
