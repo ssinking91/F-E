@@ -21,7 +21,7 @@ const getUserInfosFB = (userKey) => {
     try {
       console.log("getUserInfosFB 시작");
       const response = await apis.getUserInfos(userKey);
-      console.log(response);
+      console.log(response.data);
 
       dispatch(getUserInfo(response.data));
     } catch (error) {
@@ -30,15 +30,15 @@ const getUserInfosFB = (userKey) => {
   };
 };
 
-const editUserInfosFB = (userName) => {
+const editUserInfosFB = (userName, sido) => {
   return async function (dispatch, getState, { history }) {
     try {
       console.log("editUserInfosFB 시작");
 
-      const response = await apis.editUserInfos(userName);
-      console.log(response);
+      const response = apis.editUserInfos(userName, sido);
+      //console.log(response.data);
 
-      dispatch(editUserInfo(response)); // 댓글 목록 다시 요청
+      dispatch(editUserInfo(sido)); 
     } catch (error) {
       console.log("editUserInfosFB error");
     }
@@ -83,7 +83,7 @@ export default handleActions(
 
     [EDIT_USERINFO]: (state, action) =>
       produce(state, (draft) => {
-        draft.list.sido = action.payload.sido;
+        draft.list.existuser.sido = action.payload.sido;
       }),
 
     [SAVE_CARD]: (state, action) =>
