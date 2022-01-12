@@ -9,7 +9,7 @@ import Mypage from "./modules/mypage";
 import Comment from "./modules/comment";
 import CardSave from "./modules/cardSave";
 import allList from "./modules/allList";
-
+import map from "./modules/map";
 
 //---- Reducer ----
 
@@ -24,6 +24,7 @@ const rootReducer = combineReducers({
   comment: Comment,
   cardSave: CardSave,
   allList: allList,
+  map: map,
   router: connectRouter(history),
 });
 
