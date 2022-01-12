@@ -166,6 +166,7 @@ const HeaderWrap = styled.div`
   z-index: 3;
   opacity: 0.8;
   transition: 0.5s;
+  border-bottom: 1px solid rgb(231, 231, 231);
 
   &:hover {
     opacity: 1;

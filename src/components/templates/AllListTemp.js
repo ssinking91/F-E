@@ -6,6 +6,7 @@ import { getPrivateListDB, getPublicListDB } from "../redux/modules/allList";
 import Card from "../organisms/Main2Card";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import { replace } from "connected-react-router";
 
 export default function AllListTemp() {
   const dispatch = useDispatch();
@@ -143,6 +144,21 @@ export default function AllListTemp() {
           </Text>
           {privateList && privateList.length !== 0 ? (
             privateList.map((item, index) => {
+              let minPrize = item.supplyAmount.split("~")[0].replace(",", "");
+              // 5자리 기준
+              let minPrize1 = `${minPrize.split("")[minPrize.length - 5]}억 ${
+                minPrize.split("")[1]
+              }${minPrize.split("")[2]}${minPrize.split("")[3]}${
+                minPrize.split("")[4]
+              }`;
+
+              const maxPrize = item.supplyAmount.split("~")[1].replace(",", "");
+              // 5자리 기준
+              let maxPrize1 = `${maxPrize.split("")[maxPrize.length - 5]}억 ${
+                maxPrize.split("")[1]
+              }${maxPrize.split("")[2]}${maxPrize.split("")[3]}${
+                maxPrize.split("")[4]
+              }`;
               return (
                 <>
                   <Card
@@ -152,7 +168,7 @@ export default function AllListTemp() {
                     startDate={item.receptStartDate}
                     endDate={item.receptEndDate}
                     size={`${item.size} m²`}
-                    price={`${item.supplyAmount} 만원`}
+                    price={`${minPrize1} ~ ${maxPrize1}`}
                     aptNo={item.pblancNo}
                     islike={item.islike}
                     //민간 청약정보 ID 값
