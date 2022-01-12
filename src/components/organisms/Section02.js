@@ -14,7 +14,7 @@ const Section02 = () => {
   useEffect(() => {
     console.log("@@@@@page2 ue2@@@@@");
     dispatch(mainAction.getPrivateInfoDB());
-    dispatch(mainAction.getPrivateInfoDB());
+    dispatch(mainAction.getPublicInfoDB());
 
     if (localStorage.getItem("userKey")) {
       const userKey = localStorage.getItem("userKey");
@@ -24,7 +24,8 @@ const Section02 = () => {
 
   // 로그인한 유저데이터
   const existuser = useSelector((state) => state.mypage.list.existuser);
-  console.log(existuser);
+  //console.log(existuser);
+
   // 민간 공고 3개
   const private_list = useSelector(
     (state) => state.main.private_list.privateSido1
@@ -34,7 +35,8 @@ const Section02 = () => {
 
   // 공공 공고 3개
   const public_list = useSelector((state) => state.main.public_list);
-  const public_regionInfo = public_list.slice(6, 9);
+  console.log(public_list);
+  const public_regionInfo = public_list.slice(0, 3);
 
   return (
     <>
