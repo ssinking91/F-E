@@ -90,9 +90,10 @@ export const apis = {
     instance.get(`/api/users/${userKey}`, {
       userKey: localStorage.getItem("userKey"),
     }), // 유저정보 조회
-  editUserInfos: (userName) =>
+  editUserInfos: (userName, sido) =>
     instance.put(`/api/users/${userName}`, {
       userKey: localStorage.getItem("userKey"),
+      sido:sido,
     }), // 유저정보 수정
 
   // Saved
