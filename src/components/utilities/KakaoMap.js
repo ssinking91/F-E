@@ -74,7 +74,6 @@ export default function KakaoMap() {
         }
       );
       for (let i = 0; i < location.length; i++) {
-        let marker;
         geocoder.addressSearch(location[i], async function (result, status) {
           // 정상적으로 검색이 완료됐으면
           if (status === kakao.maps.services.Status.OK) {
