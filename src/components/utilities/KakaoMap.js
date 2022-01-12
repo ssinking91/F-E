@@ -1,9 +1,11 @@
 /* global kakao */
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getPrivateListDB, getPublicListDB } from "../redux/modules/allList";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { saveState } from "../redux/modules/map";
 
 import "./style.css";
 
@@ -15,6 +17,10 @@ export default function KakaoMap() {
     dispatch(getPublicListDB(""));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const [clickAdress, setClickAdress] = useState(null);
+
+  saveState(clickAdress);
 
   const publicList = useSelector((state) => state.allList.publicList);
   const privateList = useSelector((state) => state.allList.privateList);
@@ -42,6 +48,18 @@ export default function KakaoMap() {
 
     // 지도를 생성합니다
     var map = new kakao.maps.Map(mapContainer, mapOption);
+
+    // kakao.maps.event.addListener(map, "center_changed", function () {
+    //   // 지도의  레벨을 얻어옵니다
+    //   const level = map.getLevel();
+    //   // 지도의 중심좌표를 얻어옵니다
+    //   const latlng = map.getCenter();
+    //   //위도
+    //   const lat = latlng.getLat();
+    //   //경도
+    //   const lng = latlng.getLng();
+    //   console.log(lat, lng);
+    // });
 
     // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
     var mapTypeControl = new kakao.maps.MapTypeControl();
@@ -73,6 +91,7 @@ export default function KakaoMap() {
           console.log(cluster);
         }
       );
+
       for (let i = 0; i < location.length; i++) {
         geocoder.addressSearch(location[i], async function (result, status) {
           // 정상적으로 검색이 완료됐으면
@@ -158,6 +177,7 @@ export default function KakaoMap() {
                 // 마커에 클릭이벤트를 등록하며, 마커 위에 인포윈도우를 표시해줍니다.
                 kakao.maps.event.addListener(marker, "click", () => {
                   infowindow.open(map, marker);
+                  setClickAdress(results[j][3]);
                 });
                 // 지도의 줌이 확대되거나 축소 이벤트가 발생할 경우, 인포윈도우가 닫힙니다.
                 kakao.maps.event.addListener(map, "zoom_changed", () => {
