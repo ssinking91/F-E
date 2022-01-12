@@ -35,10 +35,10 @@ const editUserInfosFB = (userName, sido) => {
     try {
       console.log("editUserInfosFB 시작");
 
-      const response = apis.editUserInfos(userName, sido);
+      // const response = apis.editUserInfos(userName, sido);
       //console.log(response.data);
 
-      dispatch(editUserInfo(sido)); 
+      dispatch(editUserInfo(sido));
     } catch (error) {
       console.log("editUserInfosFB error");
     }

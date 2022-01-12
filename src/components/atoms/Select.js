@@ -3,11 +3,11 @@ import styled from "styled-components";
 
 const SelectBox = (props) => {
   // state 사용
-  const [selected, setSelected] = React.useState("");
+  // const [selected, setSelected] = React.useState("");
   // event handler
   const handleChange = (e) => {
     console.log(e.target.value);
-    setSelected(e.target.value);
+    // setSelected(e.target.value);
   };
   return (
     <Select onChange={handleChange}>
