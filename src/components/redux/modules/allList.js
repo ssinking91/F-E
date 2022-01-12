@@ -1,6 +1,5 @@
 import { createAction, handleActions } from "redux-actions";
 import { apis } from "../../utilities/axios";
-import produce from "immer";
 
 // state
 const state = {};
@@ -8,7 +7,8 @@ const state = {};
 // actions
 const GET_PRIVATE_LIST = "/GET_PRIVATE_LIST";
 const GET_PUBLIC_LIST = "/GET_PUBLIC_LIST";
-const GET_PUBLIC_ADRESS = "/GET_PUBLIC_ADDRESS";
+const GET_PRIVATE_ADRESS = "/GET_PRIVATE_ADRESS";
+const GET_PUBLIC_ADRESS = "/GET_PUBLIC_ADRESS";
 
 // create actions
 const getPrivateList = createAction(GET_PRIVATE_LIST, (privateList) => ({
@@ -17,8 +17,11 @@ const getPrivateList = createAction(GET_PRIVATE_LIST, (privateList) => ({
 const getPublicList = createAction(GET_PUBLIC_LIST, (publicList) => ({
   publicList,
 }));
-const getPublicAdress = createAction(GET_PUBLIC_ADRESS, (publicAdress) => ({
-  publicAdress,
+const getPrivateAdress = createAction(GET_PRIVATE_ADRESS, (adress) => ({
+  adress,
+}));
+const getPublicAdress = createAction(GET_PUBLIC_ADRESS, (adress) => ({
+  adress,
 }));
 
 // middleware thunk
@@ -28,7 +31,15 @@ export const getPrivateListDB = (ftSido) => {
       .getPrivateLists(ftSido)
       .then((res) => {
         const privateList = res.data.result[0];
+        const privateAddress = [];
+        for (let i = 0; i < privateList.length; i++) {
+          privateAddress.push(privateList[i].address);
+        }
+
+        const privateAd = new Set(privateAddress);
+        const adress = [...privateAd];
         dispatch(getPrivateList(privateList));
+        dispatch(getPrivateAdress(adress));
       })
       .catch((e) => console.log(e));
   };
@@ -45,10 +56,10 @@ export const getPublicListDB = (ftSido) => {
           publicAdress.push(publicList[i].address);
         }
         const publicAd = new Set(publicAdress);
-        const publicLocation = [...publicAd];
+        const adress = [...publicAd];
 
         dispatch(getPublicList(publicList));
-        dispatch(getPublicAdress(publicAdress));
+        dispatch(getPublicAdress(adress));
       })
       .catch((e) => console.log(e));
 
@@ -81,17 +92,18 @@ export default handleActions(
         publicList: action.payload.publicList,
       };
     },
-    // [GET_PUBLIC_ADRESS]: (state, action) => {
-    //   return {
-    //     ...state,
-    //     adress: action.payload.publicAdress,
-    //   };
-    // },
-
-    [GET_PUBLIC_ADRESS]: (state, action) =>
-      produce(state, (draft) => {
-        draft.adress = action.payload.publicAdress;
-      }),
+    [GET_PUBLIC_ADRESS]: (state, action) => {
+      return {
+        ...state,
+        publicAdress: action.payload.adress,
+      };
+    },
+    [GET_PRIVATE_ADRESS]: (state, action) => {
+      return {
+        ...state,
+        privateAdress: action.payload.adress,
+      };
+    },
   },
   state
 );

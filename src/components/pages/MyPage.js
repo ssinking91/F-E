@@ -22,7 +22,7 @@ const MyPage = (props) => {
     
   }, []);
 
-  const [selection, setSelection] = React.useState(false);
+  // const [selection, setSelection] = React.useState(false);
 
   const userImage = localStorage.getItem("userImage");
 

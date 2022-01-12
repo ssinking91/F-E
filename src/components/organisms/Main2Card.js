@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { savedActions } from "../redux/modules/cardSave";
 import { mypagetActions } from "../redux/modules/mypage";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 // import { useParams } from "react-router-dom";
 
@@ -36,6 +36,7 @@ const Main2Card = (props) => {
         dispatch(mypagetActions.savedFB(aptNo, Page, status)), setSave2(!save2)
       );
     } else {
+      // eslint-disable-next-line no-sequences
       return dispatch(savedActions.savedFB(aptNo, Page)), setSave2(!save2);
     }
   };

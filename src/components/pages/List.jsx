@@ -1,6 +1,6 @@
 import AllListTemp from "../templates/AllListTemp";
 
-export default function List() {
+export default function List(props) {
   return (
     <>
       <AllListTemp />
