@@ -19,8 +19,10 @@ export default function AllListTemp() {
   }, []);
 
   const publicList = useSelector((store) => store.allList.publicList);
+  const publicAdress = useSelector((store) => store.allList.publicAdress);
   const privateList = useSelector((store) => store.allList.privateList);
   console.log(publicList);
+  console.log(publicAdress);
   console.log(privateList);
   const [ftbg, setFtbg] = useState(0);
   const [ftSido] = useState("경기도");
@@ -145,12 +147,17 @@ export default function AllListTemp() {
           {privateList && privateList.length !== 0 ? (
             privateList.map((item, index) => {
               let minPrize = item.supplyAmount.split("~")[0].replace(",", "");
-              // 5자리 기준
-              let minPrize1 = `${minPrize.split("")[minPrize.length - 5]}억 ${
+
+              let minPrize5 = `${minPrize.split("")[minPrize.length - 5]}억 ${
                 minPrize.split("")[1]
               }${minPrize.split("")[2]}${minPrize.split("")[3]}${
                 minPrize.split("")[4]
               }`;
+              console.log(minPrize5);
+              let minPrize4 = `${minPrize.split("")[minPrize.length - 4]}${
+                minPrize.split("")[1]
+              }${minPrize.split("")[2]}${minPrize.split("")[3]}`;
+              console.log(minPrize4);
 
               const maxPrize = item.supplyAmount.split("~")[1].replace(",", "");
               // 5자리 기준
@@ -159,6 +166,14 @@ export default function AllListTemp() {
               }${maxPrize.split("")[2]}${maxPrize.split("")[3]}${
                 maxPrize.split("")[4]
               }`;
+
+              let minSize = Math.ceil(item.size.split("~")[0]);
+              let pyeongMinSize = Math.ceil(0.3025 * minSize);
+              let maxSize = Math.ceil(item.size.split("~")[1]);
+              let pyeongMaxSize = Math.ceil(0.3025 * maxSize);
+              console.log(maxPrize);
+
+              let pyeongMaxPrize = Math.ceil(maxPrize / pyeongMaxSize);
               return (
                 <>
                   <Card
@@ -167,8 +182,10 @@ export default function AllListTemp() {
                     name={item.houseName}
                     startDate={item.receptStartDate}
                     endDate={item.receptEndDate}
-                    size={`${item.size} m²`}
-                    price={`${minPrize1} ~ ${maxPrize1}`}
+                    size={`${minSize} ~ ${maxSize} m² / ${pyeongMinSize} ~ ${pyeongMaxSize} 평`}
+                    price={`${
+                      minPrize.length === 5 ? minPrize5 : minPrize4
+                    } ~ ${maxPrize1} / 평당 ${pyeongMaxPrize}만원`}
                     aptNo={item.pblancNo}
                     islike={item.islike}
                     //민간 청약정보 ID 값

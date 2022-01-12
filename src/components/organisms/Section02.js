@@ -21,7 +21,10 @@ const Section02 = () => {
   const existuser = useSelector((state) => state.mypage.list.existuser);
 
   // 민간 공고 3개
-  const private_list = useSelector((state) => state.main.private_list);
+  const private_list = useSelector(
+    (state) => state.main.private_list.privateSido1
+  );
+  console.log(private_list);
   const private_regionInfo = private_list.slice(0, 3);
 
   // 공공 공고 3개
@@ -186,11 +189,11 @@ const Span2 = styled.span`
   color: #333333;
 `;
 
-// const TextDiv = styled.div`
-//   width: 100%
-//   display : flex;
-//   margin: 100px 0;
-// `;
+const TextDiv = styled.div`
+  width: 100%
+  display : flex;
+  margin: 100px 0;
+`;
 
 const CardWrap = styled.div`
   width: 1200px;

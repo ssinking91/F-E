@@ -2,15 +2,18 @@ import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { history } from "../redux/configStore";
+import { mypagetActions } from "../redux/modules/mypage";
 
 import NavBarLink from "../organisms/NavBarLink";
 import Main2Card from "../organisms/Main2Card";
 import Footer from "../organisms/Footer";
-import { Text, Selection, DropDown } from "../atoms/index";
-import { mypagetActions } from "../redux/modules/mypage";
+import { Text, DropDown } from "../atoms/index";
+
 
 const MyPage = (props) => {
   const dispatch = useDispatch();
+  const [isActive, setIsActive] = React.useState(false);
+  const [sido, setSido] = React.useState();
 
   React.useEffect(() => {
     if (!localStorage.getItem("userKey")) {
@@ -19,9 +22,25 @@ const MyPage = (props) => {
     }
     const userKey = localStorage.getItem("userKey");
     dispatch(mypagetActions.getUserInfosFB(userKey));
-    
   }, []);
 
+  // sido 변경
+  const sidoChange = (e) => {
+    setSido(e);
+   }
+
+   // sido 변경 api
+   const sidoChangeApi = () => {
+     console.log(sido);
+     if(sido === undefined){
+       window.alert("관심 지역 설정해 주세요😎");
+       return ;
+     }
+    const userName = localStorage.getItem("userName");
+    dispatch(mypagetActions.editUserInfosFB(userName, sido));
+    setIsActive(!isActive);
+   }
+  
   // const [selection, setSelection] = React.useState(false);
 
   const userImage = localStorage.getItem("userImage");
@@ -64,23 +83,26 @@ const MyPage = (props) => {
             <Text h2 margin="0 0 10px 0">
               {localStorage.getItem("userName")} 님
             </Text>
-            {existuser ? (
+            {isActive ? (
               <TextDiv>
-                <Text h4 boldText margin="0 20px 0 0">
-                  {existuser.sido}
-                </Text>
-                <Selection options={OPTIONS} />
-                <DropDown options={OPTIONS} />
+                <DropDown options={OPTIONS} sidoChange={sidoChange} />
+                <MypageButton onClick={()=>{sidoChangeApi()}}>
+                  <Text boldText color="#FFFFFF">
+                    완료
+                  </Text>
+                </MypageButton>
               </TextDiv>
             ) : (
-              <>
-                <Text h4 boldText width="200px">
-                  지역을 선택해 주세요
+              <TextDiv>
+                <Text h4 boldText width="121px" >
+                  {existuser.sido}
                 </Text>
-                <span>😎</span>
-                <Selection options={OPTIONS} />
-                <DropDown options={OPTIONS} />
-              </>
+                <MypageButton onClick={()=>{setIsActive(!isActive)}}>
+                  <Text boldText color="#FFFFFF">
+                    수정
+                  </Text>
+                </MypageButton>
+              </TextDiv>
             )}
           </MyCardList>
         </MyCard>
@@ -206,7 +228,13 @@ const MyCardList = styled.div`
 const TextDiv = styled.div`
   width: 988px;
   display: flex;
+  align-items: center;
 `;
+
+// const TextSpan = styled.span`
+//   font-size: 18px;
+//   line-height: 25px;
+// `;
 
 const MyPost = styled.div`
   width: 1195px;
@@ -223,6 +251,19 @@ const MyPostCardList = styled.div`
   & > div {
     margin-bottom: 26px;
   }
+`;
+
+const MypageButton = styled.button`
+  width: 78px;
+  height: 35px;
+  border-radius: 21.5px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${(props) => (props.active ? "aliceblue" : "#20d7ff")};
+  margin-left: 30px;
+  cursor: pointer;
 `;
 
 export default MyPage;

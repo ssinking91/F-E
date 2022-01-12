@@ -25,7 +25,10 @@ const getPublicHot = createAction(GET_PUBLICHOT, (public_list_hot) => ({
 
 const initialState = {
   total: {},
-  private_list: [],
+  private_list: {
+    privateSido1: [],
+    statusArr: [],
+  },
   public_list: [],
   public_list_hot: [],
 };
@@ -65,7 +68,7 @@ const getPrivateInfoDB = () => {
       .getPrivateInfo()
       .then((res) => {
         console.log("getPrivateInfoDB 접근");
-        // console.log(res.data);
+        console.log(res.data);
         dispatch(getPrivateInfo(res.data));
       })
       .catch((err) => {

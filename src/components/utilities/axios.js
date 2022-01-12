@@ -48,10 +48,12 @@ export const apis = {
 
   // DetailPage
   getDetailInfo: (locate) =>
-    instance.get(`/api${locate}`, { userKey: localStorage.getItem("userKey") }),
+    instance.post(`/api${locate}`, {
+      userKey: localStorage.getItem("userKey"),
+    }),
 
   getDetailImg: (locate) =>
-    instance.get(`/api${locate}/img`, {
+    instance.post(`/api${locate}/img`, {
       userKey: localStorage.getItem("userKey"),
     }),
 
@@ -88,9 +90,10 @@ export const apis = {
     instance.get(`/api/users/${userKey}`, {
       userKey: localStorage.getItem("userKey"),
     }), // 유저정보 조회
-  editUserInfos: (userName) =>
+  editUserInfos: (userName, sido) =>
     instance.put(`/api/users/${userName}`, {
       userKey: localStorage.getItem("userKey"),
+      sido:sido,
     }), // 유저정보 수정
 
   // Saved
