@@ -6,9 +6,9 @@ import { mypagetActions } from "../redux/modules/mypage";
 
 import NavBarLink from "../organisms/NavBarLink";
 import Main2Card from "../organisms/Main2Card";
+import NoneMain2Card from "../organisms/NoneMain2Card";
 import Footer from "../organisms/Footer";
 import { Text, DropDown } from "../atoms/index";
-
 
 const MyPage = (props) => {
   const dispatch = useDispatch();
@@ -27,20 +27,20 @@ const MyPage = (props) => {
   // sido 변경
   const sidoChange = (e) => {
     setSido(e);
-   }
+  };
 
-   // sido 변경 api
-   const sidoChangeApi = () => {
-     console.log(sido);
-     if(sido === undefined){
-       window.alert("관심 지역 설정해 주세요😎");
-       return ;
-     }
+  // sido 변경 api
+  const sidoChangeApi = () => {
+    console.log(sido);
+    if (sido === undefined) {
+      window.alert("관심 지역 설정해 주세요😎");
+      return;
+    }
     const userName = localStorage.getItem("userName");
     dispatch(mypagetActions.editUserInfosFB(userName, sido));
     setIsActive(!isActive);
-   }
-  
+  };
+
   // const [selection, setSelection] = React.useState(false);
 
   const userImage = localStorage.getItem("userImage");
@@ -57,20 +57,20 @@ const MyPage = (props) => {
   const Page = "myPage";
 
   const OPTIONS = [
+    { value: "서울", name: "서울" },
+    { value: "인천", name: "인천" },
+    { value: "부산", name: "부산" },
+    { value: "대구", name: "대구" },
+    { value: "대전", name: "대전" },
+    { value: "광주", name: "광주" },
+    { value: "울산", name: "울산" },
+    { value: "세종", name: "세종" },
     { value: "경기도", name: "경기도" },
     { value: "강원도", name: "강원도" },
     { value: "충청도", name: "충청도" },
     { value: "경상도", name: "경상도" },
     { value: "전라도", name: "전라도" },
     { value: "제주도", name: "제주도" },
-    { value: "서울특별시", name: "서울특별시" },
-    { value: "인천광역시", name: "인천광역시" },
-    { value: "부산광역시", name: "부산광역시" },
-    { value: "대구광역시", name: "대구광역시" },
-    { value: "대전광역시", name: "대전광역시" },
-    { value: "광주광역시", name: "광주광역시" },
-    { value: "울산광역시", name: "울산광역시" },
-    { value: "세종특별시", name: "세종특별시" },
   ];
 
   return (
@@ -86,7 +86,11 @@ const MyPage = (props) => {
             {isActive ? (
               <TextDiv>
                 <DropDown options={OPTIONS} sidoChange={sidoChange} />
-                <MypageButton onClick={()=>{sidoChangeApi()}}>
+                <MypageButton
+                  onClick={() => {
+                    sidoChangeApi();
+                  }}
+                >
                   <Text boldText color="#FFFFFF">
                     완료
                   </Text>
@@ -94,10 +98,14 @@ const MyPage = (props) => {
               </TextDiv>
             ) : (
               <TextDiv>
-                <Text h4 boldText width="121px" >
+                <Text h4 boldText width="121px">
                   {existuser.sido}
                 </Text>
-                <MypageButton onClick={()=>{setIsActive(!isActive)}}>
+                <MypageButton
+                  onClick={() => {
+                    setIsActive(!isActive);
+                  }}
+                >
                   <Text boldText color="#FFFFFF">
                     수정
                   </Text>
@@ -147,9 +155,9 @@ const MyPage = (props) => {
                 );
               })
             ) : (
-              <Text h4 width="1195px" margin="30px 0 30px 0">
-                😎 공공 분양저장된 청약정보가 없습니다
-              </Text>
+              <>
+                <NoneMain2Card />
+              </>
             )}
           </MyPostCardList>
           <MyPostCardList>
@@ -181,9 +189,9 @@ const MyPage = (props) => {
                 );
               })
             ) : (
-              <Text h4 width="1195px" margin="30px 0 30px 0">
-                😎 민간 분양 저장된 청약정보가 없습니다
-              </Text>
+              <>
+                <NoneMain2Card />
+              </>
             )}
           </MyPostCardList>
         </MyPost>
