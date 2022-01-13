@@ -27,7 +27,7 @@ export const apis = {
     instance.post("/api/users/login", {
       userKey,
       nickname,
-      profileImg: localStorage.getItem("userIamge"),
+      profileImg: localStorage.getItem("userImage"),
     }),
 
   // MainPage
@@ -93,7 +93,7 @@ export const apis = {
   editUserInfos: (userName, sido) =>
     instance.put(`/api/users/${userName}`, {
       userKey: localStorage.getItem("userKey"),
-      sido:sido,
+      sido: sido,
     }), // 유저정보 수정
 
   // Saved

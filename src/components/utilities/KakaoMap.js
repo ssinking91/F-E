@@ -49,18 +49,6 @@ export default function KakaoMap() {
     // 지도를 생성합니다
     var map = new kakao.maps.Map(mapContainer, mapOption);
 
-    // kakao.maps.event.addListener(map, "center_changed", function () {
-    //   // 지도의  레벨을 얻어옵니다
-    //   const level = map.getLevel();
-    //   // 지도의 중심좌표를 얻어옵니다
-    //   const latlng = map.getCenter();
-    //   //위도
-    //   const lat = latlng.getLat();
-    //   //경도
-    //   const lng = latlng.getLng();
-    //   console.log(lat, lng);
-    // });
-
     // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
     var mapTypeControl = new kakao.maps.MapTypeControl();
 
@@ -191,6 +179,17 @@ export default function KakaoMap() {
           }
         });
       }
+      kakao.maps.event.addListener(map, "dragend", function () {
+        // 지도의  레벨을 얻어옵니다
+        // const level = map.getLevel();
+        // 지도의 중심좌표를 얻어옵니다
+        const latlng = map.getCenter();
+        //위도
+        const lat = latlng.getLat();
+        //경도
+        const lng = latlng.getLng();
+        console.log(lat, lng);
+      });
     }
   }
 
