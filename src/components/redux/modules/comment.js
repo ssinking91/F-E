@@ -63,8 +63,9 @@ const deleteCommentsFB = (aptNo, commentId) => {
 const initialState = {
   list: [
     {
-      snsId: "유저고유값",
+      userKey: "유저고유값",
       commentId: "댓글고유값",
+      profileImg: "유저이미지",
       content: "내용",
       createdAt: "작성시간",
     },
