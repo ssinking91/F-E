@@ -50,7 +50,7 @@ const Section01 = () => {
               </Text>
             ) : (
               <Text h2 color="#fff" margin="15px 0 60px 0">
-                당신을 위한 청약 정보가 {totalNum} 모여있어요
+                당신을 위한 청약 정보가 {totalNum}개 모여있어요
               </Text>
             )}
             <Button background_color="#20d7ff" padding="13px 21px">

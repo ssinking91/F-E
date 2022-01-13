@@ -42,6 +42,82 @@ const Main2Card = (props) => {
       return dispatch(savedActions.savedFB(aptNo, Page)), setSave2(!save2);
     }
   };
+  // const startDate = props.publicSales
+  //   ? props.startDate.replace(/./gi, ". ")
+  //   : props.startDate.replace(/-/gi, ". ");
+  // const endDate = props.publicSales
+  //   ? props.endDate.replace(/./gi, ".")
+  //   : props.endDate.replace(/-/gi, ". ");
+  const startDate = props.startDate.replace(/-/gi, ".");
+  const endDate = props.endDate.replace(/-/gi, ".");
+  // 최소, 최대 분양면적
+  let minSize = Math.ceil(props.size.split("~")[0]);
+  let maxSize = Math.ceil(props.size.split("~")[1]);
+  // 분양면적 => 평, 변환
+  let pyeongMinSize = Math.ceil(0.3025 * minSize);
+  let pyeongMaxSize = Math.ceil(0.3025 * maxSize);
+
+  // 최소, 최대 가격
+  let minPrice = props.publicSales
+    ? props.price
+    : props.price.split("~")[0].replace(",", "");
+  let maxPrice = props.publicSales
+    ? props.price
+    : props.price.split("~")[1].replace(",", "");
+  // console.log(minSize, maxSize, props.size);
+  // 4, 5, 6 자릿수
+  const minPrice4 = `${minPrice.split("")[0]}${minPrice.split("")[1]}${
+    minPrice.split("")[2]
+  }${minPrice.split("")[3]}`;
+  const minPrice5 = `${minPrice.split("")[0]}억 ${minPrice.split("")[1]}${
+    minPrice.split("")[2]
+  }${minPrice.split("")[3]}${minPrice.split("")[4]}`;
+  const minPrice6 = `${minPrice.split("")[0]}${minPrice.split("")[1]}억 ${
+    minPrice.split("")[2]
+  }${minPrice.split("")[3]}${minPrice.split("")[4]}${minPrice.split("")[5]}`;
+  const maxPrice4 = `${maxPrice.split("")[0]}${maxPrice.split("")[1]}${
+    maxPrice.split("")[2]
+  }${maxPrice.split("")[3]}`;
+  const maxPrice5 = `${maxPrice.split("")[0]}억 ${maxPrice.split("")[1]}${
+    maxPrice.split("")[2]
+  }${maxPrice.split("")[3]}${maxPrice.split("")[4]}`;
+  const maxPrice6 = `${maxPrice.split("")[0]}${maxPrice.split("")[1]}억 ${
+    maxPrice.split("")[2]
+  }${maxPrice.split("")[3]}${maxPrice.split("")[4]}${maxPrice.split("")[5]}`;
+  // console.log(maxPrice4, maxPrice5, maxPrice6);
+  // 평당 단가
+  let pyeongMaxPrice = Math.ceil(maxPrice / pyeongMaxSize);
+  // 자릿수 별 조건문
+  function minResultPrice() {
+    let price = "";
+    switch (minPrice.length) {
+      case 4:
+        price = minPrice4;
+        break;
+      case 6:
+        price = minPrice6;
+        break;
+      default:
+        price = minPrice5;
+        break;
+    }
+    return price;
+  }
+  function maxResultPrice() {
+    let price = "";
+    switch (maxPrice.length) {
+      case 4:
+        price = maxPrice4;
+        break;
+      case 6:
+        price = maxPrice6;
+        break;
+      default:
+        price = maxPrice5;
+        break;
+    }
+    return price;
+  }
 
   return (
     <Container>
@@ -61,7 +137,9 @@ const Main2Card = (props) => {
             <Label LabelPanState={props.CardPanState}></Label>
           </LabelDiv>
           <Text h4 margin="0 0 0 15px" width="316px">
-            {props.name}
+            {props.name.length > 17
+              ? `${props.name.slice(0, 17)}...`
+              : props.name}
           </Text>
         </Info1>
 
@@ -77,13 +155,17 @@ const Main2Card = (props) => {
           </Info2Item1>
           <Info2Item2>
             <Text boldText>
-              {props.startDate} ~ {props.endDate}
+              {startDate} ~ {endDate}
             </Text>
             <Text regularText color="#A5AAB6">
-              {props.size}
+              {`${minSize} ~ ${maxSize} m² / ${pyeongMinSize} ~ ${pyeongMaxSize} 평 ${
+                props.publicSales ? "" : `/ 평당 ${pyeongMaxPrice}만원`
+              }`}
             </Text>
             <Text regularText color="#A5AAB6">
-              {props.price}
+              {props.publicSales
+                ? props.price
+                : `${minResultPrice(minPrice)} ~ ${maxResultPrice(maxPrice)}`}
             </Text>
           </Info2Item2>
         </Info2>
