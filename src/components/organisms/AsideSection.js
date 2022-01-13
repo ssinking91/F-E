@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Main2Card from "../organisms/Main2Card";
 
 export default function AsideSection() {
