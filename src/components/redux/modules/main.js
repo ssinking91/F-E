@@ -82,7 +82,7 @@ const getPublicInfoDB = () => {
       .getPublicInfo()
       .then((res) => {
         console.log("getPublicInfoDB 접근");
-        // console.log(res.data);
+        console.log(res.data);
         dispatch(getPublicInfo(res.data));
       })
       .catch((err) => {

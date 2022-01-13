@@ -2,8 +2,10 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as mainAction } from "../redux/modules/main";
+import { mypagetActions } from "../redux/modules/mypage";
 import { history } from "../redux/configStore";
 import Main2Card from "./Main2Card";
+import NoneMain2Card from "./NoneMain2Card";
 import { Text } from "../atoms/index";
 
 const Section02 = () => {
@@ -14,11 +16,16 @@ const Section02 = () => {
     console.log("@@@@@page2 ue2@@@@@");
     dispatch(mainAction.getPrivateInfoDB());
     dispatch(mainAction.getPublicInfoDB());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    if (localStorage.getItem("userKey")) {
+      const userKey = localStorage.getItem("userKey");
+      dispatch(mypagetActions.getUserInfosFB(userKey));
+    }
   }, []);
 
   // 로그인한 유저데이터
   const existuser = useSelector((state) => state.mypage.list.existuser);
+  //console.log(existuser);
 
   // 민간 공고 3개
   const private_list = useSelector(
@@ -29,7 +36,8 @@ const Section02 = () => {
 
   // 공공 공고 3개
   const public_list = useSelector((state) => state.main.public_list);
-  const public_regionInfo = public_list.slice(6, 9);
+  console.log(public_list);
+  const public_regionInfo = public_list.slice(0, 3);
 
   return (
     <>
@@ -46,13 +54,20 @@ const Section02 = () => {
         <SectionWrap>
           <SectionItem>
             <AllSpan>
-              <Span1 className="a">{existuser.sido}</Span1>
-              <Span2>
-                {localStorage.getItem("userName") &&
-                  localStorage.getItem("userName")}님의
-                관심 지역 청약은?
-              </Span2>
-              <span>📌</span>
+              {existuser.sido ? (
+                <>
+                  <Span2>
+                    <Span1 className="a">{existuser.sido}</Span1>
+                    지역 청약은?
+                  </Span2>
+                  <span>📌</span>
+                </>
+              ) : (
+                <>
+                  <Span2>관심 지역 청약은?</Span2>
+                  <span>📌</span>
+                </>
+              )}
             </AllSpan>
             {localStorage.getItem("userName") ? (
               <Text h4 color="#A5AAB6">
@@ -99,11 +114,7 @@ const Section02 = () => {
                   );
                 })
               ) : (
-                <Text h4 margin="100px 0 0 0">
-                  <Span>🏚️..</Span> 실시간 공공 분양 청약정보가 없어요
-                  <Span>😭</Span>
-                  <Text h4>다른 관심지역을 선택해서 청약정보를 찾아보아요</Text>
-                </Text>
+                <NoneMain2Card />
               )}
             </PublicCards>
 
@@ -132,11 +143,7 @@ const Section02 = () => {
                   );
                 })
               ) : (
-                <Text h4 margin="100px 0 0 0">
-                  <Span>🏚️..</Span> 실시간 공공 분양 청약정보가 없어요
-                  <Span>😭</Span>
-                  <Text h4>다른 관심지역을 선택해서 청약정보를 찾아보아요</Text>
-                </Text>
+                <NoneMain2Card />
               )}
             </PrivateCards>
           </CardWrap>
