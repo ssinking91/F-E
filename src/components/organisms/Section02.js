@@ -88,19 +88,15 @@ const Section02 = () => {
               </Text>
               {public_regionInfo.length !== 0 ? (
                 public_regionInfo.map((item, index) => {
-                  // 공공 이름 편집 ex. [행복주택] 경기도 하남시
-                  const panName = `[${item.aisTypeName.split("(")[0]}] ${
-                    item.address.split(" ")[0]
-                  } ${item.address.split(" ")[1]}`;
                   const publicSales = "publicSales";
                   return (
                     <Main2Card
                       key={index}
                       image={item.ImgUrl}
-                      name={panName}
+                      name={item.panName}
                       startDate={item.startDate}
                       endDate={item.closeDate}
-                      size={`${item.size} m²`}
+                      size={item.size}
                       price={item.aisTypeName}
                       aptNo={item.panId}
                       islike={item.islike}
@@ -131,8 +127,8 @@ const Section02 = () => {
                       name={item.houseName}
                       startDate={item.receptStartDate}
                       endDate={item.receptEndDate}
-                      size={`${item.size} m²`}
-                      price={`${item.supplyAmount} 만원`}
+                      size={item.size}
+                      price={item.supplyAmount}
                       aptNo={item.pblancNo}
                       islike={item.islike}
                       //민간 청약정보 ID 값

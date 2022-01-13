@@ -145,7 +145,7 @@ const MyPage = (props) => {
                     name={panName}
                     startDate={item.startDate}
                     endDate={item.closeDate}
-                    size={`${item.size} m²`}
+                    size={item.size}
                     price={item.aisTypeName}
                     _public={publics}
                     aptNo={item.panId}
@@ -182,8 +182,8 @@ const MyPage = (props) => {
                     name={item.houseName}
                     startDate={item.receptStartDate}
                     endDate={item.receptEndDate}
-                    size={`${item.size} m²`}
-                    price={`${item.supplyAmount} 만원`}
+                    size={item.size}
+                    price={item.supplyAmount}
                     aptNo={item.pblancNo}
                     islike={item.islike}
                     Page={Page}
