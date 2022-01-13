@@ -19,6 +19,16 @@ export default function DetailInfo() {
   const publicImg = useSelector((store) => store.detail.img);
   console.log(publicInfo);
 
+  // let minPrize = publicInfo.supplyAmount.split("~")[0].replace(",", "");
+  // const maxPrize = publicInfo.supplyAmount.split("~")[1].replace(",", "");
+
+  // let minSize = Math.floor(publicInfo.size.split("~")[0]);
+  // let maxSize = Math.floor(publicInfo.size.split("~")[1]);
+  // let pyeongMinSize = Math.ceil(0.3025 * minSize);
+  // let pyeongMaxSize = Math.ceil(0.3025 * maxSize);
+
+  // let pyeongMaxPrize = Math.ceil(maxPrize / pyeongMaxSize);
+
   if (publicInfo) {
     return (
       <>
@@ -69,10 +79,10 @@ export default function DetailInfo() {
                   title={"난방 방식"}
                   content={`${publicInfo.heatMethod}`}
                 />
-                <BundleText
+                {/* <BundleText
                   title={"전용 면적"}
-                  content={`${publicInfo.size}`}
-                />
+                  content={`${minSize} ~ ${maxSize}m² / ${pyeongMinSize} ~ ${pyeongMaxSize}평`}
+                /> */}
                 {/* <BundleText
                   title={"분양 가격"}
                   content={"54,470 ~ 72,670 만원"}
@@ -90,10 +100,10 @@ export default function DetailInfo() {
                   title={"당첨자 발표일"}
                   content={`${publicInfo.announceDate}`}
                 />
-                <BundleText
+                {/* <BundleText
                   title={"서류제출기간"}
                   content={`${publicInfo.submitStartDate} ~ ${publicInfo.submitEndDate}`}
-                />
+                /> */}
                 <BundleText
                   title={"당첨자 계약일"}
                   content={`${publicInfo.contractEndDate} ~ ${publicInfo.contractStartDate}`}

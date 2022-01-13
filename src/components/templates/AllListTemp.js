@@ -112,19 +112,16 @@ export default function AllListTemp() {
           </Text>
           {publicList && publicList.length !== 0 ? (
             publicList.map((item, index) => {
-              const panName = `[${item.aisTypeName}] ${
-                item.address.split(" ")[0]
-              } ${item.address.split(" ")[1]}`;
               const publicSales = "publicSales";
               return (
                 <>
                   <Card
                     key={index}
                     image={item.ImgUrl}
-                    name={panName}
+                    name={item.panName}
                     startDate={item.startDate}
                     endDate={item.closeDate}
-                    size={`${item.size} m²`}
+                    size={item.size}
                     price={item.aisTypeName}
                     aptNo={item.panId}
                     islike={item.islike}
@@ -133,7 +130,6 @@ export default function AllListTemp() {
                     //공공 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/public/${item.panId}`);
-                      // console.log(item);
                     }}
                   />
                 </>
@@ -150,34 +146,6 @@ export default function AllListTemp() {
           </Text>
           {privateList && privateList.length !== 0 ? (
             privateList.map((item, index) => {
-              let minPrize = item.supplyAmount.split("~")[0].replace(",", "");
-
-              let minPrize5 = `${minPrize.split("")[minPrize.length - 5]}억 ${
-                minPrize.split("")[1]
-              }${minPrize.split("")[2]}${minPrize.split("")[3]}${
-                minPrize.split("")[4]
-              }`;
-              console.log(minPrize5);
-              let minPrize4 = `${minPrize.split("")[minPrize.length - 4]}${
-                minPrize.split("")[1]
-              }${minPrize.split("")[2]}${minPrize.split("")[3]}`;
-              console.log(minPrize4);
-
-              const maxPrize = item.supplyAmount.split("~")[1].replace(",", "");
-              // 5자리 기준
-              let maxPrize1 = `${maxPrize.split("")[maxPrize.length - 5]}억 ${
-                maxPrize.split("")[1]
-              }${maxPrize.split("")[2]}${maxPrize.split("")[3]}${
-                maxPrize.split("")[4]
-              }`;
-
-              let minSize = Math.ceil(item.size.split("~")[0]);
-              let pyeongMinSize = Math.ceil(0.3025 * minSize);
-              let maxSize = Math.ceil(item.size.split("~")[1]);
-              let pyeongMaxSize = Math.ceil(0.3025 * maxSize);
-              console.log(maxPrize);
-
-              let pyeongMaxPrize = Math.ceil(maxPrize / pyeongMaxSize);
               return (
                 <>
                   <Card
@@ -186,10 +154,8 @@ export default function AllListTemp() {
                     name={item.houseName}
                     startDate={item.receptStartDate}
                     endDate={item.receptEndDate}
-                    size={`${minSize} ~ ${maxSize} m² / ${pyeongMinSize} ~ ${pyeongMaxSize} 평`}
-                    price={`${
-                      minPrize.length === 5 ? minPrize5 : minPrize4
-                    } ~ ${maxPrize1} / 평당 ${pyeongMaxPrize}만원`}
+                    size={item.size}
+                    price={item.supplyAmount}
                     aptNo={item.pblancNo}
                     islike={item.islike}
                     //민간 청약정보 ID 값

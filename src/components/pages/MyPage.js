@@ -145,7 +145,7 @@ const MyPage = (props) => {
                     name={panName}
                     startDate={item.startDate}
                     endDate={item.closeDate}
-                    size={`${item.size} m²`}
+                    size={item.size}
                     price={item.aisTypeName}
                     _public={publics}
                     aptNo={item.panId}

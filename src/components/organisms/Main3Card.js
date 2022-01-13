@@ -51,7 +51,9 @@ const Main3Card = (props) => {
             <Label registration></Label>
           </LabelDiv>
           <Text h4 margin="0 0 0 15px">
-            {props.name}
+            {props.name.length > 17
+              ? `${props.name.slice(0, 17)}...`
+              : props.name}
           </Text>
         </Info1>
         <Info2>
