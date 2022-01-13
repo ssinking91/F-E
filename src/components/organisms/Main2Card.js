@@ -10,6 +10,7 @@ import Label from "../molecules/Label";
 import { Text, Image } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
+import apt_tobe from "../../images/apt_tobe.svg";
 
 const Main2Card = (props) => {
   const { _onClick } = props;
@@ -109,7 +110,7 @@ const Imageitem = styled.div`
 //   height: 160px;
 //   margin-top: 4px;
 //   border-radius: 20px;
-//   background-image: url("${apt_tobe}");
+//   background-image: url("${(props) => props.src || apt_tobe}");
 //   background-size: cover;
 //   background-repeat: no-repeat;
 //   background-position: center;
@@ -139,7 +140,7 @@ const Item = styled.div`
 
 const Info1 = styled.div`
   width: 395px;
-  min-height: 50px;
+  min-height: 29px;
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 15px;

@@ -3,11 +3,12 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { history } from "../redux/configStore";
 import { mypagetActions } from "../redux/modules/mypage";
-
 import NavBarLink from "../organisms/NavBarLink";
 import Main2Card from "../organisms/Main2Card";
+import NoneMain2Card from "../organisms/NoneMain2Card";
 import Footer from "../organisms/Footer";
 import { Text, DropDown } from "../atoms/index";
+import { globalSido } from "../utilities/constants.js";
 
 const MyPage = (props) => {
   const dispatch = useDispatch();
@@ -56,22 +57,24 @@ const MyPage = (props) => {
 
   const Page = "myPage";
 
+  // >> constants 에서 관리하는게 어떨까요?
   const OPTIONS = [
+    { value: "서울", name: "서울" },
+    { value: "인천", name: "인천" },
+    { value: "부산", name: "부산" },
+    { value: "대구", name: "대구" },
+    { value: "대전", name: "대전" },
+    { value: "광주", name: "광주" },
+    { value: "울산", name: "울산" },
+    { value: "세종", name: "세종" },
     { value: "경기도", name: "경기도" },
     { value: "강원도", name: "강원도" },
     { value: "충청도", name: "충청도" },
     { value: "경상도", name: "경상도" },
     { value: "전라도", name: "전라도" },
     { value: "제주도", name: "제주도" },
-    { value: "서울특별시", name: "서울특별시" },
-    { value: "인천광역시", name: "인천광역시" },
-    { value: "부산광역시", name: "부산광역시" },
-    { value: "대구광역시", name: "대구광역시" },
-    { value: "대전광역시", name: "대전광역시" },
-    { value: "광주광역시", name: "광주광역시" },
-    { value: "울산광역시", name: "울산광역시" },
-    { value: "세종특별시", name: "세종특별시" },
   ];
+  console.log(globalSido);
 
   return (
     <>
@@ -85,7 +88,11 @@ const MyPage = (props) => {
             </Text>
             {isActive ? (
               <TextDiv>
-                <DropDown options={OPTIONS} sidoChange={sidoChange} />
+                <DropDown
+                  options={OPTIONS}
+                  sidoChange={sidoChange}
+                  name={"관심지역"}
+                />
                 <MypageButton
                   onClick={() => {
                     sidoChangeApi();
@@ -155,9 +162,9 @@ const MyPage = (props) => {
                 );
               })
             ) : (
-              <Text h4 width="1195px" margin="30px 0 30px 0">
-                😎 공공 분양저장된 청약정보가 없습니다
-              </Text>
+              <>
+                <NoneMain2Card />
+              </>
             )}
           </MyPostCardList>
           <MyPostCardList>
@@ -189,9 +196,9 @@ const MyPage = (props) => {
                 );
               })
             ) : (
-              <Text h4 width="1195px" margin="30px 0 30px 0">
-                😎 민간 분양 저장된 청약정보가 없습니다
-              </Text>
+              <>
+                <NoneMain2Card />
+              </>
             )}
           </MyPostCardList>
         </MyPost>

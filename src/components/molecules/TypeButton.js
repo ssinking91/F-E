@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Grid, Button, Text } from "../atoms/index";
 
 export default function TypeButton() {
+  // const [divisionButton]
   return (
     <Div>
       <Grid is_flex width="200px" height="36px" background_color="#fff">

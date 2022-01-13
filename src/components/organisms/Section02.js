@@ -49,7 +49,7 @@ const Section02 = () => {
               <Span1 className="a">{existuser.sido}</Span1>
               <Span2>
                 {localStorage.getItem("userName") &&
-                  `${localStorage.getItem("userName")}님의`}{" "}
+                  localStorage.getItem("userName")}님의
                 관심 지역 청약은?
               </Span2>
               <span>📌</span>
@@ -77,6 +77,7 @@ const Section02 = () => {
                   const panName = `[${item.aisTypeName.split("(")[0]}] ${
                     item.address.split(" ")[0]
                   } ${item.address.split(" ")[1]}`;
+                  const publicSales = "publicSales";
                   return (
                     <Main2Card
                       key={index}
@@ -89,6 +90,7 @@ const Section02 = () => {
                       aptNo={item.panId}
                       islike={item.islike}
                       CardPanState={item.panState}
+                      publicSales={publicSales}
                       //공공 청약정보 ID 값
                       _onClick={() => {
                         history.push(`/public/${item.panId}`);
@@ -155,7 +157,7 @@ const SectionWrap = styled.div`
 `;
 
 const SectionItem = styled.div`
-  width: 600px;
+  width: 700px;
   height: 86px;
   text-align: center;
   display: flex;
