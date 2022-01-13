@@ -32,7 +32,10 @@ export default function KakaoLogin() {
         title: `${localStorage.getItem("userName")}님, 환영합니다.`,
       });
 
-      apis.login(data.id, data.properties.nickname);
+      const userKey = data.id;
+      const nickname = data.properties.nickname;
+
+      apis.login(userKey, nickname);
     } catch (err) {
       console.log(err);
     }

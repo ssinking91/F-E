@@ -19,12 +19,12 @@ const FaceBookLogin = () => {
     sessionStorage.setItem("accessToken", accessToken);
 
     const userKey = localStorage.getItem("userKey");
-    const userName = localStorage.getItem("username");
+    const nickname = localStorage.getItem("userName");
 
     console.log(sessionStorage.getItem("accessToken"));
-    console.log(userKey, userName);
+    console.log(userKey, nickname);
     apis
-      .login(userKey, userName)
+      .login(userKey, nickname)
       .then((res) => console.log(res))
       .catch((e) => console.log(e));
 
