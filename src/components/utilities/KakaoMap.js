@@ -189,6 +189,8 @@ export default function KakaoMap() {
         //경도
         const lng = latlng.getLng();
         console.log(lat, lng);
+
+        // geocoder.coord2RegionCode(latlng.getLng(), latlng.getLat(), callback);
       });
     }
   }
