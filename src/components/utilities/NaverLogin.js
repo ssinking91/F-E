@@ -18,10 +18,10 @@ export default function Naver() {
     sessionStorage.setItem("accessToken", res.accessToken);
 
     const userKey = localStorage.getItem("userKey");
-    const userName = localStorage.getItem("username");
+    const nickname = localStorage.getItem("userName");
 
     apis
-      .login(userKey, userName)
+      .login(userKey, nickname)
       .then((res) => console.log(res))
       .catch((e) => console.log(e));
 

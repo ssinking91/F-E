@@ -1,18 +1,22 @@
+
 import React, { useState } from "react";
 import styled from "styled-components";
 
 import { useDispatch, useSelector } from "react-redux";
 import { mypagetActions } from "../redux/modules/mypage";
+
 import { DropDown } from "../atoms/index";
 
 import { globalSido } from "../utilities/constants.js";
 
 export default function TypeFilter() {
+
   const dispatch = useDispatch();
   const [sido, setSido] = useState();
   // sido 변경
   const sidoChange = (e) => {
     setSido(e);
+
   };
   // // sido 변경 api
   // const sidoChangeApi = () => {

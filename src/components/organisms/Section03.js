@@ -44,12 +44,14 @@ const Section03 = (props) => {
           </SectionItem>
           <CardWrap>
             {public_regionInfo_hot.map((item, index) => {
+              let panName = item.panName.slice(0, 17);
+              console.log(panName);
               return (
                 <Main3Card
                   key={index}
                   number={`0${index + 1})`}
                   image={item.ImgUrl}
-                  name={item.panName}
+                  name={`${panName}...`}
                   startDate={item.startDate}
                   endDate={item.closeDate}
                   size={`${item.size} m²`}

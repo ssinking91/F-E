@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import styled from "styled-components";
 import { savedActions } from "../redux/modules/cardSave";
 import { mypagetActions } from "../redux/modules/mypage";
 import { useDispatch } from "react-redux";
 
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import Label from "../molecules/Label";
 import { Text, Image } from "../atoms/index";
