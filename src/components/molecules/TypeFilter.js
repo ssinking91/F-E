@@ -1,14 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-// import { Grid, Button, Text } from "../atoms/index";
+
+import { useDispatch, useSelector } from "react-redux";
+import { mypagetActions } from "../redux/modules/mypage";
+import { DropDown } from "../atoms/index";
+
+import { globalSido } from "../utilities/constants.js";
 
 export default function TypeFilter() {
+  const dispatch = useDispatch();
+  const [sido, setSido] = useState();
+  // sido 변경
+  const sidoChange = (e) => {
+    setSido(e);
+  };
+  // // sido 변경 api
+  // const sidoChangeApi = () => {
+  //   console.log(sido);
+  //   if (sido === undefined) {
+  //     window.alert("관심 지역 설정해 주세요😎");
+  //     return;
+  //   }
+  //   const userName = localStorage.getItem("userName");
+  //   dispatch(mypagetActions.editUserInfosFB(userName, sido));
+  //   setIsActive(!isActive);
+  // };
   return (
     <Div>
-      <Wrap>
+      <WrapLeft>
         <Icon></Icon>
         <SearchInput type="search" placeholder="검색"></SearchInput>
-      </Wrap>
+      </WrapLeft>
+      <WrapRight>
+        <DropDown
+          options={globalSido}
+          sidoChange={sidoChange}
+          name={"지역선택"}
+        ></DropDown>
+      </WrapRight>
     </Div>
   );
 }
@@ -24,10 +53,13 @@ const Div = styled.div`
   display: flex;
   align-items: center;
 `;
-const Wrap = styled.form`
+const WrapLeft = styled.form`
   display: flex;
   align-items: center;
   padding: 0 30px;
+`;
+const WrapRight = styled.div`
+  margin: 0 50px 0 auto;
 `;
 
 const SearchInput = styled.input`

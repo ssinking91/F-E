@@ -3,12 +3,12 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { history } from "../redux/configStore";
 import { mypagetActions } from "../redux/modules/mypage";
-
 import NavBarLink from "../organisms/NavBarLink";
 import Main2Card from "../organisms/Main2Card";
 import NoneMain2Card from "../organisms/NoneMain2Card";
 import Footer from "../organisms/Footer";
 import { Text, DropDown } from "../atoms/index";
+import { globalSido } from "../utilities/constants.js";
 
 const MyPage = (props) => {
   const dispatch = useDispatch();
@@ -57,6 +57,7 @@ const MyPage = (props) => {
 
   const Page = "myPage";
 
+  // >> constants 에서 관리하는게 어떨까요?
   const OPTIONS = [
     { value: "서울", name: "서울" },
     { value: "인천", name: "인천" },
@@ -73,6 +74,7 @@ const MyPage = (props) => {
     { value: "전라도", name: "전라도" },
     { value: "제주도", name: "제주도" },
   ];
+  console.log(globalSido);
 
   return (
     <>
@@ -86,7 +88,11 @@ const MyPage = (props) => {
             </Text>
             {isActive ? (
               <TextDiv>
-                <DropDown options={OPTIONS} sidoChange={sidoChange} />
+                <DropDown
+                  options={OPTIONS}
+                  sidoChange={sidoChange}
+                  name={"관심지역"}
+                />
                 <MypageButton
                   onClick={() => {
                     sidoChangeApi();

@@ -1,17 +1,47 @@
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import Main2Card from "../organisms/Main2Card";
 
 export default function AsideSection() {
+  const publicList = useSelector((store) => store.allList.publicList);
+  console.log(publicList);
   return (
     <>
       <Wrap>
-        <ContentArea>컴포넌트 영역입니다.</ContentArea>
+        <ContentArea>
+          {publicList &&
+            publicList.map((item, index) => {
+              const panName = `[${item.aisTypeName}] ${
+                item.address.split(" ")[1]
+              } ${item.address.split(" ")[2]}`;
+              const publicSales = "publicSales";
+              return (
+                <>
+                  <Main2Card
+                    key={index}
+                    image={item.ImgUrl}
+                    name={panName}
+                    startDate={item.startDate}
+                    endDate={item.closeDate}
+                    size={`${item.size} m²`}
+                    price={item.aisTypeName}
+                    aptNo={item.panId}
+                    islike={item.islike}
+                    CardPanState={item.panState}
+                    publicSales={publicSales}
+                    style={{ padding: "30px" }}
+                  />
+                </>
+              );
+            })}
+        </ContentArea>
       </Wrap>
     </>
   );
 }
 
 const Wrap = styled.div`
-  width: 400px;
+  width: 600px;
   height: 100vh;
   position: relative;
   right: 0;
