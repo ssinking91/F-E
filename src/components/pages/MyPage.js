@@ -149,10 +149,10 @@ const MyPage = (props) => {
                     price={item.aisTypeName}
                     _public={publics}
                     aptNo={item.panId}
-                    islike={item.islike}
-                    Page={Page}
                     CardPanState={item.panState}
                     publicSales={publicSales}
+                    islike={item.islike}
+                    Page={Page}
                     status={status}
                     //공공 청약정보 ID 값
                     _onClick={() => {
@@ -175,6 +175,35 @@ const MyPage = (props) => {
             {privateInfo.length !== 0 ? (
               privateInfo.map((item, idx) => {
                 const status = "private";
+
+                let minPrize = item.supplyAmount.split("~")[0].replace(",", "");
+
+              let minPrize5 = `${minPrize.split("")[minPrize.length - 5]}억 ${
+                minPrize.split("")[1]
+              }${minPrize.split("")[2]}${minPrize.split("")[3]}${
+                minPrize.split("")[4]
+              }`;
+              console.log(minPrize5);
+              let minPrize4 = `${minPrize.split("")[minPrize.length - 4]}${
+                minPrize.split("")[1]
+              }${minPrize.split("")[2]}${minPrize.split("")[3]}`;
+              console.log(minPrize4);
+
+              const maxPrize = item.supplyAmount.split("~")[1].replace(",", "");
+              // 5자리 기준
+              let maxPrize1 = `${maxPrize.split("")[maxPrize.length - 5]}억 ${
+                maxPrize.split("")[1]
+              }${maxPrize.split("")[2]}${maxPrize.split("")[3]}${
+                maxPrize.split("")[4]
+              }`;
+
+              let minSize = Math.ceil(item.size.split("~")[0]);
+              let pyeongMinSize = Math.ceil(0.3025 * minSize);
+              let maxSize = Math.ceil(item.size.split("~")[1]);
+              let pyeongMaxSize = Math.ceil(0.3025 * maxSize);
+              console.log(maxPrize);
+
+              let pyeongMaxPrize = Math.ceil(maxPrize / pyeongMaxSize);
                 return (
                   <Main2Card
                     key={idx}
@@ -182,8 +211,10 @@ const MyPage = (props) => {
                     name={item.houseName}
                     startDate={item.receptStartDate}
                     endDate={item.receptEndDate}
-                    size={item.size}
-                    price={item.supplyAmount}
+                    size={`${minSize} ~ ${maxSize} m² / ${pyeongMinSize} ~ ${pyeongMaxSize} 평`}
+                    price={`${
+                      minPrize.length === 5 ? minPrize5 : minPrize4
+                    } ~ ${maxPrize1} / 평당 ${pyeongMaxPrize}만원`} 
                     aptNo={item.pblancNo}
                     islike={item.islike}
                     Page={Page}
