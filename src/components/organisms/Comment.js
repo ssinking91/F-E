@@ -104,7 +104,7 @@ const Comment = (props) => {
             return (
               <CommentOne key={idx}>
                 <CommentOneInfo>
-                  <Image />
+                  <Image src={list[idx].profileImg} />
                   <Text boldText padding="3px 0 0 0" width="100px">
                     {userKey === list[idx].fk_userKey
                       ? "내댓글"
