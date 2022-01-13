@@ -210,9 +210,9 @@ export default function AllListTemp() {
   );
 }
 
-const Span = styled.span`
-  font-weight: 400;
-`;
+// const Span = styled.span`
+//   font-weight: 400;
+// `;
 
 const CardWrap = styled.div`
   width: 1200px;

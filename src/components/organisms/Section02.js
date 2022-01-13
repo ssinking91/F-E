@@ -21,6 +21,7 @@ const Section02 = () => {
       const userKey = localStorage.getItem("userKey");
       dispatch(mypagetActions.getUserInfosFB(userKey));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 로그인한 유저데이터
@@ -152,9 +153,9 @@ const Section02 = () => {
     </>
   );
 };
-const Span = styled.span`
-  font-weight: 400;
-`;
+// const Span = styled.span`
+//   font-weight: 400;
+// `;
 const SectionWrap = styled.div`
   width: 100%;
   height: 100%;

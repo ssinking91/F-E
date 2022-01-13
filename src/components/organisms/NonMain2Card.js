@@ -1,8 +1,9 @@
+/* eslint-disable no-sequences */
 import React from "react";
 import styled from "styled-components";
 import { savedActions } from "../redux/modules/cardSave";
 import { mypagetActions } from "../redux/modules/mypage";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 // import { useParams } from "react-router-dom";
 
