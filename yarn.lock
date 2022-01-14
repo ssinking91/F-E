@@ -3553,10 +3553,61 @@ commondir@^1.0.1:
   resolved "https://registry.npmjs.org/commondir/-/commondir-1.0.1.tgz"
   integrity sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=
 
+component-closest@*:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/component-closest/-/component-closest-1.0.1.tgz#1ed0464132fc88a3510a2dabec079695789fb1b5"
+  integrity sha1-HtBGQTL8iKNRCi2r7AeWlXifsbU=
+  dependencies:
+    component-matches-selector "~0.1.6"
+
+component-delegate@0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/component-delegate/-/component-delegate-0.2.3.tgz#523ec3a0538fdc85e25e9b4ae4c5e0606875f7fc"
+  integrity sha1-Uj7DoFOP3IXiXptK5MXgYGh19/w=
+  dependencies:
+    component-closest "*"
+    component-event "*"
+
+component-emitter@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.2.0.tgz#ccd113a86388d06482d03de3fc7df98526ba8efe"
+  integrity sha1-zNETqGOI0GSC0D3j/H35hSa6jv4=
+
 component-emitter@^1.2.1:
   version "1.3.0"
   resolved "https://registry.npmjs.org/component-emitter/-/component-emitter-1.3.0.tgz"
   integrity sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==
+
+component-event@*:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/component-event/-/component-event-0.2.0.tgz#8689a7c25a7dd0afe7e2e8408091d5b9e12ce196"
+  integrity sha1-homnwlp90K/n4uhAgJHVueEs4ZY=
+
+component-event@0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/component-event/-/component-event-0.1.4.tgz#3de78fc28782381787e24bf2a7c536bf0142c9b4"
+  integrity sha1-PeePwoeCOBeH4kvyp8U2vwFCybQ=
+
+component-events@1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/component-events/-/component-events-1.0.9.tgz#cf784541272db71b5b231552df89d805eef62900"
+  integrity sha1-z3hFQScttxtbIxVS34nYBe72KQA=
+  dependencies:
+    component-delegate "0.2.3"
+    component-event "0.1.4"
+
+component-matches-selector@~0.1.6:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/component-matches-selector/-/component-matches-selector-0.1.7.tgz#3098309e43f42b06a13d638c9648998ceab23b69"
+  integrity sha512-Yb2+pVBvrqkQVpPaDBF0DYXRreBveXJNrpJs9FnFu8PF6/5IIcz5oDZqiH9nB5hbD2/TmFVN5ZCxBzqu7yFFYQ==
+  dependencies:
+    component-query "*"
+    global-object "^1.0.0"
+
+component-query@*:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/component-query/-/component-query-0.0.3.tgz#07f49dab7071fa9606725df53e607f468acdaacf"
+  integrity sha1-B/Sdq3Bx+pYGcl31PmB/RorNqs8=
 
 compose-function@3.0.3:
   version "3.0.3"
@@ -3584,6 +3635,11 @@ compression@^1.7.4:
     on-headers "~1.0.2"
     safe-buffer "5.1.2"
     vary "~1.1.2"
+
+computed-style-component@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/computed-style-component/-/computed-style-component-0.1.0.tgz#38c2138ec3f108a78eed3163cb6c98a84ddc0a28"
+  integrity sha1-OMITjsPxCKeO7TFjy2yYqE3cCig=
 
 concat-map@0.0.1:
   version "0.0.1"
@@ -5581,6 +5637,11 @@ global-modules@2.0.0:
   dependencies:
     global-prefix "^3.0.0"
 
+global-object@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/global-object/-/global-object-1.0.0.tgz#2a1b45e901d55e4773154f12f0cec1ef9aba5f9f"
+  integrity sha1-KhtF6QHVXkdzFU8S8M7B75q6X58=
+
 global-prefix@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/global-prefix/-/global-prefix-3.0.0.tgz"
@@ -5708,6 +5769,13 @@ has-tostringtag@^1.0.0:
   integrity sha512-kFjcSNhnlGV1kyoGk7OXKSawH5JOb/LzUc5w9B02hOTO0dfFRjbHQKvg1d6cf3HbeUmtU9VbbV3qzZ2Teh97WQ==
   dependencies:
     has-symbols "^1.0.2"
+
+has-translate3d@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/has-translate3d/-/has-translate3d-0.0.3.tgz#ee0157ad5b4ca8a1a33514a9e7ef45415a132103"
+  integrity sha1-7gFXrVtMqKGjNRSp5+9FQVoTIQM=
+  dependencies:
+    transform-property "0.0.1"
 
 has-value@^0.3.1:
   version "0.3.1"
@@ -11188,6 +11256,20 @@ sweetalert2@^11.3.0:
   resolved "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.3.0.tgz"
   integrity sha512-C0TFp0VLxgx+PmhJ0mL8qzx+iYjnCLdDbvQHKY6KAGI+xwawMvLkStPgw2LmJl6itaDhR/qLQStPFIbr1VK9Ow==
 
+swipe@^1.7.7:
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/swipe/-/swipe-1.7.7.tgz#63e287e7f67197f62d920f72956ebe10a8cb63f1"
+  integrity sha1-Y+KH5/Zxl/Ytkg9ylW6+EKjLY/E=
+  dependencies:
+    component-emitter "1.2.0"
+    component-event "0.1.4"
+    component-events "1.0.9"
+    computed-style-component "0.1.0"
+    has-translate3d "0.0.3"
+    touchaction-property "0.0.1"
+    transform-property "0.0.1"
+    transitionend-property "0.0.2"
+
 swiper@6.8.4:
   version "6.8.4"
   resolved "https://registry.yarnpkg.com/swiper/-/swiper-6.8.4.tgz#938fed4144f4d7952fbf9c44e5832d133a4de794"
@@ -11429,6 +11511,11 @@ toidentifier@1.0.1:
   resolved "https://registry.npmjs.org/toidentifier/-/toidentifier-1.0.1.tgz"
   integrity sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==
 
+touchaction-property@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/touchaction-property/-/touchaction-property-0.0.1.tgz#f046a46224776091cacdc63c20ffc737b751f6c6"
+  integrity sha1-8EakYiR3YJHKzcY8IP/HN7dR9sY=
+
 tough-cookie@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/tough-cookie/-/tough-cookie-4.0.0.tgz"
@@ -11444,6 +11531,16 @@ tr46@^2.1.0:
   integrity sha512-15Ih7phfcdP5YxqiB+iDtLoaTz4Nd35+IiAv0kQ5FNKHzXgdWqPoTIqEDDJmXceQt4JZk6lVPT8lnDlPpGDppw==
   dependencies:
     punycode "^2.1.1"
+
+transform-property@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/transform-property/-/transform-property-0.0.1.tgz#4863662f9d5e5bb8f0c00648eff08beb14fd65f2"
+  integrity sha1-SGNmL51eW7jwwAZI7/CL6xT9ZfI=
+
+transitionend-property@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/transitionend-property/-/transitionend-property-0.0.2.tgz#7f969648f8394d52ba097f126b2b1e79f37b0c6c"
+  integrity sha1-f5aWSPg5TVK6CX8SayseefN7DGw=
 
 tryer@^1.0.1:
   version "1.0.1"

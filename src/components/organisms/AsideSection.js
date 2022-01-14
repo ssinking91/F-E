@@ -1,9 +1,9 @@
+/* eslint-disable no-unused-vars */
 import styled from "styled-components";
 
 import { useDispatch, useSelector } from "react-redux";
 import Main2Card from "../organisms/Main2Card";
 import { Grid } from "../atoms/index";
-
 
 export default function AsideSection() {
   const publicList = useSelector((store) => store.allList.publicList);
@@ -35,7 +35,6 @@ export default function AsideSection() {
                       publicSales={publicSales}
                     />
                   </Grid>
-
                 </>
               );
             })}
