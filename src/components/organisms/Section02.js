@@ -29,11 +29,15 @@ const Section02 = () => {
   //console.log(existuser);
 
   // 민간 공고 3개
-  const private_list = useSelector(
+  let private_list = useSelector(
     (state) => state.main.private_list.privateSido1
   );
-  console.log(private_list);
-  const private_regionInfo = private_list.slice(0, 3);
+  let private_regionInfo = private_list.slice(0, 3);
+  let private_status_list = useSelector(
+    (state) => state.main.private_list.statusArr
+  );
+  console.log(private_regionInfo);
+  let private_statusInfo = private_status_list.slice(0, 3);
 
   // 공공 공고 3개
   const public_list = useSelector((state) => state.main.public_list);
@@ -132,6 +136,7 @@ const Section02 = () => {
                       price={item.supplyAmount}
                       aptNo={item.pblancNo}
                       islike={item.islike}
+                      CardPanState={private_statusInfo[index].status}
                       //민간 청약정보 ID 값
                       _onClick={() => {
                         history.push(`/private/${item.pblancNo}`);

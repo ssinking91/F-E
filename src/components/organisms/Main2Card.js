@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { savedActions } from "../redux/modules/cardSave";
 import { mypagetActions } from "../redux/modules/mypage";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useParams } from "react-router-dom";
 
@@ -42,12 +42,7 @@ const Main2Card = (props) => {
       return dispatch(savedActions.savedFB(aptNo, Page)), setSave2(!save2);
     }
   };
-  // const startDate = props.publicSales
-  //   ? props.startDate.replace(/./gi, ". ")
-  //   : props.startDate.replace(/-/gi, ". ");
-  // const endDate = props.publicSales
-  //   ? props.endDate.replace(/./gi, ".")
-  //   : props.endDate.replace(/-/gi, ". ");
+  // 접수 날짜
   const startDate = props.startDate.replace(/-/gi, ".");
   const endDate = props.endDate.replace(/-/gi, ".");
   // 최소, 최대 분양면적
@@ -158,14 +153,14 @@ const Main2Card = (props) => {
               {startDate} ~ {endDate}
             </Text>
             <Text regularText color="#A5AAB6">
-              {`${minSize} ~ ${maxSize} m² / ${pyeongMinSize} ~ ${pyeongMaxSize} 평 ${
-                props.publicSales ? "" : `/ 평당 ${pyeongMaxPrice}만원`
-              }`}
+              {`${minSize} ~ ${maxSize} m² / ${pyeongMinSize} ~ ${pyeongMaxSize} 평`}
             </Text>
             <Text regularText color="#A5AAB6">
               {props.publicSales
                 ? props.price
-                : `${minResultPrice(minPrice)} ~ ${maxResultPrice(maxPrice)}`}
+                : `${minResultPrice(minPrice)} ~ ${maxResultPrice(maxPrice)} ${
+                    props.publicSales ? "" : `/ 평당 ${pyeongMaxPrice}만원`
+                  }`}
             </Text>
           </Info2Item2>
         </Info2>
