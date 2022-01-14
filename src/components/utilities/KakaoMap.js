@@ -6,8 +6,8 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { saveState } from "../redux/modules/map";
-
 import "./style.css";
+import logo from "../../images/logo.svg";
 
 export default function KakaoMap() {
   const dispatch = useDispatch();
@@ -133,26 +133,80 @@ export default function KakaoMap() {
                 clusterer.addMarker(marker);
 
                 // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
-                const iwContent = `<div style="height:100px; width:400px; text-align:center;">
-                                      <div style="">${
-                                        publicInfo.length > 0
-                                          ? publicInfo[0].panName
-                                          : privateInfo[0].houseName
-                                      }</div>
-                                      <div style="">${
-                                        publicInfo.length > 0 ? "공영" : "민영"
-                                      }</div>
-                                      <div style=""><a href=${
-                                        publicInfo.length > 0
-                                          ? `${publicInfo[0].detailUrl}`
-                                          : `${privateInfo[0].detailUrl}`
-                                      } target="_blank">청약하러가기</a></div>
-                                      <div style=""><a href=${
-                                        publicInfo.length > 0
-                                          ? `${publicInfo[0].fileUrl}`
-                                          : null
-                                      }>모집공고문 다운로드받기</a></div>
-                                    </div>
+                const iwContent = ` 
+                                    
+                                        <div style="height:190px; width:453px; border: 1px #20D7FF solid;">
+                                        
+                                          <div style="height:54px; width:453px; border-bottom: 1px black solid; background-color:#20D7FF; display:flex; justify-content: center; align-items: center;">
+        
+                                              <span style="font-size: 28px; font-weight: bold; color: #FFFFFF;">
+                                                dot.zip 
+                                              </span>
+
+                                          </div>   
+                                          <div style="height:136px; width:453px; display:flex; justify-content: center; align-items: center;">           
+                                          
+                                            <div style="height:111px; width:418px; display:flex;">
+
+                                                <div 
+                                                  style="
+                                                    height:111px; 
+                                                    width:111px; 
+                                                    margin-right: 16px; 
+                                                    border: 1px #20D7FF solid; 
+                                                    border-radius: 20px;
+                                                    background-image: url(${ publicInfo.length > 0 ? publicInfo[0].ImgUrl : privateInfo[0].ImgUrl });
+                                                    background-size: cover;
+                                                    background-repeat: no-repeat;
+                                                    background-position: center;
+                                                    ">
+                                                </div>
+
+                                                <div style="height:111px; width:291px; display: flex; flex-direction: column; flex-wrap: wrap;">
+
+                                                  <div style="height: 25px; margin: 0 0 4px 0;">
+                                                    <span style="font-size: 14px; font-weight: bold; color: #000000; line-height: 25px; height: 25px; color: #20D7FF; ">
+                                                       [ ${ publicInfo.length > 0 ? "공영" : "민영" } ]
+                                                     </span>
+                                                  </div>
+
+                                                  <div style="display: flex; flex-wrap: wrap; height: 50px; margin: 0 0 6px 0;">
+                                                    <span style="font-size: 16px; font-weight: bold; color: #000000; line-height: 25px; height: 25px; color: #000000">
+                                                      ${
+                                                        publicInfo.length > 0
+                                                          ? (publicInfo[0].panName.length > 46 ? publicInfo[0].panName.substr(0, 43)+"..." : publicInfo[0].panName)
+                                                          : privateInfo[0].houseName
+                                                      }
+                                                    </span>
+                                                  </div>
+                                                  
+                                                  <div style="display: flex; ">
+                                                      <span style="font-size: 12px; font-weight: bold; color: #A5AAB6; line-height: 19px;  margin: 0 15px 0 0;">
+                                                          <a href=${
+                                                            publicInfo.length > 0
+                                                              ? `${publicInfo[0].detailUrl}`
+                                                              : `${privateInfo[0].detailUrl}`
+                                                          } 
+                                                          target="_blank">
+                                                            [ 청약하러가기 ]
+                                                          </a>
+                                                      </span>
+                                                      <span style="font-size: 12px; font-weight: bold; color: #A5AAB6; line-height: 19px;">
+                                                          <a href=${
+                                                            publicInfo.length > 0
+                                                              ? `${publicInfo[0].fileUrl}`
+                                                              : null
+                                                          }>
+                                                            [ 모집공고문 다운로드받기 ]
+                                                          </a>
+                                                      </span>
+                                                   </div>
+                                                </div>
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                  
                 `, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
                   iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 

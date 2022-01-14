@@ -22,7 +22,7 @@ const Main2Card = (props) => {
   const [save2, setSave2] = React.useState(islike);
 
   // 카드 저장
-  const saveCard = async () => {
+  const saveCard = () => {
     const userKey = localStorage.getItem("userKey");
     const Page = props.Page;
     const status = props.status;
