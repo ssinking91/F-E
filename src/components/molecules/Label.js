@@ -2,10 +2,7 @@ import React from "react";
 import { Text, Grid } from "../atoms/index";
 
 const Label = (props) => {
-  // const { announcement, registration, deadline, LabelPanState } = props;
   const { LabelPanState } = props;
-  // console.log(props.panState);
-  //console.log(LabelPanState);
 
   if (LabelPanState === "공고중") {
     return (

@@ -30,8 +30,9 @@ export const getPrivateListDB = (ftSido) => {
     apis
       .getPrivateLists(ftSido)
       .then((res) => {
-        const privateList = res.data.result;
-        console.log(privateList);
+        const privateList = res.data;
+        const privateStatus = res.data.statusArr;
+        console.log(privateStatus);
         const privateAddress = [];
         for (let i = 0; i < privateList.length; i++) {
           privateAddress.push(privateList[i].address);
