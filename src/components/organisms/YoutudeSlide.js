@@ -10,7 +10,6 @@ import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
 import Youtude from "./Youtude";
 
 const Showcase = () => {
-
   SwiperCore.use([Navigation, Pagination, Autoplay]);
 
   const swiperParams = {

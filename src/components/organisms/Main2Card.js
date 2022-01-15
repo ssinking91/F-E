@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { savedActions } from "../redux/modules/cardSave";
 import { mypagetActions } from "../redux/modules/mypage";
@@ -20,7 +20,10 @@ const Main2Card = (props) => {
   const islike = JSON.parse(props.islike);
 
   const [save2, setSave2] = React.useState(islike);
-
+  // useEffect(() => {
+  //   dispatch(savedFB(aptNo));
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
   // 카드 저장
   const saveCard = () => {
     const userKey = localStorage.getItem("userKey");
