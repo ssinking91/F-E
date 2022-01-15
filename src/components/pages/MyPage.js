@@ -58,6 +58,7 @@ const MyPage = (props) => {
       setActive(false);
     }
   };
+
   //이메일 유효성 검사
   const isEmail = (asValue) => { 
     let regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; 
@@ -71,8 +72,9 @@ const MyPage = (props) => {
     if(isEmail(email)){
       dispatch(mypagetActions.editEmailFB(userName, email));
       setIsActive2(!isActive2);
+      setEmail("");
     }else{
-    window.alert("이메일 형식에 맞지 않습니다")
+    window.alert("이메일 형식에 맞지 않습니다😀")
     setEmail("");
   }
   };
@@ -122,12 +124,14 @@ const MyPage = (props) => {
               {localStorage.getItem("userName")} 님
             </Text>
             {isActive ? (
-              <TextDiv>
-                <DropDown
-                  options={OPTIONS}
-                  sidoChange={sidoChange}
-                  name={"관심지역"}
-                />
+              <TextDiv margin="10px 0 0 0">
+                <TextDiv width="340px">
+                  <DropDown
+                    options={OPTIONS}
+                    sidoChange={sidoChange}
+                    name={"관심지역"}
+                  />
+                </TextDiv>
                 <MypageButton
                   onClick={() => {
                     sidoChangeApi();
@@ -139,9 +143,9 @@ const MyPage = (props) => {
                 </MypageButton>
               </TextDiv>
             ) : (
-              <TextDiv>
-                <Text h4 width="121px">
-                  {existuser.sido}
+              <TextDiv margin="10px 0 0 0">
+                <Text h4 width="340px">
+                  {existuser.sido ? existuser.sido : "관심지역이 없습니다😀"}
                 </Text>
                 <MypageButton
                   onClick={() => {
@@ -155,16 +159,16 @@ const MyPage = (props) => {
               </TextDiv>
             )}
 
-            <TextDiv>
+            <TextDiv margin="50px 0 0 0">
               <Text boldText color="#A5AAB6">
                 *이메일을 입력해 주시면 저장한 청약정보에 대한 알림을
                 보내드립니다
               </Text>
-              <TextSpan>🏡</TextSpan>
+              <TextSpan margin="0 0 0 10px">🏡</TextSpan>
             </TextDiv>
 
             {isActive2 ? (
-              <TextDiv>
+              <TextDiv margin="2px 0 0 0">
                 <TextInputDiv>
                   <TextInput
                     type="text"
@@ -191,9 +195,9 @@ const MyPage = (props) => {
                 </MypageButton>
               </TextDiv>
             ) : (
-              <TextDiv>
-                <Text h4 boldText width="340px">
-                  {existuser.email ? existuser.email : ""}
+              <TextDiv margin="2px 0 0 0">
+                <Text h4 width="340px">
+                  {existuser.email ? existuser.email : "이메일이 없습니다😀"}
                 </Text>
                 <MypageButton
                   onClick={() => {
@@ -361,9 +365,10 @@ const MyCardList = styled.div`
 `;
 
 const TextDiv = styled.div`
-  width: 988px;
+  width:  ${(props) => (props.width ? props.width : `988px`)};
   display: flex;
   align-items: center;
+  margin: ${(props) => (props.margin ? props.margin : ``)};
 `;
 
 const TextSpan = styled.span`
@@ -380,13 +385,11 @@ const TextInputDiv = styled.div`
   height: 35px;
   display: flex;
   flex-direction: column;
-  margin: 5px 0;
+  justify-content: center;
   /* border-bottom: 1px solid #e3e5eb; */
- :after {
-  content: "";
-  display: block;
-    width: 150px;
-    margin: 5px 0;
+  :after {
+    content: "";
+    width: 170px;
     border-bottom: 1px solid #e3e5eb;
   }
 `;
