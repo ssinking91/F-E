@@ -5,11 +5,13 @@ import { apis } from "../../utilities/axios";
 // action type
 const GET_USERINFO = " GET_USERINFO";
 const EDIT_USERINFO = "EDIT_USERINFO";
+const EDIT_EMAIL = "EDIT_EMAIL";
 const SAVE_CARD = "SAVE_CARD";
 
 // action creator
 const getUserInfo = createAction(GET_USERINFO, (userInfo) => ({ userInfo }));
 const editUserInfo = createAction(EDIT_USERINFO, (sido) => ({ sido }));
+const editEmailInfo = createAction(EDIT_EMAIL, (email) => ({ email }));
 const savedCard = createAction(SAVE_CARD, (aptNo, status) => ({
   aptNo,
   status,
@@ -41,6 +43,24 @@ const editUserInfosFB = (userName, sido) => {
       dispatch(editUserInfo(sido));
     } catch (error) {
       console.log("editUserInfosFB error");
+    }
+  };
+};
+
+const editEmailFB = (userName, email) => {
+  return async (dispatch, getState, { history }) => {
+    try {
+      console.log("mypage editEmailFB 시작");
+      const response = apis.editEmail(userName, email);
+      console.log(response);
+
+      //let result = response.data.data;
+      console.log(email);
+      dispatch(editEmailInfo(email));
+
+      console.log("mypage editEmailFB 끝");
+    } catch (error) {
+      console.log(error);
     }
   };
 };
@@ -86,6 +106,11 @@ export default handleActions(
         draft.list.existuser.sido = action.payload.sido;
       }),
 
+    [EDIT_EMAIL]: (state, action) =>
+      produce(state, (draft) => {
+        draft.list.existuser.email = action.payload.email;
+      }),
+
     [SAVE_CARD]: (state, action) =>
       produce(state, (draft) => {
         console.log("mapage save_card 리듀서 시작");
@@ -108,6 +133,7 @@ export default handleActions(
 const mypagetActions = {
   getUserInfosFB,
   editUserInfosFB,
+  editEmailFB,
   savedFB,
 };
 

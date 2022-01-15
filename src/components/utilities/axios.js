@@ -90,15 +90,23 @@ export const apis = {
     instance.get(`/api/users/${userKey}`, {
       userKey: localStorage.getItem("userKey"),
     }), // 유저정보 조회
+
   editUserInfos: (userName, sido) =>
     instance.put(`/api/users/${userName}`, {
       userKey: localStorage.getItem("userKey"),
       sido: sido,
     }), // 유저정보 수정
 
-  // Saved
+  // 유저 정보 수정(관심지역)
   saved: (aptNo) =>
-    instance.post(`/api/likes/${aptNo}`, {
+    instance.put(`/api/likes/${aptNo}`, {
       userKey: localStorage.getItem("userKey"),
     }), // 청약정보 저장하기
+
+    // 유저 정보 수정(이메일)
+  editEmail: (userName, email) =>
+  instance.put(`/api/users/${userName}/email`, {
+    userKey: localStorage.getItem("userKey"),
+    email: email,
+  }), // 이메일 보내기
 };

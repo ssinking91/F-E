@@ -13,7 +13,10 @@ import { globalSido } from "../utilities/constants.js";
 const MyPage = (props) => {
   const dispatch = useDispatch();
   const [isActive, setIsActive] = React.useState(false);
+  const [isActive2, setIsActive2] = React.useState(false);
   const [sido, setSido] = React.useState();
+  const [email, setEmail] = React.useState(); // 이메일 내용 작성
+  const [active, setActive] = React.useState(true); // 버튼 활성화 유무
 
   React.useEffect(() => {
     if (!localStorage.getItem("userKey")) {
@@ -40,6 +43,38 @@ const MyPage = (props) => {
     const userName = localStorage.getItem("userName");
     dispatch(mypagetActions.editUserInfosFB(userName, sido));
     setIsActive(!isActive);
+  };
+
+  // 글 내용
+  const changeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  // 버튼 활성화 / 비활성화 유무 확인
+  const checkActive = () => {
+    if (email === "") {
+      setActive(true);
+    } else {
+      setActive(false);
+    }
+  };
+  //이메일 유효성 검사
+  const isEmail = (asValue) => { 
+    let regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; 
+    return regExp.test(asValue); // 형식에 맞는 경우 true 리턴 
+  }
+
+  // email 변경 api
+  const emailChangeApi = () => {
+    console.log(email);
+    const userName = localStorage.getItem("userName");
+    if(isEmail(email)){
+      dispatch(mypagetActions.editEmailFB(userName, email));
+      setIsActive2(!isActive2);
+    }else{
+    window.alert("이메일 형식에 맞지 않습니다")
+    setEmail("");
+  }
   };
 
   // const [selection, setSelection] = React.useState(false);
@@ -105,12 +140,64 @@ const MyPage = (props) => {
               </TextDiv>
             ) : (
               <TextDiv>
-                <Text h4 boldText width="121px">
+                <Text h4 width="121px">
                   {existuser.sido}
                 </Text>
                 <MypageButton
                   onClick={() => {
                     setIsActive(!isActive);
+                  }}
+                >
+                  <Text boldText color="#FFFFFF">
+                    수정
+                  </Text>
+                </MypageButton>
+              </TextDiv>
+            )}
+
+            <TextDiv>
+              <Text boldText color="#A5AAB6">
+                *이메일을 입력해 주시면 저장한 청약정보에 대한 알림을
+                보내드립니다
+              </Text>
+              <TextSpan>🏡</TextSpan>
+            </TextDiv>
+
+            {isActive2 ? (
+              <TextDiv>
+                <TextInputDiv>
+                  <TextInput
+                    type="text"
+                    placeholder="이메일을 입력해 주세요🔥"
+                    value={email}
+                    onChange={changeEmail}
+                    onKeyUp={checkActive}
+                    onKeyPress={(e) => {
+                      if (e.key === "Enter") {
+                        emailChangeApi();
+                      }
+                    }}
+                    active={active}
+                  />
+                </TextInputDiv>
+                <MypageButton
+                  onClick={() => {
+                    emailChangeApi();
+                  }}
+                >
+                  <Text boldText color="#FFFFFF">
+                    완료
+                  </Text>
+                </MypageButton>
+              </TextDiv>
+            ) : (
+              <TextDiv>
+                <Text h4 boldText width="340px">
+                  {existuser.email ? existuser.email : ""}
+                </Text>
+                <MypageButton
+                  onClick={() => {
+                    setIsActive2(!isActive2);
                   }}
                 >
                   <Text boldText color="#FFFFFF">
@@ -178,32 +265,34 @@ const MyPage = (props) => {
 
                 let minPrize = item.supplyAmount.split("~")[0].replace(",", "");
 
-              let minPrize5 = `${minPrize.split("")[minPrize.length - 5]}억 ${
-                minPrize.split("")[1]
-              }${minPrize.split("")[2]}${minPrize.split("")[3]}${
-                minPrize.split("")[4]
-              }`;
-              console.log(minPrize5);
-              let minPrize4 = `${minPrize.split("")[minPrize.length - 4]}${
-                minPrize.split("")[1]
-              }${minPrize.split("")[2]}${minPrize.split("")[3]}`;
-              console.log(minPrize4);
+                let minPrize5 = `${minPrize.split("")[minPrize.length - 5]}억 ${
+                  minPrize.split("")[1]
+                }${minPrize.split("")[2]}${minPrize.split("")[3]}${
+                  minPrize.split("")[4]
+                }`;
+                //console.log(minPrize5);
+                let minPrize4 = `${minPrize.split("")[minPrize.length - 4]}${
+                  minPrize.split("")[1]
+                }${minPrize.split("")[2]}${minPrize.split("")[3]}`;
+                //console.log(minPrize4);
 
-              const maxPrize = item.supplyAmount.split("~")[1].replace(",", "");
-              // 5자리 기준
-              let maxPrize1 = `${maxPrize.split("")[maxPrize.length - 5]}억 ${
-                maxPrize.split("")[1]
-              }${maxPrize.split("")[2]}${maxPrize.split("")[3]}${
-                maxPrize.split("")[4]
-              }`;
+                const maxPrize = item.supplyAmount
+                  .split("~")[1]
+                  .replace(",", "");
+                // 5자리 기준
+                let maxPrize1 = `${maxPrize.split("")[maxPrize.length - 5]}억 ${
+                  maxPrize.split("")[1]
+                }${maxPrize.split("")[2]}${maxPrize.split("")[3]}${
+                  maxPrize.split("")[4]
+                }`;
 
-              let minSize = Math.ceil(item.size.split("~")[0]);
-              let pyeongMinSize = Math.ceil(0.3025 * minSize);
-              let maxSize = Math.ceil(item.size.split("~")[1]);
-              let pyeongMaxSize = Math.ceil(0.3025 * maxSize);
-              console.log(maxPrize);
+                let minSize = Math.ceil(item.size.split("~")[0]);
+                let pyeongMinSize = Math.ceil(0.3025 * minSize);
+                let maxSize = Math.ceil(item.size.split("~")[1]);
+                let pyeongMaxSize = Math.ceil(0.3025 * maxSize);
+                //console.log(maxPrize);
 
-              let pyeongMaxPrize = Math.ceil(maxPrize / pyeongMaxSize);
+                let pyeongMaxPrize = Math.ceil(maxPrize / pyeongMaxSize);
                 return (
                   <Main2Card
                     key={idx}
@@ -214,7 +303,7 @@ const MyPage = (props) => {
                     size={`${minSize} ~ ${maxSize} m² / ${pyeongMinSize} ~ ${pyeongMaxSize} 평`}
                     price={`${
                       minPrize.length === 5 ? minPrize5 : minPrize4
-                    } ~ ${maxPrize1} / 평당 ${pyeongMaxPrize}만원`} 
+                    } ~ ${maxPrize1} / 평당 ${pyeongMaxPrize}만원`}
                     aptNo={item.pblancNo}
                     islike={item.islike}
                     Page={Page}
@@ -277,10 +366,44 @@ const TextDiv = styled.div`
   align-items: center;
 `;
 
-// const TextSpan = styled.span`
-//   font-size: 18px;
-//   line-height: 25px;
-// `;
+const TextSpan = styled.span`
+  width: ${(props) => (props.width ? props.width : ``)};
+  height: ${(props) => (props.height ? props.height : ``)};
+  margin: ${(props) => (props.margin ? props.margin : ``)};
+  font-size: ${(props) => (props.fontSize ? props.fontSize : ``)};
+  line-height: ${(props) => (props.lineHeight ? props.lineHeight : ``)};
+  color: ${(props) => (props.color ? props.color : ``)};
+`;
+
+const TextInputDiv = styled.div`
+  width: 340px;
+  height: 35px;
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0;
+  /* border-bottom: 1px solid #e3e5eb; */
+ :after {
+  content: "";
+  display: block;
+    width: 150px;
+    margin: 5px 0;
+    border-bottom: 1px solid #e3e5eb;
+  }
+`;
+
+
+const TextInput = styled.input`
+  width: 340px;
+  height: 34px;
+  border: none;
+  :focus {
+    outline: none;
+  }
+  ::placeholder {
+    color: #a5aab6;
+    padding-left: 10px;
+  }
+`;
 
 const MyPost = styled.div`
   width: 1195px;
