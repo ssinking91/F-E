@@ -9,10 +9,10 @@ import mainBackgroundImage from "../../images/mainBackgroundImage.jpg";
 
 const Section01 = () => {
   const dispatch = useDispatch();
-  console.log("page1");
+  // console.log("page1");
 
   useEffect(() => {
-    console.log("@@@@@@page1 ue@@@@@");
+    // console.log("@@@@@@page1 ue@@@@@");
     dispatch(mainAction.getTotalDB());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

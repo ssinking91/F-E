@@ -9,7 +9,6 @@ const GET_PRIVATE_LIST = "/GET_PRIVATE_LIST";
 const GET_PUBLIC_LIST = "/GET_PUBLIC_LIST";
 const GET_PRIVATE_ADRESS = "/GET_PRIVATE_ADRESS";
 const GET_PUBLIC_ADRESS = "/GET_PUBLIC_ADRESS";
-const GET_PRIVATE_LISTS = "/GET_PRIVATE_LISTS";
 
 // create actions
 const getPrivateList = createAction(GET_PRIVATE_LIST, (privateList) => ({
@@ -24,9 +23,6 @@ const getPrivateAdress = createAction(GET_PRIVATE_ADRESS, (adress) => ({
 const getPublicAdress = createAction(GET_PUBLIC_ADRESS, (adress) => ({
   adress,
 }));
-const getPrivateLists = createAction(GET_PRIVATE_LISTS, (privateLists) => ({
-  privateLists,
-}));
 
 // middleware thunk
 export const getPrivateListDB = (ftSido) => {
@@ -35,17 +31,16 @@ export const getPrivateListDB = (ftSido) => {
       .getPrivateLists(ftSido)
       .then((res) => {
         const privateList = res.data;
-        const privateLists = res.data.result;
+
         const privateAddress = [];
-        for (let i = 0; i < privateLists.length; i++) {
-          privateAddress.push(privateLists[i].address);
+        for (let i = 0; i < privateList.result.length; i++) {
+          privateAddress.push(privateList.result[i].address);
         }
 
         const privateAd = new Set(privateAddress);
         const adress = [...privateAd];
         dispatch(getPrivateList(privateList));
         dispatch(getPrivateAdress(adress));
-        dispatch(getPrivateLists(privateLists));
       })
       .catch((e) => console.log(e));
   };
@@ -68,6 +63,18 @@ export const getPublicListDB = (ftSido) => {
         dispatch(getPublicAdress(adress));
       })
       .catch((e) => console.log(e));
+
+    // const result = await apis.getPublicLists(ftSido);
+    // const publicList = result.data.result[0];
+    // let publicAdress = [];
+    // for (let i = 0; i < publicList.length; i++) {
+    //   publicAdress.push(publicList[i].address);
+    // }
+    // const publicAd = new Set(publicAdress);
+    // const publicLocation = [...publicAd];
+    // console.log(publicLocation);
+
+    // dispatch(getPublicAdress(publicLocation));
   };
 };
 
@@ -96,12 +103,6 @@ export default handleActions(
       return {
         ...state,
         privateAdress: action.payload.adress,
-      };
-    },
-    [GET_PRIVATE_LISTS]: (state, action) => {
-      return {
-        ...state,
-        privateLists: action.payload.privateLists,
       };
     },
   },

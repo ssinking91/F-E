@@ -16,41 +16,41 @@ const Main2Card = (props) => {
   const dispatch = useDispatch();
 
   const islike = JSON.parse(props.islike);
-  console.log(props.Page, props.islike, typeof props.islike)
+  console.log(props.Page, props.islike, typeof props.islike);
   const [save2, setSave2] = React.useState(islike);
-  
+
   // useEffect(async() => {
   //   const userKey = localStorage.getItem("userKey");
   //   await setTimeout(()=>{dispatch(mypagetActions.getUserInfosFB(userKey))},1000);
-    
-  // }, [islike]);
 
+  // }, [islike]);
+  console.log(props.image);
   // 카드 저장
   const saveCard = () => {
     const userKey = localStorage.getItem("userKey");
     let Page = props.Page; // 페이지 구분
     const status = props.status; //공공 민영 구분 구분
     const aptNo = props.aptNo;
+
     console.log(Page, status, aptNo, save2);
-   
+
     if (userKey === null) {
       window.alert("로그인 후 사용이 가능합니다😎");
       return;
     }
 
-    if ( Page === "myPage" ) {
+    if (Page === "myPage") {
       return (
         console.log("mypage main2Card"),
         dispatch(mypagetActions.savedFB(aptNo, status))
       );
-    } else if( Page === "section2" ) {
-      return ( 
-      console.log("section2 main2Card"),
-      setSave2(!save2),
-      dispatch(savedActions.savedFB(aptNo, status))
+    } else if (Page === "section2") {
+      return (
+        console.log("section2 main2Card"),
+        setSave2(!save2),
+        dispatch(savedActions.savedFB(aptNo, status))
       );
     }
-    
   };
   // 접수 날짜
   const startDate = props.startDate.replace(/-/gi, ".");
