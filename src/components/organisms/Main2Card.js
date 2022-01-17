@@ -11,7 +11,6 @@ import Label from "../molecules/Label";
 import { Text, Image } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
-import apt_tobe from "../../images/apt_tobe.svg";
 
 const Main2Card = (props) => {
   const { _onClick } = props;
@@ -20,10 +19,13 @@ const Main2Card = (props) => {
   const islike = JSON.parse(props.islike);
 
   const [save2, setSave2] = React.useState(islike);
-  useEffect(() => {
-    console.log("테스트");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  
+  // useEffect(async() => {
+  //   const userKey = localStorage.getItem("userKey");
+  //   await setTimeout(()=>{dispatch(mypagetActions.getUserInfosFB(userKey))},1000);
+    
+  // }, [islike]);
+
   // 카드 저장
   const saveCard = () => {
     const userKey = localStorage.getItem("userKey");
