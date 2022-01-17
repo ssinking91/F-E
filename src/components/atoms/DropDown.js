@@ -25,6 +25,7 @@ const Dropdown = (props) => {
         {item ? (
           <>
             <DropdownSelect isActive={isActive}>{item}</DropdownSelect>
+            <Image isActive={isActive} />
           </>
         ) : (
           <>
