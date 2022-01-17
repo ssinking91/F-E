@@ -10,10 +10,10 @@ import { Text } from "../atoms/index";
 
 const Section02 = () => {
   const dispatch = useDispatch();
-  // console.log("page2");
+  console.log("page2");
 
   useEffect(() => {
-    // console.log("@@@@@page2 ue2@@@@@");
+    console.log("@@@@@page2 ue2@@@@@");
     dispatch(mainAction.getPrivateInfoDB());
     dispatch(mainAction.getPublicInfoDB());
 
@@ -37,18 +37,6 @@ const Section02 = () => {
   let private_list = useSelector((state) => state.main.private_list.privateSido1);
 
   let private_regionInfo = private_list.slice(0, 3);
-<<<<<<< HEAD
-  let private_status_list = useSelector(
-    (state) => state.main.private_list.statusArr
-  );
-  // console.log(private_regionInfo);
-  let private_statusInfo = private_status_list.slice(0, 3);
-
-  // 공공 공고 3개
-  const public_list = useSelector((state) => state.main.public_list);
-  // console.log(public_list);
-  const public_regionInfo = public_list.slice(0, 3);
-=======
   console.log(private_regionInfo);
 
   let private_status_list = useSelector((state) => state.main.private_list.statusArr);
@@ -56,7 +44,6 @@ const Section02 = () => {
   let private_statusInfo = private_status_list.slice(0, 3);
 
   const Page = "section2";
->>>>>>> fe6f4db1e7ed582ee16a576e4dc0ed371ff03f4e
 
   return (
     <>
@@ -109,7 +96,7 @@ const Section02 = () => {
                 public_regionInfo.map((item, index) => {
                   const publicSales = "publicSales";
                   const status = "public";
-                  console.log(item.islike)
+                
                   return (
                     <Main2Card
                       key={index}
@@ -143,12 +130,8 @@ const Section02 = () => {
               </Text>
               {private_regionInfo.length !== 0 ? (
                 private_regionInfo.map((item, index) => {
-<<<<<<< HEAD
-                  // console.log(item.ImgUrl);
-=======
                   const status = "private";
-                  console.log( item.islike)
->>>>>>> fe6f4db1e7ed582ee16a576e4dc0ed371ff03f4e
+                
                   return (
                     <Main2Card
                       key={index}

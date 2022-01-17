@@ -30,6 +30,7 @@ export const getPrivateListDB = (ftSido) => {
     apis
       .getPrivateLists(ftSido)
       .then((res) => {
+        console.log("민영 시작");
         const privateList = res.data;
 
         const privateAddress = [];
@@ -51,6 +52,7 @@ export const getPublicListDB = (ftSido) => {
     apis
       .getPublicLists(ftSido)
       .then(async (res) => {
+        console.log("공공 시작");
         const publicList = res.data.result[0];
         let publicAdress = [];
         for (let i = 0; i < publicList.length; i++) {

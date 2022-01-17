@@ -17,6 +17,10 @@ const Main2Card = (props) => {
 
   const islike = JSON.parse(props.islike);
   console.log(props.Page, props.islike, typeof props.islike);
+
+  const MypageSido = props.MypageSido;
+  console.log(MypageSido);
+
   const [save2, setSave2] = React.useState(islike);
 
   // useEffect(async() => {
@@ -24,14 +28,13 @@ const Main2Card = (props) => {
   //   await setTimeout(()=>{dispatch(mypagetActions.getUserInfosFB(userKey))},1000);
 
   // }, [islike]);
-  console.log(props.image);
+
   // 카드 저장
   const saveCard = () => {
     const userKey = localStorage.getItem("userKey");
-    let Page = props.Page; // 페이지 구분
+    const Page = props.Page; // 페이지 구분
     const status = props.status; //공공 민영 구분 구분
     const aptNo = props.aptNo;
-
     console.log(Page, status, aptNo, save2);
 
     if (userKey === null) {
@@ -48,7 +51,13 @@ const Main2Card = (props) => {
       return (
         console.log("section2 main2Card"),
         setSave2(!save2),
-        dispatch(savedActions.savedFB(aptNo, status))
+        dispatch(mypagetActions.savedFB(aptNo, status))
+      );
+    } else if (Page === "AllList") {
+      return (
+        console.log("AllList main2Card"),
+        setSave2(!save2),
+        dispatch(mypagetActions.savedFB(aptNo, status, MypageSido))
       );
     }
   };
