@@ -79,8 +79,6 @@ const MyPage = (props) => {
   }
   };
 
-  // const [selection, setSelection] = React.useState(false);
-
   const userImage = localStorage.getItem("userImage");
 
   const existuser = useSelector((state) => state.mypage.list.existuser);

@@ -99,7 +99,7 @@ export const apis = {
 
   // 유저 정보 수정(관심지역)
   saved: (aptNo) =>
-    instance.put(`/api/likes/${aptNo}`, {
+    instance.post(`/api/likes/${aptNo}`, {
       userKey: localStorage.getItem("userKey"),
     }), // 청약정보 저장하기
 
