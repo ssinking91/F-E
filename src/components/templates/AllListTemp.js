@@ -22,8 +22,6 @@ export default function AllListTemp() {
   const publicList = useSelector((store) => store.allList.publicList);
   const publicAdress = useSelector((store) => store.allList.publicAdress);
   const privateList = useSelector((store) => store.allList.privateList);
-  let privateStatus = useSelector((store) => store.allList.privateStatus);
-  console.log(privateStatus);
   console.log(publicList);
   console.log(publicAdress);
   console.log(privateList);

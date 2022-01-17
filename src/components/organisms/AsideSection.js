@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
 import { useDispatch, useSelector } from "react-redux";
-import Main2Card from "../organisms/Main2Card";
+import AsideCard from "../organisms/AsideCard";
 import { Grid } from "../atoms/index";
-
 
 export default function AsideSection() {
   const publicList = useSelector((store) => store.allList.publicList);
@@ -12,7 +11,8 @@ export default function AsideSection() {
     <>
       <Wrap>
         <ContentArea>
-          {publicList &&
+          <AsideCard></AsideCard>
+          {/* {publicList &&
             publicList.map((item, index) => {
               const panName = `[${item.aisTypeName}] ${
                 item.address.split(" ")[1]
@@ -35,10 +35,9 @@ export default function AsideSection() {
                       publicSales={publicSales}
                     />
                   </Grid>
-
                 </>
               );
-            })}
+            })} */}
         </ContentArea>
       </Wrap>
     </>
@@ -46,7 +45,7 @@ export default function AsideSection() {
 }
 
 const Wrap = styled.div`
-  width: 600px;
+  width: 355px;
   height: 100vh;
   position: relative;
   right: 0;
@@ -55,5 +54,5 @@ const Wrap = styled.div`
 
 const ContentArea = styled.div`
   position: absolute;
-  top: 162px;
+  top: 148px;
 `;

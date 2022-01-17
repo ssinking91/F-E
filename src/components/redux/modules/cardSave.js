@@ -18,17 +18,17 @@ const savedFB = (aptNo, page) => {
       console.log(response);
 
       let result = response.data.data;
+      console.log(result);
       await dispatch(savedCard(result));
 
       console.log("savedFB 끝");
-      
-      if(page){
+
+      if (page) {
         console.log("getUserInfosFB 시작");
         console.log(page);
         const userKey = localStorage.getItem("userKey");
-      dispatch(mypagetActions.getUserInfosFB(userKey));
-      };
-      
+        dispatch(mypagetActions.getUserInfosFB(userKey));
+      }
     } catch (error) {
       console.log(error);
     }
