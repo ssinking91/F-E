@@ -22,13 +22,6 @@ const savedFB = (aptNo, page) => {
       await dispatch(savedCard(result));
 
       console.log("savedFB 끝");
-
-      if (page) {
-        console.log("getUserInfosFB 시작");
-        console.log(page);
-        const userKey = localStorage.getItem("userKey");
-        dispatch(mypagetActions.getUserInfosFB(userKey));
-      }
     } catch (error) {
       console.log(error);
     }

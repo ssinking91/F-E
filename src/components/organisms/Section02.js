@@ -21,18 +21,23 @@ const Section02 = () => {
       const userKey = localStorage.getItem("userKey");
       dispatch(mypagetActions.getUserInfosFB(userKey));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 로그인한 유저데이터
   const existuser = useSelector((state) => state.mypage.list.existuser);
   //console.log(existuser);
 
+  // 공공 공고 3개
+  const public_list = useSelector((state) => state.main.public_list);
+
+  const public_regionInfo = public_list.slice(0, 3);
+  console.log(public_regionInfo);
+  
   // 민간 공고 3개
-  let private_list = useSelector(
-    (state) => state.main.private_list.privateSido1
-  );
+  let private_list = useSelector((state) => state.main.private_list.privateSido1);
+
   let private_regionInfo = private_list.slice(0, 3);
+<<<<<<< HEAD
   let private_status_list = useSelector(
     (state) => state.main.private_list.statusArr
   );
@@ -43,6 +48,15 @@ const Section02 = () => {
   const public_list = useSelector((state) => state.main.public_list);
   // console.log(public_list);
   const public_regionInfo = public_list.slice(0, 3);
+=======
+  console.log(private_regionInfo);
+
+  let private_status_list = useSelector((state) => state.main.private_list.statusArr);
+
+  let private_statusInfo = private_status_list.slice(0, 3);
+
+  const Page = "section2";
+>>>>>>> fe6f4db1e7ed582ee16a576e4dc0ed371ff03f4e
 
   return (
     <>
@@ -94,6 +108,8 @@ const Section02 = () => {
               {public_regionInfo.length !== 0 ? (
                 public_regionInfo.map((item, index) => {
                   const publicSales = "publicSales";
+                  const status = "public";
+                  console.log(item.islike)
                   return (
                     <Main2Card
                       key={index}
@@ -104,9 +120,11 @@ const Section02 = () => {
                       size={item.size}
                       price={item.aisTypeName}
                       aptNo={item.panId}
-                      islike={item.islike}
                       CardPanState={item.panState}
                       publicSales={publicSales}
+                      islike={item.islike}
+                      Page={Page}
+                      status={status}
                       //공공 청약정보 ID 값
                       _onClick={() => {
                         history.push(`/public/${item.panId}`);
@@ -125,7 +143,12 @@ const Section02 = () => {
               </Text>
               {private_regionInfo.length !== 0 ? (
                 private_regionInfo.map((item, index) => {
+<<<<<<< HEAD
                   // console.log(item.ImgUrl);
+=======
+                  const status = "private";
+                  console.log( item.islike)
+>>>>>>> fe6f4db1e7ed582ee16a576e4dc0ed371ff03f4e
                   return (
                     <Main2Card
                       key={index}
@@ -136,8 +159,10 @@ const Section02 = () => {
                       size={item.size}
                       price={item.supplyAmount}
                       aptNo={item.pblancNo}
-                      islike={item.islike}
                       CardPanState={private_statusInfo[index].status}
+                      islike={item.islike}
+                      Page={Page}
+                      status={status}
                       //민간 청약정보 ID 값
                       _onClick={() => {
                         history.push(`/private/${item.pblancNo}`);
