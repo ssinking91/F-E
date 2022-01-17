@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { savedActions } from "../redux/modules/cardSave";
@@ -11,6 +10,7 @@ import Label from "../molecules/Label";
 import { Text, Image } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
+import defaultLogoImage from "../../images/defaultLogoImage.svg";
 
 const Main2Card = (props) => {
   const { _onClick } = props;
