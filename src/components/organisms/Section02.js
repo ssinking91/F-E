@@ -10,10 +10,10 @@ import { Text } from "../atoms/index";
 
 const Section02 = () => {
   const dispatch = useDispatch();
-  console.log("page2");
+  // console.log("page2");
 
   useEffect(() => {
-    console.log("@@@@@page2 ue2@@@@@");
+    // console.log("@@@@@page2 ue2@@@@@");
     dispatch(mainAction.getPrivateInfoDB());
     dispatch(mainAction.getPublicInfoDB());
 
@@ -36,12 +36,12 @@ const Section02 = () => {
   let private_status_list = useSelector(
     (state) => state.main.private_list.statusArr
   );
-  console.log(private_regionInfo);
+  // console.log(private_regionInfo);
   let private_statusInfo = private_status_list.slice(0, 3);
 
   // 공공 공고 3개
   const public_list = useSelector((state) => state.main.public_list);
-  console.log(public_list);
+  // console.log(public_list);
   const public_regionInfo = public_list.slice(0, 3);
 
   return (
@@ -125,6 +125,7 @@ const Section02 = () => {
               </Text>
               {private_regionInfo.length !== 0 ? (
                 private_regionInfo.map((item, index) => {
+                  // console.log(item.ImgUrl);
                   return (
                     <Main2Card
                       key={index}

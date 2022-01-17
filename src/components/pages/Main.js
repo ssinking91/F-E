@@ -19,7 +19,7 @@ export default function Main() {
 
 const anchors = ["page1", "page2", "page3", "page4"];
 const userName = localStorage.getItem("userName");
-console.log(userName);
+// console.log(userName);
 const Fullpage = (props) => (
   <ReactFullpage
     anchors={anchors}

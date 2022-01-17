@@ -37,8 +37,8 @@ const savedPost = (aptNo) => {
     apis
       .seved()
       .then((res) => {
-        console.log("savedPost 접근");
-        console.log(res.data);
+        // console.log("savedPost 접근");
+        // console.log(res.data);
         dispatch(saved(aptNo));
       })
       .catch((err) => {
@@ -52,7 +52,7 @@ const getTotalDB = () => {
     apis
       .getTotalNum()
       .then((res) => {
-        console.log("getTotalDB 접근");
+        // console.log("getTotalDB 접근");
         // console.log(res.data);
         dispatch(getTotal(res.data));
       })
@@ -67,8 +67,8 @@ const getPrivateInfoDB = () => {
     apis
       .getPrivateInfo()
       .then((res) => {
-        console.log("getPrivateInfoDB 접근");
-        console.log(res.data);
+        // console.log("getPrivateInfoDB 접근");
+        // console.log(res.data);
         dispatch(getPrivateInfo(res.data));
       })
       .catch((err) => {
@@ -81,8 +81,8 @@ const getPublicInfoDB = () => {
     apis
       .getPublicInfo()
       .then((res) => {
-        console.log("getPublicInfoDB 접근");
-        console.log(res.data);
+        // console.log("getPublicInfoDB 접근");
+        // console.log(res.data);
         dispatch(getPublicInfo(res.data));
       })
       .catch((err) => {
@@ -96,7 +96,7 @@ const getPublicHotDB = () => {
     apis
       .getPublicHot()
       .then((res) => {
-        console.log("getPublicHotDB 접근");
+        // console.log("getPublicHotDB 접근");
         // console.log(res.data);
         dispatch(getPublicHot(res.data));
       })

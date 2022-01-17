@@ -19,20 +19,21 @@ const Main2Card = (props) => {
   const islike = JSON.parse(props.islike);
 
   const [save2, setSave2] = React.useState(islike);
-  
+
   // useEffect(async() => {
   //   const userKey = localStorage.getItem("userKey");
   //   await setTimeout(()=>{dispatch(mypagetActions.getUserInfosFB(userKey))},1000);
-    
-  // }, [islike]);
 
+  // }, [islike]);
+  console.log(props.image);
   // 카드 저장
   const saveCard = () => {
     const userKey = localStorage.getItem("userKey");
     const Page = props.Page; // 마이페이지인지 다른페이지인지
     const status = props.status; //공공인지 민영인지 구분
     const aptNo = props.aptNo;
-    console.log(Page, status, aptNo);
+    // console.log(Page, status, aptNo);
+
     // console.log(aptNo);
     if (userKey === null) {
       window.alert("로그인 후 사용이 가능합니다😎");

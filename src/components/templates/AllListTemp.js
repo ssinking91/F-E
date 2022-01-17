@@ -113,7 +113,7 @@ export default function AllListTemp() {
           {publicList && publicList.length !== 0 ? (
             publicList.map((item, index) => {
               const publicSales = "publicSales";
-              // console.log(item.aisTypeName);
+              console.log(item.ImgUrl);
               return (
                 <>
                   <Card
