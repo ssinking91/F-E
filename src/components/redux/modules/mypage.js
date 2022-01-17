@@ -70,13 +70,16 @@ const savedFB = (aptNo, page, status) => {
     try {
       console.log("mypage savedFB 시작");
       const response = await apis.saved(aptNo);
-      console.log(response);
+      console.log(response.data);
 
       //let result = response.data.data;
 
       dispatch(savedCard(aptNo, status));
-
       console.log("mypage savedFB 끝");
+
+      // const userKey = localStorage.getItem("userKey");
+      // await setTimeout(()=>{dispatch(getUserInfosFB(userKey))}, 1000); 
+
     } catch (error) {
       console.log(error);
     }
