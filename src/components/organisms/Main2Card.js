@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { savedActions } from "../redux/modules/cardSave";
 import { mypagetActions } from "../redux/modules/mypage";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useParams } from "react-router-dom";
 
@@ -11,7 +11,6 @@ import Label from "../molecules/Label";
 import { Text, Image } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
-import apt_tobe from "../../images/apt_tobe.svg";
 
 const Main2Card = (props) => {
   const { _onClick } = props;
@@ -20,13 +19,20 @@ const Main2Card = (props) => {
   const islike = JSON.parse(props.islike);
 
   const [save2, setSave2] = React.useState(islike);
+  
+  // useEffect(async() => {
+  //   const userKey = localStorage.getItem("userKey");
+  //   await setTimeout(()=>{dispatch(mypagetActions.getUserInfosFB(userKey))},1000);
+    
+  // }, [islike]);
 
   // 카드 저장
   const saveCard = () => {
     const userKey = localStorage.getItem("userKey");
-    const Page = props.Page;
-    const status = props.status;
+    const Page = props.Page; // 마이페이지인지 다른페이지인지
+    const status = props.status; //공공인지 민영인지 구분
     const aptNo = props.aptNo;
+    console.log(Page, status, aptNo);
     // console.log(aptNo);
     if (userKey === null) {
       window.alert("로그인 후 사용이 가능합니다😎");
@@ -42,12 +48,7 @@ const Main2Card = (props) => {
       return dispatch(savedActions.savedFB(aptNo, Page)), setSave2(!save2);
     }
   };
-  // const startDate = props.publicSales
-  //   ? props.startDate.replace(/./gi, ". ")
-  //   : props.startDate.replace(/-/gi, ". ");
-  // const endDate = props.publicSales
-  //   ? props.endDate.replace(/./gi, ".")
-  //   : props.endDate.replace(/-/gi, ". ");
+  // 접수 날짜
   const startDate = props.startDate.replace(/-/gi, ".");
   const endDate = props.endDate.replace(/-/gi, ".");
   // 최소, 최대 분양면적
@@ -158,14 +159,14 @@ const Main2Card = (props) => {
               {startDate} ~ {endDate}
             </Text>
             <Text regularText color="#A5AAB6">
-              {`${minSize} ~ ${maxSize} m² / ${pyeongMinSize} ~ ${pyeongMaxSize} 평 ${
-                props.publicSales ? "" : `/ 평당 ${pyeongMaxPrice}만원`
-              }`}
+              {`${minSize} ~ ${maxSize} m² / ${pyeongMinSize} ~ ${pyeongMaxSize} 평`}
             </Text>
             <Text regularText color="#A5AAB6">
               {props.publicSales
                 ? props.price
-                : `${minResultPrice(minPrice)} ~ ${maxResultPrice(maxPrice)}`}
+                : `${minResultPrice(minPrice)} ~ ${maxResultPrice(maxPrice)} ${
+                    props.publicSales ? "" : `/ 평당 ${pyeongMaxPrice}만원`
+                  }`}
             </Text>
           </Info2Item2>
         </Info2>

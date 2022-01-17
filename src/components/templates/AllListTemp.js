@@ -26,7 +26,7 @@ export default function AllListTemp() {
   console.log(publicAdress);
   console.log(privateList);
   const [ftbg, setFtbg] = useState(0);
-  const [ftSido] = useState("경기도");
+  const [ftSido] = useState("경기");
   //   const [ftprivateSido, setFtprivateSido] = useState("경기");
 
   const getDB = (item) => {
@@ -35,7 +35,7 @@ export default function AllListTemp() {
     dispatch(getPublicListDB(item));
   };
 
-  const dou = ["경기도", "강원도", "충청도", "경상도", "전라도", "제주도"];
+  const dou = ["경기", "강원", "충청", "경상", "전라", "제주"];
   const si = ["서울", "인천", "부산", "대구", "대전", "광주", "울산", "세종"];
   return (
     <>
@@ -113,6 +113,7 @@ export default function AllListTemp() {
           {publicList && publicList.length !== 0 ? (
             publicList.map((item, index) => {
               const publicSales = "publicSales";
+              // console.log(item.aisTypeName);
               return (
                 <>
                   <Card
@@ -145,7 +146,7 @@ export default function AllListTemp() {
             민간 분양
           </Text>
           {privateList && privateList.length !== 0 ? (
-            privateList.map((item, index) => {
+            privateList.result.map((item, index) => {
               return (
                 <>
                   <Card
@@ -158,6 +159,7 @@ export default function AllListTemp() {
                     price={item.supplyAmount}
                     aptNo={item.pblancNo}
                     islike={item.islike}
+                    CardPanState={privateList.statusArr[index].status}
                     //민간 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/private/${item.pblancNo}`);

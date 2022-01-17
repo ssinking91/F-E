@@ -158,4 +158,3 @@ const Card = styled.div`
   width: 595px;
   height: 337px;
 `;
-<iframe width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

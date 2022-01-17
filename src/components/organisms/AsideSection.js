@@ -3,8 +3,10 @@ import React from "react";
 import styled from "styled-components";
 
 import { useDispatch, useSelector } from "react-redux";
-import Main2Card from "../organisms/Main2Card";
+import AsideCard from "../organisms/AsideCard";
+import Main2Card from "./Main2Card";
 import { Grid } from "../atoms/index";
+
 import { getPublicListMapDB, clickOne } from "../redux/modules/map";
 
 export default function AsideSection() {
@@ -28,6 +30,7 @@ export default function AsideSection() {
     <>
       <Wrap>
         <ContentArea>
+          {/* <AsideCard></AsideCard> */}
           {publicList &&
             publicList.map((item, index) => {
               const panName = `[${item.aisTypeName}] ${
@@ -63,7 +66,7 @@ export default function AsideSection() {
 }
 
 const Wrap = styled.div`
-  width: 600px;
+  width: 450px;
   height: 100vh;
   position: relative;
   right: 0;
@@ -72,7 +75,7 @@ const Wrap = styled.div`
 
 const ContentArea = styled.div`
   position: absolute;
-  top: 162px;
+  top: 160px;
   height: 83vh;
   overflow-y: scroll;
   & ::-webkit-scrollbar {

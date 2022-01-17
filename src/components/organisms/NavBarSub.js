@@ -14,7 +14,7 @@ export default function NavBarSub() {
 
 const Div = styled.div`
   width: 100%;
-  height: 65px;
+  height: 52px;
   position: absolute;
   display: flex;
   top: 97px;
