@@ -37,7 +37,7 @@ export default handleActions(
   {
     [SAVE_CARD]: (state, action) =>
       produce(state, (draft) => {
-        console.log(action.payload.result);
+        console.log("cardSave 시작");
         draft.result = action.payload.result;
       }),
   },

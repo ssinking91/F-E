@@ -96,7 +96,7 @@ const Section02 = () => {
                 public_regionInfo.map((item, index) => {
                   const publicSales = "publicSales";
                   const status = "public";
-                  console.log(item.islike)
+                
                   return (
                     <Main2Card
                       key={index}
@@ -131,7 +131,7 @@ const Section02 = () => {
               {private_regionInfo.length !== 0 ? (
                 private_regionInfo.map((item, index) => {
                   const status = "private";
-                  console.log( item.islike)
+                
                   return (
                     <Main2Card
                       key={index}

@@ -16,7 +16,6 @@ export default function AllListTemp() {
   useEffect(() => {
     dispatch(getPrivateListDB(ftSido));
     dispatch(getPublicListDB(ftSido));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const publicList = useSelector((store) => store.allList.publicList);
@@ -27,7 +26,7 @@ export default function AllListTemp() {
   console.log(privateList);
   const [ftbg, setFtbg] = useState(0);
   const [ftSido] = useState("경기");
-  //   const [ftprivateSido, setFtprivateSido] = useState("경기");
+  const [MypageSido, setMypageSido] = useState("경기");
 
   const getDB = (item) => {
     console.log(item);
@@ -37,6 +36,10 @@ export default function AllListTemp() {
 
   const dou = ["경기", "강원", "충청", "경상", "전라", "제주"];
   const si = ["서울", "인천", "부산", "대구", "대전", "광주", "울산", "세종"];
+
+  const Page = "AllList";
+
+
   return (
     <>
       <NavBarLink />
@@ -56,9 +59,9 @@ export default function AllListTemp() {
             background_color={index === ftbg ? `#20D7FF` : ``}
             cursor="pointer"
             _onClick={() => {
-              setFtbg(index);
-              //   setFtSido(item);
+              setFtbg(index);  
               getDB(item);
+              setMypageSido(item);
             }}
           >
             <Text
@@ -113,7 +116,8 @@ export default function AllListTemp() {
           {publicList && publicList.length !== 0 ? (
             publicList.map((item, index) => {
               const publicSales = "publicSales";
-              // console.log(item.aisTypeName);
+              const status = "public";
+             
               return (
                 <>
                   <Card
@@ -125,9 +129,12 @@ export default function AllListTemp() {
                     size={item.size}
                     price={item.aisTypeName}
                     aptNo={item.panId}
-                    islike={item.islike}
                     CardPanState={item.panState}
                     publicSales={publicSales}
+                    islike={item.islike}
+                    Page={Page}
+                    status={status}
+                    MypageSido={MypageSido}
                     //공공 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/public/${item.panId}`);
@@ -147,6 +154,8 @@ export default function AllListTemp() {
           </Text>
           {privateList && privateList.length !== 0 ? (
             privateList.result.map((item, index) => {
+              const status = "private";
+
               return (
                 <>
                   <Card
@@ -158,8 +167,11 @@ export default function AllListTemp() {
                     size={item.size}
                     price={item.supplyAmount}
                     aptNo={item.pblancNo}
-                    islike={item.islike}
                     CardPanState={privateList.statusArr[index].status}
+                    islike={item.islike}
+                    Page={Page}
+                    status={status}
+                    MypageSido={MypageSido}
                     //민간 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/private/${item.pblancNo}`);

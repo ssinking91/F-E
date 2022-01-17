@@ -1,19 +1,20 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import { apis } from "../../utilities/axios";
-import { actionCreators as mainActions } from "./main"
+import { actionCreators as mainActions } from "./main";
+import { getPrivateListDB, getPublicListDB } from "./allList";
 
 // action type
 const GET_USERINFO = " GET_USERINFO";
 const EDIT_USERINFO = "EDIT_USERINFO";
 const EDIT_EMAIL = "EDIT_EMAIL";
-const SAVE_CARD = "SAVE_CARD";
+const MY_SAVE_CARD = "SAVE_CARD";
 
 // action creator
 const getUserInfo = createAction(GET_USERINFO, (userInfo) => ({ userInfo }));
 const editUserInfo = createAction(EDIT_USERINFO, (sido) => ({ sido }));
 const editEmailInfo = createAction(EDIT_EMAIL, (email) => ({ email }));
-const savedCard = createAction(SAVE_CARD, (aptNo, status) => ({
+const mypageSavedCard = createAction(MY_SAVE_CARD, (aptNo, status) => ({
   aptNo,
   status,
 }));
@@ -66,7 +67,7 @@ const editEmailFB = (userName, email) => {
   };
 };
 
-const savedFB = (aptNo, status) => {
+const savedFB = (aptNo, status, sido) => {
   return async (dispatch, getState, { history }) => {
     try {
       console.log("mypage savedFB 시작");
@@ -74,14 +75,18 @@ const savedFB = (aptNo, status) => {
       console.log(response.data.data, typeof response.data.data);
 
       console.log("mypage savedCard 시작");
-      dispatch(savedCard(aptNo, status));
+      dispatch(mypageSavedCard(aptNo, status));
       console.log("mypage savedFB 끝");
-
-      // console.log("main savedFB2 시작");
-      // dispatch(mainActions.savedFB2(aptNo, status, response.data.data));
       
-      // const userKey = localStorage.getItem("userKey");
-      // await setTimeout(()=>{dispatch(getUserInfosFB(userKey))}, 1000); 
+      if (status === "private") {
+        dispatch(mainActions.getPrivateInfoDB());
+        dispatch(getPrivateListDB(sido));
+      } 
+      
+      else if (status === "public") {
+        dispatch(mainActions.getPublicInfoDB());
+        dispatch(getPublicListDB(sido));
+      }
 
     } catch (error) {
       console.log(error);
@@ -117,9 +122,10 @@ export default handleActions(
         draft.list.existuser.email = action.payload.email;
       }),
 
-    [SAVE_CARD]: (state, action) =>
+    [MY_SAVE_CARD]: (state, action) =>
       produce(state, (draft) => {
         console.log("mapage save_card 리듀서 시작");
+
         if (action.payload.status === "public") {
           draft.list.public = draft.list.public.filter((item, idx) => {
             //console.log(action.payload.aptNo, typeof action.payload.aptNo);
@@ -131,6 +137,7 @@ export default handleActions(
             return item.pblancNo !== action.payload.aptNo;
           });
         }
+        console.log("mapage save_card 리듀서 끝");
       }),
   },
   initialState
