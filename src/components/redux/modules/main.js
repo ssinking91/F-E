@@ -9,7 +9,6 @@ const GET_PUBLICINFO = "GET_PUBLICINFO";
 const GET_PUBLICHOT = "GET_PUBLICHOT";
 const MAIN_SAVE_CARD = "SAVE_CARD";
 
-// const saved = createAction(IS_SAVED, (aptNo) => ({ aptNo }));
 // Section 01
 const getTotal = createAction(GET_TOTAL, (total) => ({ total }));
 // Section 02
@@ -36,7 +35,7 @@ const getTotalDB = () => {
     apis
       .getTotalNum()
       .then((res) => {
-        console.log("getTotalDB 접근");
+        // console.log("getTotalDB 접근");
         // console.log(res.data);
         dispatch(getTotal(res.data));
       })
@@ -51,8 +50,8 @@ const getPrivateInfoDB = () => {
     apis
       .getPrivateInfo()
       .then((res) => {
-        console.log("getPrivateInfoDB 접근");
-        console.log(res.data);
+        // console.log("getPrivateInfoDB 접근");
+        // console.log(res.data);
         dispatch(getPrivateInfo(res.data));
       })
       .catch((err) => {
@@ -65,8 +64,8 @@ const getPublicInfoDB = () => {
     apis
       .getPublicInfo()
       .then((res) => {
-        console.log("getPublicInfoDB 접근");
-        console.log(res.data);
+        // console.log("getPublicInfoDB 접근");
+        // console.log(res.data);
         dispatch(getPublicInfo(res.data));
       })
       .catch((err) => {
@@ -80,7 +79,7 @@ const getPublicHotDB = () => {
     apis
       .getPublicHot()
       .then((res) => {
-        console.log("getPublicHotDB 접근");
+        // console.log("getPublicHotDB 접근");
         // console.log(res.data);
         dispatch(getPublicHot(res.data));
       })
@@ -150,7 +149,7 @@ const actionCreators = {
   // Section 03
   getPublicHot,
   getPublicHotDB,
-  // savedPost,
+ 
   //찜하기 버튼
   savedFB2,
 };

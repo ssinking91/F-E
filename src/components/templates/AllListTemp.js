@@ -117,7 +117,7 @@ export default function AllListTemp() {
             publicList.map((item, index) => {
               const publicSales = "publicSales";
               const status = "public";
-             
+           
               return (
                 <>
                   <Card

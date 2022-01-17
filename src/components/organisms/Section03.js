@@ -7,10 +7,10 @@ import Main3Card from "./Main3Card";
 import { Text } from "../atoms/index";
 const Section03 = (props) => {
   const dispatch = useDispatch();
-  console.log("page3");
+  // console.log("page3");
 
   useEffect(() => {
-    console.log("@@@@@page3 ue3");
+    // console.log("@@@@@page3 ue3");
     dispatch(mainAction.getPublicHotDB());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -45,7 +45,7 @@ const Section03 = (props) => {
           <CardWrap>
             {public_regionInfo_hot.map((item, index) => {
               let panName = item.panName.slice(0, 17);
-              console.log(panName);
+              // console.log(panName);
               return (
                 <Main3Card
                   key={index}
