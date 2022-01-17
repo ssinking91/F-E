@@ -1,6 +1,7 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import { apis } from "../../utilities/axios";
+import { actionCreators as mainActions } from "./main"
 
 // action type
 const GET_USERINFO = " GET_USERINFO";
@@ -65,18 +66,20 @@ const editEmailFB = (userName, email) => {
   };
 };
 
-const savedFB = (aptNo, page, status) => {
+const savedFB = (aptNo, status) => {
   return async (dispatch, getState, { history }) => {
     try {
       console.log("mypage savedFB 시작");
       const response = await apis.saved(aptNo);
-      console.log(response.data);
+      console.log(response.data.data, typeof response.data.data);
 
-      //let result = response.data.data;
-
+      console.log("mypage savedCard 시작");
       dispatch(savedCard(aptNo, status));
       console.log("mypage savedFB 끝");
 
+      // console.log("main savedFB2 시작");
+      // dispatch(mainActions.savedFB2(aptNo, status, response.data.data));
+      
       // const userKey = localStorage.getItem("userKey");
       // await setTimeout(()=>{dispatch(getUserInfosFB(userKey))}, 1000); 
 
