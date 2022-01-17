@@ -1,13 +1,29 @@
 /* eslint-disable no-unused-vars */
+import React from "react";
 import styled from "styled-components";
 
 import { useDispatch, useSelector } from "react-redux";
 import Main2Card from "../organisms/Main2Card";
 import { Grid } from "../atoms/index";
+import { getPublicListMapDB, clickOne } from "../redux/modules/map";
 
 export default function AsideSection() {
-  const publicList = useSelector((store) => store.allList.publicList);
+  const dispatch = useDispatch();
+  const eventList = useSelector((state) => state.map.list);
+  console.log(eventList);
+
+  React.useEffect(() => {
+    dispatch(getPublicListMapDB(eventList));
+  }, [dispatch, eventList]);
+
+  const publicList = useSelector((store) => store.map.sido);
   console.log(publicList);
+
+  const click = (address) => {
+    console.log(address);
+    dispatch(clickOne(address));
+  };
+
   return (
     <>
       <Wrap>
@@ -19,23 +35,25 @@ export default function AsideSection() {
               } ${item.address.split(" ")[2]}`;
               const publicSales = "publicSales";
               return (
-                <>
-                  <Grid margin="20px 0 20px 30px">
-                    <Main2Card
-                      key={index}
-                      image={item.ImgUrl}
-                      name={panName}
-                      startDate={item.startDate}
-                      endDate={item.closeDate}
-                      size={`${item.size} m²`}
-                      price={item.aisTypeName}
-                      aptNo={item.panId}
-                      islike={item.islike}
-                      CardPanState={item.panState}
-                      publicSales={publicSales}
-                    />
-                  </Grid>
-                </>
+                <Grid
+                  margin="20px 0 20px 30px"
+                  key={index}
+                  _onClick={() => click(item.address)}
+                >
+                  <Main2Card
+                    key={index}
+                    image={item.ImgUrl}
+                    name={panName}
+                    startDate={item.startDate}
+                    endDate={item.closeDate}
+                    size={`${item.size} m²`}
+                    price={item.aisTypeName}
+                    aptNo={item.panId}
+                    islike={item.islike}
+                    CardPanState={item.panState}
+                    publicSales={publicSales}
+                  />
+                </Grid>
               );
             })}
         </ContentArea>
@@ -55,4 +73,9 @@ const Wrap = styled.div`
 const ContentArea = styled.div`
   position: absolute;
   top: 162px;
+  height: 83vh;
+  overflow-y: scroll;
+  & ::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
 `;
