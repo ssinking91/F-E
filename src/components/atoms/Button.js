@@ -14,6 +14,7 @@ const Button = (props) => {
     color,
     background_color,
     border,
+    radius,
   } = props;
   if (is_float) {
     return (
@@ -30,6 +31,7 @@ const Button = (props) => {
     color: color,
     background_color: background_color,
     border: border,
+    radius: radius,
   };
   if (ractangle) {
     return (

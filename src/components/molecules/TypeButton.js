@@ -6,14 +6,32 @@ export default function TypeButton() {
   // const [divisionButton]
   return (
     <Div>
-      <Grid is_flex width="200px" height="36px" background_color="#fff">
-        <Button ractangle width="100px" background_color="#20D7FF">
+      <Grid
+        is_flex
+        width="308px"
+        height="30px"
+        background_color="#2094FF"
+        radius="36px"
+      >
+        <Button
+          ractangle
+          background_color="#20D7FF"
+          radius="36px"
+          width="154px"
+        >
           <Text h4 color="white">
-            공공
+            공공분양
           </Text>
         </Button>
-        <Button ractangle width="100px" background_color="#fafafa">
-          <Text h4>민간</Text>
+        <Button
+          ractangle
+          radius="36px"
+          width="154px"
+          background_color="#00ff0000"
+        >
+          <Text h4 color="white">
+            민간분양
+          </Text>
         </Button>
       </Grid>
     </Div>
@@ -21,11 +39,12 @@ export default function TypeButton() {
 }
 
 const Div = styled.div`
-  width: 400px;
-  height: 65px;
-  padding: 0 100px;
+  width: 355px;
+  height: 100%;
+  padding: 0 22px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-left: 1px solid rgb(231, 231, 231);
+  background-color: #f6f7fa;
+  // border-left: 1px solid rgb(231, 231, 231);
 `;

@@ -155,7 +155,11 @@ export default function KakaoMap() {
                                                     margin-right: 16px; 
                                                     border: 1px #20D7FF solid; 
                                                     border-radius: 20px;
-                                                    background-image: url(${ publicInfo.length > 0 ? publicInfo[0].ImgUrl : privateInfo[0].ImgUrl });
+                                                    background-image: url(${
+                                                      publicInfo.length > 0
+                                                        ? publicInfo[0].ImgUrl
+                                                        : privateInfo[0].ImgUrl
+                                                    });
                                                     background-size: cover;
                                                     background-repeat: no-repeat;
                                                     background-position: center;
@@ -166,7 +170,11 @@ export default function KakaoMap() {
 
                                                   <div style="height: 25px; margin: 0 0 4px 0;">
                                                     <span style="font-size: 14px; font-weight: bold; color: #000000; line-height: 25px; height: 25px; color: #20D7FF; ">
-                                                       [ ${ publicInfo.length > 0 ? "공영" : "민영" } ]
+                                                       [ ${
+                                                         publicInfo.length > 0
+                                                           ? "공영"
+                                                           : "민영"
+                                                       } ]
                                                      </span>
                                                   </div>
 
@@ -174,8 +182,17 @@ export default function KakaoMap() {
                                                     <span style="font-size: 16px; font-weight: bold; color: #000000; line-height: 25px; height: 25px; color: #000000">
                                                       ${
                                                         publicInfo.length > 0
-                                                          ? (publicInfo[0].panName.length > 46 ? publicInfo[0].panName.substr(0, 43)+"..." : publicInfo[0].panName)
-                                                          : privateInfo[0].houseName
+                                                          ? publicInfo[0]
+                                                              .panName.length >
+                                                            46
+                                                            ? publicInfo[0].panName.substr(
+                                                                0,
+                                                                43
+                                                              ) + "..."
+                                                            : publicInfo[0]
+                                                                .panName
+                                                          : privateInfo[0]
+                                                              .houseName
                                                       }
                                                     </span>
                                                   </div>
@@ -183,7 +200,8 @@ export default function KakaoMap() {
                                                   <div style="display: flex; ">
                                                       <span style="font-size: 12px; font-weight: bold; color: #A5AAB6; line-height: 19px;  margin: 0 15px 0 0;">
                                                           <a href=${
-                                                            publicInfo.length > 0
+                                                            publicInfo.length >
+                                                            0
                                                               ? `${publicInfo[0].detailUrl}`
                                                               : `${privateInfo[0].detailUrl}`
                                                           } 
@@ -193,7 +211,8 @@ export default function KakaoMap() {
                                                       </span>
                                                       <span style="font-size: 12px; font-weight: bold; color: #A5AAB6; line-height: 19px;">
                                                           <a href=${
-                                                            publicInfo.length > 0
+                                                            publicInfo.length >
+                                                            0
                                                               ? `${publicInfo[0].fileUrl}`
                                                               : null
                                                           }>
@@ -260,5 +279,5 @@ const Div = styled.div`
   width: 100%;
   height: 83vh;
   position: relative;
-  top: 162px;
+  top: 148px;
 `;
