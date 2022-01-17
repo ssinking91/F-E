@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+// import styled from "styled-components";
 import { Text, Image, Grid } from "../atoms/index";
 import BundleText from "../molecules/BundleText";
 

@@ -66,7 +66,7 @@ export default function AsideSection() {
 }
 
 const Wrap = styled.div`
-  width: 450px;
+  width: 355px;
   height: 100vh;
   position: relative;
   right: 0;

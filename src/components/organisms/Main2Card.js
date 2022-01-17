@@ -1,16 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { savedActions } from "../redux/modules/cardSave";
 import { mypagetActions } from "../redux/modules/mypage";
-import { useDispatch, useSelector } from "react-redux";
-
-import { useParams } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+// import { useParams } from "react-router-dom";
 import Label from "../molecules/Label";
 import { Text, Image } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
-import defaultLogoImage from "../../images/defaultLogoImage.svg";
+// import defaultLogoImage from "../../images/defaultLogoImage.svg";
 
 const Main2Card = (props) => {
   const { _onClick } = props;
@@ -25,7 +23,7 @@ const Main2Card = (props) => {
   //   await setTimeout(()=>{dispatch(mypagetActions.getUserInfosFB(userKey))},1000);
 
   // }, [islike]);
-  console.log(props.image);
+  // console.log(props.image);
   // 카드 저장
   const saveCard = () => {
     const userKey = localStorage.getItem("userKey");

@@ -22,9 +22,9 @@ export default function AllListTemp() {
   const publicList = useSelector((store) => store.allList.publicList);
   const publicAdress = useSelector((store) => store.allList.publicAdress);
   const privateList = useSelector((store) => store.allList.privateList);
-  console.log(publicList);
+  // console.log(publicList);
   console.log(publicAdress);
-  console.log(privateList);
+  // console.log(privateList);
   const [ftbg, setFtbg] = useState(0);
   const [ftSido] = useState("경기");
   //   const [ftprivateSido, setFtprivateSido] = useState("경기");
@@ -113,7 +113,7 @@ export default function AllListTemp() {
           {publicList && publicList.length !== 0 ? (
             publicList.map((item, index) => {
               const publicSales = "publicSales";
-              console.log(item.ImgUrl);
+              // console.log(item.ImgUrl);
               return (
                 <>
                   <Card
