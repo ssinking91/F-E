@@ -19,7 +19,7 @@ export default function KakaoMap() {
   }, []);
 
   const publicList = useSelector((state) => state.allList.publicList);
-  const privateList = useSelector((state) => state.allList.privateLists);
+  const privateList = useSelector((state) => state.allList.privateList);
   console.log(privateList);
 
   const locate = useSelector((state) => state.allList);
@@ -437,7 +437,7 @@ export default function KakaoMap() {
                 if (publicInfo.length > 0) {
                 } else {
                   // results[j][3]을 공영데이터 기준으로 필터링했을때 결과를 찾아내지 못하면 민영데이터로 필터링 시작
-                  privateInfo = privateList.filter(
+                  privateInfo = privateList.result.filter(
                     (lists) => lists.address === `${results[j][3]}`
                   );
                 }
@@ -470,8 +470,12 @@ export default function KakaoMap() {
                                                     border-radius: 20px;
                                                     background-image: url(${
                                                       publicInfo.length > 0
-                                                        ? (publicInfo[0].ImgUrl? publicInfo[0].ImgUrl : defaultLogoImage)
-                                                        : (privateInfo[0].ImgUrl? privateInfo[0].ImgUrl : defaultLogoImage)
+                                                        ? publicInfo[0].ImgUrl
+                                                          ? publicInfo[0].ImgUrl
+                                                          : defaultLogoImage
+                                                        : privateInfo[0].ImgUrl
+                                                        ? privateInfo[0].ImgUrl
+                                                        : defaultLogoImage
                                                     });
                                                     background-size: cover;
                                                     background-repeat: no-repeat;
