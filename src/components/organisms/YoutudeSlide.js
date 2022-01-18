@@ -19,7 +19,7 @@ const Showcase = () => {
     slidesPerView: 1,
     loop: true,
     onSwiper: (swiper) => console.log(swiper),
-    onSlideChange: () => console.log("slide change"),
+    // onSlideChange: () => console.log("slide change"),
   };
 
   return (

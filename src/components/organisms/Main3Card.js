@@ -6,7 +6,7 @@ import Label from "../molecules/Label";
 import { Text } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
-import apt_tobe from "../../images/apt_tobe.svg";
+import defaultLogoImage from "../../images/defaultLogoImage.svg";
 
 const Main3Card = (props) => {
   const { _onClick } = props;
@@ -101,7 +101,7 @@ const Image = styled.div`
   width: 370px;
   height: 370px;
   border-radius: 20px;
-  background-image: url("${(props) => props.src || apt_tobe}");
+  background-image: url("${(props) => props.src || defaultLogoImage}");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

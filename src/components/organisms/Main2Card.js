@@ -1,48 +1,64 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { savedActions } from "../redux/modules/cardSave";
 import { mypagetActions } from "../redux/modules/mypage";
+import { actionCreators as mainActions } from "../redux/modules/main";
 import { useDispatch, useSelector } from "react-redux";
 
-import { useParams } from "react-router-dom";
-
 import Label from "../molecules/Label";
-import { Text, Image } from "../atoms/index";
+import { Text } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
-import apt_tobe from "../../images/apt_tobe.svg";
+import defaultLogoImage from "../../images/defaultLogoImage.svg";
 
 const Main2Card = (props) => {
   const { _onClick } = props;
   const dispatch = useDispatch();
 
   const islike = JSON.parse(props.islike);
+  console.log(props.Page, props.islike, typeof props.islike);
+
+  const MypageSido = props.MypageSido;
+  console.log(MypageSido);
 
   const [save2, setSave2] = React.useState(islike);
-  // useEffect(() => {
-  //   dispatch(savedFB(aptNo));
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+
+  // useEffect(async() => {
+  //   const userKey = localStorage.getItem("userKey");
+  //   await setTimeout(()=>{dispatch(mypagetActions.getUserInfosFB(userKey))},1000);
+
+  // }, [islike]);
+
   // 카드 저장
   const saveCard = () => {
     const userKey = localStorage.getItem("userKey");
-    const Page = props.Page;
-    const status = props.status;
+    const Page = props.Page; // 페이지 구분
+    const status = props.status; //공공 민영 구분 구분
     const aptNo = props.aptNo;
-    // console.log(aptNo);
+    console.log(Page, status, aptNo, save2);
+
     if (userKey === null) {
       window.alert("로그인 후 사용이 가능합니다😎");
       return;
     }
 
-    if (status) {
+    if (Page === "myPage") {
       return (
-        dispatch(mypagetActions.savedFB(aptNo, Page, status)), setSave2(!save2)
+        console.log("mypage main2Card"),
+        dispatch(mypagetActions.savedFB(aptNo, status))
       );
-    } else {
-      // eslint-disable-next-line no-sequences
-      return dispatch(savedActions.savedFB(aptNo, Page)), setSave2(!save2);
+    } else if (Page === "section2") {
+      return (
+        console.log("section2 main2Card"),
+        setSave2(!save2),
+        dispatch(mypagetActions.savedFB(aptNo, status))
+      );
+    } else if (Page === "AllList") {
+      return (
+        console.log("AllList main2Card"),
+        setSave2(!save2),
+        dispatch(mypagetActions.savedFB(aptNo, status, MypageSido))
+      );
     }
   };
   // 접수 날짜
@@ -120,7 +136,7 @@ const Main2Card = (props) => {
   return (
     <Container>
       <Imageitem>
-        <Image shape="card" src={props.image} />
+        <Image src={props.image} />
         <ImageDiv
           onClick={() => {
             saveCard();
@@ -186,16 +202,16 @@ const Imageitem = styled.div`
   margin-right: 40px;
 `;
 
-// const Image = styled.div`
-//   width: 160px;
-//   height: 160px;
-//   margin-top: 4px;
-//   border-radius: 20px;
-//   background-image: url("${(props) => props.src || apt_tobe}");
-//   background-size: cover;
-//   background-repeat: no-repeat;
-//   background-position: center;
-// `;
+const Image = styled.div`
+  width: 160px;
+  height: 160px;
+  margin-top: 4px;
+  border-radius: 20px;
+  background-image: url("${(props) => props.src || defaultLogoImage}");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
 
 const ImageDiv = styled.div`
   position: absolute;

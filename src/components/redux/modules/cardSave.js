@@ -18,17 +18,10 @@ const savedFB = (aptNo, page) => {
       console.log(response);
 
       let result = response.data.data;
+      console.log(result);
       await dispatch(savedCard(result));
 
       console.log("savedFB 끝");
-      
-      if(page){
-        console.log("getUserInfosFB 시작");
-        console.log(page);
-        const userKey = localStorage.getItem("userKey");
-      dispatch(mypagetActions.getUserInfosFB(userKey));
-      };
-      
     } catch (error) {
       console.log(error);
     }
@@ -44,7 +37,7 @@ export default handleActions(
   {
     [SAVE_CARD]: (state, action) =>
       produce(state, (draft) => {
-        console.log(action.payload.result);
+        console.log("cardSave 시작");
         draft.result = action.payload.result;
       }),
   },

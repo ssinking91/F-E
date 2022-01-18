@@ -7,8 +7,8 @@ const GET_TOTAL = "GET_TOTAL";
 const GET_PRIVATEINFO = "GET_PRIVATEINFO";
 const GET_PUBLICINFO = "GET_PUBLICINFO";
 const GET_PUBLICHOT = "GET_PUBLICHOT";
+const MAIN_SAVE_CARD = "SAVE_CARD";
 
-const saved = createAction(IS_SAVED, (aptNo) => ({ aptNo }));
 // Section 01
 const getTotal = createAction(GET_TOTAL, (total) => ({ total }));
 // Section 02
@@ -23,36 +23,19 @@ const getPublicHot = createAction(GET_PUBLICHOT, (public_list_hot) => ({
   public_list_hot,
 }));
 
-const initialState = {
-  total: {},
-  private_list: {
-    privateSido1: [],
-    statusArr: [],
-  },
-  public_list: [],
-  public_list_hot: [],
-};
-const savedPost = (aptNo) => {
-  return function (dispatch, getState, { history }) {
-    apis
-      .seved()
-      .then((res) => {
-        console.log("savedPost 접근");
-        console.log(res.data);
-        dispatch(saved(aptNo));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-};
+const mainSavedCard = createAction(MAIN_SAVE_CARD, (aptNo, status, islike) => ({
+  aptNo,
+  status,
+  islike,
+}));
+
 // Section 01
 const getTotalDB = () => {
   return function (dispatch, getState, { history }) {
     apis
       .getTotalNum()
       .then((res) => {
-        console.log("getTotalDB 접근");
+        // console.log("getTotalDB 접근");
         // console.log(res.data);
         dispatch(getTotal(res.data));
       })
@@ -67,8 +50,8 @@ const getPrivateInfoDB = () => {
     apis
       .getPrivateInfo()
       .then((res) => {
-        console.log("getPrivateInfoDB 접근");
-        console.log(res.data);
+        // console.log("getPrivateInfoDB 접근");
+        // console.log(res.data);
         dispatch(getPrivateInfo(res.data));
       })
       .catch((err) => {
@@ -81,8 +64,8 @@ const getPublicInfoDB = () => {
     apis
       .getPublicInfo()
       .then((res) => {
-        console.log("getPublicInfoDB 접근");
-        console.log(res.data);
+        // console.log("getPublicInfoDB 접근");
+        // console.log(res.data);
         dispatch(getPublicInfo(res.data));
       })
       .catch((err) => {
@@ -96,7 +79,7 @@ const getPublicHotDB = () => {
     apis
       .getPublicHot()
       .then((res) => {
-        console.log("getPublicHotDB 접근");
+        // console.log("getPublicHotDB 접근");
         // console.log(res.data);
         dispatch(getPublicHot(res.data));
       })
@@ -106,12 +89,31 @@ const getPublicHotDB = () => {
   };
 };
 
+const savedFB2 = (aptNo, status, islike) => {
+  return async (dispatch, getState, { history }) => {
+    try {
+      console.log("main savedFB 시작");
+      const response = await apis.saved(aptNo);
+      console.log(response.data.data);
+      dispatch(getPrivateInfoDB());
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+const initialState = {
+  total: {},
+  private_list: {
+    privateSido1: [],
+    statusArr: [],
+  },
+  public_list: [],
+  public_list_hot: [],
+};
+
 export default handleActions(
   {
-    // [IS_SAVED]: (state, action) =>
-    // produce(state, (draft) => {
-
-    // })
     // Section 01
     [GET_TOTAL]: (state, action) =>
       produce(state, (draft) => {
@@ -147,7 +149,9 @@ const actionCreators = {
   // Section 03
   getPublicHot,
   getPublicHotDB,
-  savedPost,
+ 
+  //찜하기 버튼
+  savedFB2,
 };
 
 export { actionCreators };

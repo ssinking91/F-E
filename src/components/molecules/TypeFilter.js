@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-
 import React, { useState } from "react";
 import styled from "styled-components";
 
@@ -31,8 +30,7 @@ export default function TypeFilter() {
   return (
     <Div>
       <WrapLeft>
-        <Icon></Icon>
-        <SearchInput type="search" placeholder="검색"></SearchInput>
+        <SearchInput type="search" placeholder="검색을 해주세요"></SearchInput>
       </WrapLeft>
       <WrapRight>
         <DropDown
@@ -44,33 +42,31 @@ export default function TypeFilter() {
     </Div>
   );
 }
-const Icon = styled.div`
-  width: 30px;
-  height: 30px;
-  background-size: cover;
-  background-image: url("../../img/searchIcon.png");
-`;
 const Div = styled.div`
   width: 100%;
-  height: 65px;
+  height: 100%;
   display: flex;
   align-items: center;
+  background-color: #f6f7fa;
 `;
 const WrapLeft = styled.form`
   display: flex;
   align-items: center;
-  padding: 0 30px;
+  margin: 0 46px;
 `;
 const WrapRight = styled.div`
-  margin: 0 50px 0 auto;
+  align-items: center;
+  margin: 0 38px 5px auto;
 `;
 
 const SearchInput = styled.input`
-  width: 300px;
-  height: 36px;
-  padding: 0 10px;
+  width: 338px;
+  height: 40px;
+  padding: 0 22px;
   border: 0px;
-  font-size: 14px;
+  border-radius: 36px;
+  font-size: 18px;
+  font-weight: bold;
   &:focus {
     outline: none;
   }

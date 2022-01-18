@@ -1,16 +1,20 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import { apis } from "../../utilities/axios";
+import { actionCreators as mainActions } from "./main";
+import { getPrivateListDB, getPublicListDB } from "./allList";
 
 // action type
 const GET_USERINFO = " GET_USERINFO";
 const EDIT_USERINFO = "EDIT_USERINFO";
-const SAVE_CARD = "SAVE_CARD";
+const EDIT_EMAIL = "EDIT_EMAIL";
+const MY_SAVE_CARD = "SAVE_CARD";
 
 // action creator
 const getUserInfo = createAction(GET_USERINFO, (userInfo) => ({ userInfo }));
 const editUserInfo = createAction(EDIT_USERINFO, (sido) => ({ sido }));
-const savedCard = createAction(SAVE_CARD, (aptNo, status) => ({
+const editEmailInfo = createAction(EDIT_EMAIL, (email) => ({ email }));
+const mypageSavedCard = createAction(MY_SAVE_CARD, (aptNo, status) => ({
   aptNo,
   status,
 }));
@@ -45,18 +49,45 @@ const editUserInfosFB = (userName, sido) => {
   };
 };
 
-const savedFB = (aptNo, page, status) => {
+const editEmailFB = (userName, email) => {
+  return async (dispatch, getState, { history }) => {
+    try {
+      console.log("mypage editEmailFB 시작");
+      const response = apis.editEmail(userName, email);
+      console.log(response);
+
+      //let result = response.data.data;
+      console.log(email);
+      dispatch(editEmailInfo(email));
+
+      console.log("mypage editEmailFB 끝");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+const savedFB = (aptNo, status, sido) => {
   return async (dispatch, getState, { history }) => {
     try {
       console.log("mypage savedFB 시작");
       const response = await apis.saved(aptNo);
-      console.log(response);
+      console.log(response.data.data, typeof response.data.data);
 
-      //let result = response.data.data;
-
-      dispatch(savedCard(aptNo, status));
-
+      console.log("mypage savedCard 시작");
+      dispatch(mypageSavedCard(aptNo, status));
       console.log("mypage savedFB 끝");
+      
+      if (status === "private") {
+        dispatch(mainActions.getPrivateInfoDB());
+        dispatch(getPrivateListDB(sido));
+      } 
+      
+      else if (status === "public") {
+        dispatch(mainActions.getPublicInfoDB());
+        dispatch(getPublicListDB(sido));
+      }
+
     } catch (error) {
       console.log(error);
     }
@@ -86,9 +117,15 @@ export default handleActions(
         draft.list.existuser.sido = action.payload.sido;
       }),
 
-    [SAVE_CARD]: (state, action) =>
+    [EDIT_EMAIL]: (state, action) =>
+      produce(state, (draft) => {
+        draft.list.existuser.email = action.payload.email;
+      }),
+
+    [MY_SAVE_CARD]: (state, action) =>
       produce(state, (draft) => {
         console.log("mapage save_card 리듀서 시작");
+
         if (action.payload.status === "public") {
           draft.list.public = draft.list.public.filter((item, idx) => {
             //console.log(action.payload.aptNo, typeof action.payload.aptNo);
@@ -100,6 +137,7 @@ export default handleActions(
             return item.pblancNo !== action.payload.aptNo;
           });
         }
+        console.log("mapage save_card 리듀서 끝");
       }),
   },
   initialState
@@ -108,6 +146,7 @@ export default handleActions(
 const mypagetActions = {
   getUserInfosFB,
   editUserInfosFB,
+  editEmailFB,
   savedFB,
 };
 
