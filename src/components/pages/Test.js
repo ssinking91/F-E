@@ -44,5 +44,5 @@ const Left = styled.div`
 `;
 
 const Right = styled.div`
-  width: 500px;
+  width: 600px;
 `;

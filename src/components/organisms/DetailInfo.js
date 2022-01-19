@@ -172,7 +172,7 @@ export default function DetailInfo() {
             <DetailText>
               <Grid margin="10px 0 0 0" is_flex>
                 <Text boldText color="#20D7FF">
-                  공고중
+                  {topInfo.operation === "민영" ? "공고중" : topInfo.panState}
                 </Text>
                 <Text boldText margin="0px 10px" color="#20D7FF">
                   |

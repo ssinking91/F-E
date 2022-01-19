@@ -25,6 +25,10 @@ export default function Text(props) {
     white_space,
     cursor,
     line_height,
+    block,
+    hidden,
+    ellipsis,
+    nowrap,
   } = props;
 
   const styles = {
@@ -38,6 +42,10 @@ export default function Text(props) {
     white_space,
     cursor,
     line_height,
+    block: block,
+    hidden: hidden,
+    ellipsis: ellipsis,
+    nowrap: nowrap,
   };
 
   // text type
@@ -114,6 +122,7 @@ const P = styled.p`
   font-size: ${(props) => props.size};
   font-weight: ${(props) => props.weight};
   line-height: ${(props) => props.line_height};
+  display: block;
 `;
 const H1 = styled.p`
   margin: ${(props) => props.margin};
@@ -149,6 +158,10 @@ const H4 = styled.p`
   font-weight: 700;
   line-height: 25px;
   cursor: ${(props) => (props.cursor ? `cursor: ${props.cursor}` : "")};
+  display: ${(props) => props.block};
+  overflow: ${(props) => props.hidden};
+  text-overflow: ${(props) => props.ellipsis};
+  white-space: ${(props) => props.nowrap};
 `;
 const Menu = styled.p`
   margin: ${(props) => props.margin};

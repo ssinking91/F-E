@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Section3Slide from "./Section3Slide";
 import { Text } from "../atoms/index";
 const Section03 = (props) => {
-
   return (
     <>
       <div
@@ -23,8 +22,7 @@ const Section03 = (props) => {
               <span>👀</span>
             </AllSpan>
             <Text h4 color="#A5AAB6">
-              사람들이 가장 눈여겨보는 청약순으로 조회/관심/매매 총 합으로
-              나뉘어진 청약 정보예요.
+              사람들이 가장 많이 찜한 청약순으로 나뉘어진 정보에요.
             </Text>
           </SectionItem>
           <SlideDiv>
