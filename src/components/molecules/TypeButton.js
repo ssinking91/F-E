@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getPublicListMapDB,
   getPrivateListMapDB,
-  clickOne,
+  clickButton,
 } from "../redux/modules/map";
 import { Grid, Text } from "../atoms/index";
 
@@ -25,7 +25,7 @@ export default function TypeButton(props) {
   //   dispatch(getPrivateListMapDB(privateList));
   // };
   const getClickOne = (item) => {
-    dispatch(clickOne(item));
+    dispatch(clickButton(item));
   };
   const [buttonBg, setButtonBg] = useState(0);
   const division = ["공공분양", "민간분양"];

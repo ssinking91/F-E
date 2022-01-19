@@ -16,17 +16,10 @@ export default function TypeFilter() {
   const sidoChange = (e) => {
     setSido(e);
   };
-  // // sido 변경 api
-  // const sidoChangeApi = () => {
-  //   console.log(sido);
-  //   if (sido === undefined) {
-  //     window.alert("관심 지역 설정해 주세요😎");
-  //     return;
-  //   }
-  //   const userName = localStorage.getItem("userName");
-  //   dispatch(mypagetActions.editUserInfosFB(userName, sido));
-  //   setIsActive(!isActive);
-  // };
+  // sido 변경 api
+  const sidoChangeApi = () => {
+    console.log(sido);
+  };
   return (
     <Div>
       <WrapLeft>

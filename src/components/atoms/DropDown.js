@@ -1,9 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getPublicListMapDB,
+  getPrivateListMapDB,
+  clickOne,
+} from "../redux/modules/map";
 import arrowUp from "../../images/arrow_up.svg";
 import arrowDown from "../../images/arrow_down.svg";
 
 const Dropdown = (props) => {
+  const dispatch = useDispatch();
   const [isActive, setIsActive] = React.useState(false);
   const [item, setItem] = React.useState(null);
 
@@ -16,9 +23,14 @@ const Dropdown = (props) => {
     props.sidoChange(e);
     setIsActive(!isActive);
   };
-
-  console.log(item);
-
+  const getClickOne = (item) => {
+    dispatch(clickOne(item));
+  };
+  const getDB = (item) => {
+    console.log(item);
+    dispatch(getPublicListMapDB(item));
+    dispatch(getPrivateListMapDB(item));
+  };
   return (
     <DropdownContainer props={props}>
       <DropdownBody onClick={onActiveToggle} isActive={isActive}>
@@ -40,7 +52,10 @@ const Dropdown = (props) => {
             id={item.value}
             key={item.value}
             onClick={() => {
+              console.log(item);
               onSelectItem(item.value);
+              getClickOne(item);
+              getDB(item);
             }}
           >
             <ItemName
