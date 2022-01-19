@@ -27,7 +27,7 @@ const Showcase = () => {
         <SlideItems I1 />
       </SwiperSlide>
       <SwiperSlide>
-        <SlideItems I1 />
+        <SlideItems I2 />
       </SwiperSlide>
     </Swiper>
   );
