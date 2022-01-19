@@ -18,8 +18,8 @@ const Main2Card = (props) => {
   const islike = JSON.parse(props.islike);
   console.log(props.Page, props.islike, typeof props.islike);
 
-  const MypageSido = props.MypageSido;
-  console.log(MypageSido);
+  // const MypageSido = props.MypageSido;
+  // console.log(MypageSido);
 
   const [save2, setSave2] = React.useState(islike);
 
@@ -53,11 +53,13 @@ const Main2Card = (props) => {
         setSave2(!save2),
         dispatch(mypagetActions.savedFB(aptNo, status))
       );
-    } else if (Page === "AllList") {
+    } 
+    else if (Page === "AllList") {
       return (
         console.log("AllList main2Card"),
         setSave2(!save2),
-        dispatch(mypagetActions.savedFB(aptNo, status, MypageSido))
+        dispatch(mypagetActions.savedFB(aptNo, status))
+        // dispatch(mypagetActions.savedFB(aptNo, status, MypageSido))
       );
     }
   };
