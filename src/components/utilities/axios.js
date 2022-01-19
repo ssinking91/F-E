@@ -43,8 +43,16 @@ export const apis = {
     instance.post(`/api/main/publicSido`, {
       userKey: localStorage.getItem("userKey"),
     }), // 공공 - 청약정보
-  // getPrivateHot: () => instance.get(`/api/main/privateHot`), // 공공 - 찜하기 순
-  getPublicHot: () => instance.post(`/api/main/publicHot`), // 공공 - 찜하기 순
+
+  //Main-Section3
+  getPublicHot: () =>
+    instance.post(`/api/main/publicHot`, {
+      userKey: localStorage.getItem("userKey"),
+    }), // 공공 - 찜하기 순
+  getPrivateHot: () =>
+    instance.post(`/api/main/privateHot`, {
+      userKey: localStorage.getItem("userKey"),
+    }), // 민영 - 찜하기 순
 
   // DetailPage
   getDetailInfo: (locate) =>
@@ -103,10 +111,10 @@ export const apis = {
       userKey: localStorage.getItem("userKey"),
     }), // 청약정보 저장하기
 
-    // 유저 정보 수정(이메일)
+  // 유저 정보 수정(이메일)
   editEmail: (userName, email) =>
-  instance.put(`/api/users/${userName}/email`, {
-    userKey: localStorage.getItem("userKey"),
-    email: email,
-  }), // 이메일 보내기
+    instance.put(`/api/users/${userName}/email`, {
+      userKey: localStorage.getItem("userKey"),
+      email: email,
+    }), // 이메일 보내기
 };

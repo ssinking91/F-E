@@ -21,12 +21,14 @@ export default function AllListTemp() {
   const publicList = useSelector((store) => store.allList.publicList);
   const publicAdress = useSelector((store) => store.allList.publicAdress);
   const privateList = useSelector((store) => store.allList.privateList);
+
   console.log(publicList);
   console.log(publicAdress);
   console.log(privateList);
+  
   const [ftbg, setFtbg] = useState(0);
   const [ftSido] = useState("경기");
-  const [MypageSido, setMypageSido] = useState("경기");
+  //const [MypageSido, setMypageSido] = useState("경기");
 
   const getDB = (item) => {
     console.log(item);
@@ -61,7 +63,7 @@ export default function AllListTemp() {
             _onClick={() => {
               setFtbg(index);  
               getDB(item);
-              setMypageSido(item);
+              //setMypageSido(item);
             }}
           >
             <Text
@@ -134,7 +136,7 @@ export default function AllListTemp() {
                     islike={item.islike}
                     Page={Page}
                     status={status}
-                    MypageSido={MypageSido}
+                    //MypageSido={MypageSido}
                     //공공 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/public/${item.panId}`);
@@ -171,7 +173,7 @@ export default function AllListTemp() {
                     islike={item.islike}
                     Page={Page}
                     status={status}
-                    MypageSido={MypageSido}
+                    //MypageSido={MypageSido}
                     //민간 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/private/${item.pblancNo}`);

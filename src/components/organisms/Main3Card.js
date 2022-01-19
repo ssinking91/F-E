@@ -32,7 +32,7 @@ const Main3Card = (props) => {
   return (
     <Container>
       <Text h4 color="#778899" margin="0 0 20px 0">
-        {props.number}
+        {props.number+1+" )"}
       </Text>
       <Imageitem>
         <Image src={props.image} />
