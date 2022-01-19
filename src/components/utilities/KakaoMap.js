@@ -5,7 +5,7 @@ import { getPrivateListDB, getPublicListDB } from "../redux/modules/allList";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { saveState } from "../redux/modules/map";
+import { saveState, changeCoords } from "../redux/modules/map";
 import "./style.css";
 import defaultLogoImage from "../../images/defaultLogoImage.svg";
 
@@ -47,13 +47,13 @@ export default function KakaoMap() {
     dispatch(saveState(saveLocation));
   }, [dispatch, saveLocation]);
 
+  // 카드를 클릭할때마다 clickMove 함수를 실행
   useEffect(() => {
     clickMove();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cardClicked]);
 
-  let moveLatLng;
-
+  // 카드를 클릭했을때의 주소를 얻어내 좌표를 얻어 전역 state로 관리해줍니다.
   const clickMove = () => {
     // 주소-좌표 변환 객체를 생성합니다
     var geocoder = new kakao.maps.services.Geocoder();
@@ -62,10 +62,21 @@ export default function KakaoMap() {
     geocoder.addressSearch(cardClicked, async function (result, status) {
       // 정상적으로 검색이 완료됐으면
       if (status === kakao.maps.services.Status.OK) {
-        moveLatLng = new kakao.maps.LatLng(result[0].y, result[0].x);
+        const moveLatLng = new kakao.maps.LatLng(result[0].y, result[0].x);
+        console.log(result[0].y, result[0].x);
+        dispatch(changeCoords(moveLatLng));
       }
     });
   };
+
+  const coords = useSelector((state) => state.map.coords);
+  console.log(coords);
+
+  useEffect(() => {
+    console.log("coords 변경, mapFunc() 실행");
+    mapFunc();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [coords]);
 
   useEffect(() => {
     console.log("mapFunc실행");
@@ -83,14 +94,16 @@ export default function KakaoMap() {
     var mapContainer = document.getElementById("map"), // 지도를 표시할 div
       mapOption = {
         center: new kakao.maps.LatLng(37.56682, 126.97865), // 지도의 중심좌표
-        level: 9, // 지도의 확대 레벨
+        level: 8, // 지도의 확대 레벨
       };
 
     // 지도를 생성합니다
     var map = new kakao.maps.Map(mapContainer, mapOption);
 
     // map.panTo(moveLatLng);
-    // console.log(`${moveLatLng}로 이동`);
+    if (coords) {
+      map.panTo(coords);
+    }
 
     // 장소 검색 객체를 생성합니다
     var ps = new kakao.maps.services.Places(map);
@@ -399,10 +412,9 @@ export default function KakaoMap() {
         geocoder.addressSearch(location[i], async function (result, status) {
           // 정상적으로 검색이 완료됐으면
           if (status === kakao.maps.services.Status.OK) {
-            // var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
             locates.push([i + 1, result[0].y, result[0].x, location[i]]);
 
-            var markerImageUrl =
+            const markerImageUrl =
                 "https://www.habitat.org/sites/default/files/styles/780w/public/2018-05/icon-house.png?itok=beg84oiG",
               markerImageSize = new kakao.maps.Size(60, 45), // 마커 이미지의 크기
               markerImageOptions = {
@@ -410,18 +422,22 @@ export default function KakaoMap() {
               };
 
             // 마커 이미지를 생성한다
-            var markerImage = new kakao.maps.MarkerImage(
+            const markerImage = new kakao.maps.MarkerImage(
               markerImageUrl,
               markerImageSize,
               markerImageOptions
             );
-
+            /* for문의 마지막 작업이 되었을때 */
             if (i === location.length - 1) {
-              // awiat promise.all을 사용하지 않으면 응답시간이 오래 걸려 결과값으로 넘겨받지 못한
-              // 데이터가 있으면 undefined가 뜹니다.
-              // 이를 방지하고자 await promise.all을 사용했습니다.
+              /* awiat promise.all을 사용하지 않으면 응답시간이 오래 걸려 결과값으로 넘겨받지 못한
+               데이터가 있으면 undefined가 뜹니다.
+               이를 방지하고자 await promise.all을 사용했습니다. */
               const results = await Promise.all(locates);
               results.sort((a, b) => a[0] - b[0]);
+              /* 요청을 보냈을때 응답이 먼저 오는 순으로 locates에 담기기 때문에 순서가 뒤죽박죽 섞여
+              요청을 보낸것과 순서를 맞춰주기 위해 sort()를 사용하였습니다.
+              요청을 보낼때 n번째 작업이라는 것을 명시해주고, 이것을 기준으로 정렬을 하였습니다.
+              */
 
               for (let j = 0; j < results.length; j++) {
                 const marker = new kakao.maps.Marker({
@@ -563,9 +579,6 @@ export default function KakaoMap() {
                 });
               }
             }
-
-            // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-            // map.setCenter(coords);
           }
         });
       }
@@ -612,7 +625,7 @@ export default function KakaoMap() {
 
 const Div = styled.div`
   width: 100%;
-  height: 83vh;
+  height: 84vh;
   position: relative;
   top: 148px;
 `;

@@ -16,10 +16,8 @@ const Main2Card = (props) => {
   const dispatch = useDispatch();
 
   const islike = JSON.parse(props.islike);
-  console.log(props.Page, props.islike, typeof props.islike);
 
   const MypageSido = props.MypageSido;
-  console.log(MypageSido);
 
   const [save2, setSave2] = React.useState(islike);
 

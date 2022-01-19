@@ -32,6 +32,7 @@ export const getPrivateListDB = (ftSido) => {
       .then((res) => {
         console.log("민영 시작");
         const privateList = res.data;
+        console.log(privateList);
 
         const privateAddress = [];
         for (let i = 0; i < privateList.result.length; i++) {

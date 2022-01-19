@@ -5,9 +5,10 @@ import { apis } from "../../utilities/axios";
 const state = {};
 
 // action
-const SAVE_STATE = `/SAVE_STATE`;
+const SAVE_STATE = `/SAVE_STATE/`;
 const CLICK_ONE = `/CLICK_ONE/`;
-const AREA_STATE = `/AREA_STATE`;
+const AREA_STATE = `/AREA_STATE/`;
+const CHANGE_COORDS = `/CHANGE_COORDS/`;
 
 // action creator
 export const saveState = createAction(SAVE_STATE, (list) => ({
@@ -15,6 +16,9 @@ export const saveState = createAction(SAVE_STATE, (list) => ({
 }));
 export const clickOne = createAction(CLICK_ONE, (clicked) => ({ clicked }));
 const areaState = createAction(AREA_STATE, (sido) => ({ sido }));
+export const changeCoords = createAction(CHANGE_COORDS, (coords) => ({
+  coords,
+}));
 
 // middelWare
 export const getPublicListMapDB = (sido) => {
@@ -45,6 +49,12 @@ export default handleActions(
       return {
         ...state,
         sido: action.payload.sido,
+      };
+    },
+    [CHANGE_COORDS]: (state, action) => {
+      return {
+        ...state,
+        coords: action.payload.coords,
       };
     },
   },
