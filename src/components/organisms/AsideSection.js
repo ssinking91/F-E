@@ -16,6 +16,7 @@ import {
 export default function AsideSection() {
   const dispatch = useDispatch();
   const eventList = useSelector((state) => state.map.list);
+  const clickButton = useSelector((state) => state.map.divisionClick);
   const clicked = useSelector((state) => state.map.clicked);
   console.log(clicked);
 
@@ -27,6 +28,7 @@ export default function AsideSection() {
   const publicList = useSelector((store) => store.map.public_sido);
   const privateList = useSelector((store) => store.map.private_sido);
   console.log(publicList);
+  console.log(privateList);
 
   const click = (address) => {
     console.log(address);
@@ -37,7 +39,7 @@ export default function AsideSection() {
     <>
       <Wrap>
         <ContentArea>
-          {clicked === "민간분양"
+          {clickButton === "민간분양"
             ? privateList &&
               privateList.map((item, index) => {
                 return (
@@ -104,6 +106,7 @@ const ContentArea = styled.div`
   top: 160px;
   height: 83vh;
   overflow-y: scroll;
+  overflow-x: hidden;
   & ::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
   }

@@ -7,6 +7,7 @@ const state = {};
 // action
 const SAVE_STATE = `/SAVE_STATE/`;
 const CLICK_ONE = `/CLICK_ONE/`;
+const CLICK_BUTTON = `/CLICK_BUTTON/`;
 const AREA_STATE = `/AREA_STATE/`;
 const CHANGE_COORDS = `/CHANGE_COORDS/`;
 const PUBLIC_AREA_STATE = `/PUBLIC_AREA_STATE`;
@@ -17,6 +18,9 @@ export const saveState = createAction(SAVE_STATE, (list) => ({
   list,
 }));
 export const clickOne = createAction(CLICK_ONE, (clicked) => ({ clicked }));
+export const clickButton = createAction(CLICK_BUTTON, (divisionClick) => ({
+  divisionClick,
+}));
 const areaState = createAction(AREA_STATE, (sido) => ({ sido }));
 export const changeCoords = createAction(CHANGE_COORDS, (coords) => ({
   coords,
@@ -59,6 +63,12 @@ export default handleActions(
       return {
         ...state,
         clicked: action.payload.clicked,
+      };
+    },
+    [CLICK_BUTTON]: (state, action) => {
+      return {
+        ...state,
+        divisionClick: action.payload.divisionClick,
       };
     },
     [PUBLIC_AREA_STATE]: (state, action) => {
