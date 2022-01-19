@@ -23,24 +23,29 @@ export default function SlideItems(props) {
   console.log(publicHotListSlice);
 
   // 민영 Hot
-  const privateHotList1 = useSelector(
-    (state) => state.main.privateHotList.privateHotList[0]
-  );
+  const privateHotList1 = useSelector((state) => state.main.privateHotList);
+  const privateHOTList2 = privateHotList1.privateHotList[0];
   const statusArr = useSelector((state) => state.main.privateHotList.statusArr);
-  console.log(privateHotList1);
+  console.log(privateHOTList2);
+
+  let privateHotListSlice;
+
+  if (privateHOTList2) {
+    privateHotListSlice = privateHOTList2.slice(0, 3);
+  }// 동기 끝날때 까지 -> 비동기는 안됨! 값이 할당이 되면 slice 함수를 실행해라
+
+  console.log(privateHotListSlice);
   console.log(statusArr);
-//   const privateHotListSlice = privateHotList1.slice(0, 3);
-//   console.log(privateHotListSlice);
 
   const Page = "section3";
 
   if (I1) {
     return (
       <CardWraps>
-        {publicHotListSlice.map((item, index) => {
+        {publicHotListSlice && publicHotListSlice.map((item, index) => {
           const publicSales = "publicSales";
           const status = "public";
-            
+          
           return (
             <Main3Card
               key={index}
@@ -67,37 +72,38 @@ export default function SlideItems(props) {
       </CardWraps>
     );
   }
-    if (I2) {
-      return (
-        <CardWraps>
-          {publicHotList.map((item, index) => {
-            const status = "private";
+  if (I2) {
+    return (
+      <CardWraps>
+        {privateHotListSlice && privateHotListSlice.map((item, index) => {
+          //값이 할당 되기전에 map이 실행이되서 오류남
+          const status = "private";
 
-            return (
-              <Main3Card
-                key={index}
-                number={index}
-                image={item.ImgUrl}
-                name={item.houseName}
-                startDate={item.receptStartDate}
-                endDate={item.receptEndDate}
-                size={item.size}
-                price={item.supplyAmount}
-                aptNo={item.pblancNo}
-                //CardPanState={private_statusInfo[index].status}
-                islike={item.islike}
-                Page={Page}
-                status={status}
-                //민간 청약정보 ID 값
-                _onClick={() => {
-                  history.push(`/private/${item.pblancNo}`);
-                }}
-              />
-            );
-          })}
-        </CardWraps>
-      );
-    }
+          return (
+            <Main3Card
+              key={index}
+              number={index}
+              image={item.ImgUrl}
+              name={item.houseName}
+              startDate={item.receptStartDate}
+              endDate={item.receptEndDate}
+              size={item.size}
+              price={item.supplyAmount}
+              aptNo={item.pblancNo}
+              //CardPanState={private_statusInfo[index].status}
+              islike={item.islike}
+              Page={Page}
+              status={status}
+              //민간 청약정보 ID 값
+              _onClick={() => {
+                history.push(`/private/${item.pblancNo}`);
+              }}
+            />
+          );
+        })}
+      </CardWraps>
+    );
+  }
 }
 
 const CardWraps = styled.div`

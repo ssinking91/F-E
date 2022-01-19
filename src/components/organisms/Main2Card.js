@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { savedActions } from "../redux/modules/cardSave";
 import { mypagetActions } from "../redux/modules/mypage";
 import { actionCreators as mainActions } from "../redux/modules/main";
 import { useDispatch, useSelector } from "react-redux";
