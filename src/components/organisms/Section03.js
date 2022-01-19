@@ -1,24 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { actionCreators as mainAction } from "../redux/modules/main";
-import { history } from "../redux/configStore";
-import Main3Card from "./Main3Card";
+import Section3Slide from "./Section3Slide";
 import { Text } from "../atoms/index";
 const Section03 = (props) => {
-  const dispatch = useDispatch();
-  // console.log("page3");
-
-  useEffect(() => {
-    // console.log("@@@@@page3 ue3");
-    dispatch(mainAction.getPublicHotDB());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // 공공 Hot
-  const public_list_hot = useSelector((state) => state.main.public_list_hot);
-  const public_regionInfo_hot = public_list_hot.slice(1, 4);
-
   return (
     <>
       <div
@@ -41,29 +25,9 @@ const Section03 = (props) => {
               사람들이 가장 많이 찜한 청약순으로 나뉘어진 정보에요.
             </Text>
           </SectionItem>
-          <CardWrap>
-            {public_regionInfo_hot.map((item, index) => {
-              // console.log(panName);
-              return (
-                <Main3Card
-                  key={index}
-                  number={`0${index + 1})`}
-                  image={item.ImgUrl}
-                  name={item.panName}
-                  startDate={item.startDate}
-                  endDate={item.closeDate}
-                  size={`${item.size} m²`}
-                  price={item.aisTypeName}
-                  aptNo={item.panId}
-                  islike={item.islike}
-                  //공공 청약정보 ID 값
-                  _onClick={() => {
-                    history.push(`/public/${item.panId}`);
-                  }}
-                />
-              );
-            })}
-          </CardWrap>
+          <SlideDiv>
+            <Section3Slide />
+          </SlideDiv>
         </SectionWrap>
       </div>
     </>
@@ -101,10 +65,7 @@ const SpanBold = styled.span`
   color: #333333; ;
 `;
 
-const CardWrap = styled.div`
-  width: 1200px;
-  height: 593px;
-  display: flex;
-  justify-content: space-between;
-  margin: 0px auto;
+const SlideDiv = styled.div`
+  width: 100%;
+  height: 653%;
 `;

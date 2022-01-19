@@ -2,19 +2,24 @@ import React from "react";
 import styled from "styled-components";
 import { savedActions } from "../redux/modules/cardSave";
 import { mypagetActions } from "../redux/modules/mypage";
-import { useDispatch } from "react-redux";
-// import { useParams } from "react-router-dom";
+import { actionCreators as mainActions } from "../redux/modules/main";
+import { useDispatch, useSelector } from "react-redux";
+
 import Label from "../molecules/Label";
-import { Text, Image } from "../atoms/index";
+import { Text } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
-// import defaultLogoImage from "../../images/defaultLogoImage.svg";
+import defaultLogoImage from "../../images/defaultLogoImage.svg";
 
 const Main2Card = (props) => {
   const { _onClick } = props;
   const dispatch = useDispatch();
 
   const islike = JSON.parse(props.islike);
+  // console.log(props.Page, props.islike, typeof props.islike);
+
+  // const MypageSido = props.MypageSido;
+  // console.log(MypageSido);
 
   const [save2, setSave2] = React.useState(islike);
 
@@ -27,31 +32,44 @@ const Main2Card = (props) => {
   // 카드 저장
   const saveCard = () => {
     const userKey = localStorage.getItem("userKey");
-    const Page = props.Page; // 마이페이지인지 다른페이지인지
-    const status = props.status; //공공인지 민영인지 구분
+    const Page = props.Page; // 페이지 구분
+    const status = props.status; //공공 민영 구분 구분
     const aptNo = props.aptNo;
-    // console.log(Page, status, aptNo);
+    console.log(Page, status, aptNo, save2);
 
-    // console.log(aptNo);
     if (userKey === null) {
       window.alert("로그인 후 사용이 가능합니다😎");
       return;
     }
 
-    if (status) {
+    if (Page === "myPage") {
       return (
-        dispatch(mypagetActions.savedFB(aptNo, Page, status)), setSave2(!save2)
+        console.log("mypage main2Card"),
+        dispatch(mypagetActions.savedFB(aptNo, status))
       );
-    } else {
-      // eslint-disable-next-line no-sequences
-      return dispatch(savedActions.savedFB(aptNo, Page)), setSave2(!save2);
+    } else if (Page === "section2") {
+      return (
+        console.log("section2 main2Card"),
+        setSave2(!save2),
+        dispatch(mypagetActions.savedFB(aptNo, status))
+      );
+    } else if (Page === "AllList") {
+      return (
+        console.log("AllList main2Card"),
+        setSave2(!save2),
+        dispatch(mypagetActions.savedFB(aptNo, status))
+        // dispatch(mypagetActions.savedFB(aptNo, status, MypageSido))
+      );
     }
   };
   // 접수 날짜
   const startDate = props.startDate.replace(/-/gi, ".");
   const endDate = props.endDate.replace(/-/gi, ".");
   // 최소, 최대 분양면적
-  console.log(props.size);
+  // console.log(props.size);
+  if (props.size === null) {
+    return "";
+  }
 
   let minSize = Math.ceil(props.size.split("~")[0]);
   let maxSize = Math.ceil(props.size.split("~")[1]);
@@ -202,16 +220,16 @@ const Imageitem = styled.div`
   margin-right: 40px;
 `;
 
-// const Image = styled.div`
-//   width: 160px;
-//   height: 160px;
-//   margin-top: 4px;
-//   border-radius: 20px;
-//   background-image: url("${(props) => props.src || apt_tobe}");
-//   background-size: cover;
-//   background-repeat: no-repeat;
-//   background-position: center;
-// `;
+const Image = styled.div`
+  width: 160px;
+  height: 160px;
+  margin-top: 4px;
+  border-radius: 20px;
+  background-image: url("${(props) => props.src || defaultLogoImage}");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
 
 const ImageDiv = styled.div`
   position: absolute;

@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { saveState } from "../redux/modules/map";
 import "./style.css";
+import defaultLogoImage from "../../images/defaultLogoImage.svg";
 
 export default function KakaoMap() {
   const dispatch = useDispatch();
@@ -470,7 +471,11 @@ export default function KakaoMap() {
                                                     background-image: url(${
                                                       publicInfo.length > 0
                                                         ? publicInfo[0].ImgUrl
+                                                          ? publicInfo[0].ImgUrl
+                                                          : defaultLogoImage
                                                         : privateInfo[0].ImgUrl
+                                                        ? privateInfo[0].ImgUrl
+                                                        : defaultLogoImage
                                                     });
                                                     background-size: cover;
                                                     background-repeat: no-repeat;

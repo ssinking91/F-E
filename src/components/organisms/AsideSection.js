@@ -16,7 +16,8 @@ import {
 export default function AsideSection() {
   const dispatch = useDispatch();
   const eventList = useSelector((state) => state.map.list);
-  console.log(eventList);
+  const clicked = useSelector((state) => state.map.clicked);
+  console.log(clicked);
 
   React.useEffect(() => {
     dispatch(getPublicListMapDB(eventList));
@@ -25,7 +26,7 @@ export default function AsideSection() {
 
   const publicList = useSelector((store) => store.map.public_sido);
   const privateList = useSelector((store) => store.map.private_sido);
-  console.log(publicList, privateList);
+  console.log(publicList);
 
   const click = (address) => {
     console.log(address);
@@ -36,78 +37,54 @@ export default function AsideSection() {
     <>
       <Wrap>
         <ContentArea>
-          {/* {publicList &&
-            publicList.map((item, index) => {
-              const publicSales = "publicSales";
-              let panName = item.panName.slice(0, 10);
-              return (
-                <Grid
-                  margin="20px 0"
-                  key={index}
-                  _onClick={() => click(item.address)}
-                >
-                  <AsideCard
+          {clicked === "민간분양"
+            ? privateList &&
+              privateList.map((item, index) => {
+                return (
+                  <Grid
+                    margin="10px 0 0 20px"
                     key={index}
-                    image={item.ImgUrl}
-                    name={panName}
-                    // startDate={item.startDate}
-                    // endDate={item.closeDate}
-                    // size={`${item.size} m²`}
-                    // price={item.aisTypeName}
-                    // aptNo={item.panId}
-                    // islike={item.islike}
-                    // CardPanState={item.panState}
-                    publicSales={publicSales}
-                  />
-                </Grid>
-              );
-            })} */}
-          {publicList &&
-            publicList.map((item, index) => {
-              const publicSales = "publicSales";
-              return (
-                <Grid
-                  margin="10px 0 0 20px"
-                  key={index}
-                  _onClick={() => click(item.address)}
-                >
-                  <Main2Card
+                    _onClick={() => click(item.address)}
+                  >
+                    <Main2Card
+                      key={index}
+                      image={item.ImgUrl}
+                      name={item.houseName}
+                      startDate={item.receptStartDate}
+                      endDate={item.receptEndDate}
+                      size={item.size}
+                      price={item.supplyAmount}
+                      aptNo={item.pblancNo}
+                      islike={item.islike}
+                    />
+                  </Grid>
+                );
+              })
+            : publicList &&
+              publicList.map((item, index) => {
+                const publicSales = "publicSales";
+                return (
+                  <Grid
+                    margin="10px 0 0 20px"
                     key={index}
-                    image={item.ImgUrl}
-                    name={item.panName}
-                    startDate={item.startDate}
-                    endDate={item.closeDate}
-                    size={item.size}
-                    price={item.aisTypeName}
-                    aptNo={item.panId}
-                    islike={item.islike}
-                    CardPanState={item.panState}
-                    publicSales={publicSales}
-                  />
-                </Grid>
-              );
-            })}
-          {/* {privateList.map((item, index) => {
-            return (
-              <Grid
-                margin="10px 0 0 20px"
-                key={index}
-                _onClick={() => click(item.address)}
-              >
-                <Main2Card
-                  key={index}
-                  image={item.ImgUrl}
-                  name={item.houseName}
-                  startDate={item.receptStartDate}
-                  endDate={item.receptEndDate}
-                  size={item.size}
-                  price={item.supplyAmount}
-                  aptNo={item.pblancNo}
-                  islike={item.islike}
-                />
-              </Grid>
-            );
-          })} */}
+                    _onClick={() => click(item.address)}
+                  >
+                    <Main2Card
+                      key={index}
+                      image={item.ImgUrl}
+                      name={item.panName}
+                      startDate={item.startDate}
+                      endDate={item.closeDate}
+                      size={item.size}
+                      price={item.aisTypeName}
+                      aptNo={item.panId}
+                      islike={item.islike}
+                      CardPanState={item.panState}
+                      publicSales={publicSales}
+                    />
+                  </Grid>
+                );
+              })}
         </ContentArea>
       </Wrap>
     </>
