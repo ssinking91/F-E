@@ -65,12 +65,30 @@ export default function KakaoMap() {
         const moveLatLng = new kakao.maps.LatLng(result[0].y, result[0].x);
         console.log(result[0].y, result[0].x);
         dispatch(changeCoords(moveLatLng));
+      } else {
+        console.log("좌표변환 실패, 주소오류");
+        if (cardClicked) {
+          console.log(cardClicked.split("(")[0]);
+          const cardClickedSplit = cardClicked.split("(")[0];
+          geocoder.addressSearch(
+            cardClickedSplit,
+            async function (result, status) {
+              if (status === kakao.maps.services.Status.OK) {
+                const moveLatLng = new kakao.maps.LatLng(
+                  result[0].y,
+                  result[0].x
+                );
+                console.log(result[0].y, result[0].x);
+                dispatch(changeCoords(moveLatLng));
+              }
+            }
+          );
+        }
       }
     });
   };
 
   const coords = useSelector((state) => state.map.coords);
-  console.log(coords);
 
   useEffect(() => {
     console.log("coords 변경, mapFunc() 실행");
@@ -100,11 +118,20 @@ export default function KakaoMap() {
     // 지도를 생성합니다
     var map = new kakao.maps.Map(mapContainer, mapOption);
 
-    // map.panTo(moveLatLng);
     if (coords) {
       map.panTo(coords);
+      const position = map.getCenter();
+      console.log(coords);
+      console.log(position);
+      const Lng = position.Ma;
+      const Lat = position.La;
+      map.setLevel(2, {
+        anchor: new kakao.maps.LatLng(Lng, Lat),
+        animate: {
+          duration: 500,
+        },
+      });
     }
-
     // 장소 검색 객체를 생성합니다
     var ps = new kakao.maps.services.Places(map);
 
@@ -579,6 +606,9 @@ export default function KakaoMap() {
                 });
               }
             }
+          } else {
+            console.log(location[i]);
+            location[i] = location[i].split("일원")[0];
           }
         });
       }
