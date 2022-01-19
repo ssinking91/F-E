@@ -46,11 +46,11 @@ const Section01 = () => {
                 <span style={{ color: "#fff", borderBottom: "3px solid #fff" }}>
                   {totalNum}개
                 </span>{" "}
-                모여있어요
+                모여있어요.
               </Text>
             ) : (
               <Text h2 color="#fff" margin="15px 0 60px 0">
-                당신을 위한 청약 정보가 {totalNum}개 모여있어요
+                당신을 위한 청약 정보가 {totalNum}개 모여있어요.
               </Text>
             )}
             <Button background_color="#20d7ff" padding="13px 21px">
@@ -60,7 +60,7 @@ const Section01 = () => {
             </Button>
             <Grid width="236px" margin="280px auto 30px auto">
               <Text h4 color="#20d7ff">
-                나만의 맞춤 청약을 확인하려면 아래로 스크롤 해주세요
+                나만의 맞춤 청약을 확인하려면 아래로 스크롤 해주세요.
               </Text>
             </Grid>
             <Scroll width="20px" height="10px" />

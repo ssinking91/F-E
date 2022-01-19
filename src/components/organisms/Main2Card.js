@@ -51,6 +51,8 @@ const Main2Card = (props) => {
   const startDate = props.startDate.replace(/-/gi, ".");
   const endDate = props.endDate.replace(/-/gi, ".");
   // 최소, 최대 분양면적
+  console.log(props.size);
+
   let minSize = Math.ceil(props.size.split("~")[0]);
   let maxSize = Math.ceil(props.size.split("~")[1]);
   // 분양면적 => 평, 변환
@@ -122,7 +124,10 @@ const Main2Card = (props) => {
   return (
     <Container>
       <Imageitem>
-        <Image shape="card" src={props.image} />
+        <Image
+          shape="card"
+          src={props.image === null ? "img/defaultCardImage.png" : props.image}
+        />
         <ImageDiv
           onClick={() => {
             saveCard();
@@ -136,10 +141,16 @@ const Main2Card = (props) => {
           <LabelDiv>
             <Label LabelPanState={props.CardPanState}></Label>
           </LabelDiv>
-          <Text h4 margin="0 0 0 15px" width="316px">
-            {props.name.length > 17
-              ? `${props.name.slice(0, 17)}...`
-              : props.name}
+          <Text
+            h4
+            margin="0 0 0 15px"
+            width="250px"
+            block="block"
+            hidden="hidden"
+            ellipsis="ellipsis"
+            nowrap="nowrap"
+          >
+            {props.name.length > 17 ? `${props.name}` : props.name}
           </Text>
         </Info1>
 
@@ -168,6 +179,9 @@ const Main2Card = (props) => {
                   }`}
             </Text>
           </Info2Item2>
+          <Info2Item3>
+            <RightArrow src="img/rightArrow.png" />
+          </Info2Item3>
         </Info2>
       </Item>
     </Container>
@@ -175,7 +189,7 @@ const Main2Card = (props) => {
 };
 
 const Container = styled.div`
-  width: 595px;
+  width: 570px;
   height: 164px;
   display: flex;
   flex-wrap: wrap;
@@ -214,7 +228,7 @@ const LabelDiv = styled.div`
 `;
 
 const Item = styled.div`
-  width: 395px;
+  width: 320px;
   height: 120px;
   display: flex;
   flex-direction: column;
@@ -256,5 +270,17 @@ const Info2Item2 = styled.div`
   display: flex;
   flex-direction: column;
 `;
+const Info2Item3 = styled.div`
+  width: 316px;
+  height: 76px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+`;
 
+const RightArrow = styled.img`
+  width: 8px;
+  height: 20px;
+  margin: auto;
+`;
 export default Main2Card;

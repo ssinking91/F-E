@@ -1,12 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Grid, Button, Text } from "../atoms/index";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { getPublicListMapDB, getPrivateListMapDB } from "../redux/modules/map";
+import { Grid, Text } from "../atoms/index";
 
 export default function TypeButton() {
-  // const [divisionButton]
+  const dispatch = useDispatch();
+  const history = useHistory();
+  useEffect(() => {
+    dispatch(getPublicListMapDB());
+    dispatch(getPrivateListMapDB());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const [buttonBg, setButtonBg] = useState(0);
+  const division = ["공공분양", "민간분양"];
   return (
     <Div>
       <Grid
+        is_flex
+        width="308px"
+        height="30px"
+        background_color="#2094FF"
+        radius="36px"
+      >
+        {division.map((item, index) => {
+          return (
+            <Grid
+              is_flex
+              key={index}
+              width="100%"
+              height="30px"
+              margin="auto"
+              radius="36px"
+              background_color={index === buttonBg ? `#20d7ff` : ""}
+              _onClick={() => {
+                setButtonBg(index);
+              }}
+            >
+              <Grid is_flex width="100%" height="30px" cursor="pointer">
+                <Text h4 color="#fff" margin="auto" padding="3px">
+                  {item}
+                </Text>
+              </Grid>
+            </Grid>
+          );
+        })}
+      </Grid>
+      {/* <Grid
         is_flex
         width="308px"
         height="30px"
@@ -33,7 +74,7 @@ export default function TypeButton() {
             민간분양
           </Text>
         </Button>
-      </Grid>
+      </Grid> */}
     </Div>
   );
 }

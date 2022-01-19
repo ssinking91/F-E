@@ -77,11 +77,11 @@ const Section02 = () => {
             {localStorage.getItem("userName") ? (
               <Text h4 color="#A5AAB6">
                 {localStorage.getItem("userName")}님이 선택한 {existuser.sido}{" "}
-                지역의 실시간 청약 정보를 알 수 있어요
+                지역의 실시간 청약 정보를 알 수 있어요.
               </Text>
             ) : (
               <Text h4 color="#A5AAB6">
-                로그인 하시면 관심 지역의 실시간 청약 정보를 알 수 있어요
+                로그인 하시면 관심 지역의 실시간 청약 정보를 알 수 있어요.
               </Text>
             )}
           </SectionItem>

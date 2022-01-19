@@ -7,7 +7,11 @@ import AsideCard from "../organisms/AsideCard";
 import Main2Card from "./Main2Card";
 import { Grid } from "../atoms/index";
 
-import { getPublicListMapDB, clickOne } from "../redux/modules/map";
+import {
+  getPublicListMapDB,
+  getPrivateListMapDB,
+  clickOne,
+} from "../redux/modules/map";
 
 export default function AsideSection() {
   const dispatch = useDispatch();
@@ -16,10 +20,12 @@ export default function AsideSection() {
 
   React.useEffect(() => {
     dispatch(getPublicListMapDB(eventList));
+    dispatch(getPrivateListMapDB(eventList));
   }, [dispatch, eventList]);
 
-  const publicList = useSelector((store) => store.map.sido);
-  console.log(publicList);
+  const publicList = useSelector((store) => store.map.public_sido);
+  const privateList = useSelector((store) => store.map.private_sido);
+  console.log(publicList, privateList);
 
   const click = (address) => {
     console.log(address);
@@ -30,26 +36,48 @@ export default function AsideSection() {
     <>
       <Wrap>
         <ContentArea>
-          {/* <AsideCard></AsideCard> */}
+          {/* {publicList &&
+            publicList.map((item, index) => {
+              const publicSales = "publicSales";
+              let panName = item.panName.slice(0, 10);
+              return (
+                <Grid
+                  margin="20px 0"
+                  key={index}
+                  _onClick={() => click(item.address)}
+                >
+                  <AsideCard
+                    key={index}
+                    image={item.ImgUrl}
+                    name={panName}
+                    // startDate={item.startDate}
+                    // endDate={item.closeDate}
+                    // size={`${item.size} m²`}
+                    // price={item.aisTypeName}
+                    // aptNo={item.panId}
+                    // islike={item.islike}
+                    // CardPanState={item.panState}
+                    publicSales={publicSales}
+                  />
+                </Grid>
+              );
+            })} */}
           {publicList &&
             publicList.map((item, index) => {
-              const panName = `[${item.aisTypeName}] ${
-                item.address.split(" ")[1]
-              } ${item.address.split(" ")[2]}`;
               const publicSales = "publicSales";
               return (
                 <Grid
-                  margin="20px 0 20px 30px"
+                  margin="10px 0 0 20px"
                   key={index}
                   _onClick={() => click(item.address)}
                 >
                   <Main2Card
                     key={index}
                     image={item.ImgUrl}
-                    name={panName}
+                    name={item.panName}
                     startDate={item.startDate}
                     endDate={item.closeDate}
-                    size={`${item.size} m²`}
+                    size={item.size}
                     price={item.aisTypeName}
                     aptNo={item.panId}
                     islike={item.islike}
@@ -59,6 +87,27 @@ export default function AsideSection() {
                 </Grid>
               );
             })}
+          {/* {privateList.map((item, index) => {
+            return (
+              <Grid
+                margin="10px 0 0 20px"
+                key={index}
+                _onClick={() => click(item.address)}
+              >
+                <Main2Card
+                  key={index}
+                  image={item.ImgUrl}
+                  name={item.houseName}
+                  startDate={item.receptStartDate}
+                  endDate={item.receptEndDate}
+                  size={item.size}
+                  price={item.supplyAmount}
+                  aptNo={item.pblancNo}
+                  islike={item.islike}
+                />
+              </Grid>
+            );
+          })} */}
         </ContentArea>
       </Wrap>
     </>
@@ -66,7 +115,7 @@ export default function AsideSection() {
 }
 
 const Wrap = styled.div`
-  width: 355px;
+  width: 595px;
   height: 100vh;
   position: relative;
   right: 0;

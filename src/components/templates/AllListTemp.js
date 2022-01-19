@@ -45,7 +45,13 @@ export default function AllListTemp() {
           전체 청약정보 보기
         </Text>
       </Grid>
-      <Grid is_flex width="800px" margin="auto" background_color="#F9F9F9">
+      <Grid
+        is_flex
+        width="800px"
+        margin="auto"
+        radius="36px"
+        background_color="#F9F9F9"
+      >
         {dou.map((item, index) => (
           <Grid
             is_flex
@@ -53,22 +59,24 @@ export default function AllListTemp() {
             width="100%"
             height="30px"
             margin="auto"
+            radius="36px"
             background_color={index === ftbg ? `#20D7FF` : ``}
-            cursor="pointer"
             _onClick={() => {
               setFtbg(index);
               //   setFtSido(item);
               getDB(item);
             }}
           >
-            <Text
-              h4
-              color={index === ftbg ? `#F9F9F9` : `#A5AAB6`}
-              margin="auto"
-              padding="3px"
-            >
-              {item}
-            </Text>
+            <Grid is_flex width="100%" height="30px" cursor="pointer">
+              <Text
+                h4
+                color={index === ftbg ? `#F9F9F9` : `#A5AAB6`}
+                margin="auto"
+                padding="3px"
+              >
+                {item}
+              </Text>
+            </Grid>
           </Grid>
         ))}
       </Grid>
@@ -77,6 +85,7 @@ export default function AllListTemp() {
         width="800px"
         margin="20px auto 100px auto"
         background_color="#F9F9F9"
+        radius="36px"
       >
         {si.map((item, index) => (
           <Grid
@@ -85,22 +94,24 @@ export default function AllListTemp() {
             width="100%"
             height="30px"
             margin="auto"
+            radius="36px"
             background_color={index + 6 === ftbg ? `#20D7FF` : ``}
-            cursor="pointer"
             _onClick={() => {
               setFtbg(index + 6);
               //   setFtSido(item);
               getDB(item);
             }}
           >
-            <Text
-              h4
-              color={index + 6 === ftbg ? `#F9F9F9` : `#A5AAB6`}
-              margin="auto"
-              padding="3px"
-            >
-              {item}
-            </Text>
+            <Grid is_flex width="100%" height="30px" cursor="pointer">
+              <Text
+                h4
+                color={index + 6 === ftbg ? `#F9F9F9` : `#A5AAB6`}
+                margin="auto"
+                padding="3px"
+              >
+                {item}
+              </Text>
+            </Grid>
           </Grid>
         ))}
       </Grid>

@@ -2,8 +2,8 @@ import axios from "axios";
 
 const instance = axios.create({
   // 기본적으로 우리가 바라볼 서버의 주소
-  baseURL: "https://dotzip.shop",
-  // baseURL: "http://13.125.234.204",
+  // baseURL: "https://dotzip.shop",
+  baseURL: "http://13.125.234.204",
 
   // 헤더에 넣을 정보
   headers: {
@@ -103,10 +103,10 @@ export const apis = {
       userKey: localStorage.getItem("userKey"),
     }), // 청약정보 저장하기
 
-    // 유저 정보 수정(이메일)
+  // 유저 정보 수정(이메일)
   editEmail: (userName, email) =>
-  instance.put(`/api/users/${userName}/email`, {
-    userKey: localStorage.getItem("userKey"),
-    email: email,
-  }), // 이메일 보내기
+    instance.put(`/api/users/${userName}/email`, {
+      userKey: localStorage.getItem("userKey"),
+      email: email,
+    }), // 이메일 보내기
 };

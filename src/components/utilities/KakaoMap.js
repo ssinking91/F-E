@@ -18,8 +18,8 @@ export default function KakaoMap() {
   }, []);
 
   const publicList = useSelector((state) => state.allList.publicList);
-  const privateList = useSelector((state) => state.allList.privateLists);
-  console.log(privateList);
+  const privateList = useSelector((state) => state.allList.privateList);
+  console.log(publicList);
 
   const locate = useSelector((state) => state.allList);
   const publicAdress = new Set(locate.publicAdress);
@@ -436,7 +436,7 @@ export default function KakaoMap() {
                 if (publicInfo.length > 0) {
                 } else {
                   // results[j][3]을 공영데이터 기준으로 필터링했을때 결과를 찾아내지 못하면 민영데이터로 필터링 시작
-                  privateInfo = privateList.filter(
+                  privateInfo = privateList.result.filter(
                     (lists) => lists.address === `${results[j][3]}`
                   );
                 }
