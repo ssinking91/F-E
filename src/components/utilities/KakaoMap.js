@@ -20,7 +20,7 @@ export default function KakaoMap() {
 
   const publicList = useSelector((state) => state.allList.publicList);
   const privateList = useSelector((state) => state.allList.privateList);
-  console.log(privateList);
+  console.log(publicList);
 
   const locate = useSelector((state) => state.allList);
   const publicAdress = new Set(locate.publicAdress);

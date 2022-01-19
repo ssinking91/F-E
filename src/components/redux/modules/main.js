@@ -2,12 +2,13 @@ import { createAction, handleActions } from "redux-actions";
 import produce from "immer";
 import { apis } from "../../utilities/axios";
 
-const IS_SAVED = "IS_SAVED";
+
 const GET_TOTAL = "GET_TOTAL";
 const GET_PRIVATEINFO = "GET_PRIVATEINFO";
 const GET_PUBLICINFO = "GET_PUBLICINFO";
 const GET_PUBLICHOT = "GET_PUBLICHOT";
-const MAIN_SAVE_CARD = "SAVE_CARD";
+const GET_PRIVATEHOT = "GET_PRIVATEHOT";
+
 
 // Section 01
 const getTotal = createAction(GET_TOTAL, (total) => ({ total }));
@@ -19,14 +20,11 @@ const getPublicInfo = createAction(GET_PUBLICINFO, (public_list) => ({
   public_list,
 }));
 // Section 03
-const getPublicHot = createAction(GET_PUBLICHOT, (public_list_hot) => ({
-  public_list_hot,
+const getPublicHot = createAction(GET_PUBLICHOT, (publicHOTList) => ({
+  publicHOTList,
 }));
-
-const mainSavedCard = createAction(MAIN_SAVE_CARD, (aptNo, status, islike) => ({
-  aptNo,
-  status,
-  islike,
+const getPrivateHot = createAction(GET_PRIVATEHOT, (privateHOTList) => ({
+  privateHOTList,
 }));
 
 // Section 01
@@ -74,28 +72,28 @@ const getPublicInfoDB = () => {
   };
 };
 // Section 03
-const getPublicHotDB = () => {
-  return function (dispatch, getState, { history }) {
-    apis
-      .getPublicHot()
-      .then((res) => {
-        // console.log("getPublicHotDB 접근");
-        // console.log(res.data);
-        dispatch(getPublicHot(res.data));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+const getPublicHotFB = () => {
+  return async function (dispatch, getState, { history }) {
+    try {
+      console.log("getPublicHotFB 시작");
+      const response = await apis.getPublicHot();
+      console.log(response.data);
+
+      dispatch(getPublicHot(response.data));
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 
-const savedFB2 = (aptNo, status, islike) => {
-  return async (dispatch, getState, { history }) => {
+const getPrivateHotFB = () => {
+  return async function (dispatch, getState, { history }) {
     try {
-      console.log("main savedFB 시작");
-      const response = await apis.saved(aptNo);
-      console.log(response.data.data);
-      dispatch(getPrivateInfoDB());
+      console.log("getPrivateHotFB 시작");
+      const response = await apis.getPrivateHot();
+      console.log(response.data);
+
+      dispatch(getPrivateHot(response.data));
     } catch (error) {
       console.log(error);
     }
@@ -109,7 +107,12 @@ const initialState = {
     statusArr: [],
   },
   public_list: [],
-  public_list_hot: [],
+  //찜하기
+  publicHotList: [],
+  privateHotList: {
+    privateHotList: [],
+    statusArr: [],
+  },
 };
 
 export default handleActions(
@@ -131,7 +134,15 @@ export default handleActions(
     // Section 03
     [GET_PUBLICHOT]: (state, action) =>
       produce(state, (draft) => {
-        draft.public_list_hot = action.payload.public_list_hot;
+        console.log("찜하기 공공 시작");
+        console.log(action.payload);
+        draft.publicHotList = action.payload.publicHOTList;
+      }),
+    [GET_PRIVATEHOT]: (state, action) =>
+      produce(state, (draft) => {
+        console.log("찜하기 민영 시작");
+        console.log(action.payload);
+        draft.privateHotList = action.payload.privateHOTList;
       }),
   },
   initialState
@@ -147,11 +158,9 @@ const actionCreators = {
   getPublicInfo,
   getPublicInfoDB,
   // Section 03
-  getPublicHot,
-  getPublicHotDB,
+  getPublicHotFB,
+  getPrivateHotFB,
  
-  //찜하기 버튼
-  savedFB2,
 };
 
 export { actionCreators };

@@ -49,9 +49,9 @@ Image.defaultProps = {
 };
 
 const CardImage = styled.div`
-  width: ${(props) => (props.width ? `width: ${props.width};` : `160px;`)};
-  height: ${(props) => (props.height ? `height: ${props.height};` : "160px;")};
-  margin-top: 4px;
+  width: ${(props) => (props.width ? `100px` : "160px")};
+  height: ${(props) => (props.height ? `100px` : "160px")};
+  // margin-top: 4px;
   border-radius: 20px;
   background-image: url("${(props) => props.src}");
   background-size: cover;

@@ -80,12 +80,12 @@ const savedFB = (aptNo, status, sido) => {
       
       if (status === "private") {
         dispatch(mainActions.getPrivateInfoDB());
-        dispatch(getPrivateListDB(sido));
+        //dispatch(getPrivateListDB(sido));
       } 
       
       else if (status === "public") {
         dispatch(mainActions.getPublicInfoDB());
-        dispatch(getPublicListDB(sido));
+        //dispatch(getPublicListDB(sido));
       }
 
     } catch (error) {

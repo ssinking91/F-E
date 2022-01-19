@@ -43,8 +43,16 @@ export const apis = {
     instance.post(`/api/main/publicSido`, {
       userKey: localStorage.getItem("userKey"),
     }), // 공공 - 청약정보
-  // getPrivateHot: () => instance.get(`/api/main/privateHot`), // 공공 - 찜하기 순
-  getPublicHot: () => instance.post(`/api/main/publicHot`), // 공공 - 찜하기 순
+
+  //Main-Section3
+  getPublicHot: () =>
+    instance.post(`/api/main/publicHot`, {
+      userKey: localStorage.getItem("userKey"),
+    }), // 공공 - 찜하기 순
+  getPrivateHot: () =>
+    instance.post(`/api/main/privateHot`, {
+      userKey: localStorage.getItem("userKey"),
+    }), // 민영 - 찜하기 순
 
   // DetailPage
   getDetailInfo: (locate) =>

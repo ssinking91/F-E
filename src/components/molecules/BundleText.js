@@ -13,7 +13,9 @@ export default function BundleText(props) {
           <Text boldText>{props.title}</Text>
         </Grid>
         <Grid>
-          <Text regularText>{props.content}</Text>
+          <Text regularText width="400px">
+            {props.content}
+          </Text>
         </Grid>
       </Grid>
     </BundleTextWrap>
