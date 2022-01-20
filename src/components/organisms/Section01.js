@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Grid, Text, Button } from "../atoms/index";
+import { Grid, Text } from "../atoms/index";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as mainAction } from "../redux/modules/main";
 import { ReactComponent as Scroll } from "../../images/scroll.svg";
@@ -73,7 +73,7 @@ const Section01 = (props) => {
                 당신을 위한 청약 정보가 {totalNum}개 모여있어요.
               </Text>
             )}
-            <Button background_color="#20d7ff" padding="13px 21px">
+            <Button >
               <Text h3 color="#fff">
                 <Link to="/list">청약 리스트 보러가기</Link>
               </Text>
@@ -91,12 +91,7 @@ const Section01 = (props) => {
   );
 };
 
-// const Section1Div = styled.div`
-//   background-image: url("${(props) => props.src || mainBackgroundImage}");
-//   background-size: "cover";
-//   padding-top: "97px";
-//   background-color: "#f9f9f9";
-// `;
+
 
 const Hr = styled.div`
   border-top: 1px solid #e3e5eb;
@@ -108,4 +103,11 @@ const TitleSectionWrap = styled.div`
 `;
 const Background = styled.div``;
 
+const Button = styled.button`
+  background-color: #20d7ff;
+  width: 260px;
+  height: 48px;
+  border-radius: 23px;
+  border: none;
+`;
 export default Section01;
