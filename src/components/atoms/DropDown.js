@@ -55,7 +55,7 @@ const Dropdown = (props) => {
               console.log(item);
               onSelectItem(item.value);
               getClickOne(item);
-              getDB(item);
+              getDB(item.value);
             }}
           >
             <ItemName

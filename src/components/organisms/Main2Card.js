@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { savedActions } from "../redux/modules/cardSave";
 import { mypagetActions } from "../redux/modules/mypage";
 import { actionCreators as mainActions } from "../redux/modules/main";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,8 +16,6 @@ const Main2Card = (props) => {
   const dispatch = useDispatch();
 
   const islike = JSON.parse(props.islike);
-
-  const MypageSido = props.MypageSido;
   // console.log(props.Page, props.islike, typeof props.islike);
 
   // const MypageSido = props.MypageSido;

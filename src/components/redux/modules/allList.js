@@ -31,11 +31,13 @@ export const getPrivateListDB = (ftSido) => {
       .getPrivateLists(ftSido)
       .then((res) => {
         const privateList = res.data;
+        // console.log(ftSido);
 
         const privateAddress = [];
         for (let i = 0; i < privateList.result.length; i++) {
           privateAddress.push(privateList.result[i].address);
         }
+        console.log(privateAddress);
 
         const privateAd = new Set(privateAddress);
         const adress = [...privateAd];
