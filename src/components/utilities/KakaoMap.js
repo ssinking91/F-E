@@ -181,12 +181,13 @@ export default function KakaoMap() {
     var map = new kakao.maps.Map(mapContainer, mapOption);
 
     if (coords) {
-      await map.panTo(coords);
-      // const position = map.getCenter();
+      map.setCenter(coords);
+      const position = map.getCenter();
       console.log(coords);
-      // console.log(position);
-      const Lng = coords.Ma;
-      const Lat = coords.La;
+      console.log(position);
+
+      const Lng = position.Ma;
+      const Lat = position.La;
       map.setLevel(3, {
         anchor: new kakao.maps.LatLng(Lng, Lat),
         animate: {
@@ -637,12 +638,14 @@ export default function KakaoMap() {
                                                     border: 1px #20D7FF solid; 
                                                     border-radius: 20px;
                                                     background-img: ${
-                                                      publicInfo.length > 0 &&
-                                                      publicInfo[0].ImgUrl
+                                                      publicInfo.length > 0
+                                                        ? publicInfo[0].ImgUrl
+                                                        : defaultLogoImage
                                                     } 
                                                     ${
-                                                      privateInfo.length > 0 &&
-                                                      privateInfo[0].ImgUrl
+                                                      privateInfo.length > 0
+                                                        ? privateInfo[0].ImgUrl
+                                                        : defaultLogoImage
                                                     }
                                                     background-size: cover;
                                                     background-repeat: no-repeat;
