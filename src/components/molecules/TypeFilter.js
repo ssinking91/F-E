@@ -4,7 +4,11 @@ import styled from "styled-components";
 
 import { useDispatch, useSelector } from "react-redux";
 import { mypagetActions } from "../redux/modules/mypage";
-
+import {
+  getPublicListMapDB,
+  getPrivateListMapDB,
+  clickOne,
+} from "../redux/modules/map";
 import { DropDown } from "../atoms/index";
 
 import { globalSido } from "../utilities/constants.js";
@@ -12,6 +16,14 @@ import { globalSido } from "../utilities/constants.js";
 export default function TypeFilter() {
   const dispatch = useDispatch();
   const [sido, setSido] = useState();
+  const [searchText, setSearchText] = useState();
+  // sido 검색
+  const changeSearchText = (e) => {
+    setSearchText(e.target.value);
+    // dispatch(getPublicListMapDB(setSearchText));
+    // dispatch(getPrivateListMapDB(setSearchText));
+    console.log(e.target.value);
+  };
   // sido 변경
   const sidoChange = (e) => {
     setSido(e);
@@ -20,10 +32,23 @@ export default function TypeFilter() {
   const sidoChangeApi = () => {
     console.log(sido);
   };
+  const getDB = (item) => {
+    console.log(item);
+    dispatch(getPublicListMapDB(item));
+    dispatch(getPrivateListMapDB(item));
+  };
   return (
     <Div>
       <WrapLeft>
-        <SearchInput type="search" placeholder="검색을 해주세요"></SearchInput>
+        <input type="text" style={{ display: "none" }} />
+        <SearchInput
+          type="text"
+          placeholder="검색을 해주세요"
+          value={searchText}
+          onChange={(e) => {
+            getDB(e.target.value);
+          }}
+        ></SearchInput>
       </WrapLeft>
       <WrapRight>
         <DropDown
