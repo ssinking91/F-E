@@ -13,7 +13,6 @@ import home4 from "../../images/home4.jpg";
 
 const Section01 = (props) => {
   const dispatch = useDispatch();
-  const page = props.page;
   //일정시간 간격으로 이미지 변환,전환 시키기 useRef(),setInterval() 사용
   const imageSection = React.useRef();
   let imageArray = [mainBackgroundImage, home1, home2, home3, home4];
@@ -21,20 +20,18 @@ const Section01 = (props) => {
 
   useEffect(() => {
     dispatch(mainAction.getTotalDB());
-    return imageChange();
-    
+
+    setInterval(imageChange, 3000); // 3초마다 imageChange 반복 실행
   }, []);
 
   const imageChange = () => {
-    console.log(page);
+    if(imageSection.current === null){
+      return clearInterval(imageChange);//함수 종류
+    };
+
     imageCount < 4 ? imageCount++ : (imageCount = 0);
     imageSection.current.style.backgroundImage = `url(${imageArray[imageCount]})`;
-    setTimeout(imageChange, 3000); // 3초마다 imageChange 반복 실행
   };
-
-  if (page === undefined) {
-    clearInterval(imageChange());
-  }
 
   // 청약 총 갯수
   const infoNum = useSelector((state) => state.main.total);
