@@ -33,7 +33,7 @@ export default function KakaoMap() {
   const [clickAdress, setClickAdress] = useState(null);
 
   // AsideSection -> 클릭한 카드의 주소
-  const cardClicked = useSelector((state) => state.map.clicked);
+  let cardClicked = useSelector((state) => state.map.clicked);
   console.log(cardClicked);
 
   useEffect(() => {
@@ -68,21 +68,83 @@ export default function KakaoMap() {
       } else {
         console.log("좌표변환 실패, 주소오류");
         if (cardClicked) {
-          console.log(cardClicked.split("(")[0]);
-          const cardClickedSplit = cardClicked.split("(")[0];
-          geocoder.addressSearch(
-            cardClickedSplit,
-            async function (result, status) {
-              if (status === kakao.maps.services.Status.OK) {
-                const moveLatLng = new kakao.maps.LatLng(
-                  result[0].y,
-                  result[0].x
-                );
-                console.log(result[0].y, result[0].x);
-                dispatch(changeCoords(moveLatLng));
-              }
+          if (
+            cardClicked ===
+            "경상북도 경주시 건천읍 신경주역세권 지역개발사업지구 B5블럭"
+          )
+            cardClicked = "경북 경주시 건천읍 화천리 662";
+          if (
+            cardClicked ===
+            "경상북도 경주시 건천읍 신경주역세권 지역개발사업지구 B4블럭"
+          )
+            cardClicked = "경북 경주시 건천읍 화천리 647";
+          if (
+            cardClicked ===
+            "부산광역시 기장군 기장읍 청강리 공공지원민간임대촉진지구 일원 내 A2블록"
+          )
+            cardClicked = "부산 기장군 기장읍 청강리 217";
+          if (
+            cardClicked ===
+            "경기도 부천시 괴안동 부천괴안 공공주택지구 B-1블록 일원"
+          )
+            cardClicked = "경기 부천시 괴안동 68-22";
+          if (cardClicked === "경기도 고양시 덕양구 원흥동 507")
+            cardClicked = "경기 고양시 덕양구 원흥동 600";
+          if (cardClicked === "경기도 고양시 덕양구 원흥동 498-9")
+            cardClicked = "경기 고양시 덕양구 원흥1로 31";
+          if (cardClicked === "경기도 여주시 교동 여주역세권 3블록")
+            cardClicked = "경기 여주시 교동 184-1";
+          if (cardClicked === "인천광역시 서구 당하동 847")
+            cardClicked = "인천 서구 당하동 851-18";
+          if (cardClicked === "경기도 평택시 고덕면 좌교리 A57-1")
+            cardClicked = "경기 평택시 고덕면 좌교리 산 78";
+          if (cardClicked === "경기도 오산시 궐동 세교2지구 A1블록")
+            cardClicked = "경기 오산시 궐동 550-1";
+          if (
+            cardClicked ===
+            "전라남도 무안군 일로읍 망월리 남악신도시 오룡택지지구 40BL"
+          )
+            cardClicked = "전남 무안군 일로읍 망월리 산 131";
+          if (
+            cardClicked ===
+            "전라남도 무안군 일로읍 망월리 남악신도시 오룡택지지구 39BL"
+          )
+            cardClicked = "전남 무안군 일로읍 망월리 산 131";
+          if (cardClicked === "인천광역시 서구 불로동 115")
+            cardClicked = "인천광역시 서구 불로동 114";
+          if (
+            cardClicked ===
+            "경상북도 포항시 북구 흥해읍 포항융합기술산업지구 A5"
+          )
+            cardClicked = "경북 포항시 북구 흥해읍 이인리 산 64-1";
+          if (cardClicked === "경기도 화성시 송산동 202-66외 22필지")
+            cardClicked = "경기 화성시 송산동 202-344";
+          if (cardClicked === "울산광역시 울주군 청량읍 덕하지구 B-2BL")
+            cardClicked = "울산 울주군 청량읍 덕하리 646";
+          if (
+            cardClicked === "충청북도 음성군 대소면 성본리 성본산업단지 B5블록"
+          )
+            cardClicked = "충북 음성군 대소면 성본리 142-1";
+          if (cardClicked === "충청북도 음성군 대소면 성본산업단지 B3블록")
+            cardClicked = "충북 음성군 대소면 성본리 298-1";
+
+          cardClicked = cardClicked
+            .split("일원")[0]
+            .split("및")[0]
+            .split("외")[0]
+            .split("(")[0]
+            .split("단지")[0];
+
+          console.log(cardClicked);
+
+          geocoder.addressSearch(cardClicked, async function (result, status) {
+            if (status === kakao.maps.services.Status.OK) {
+              console.log(`${cardClicked} 좌표변환 성공`);
+              const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+              console.log(coords);
+              dispatch(changeCoords(coords));
             }
-          );
+          });
         }
       }
     });
@@ -119,13 +181,13 @@ export default function KakaoMap() {
     var map = new kakao.maps.Map(mapContainer, mapOption);
 
     if (coords) {
-      map.panTo(coords);
-      const position = map.getCenter();
+      await map.panTo(coords);
+      // const position = map.getCenter();
       console.log(coords);
-      console.log(position);
-      const Lng = position.Ma;
-      const Lat = position.La;
-      map.setLevel(2, {
+      // console.log(position);
+      const Lng = coords.Ma;
+      const Lat = coords.La;
+      map.setLevel(3, {
         anchor: new kakao.maps.LatLng(Lng, Lat),
         animate: {
           duration: 500,
@@ -436,6 +498,70 @@ export default function KakaoMap() {
       }
       // 모든 주소들을 위도/경도 좌표로 변환
       for (let i = 0; i < location.length; i++) {
+        if (
+          location[i] ===
+          "경상북도 경주시 건천읍 신경주역세권 지역개발사업지구 B5블럭"
+        )
+          location[i] = "경북 경주시 건천읍 화천리 662";
+        if (
+          location[i] ===
+          "경상북도 경주시 건천읍 신경주역세권 지역개발사업지구 B4블럭"
+        )
+          location[i] = "경북 경주시 건천읍 화천리 647";
+        if (
+          location[i] ===
+          "부산광역시 기장군 기장읍 청강리 공공지원민간임대촉진지구 일원 내 A2블록"
+        )
+          location[i] = "부산 기장군 기장읍 청강리 217";
+        if (
+          location[i] ===
+          "경기도 부천시 괴안동 부천괴안 공공주택지구 B-1블록 일원"
+        )
+          location[i] = "경기 부천시 괴안동 68-22";
+        if (location[i] === "경기도 고양시 덕양구 원흥동 507")
+          location[i] = "경기 고양시 덕양구 원흥1로 35";
+        if (location[i] === "경기도 고양시 덕양구 원흥동 498-9")
+          location[i] = "경기 고양시 덕양구 원흥1로 31";
+        if (location[i] === "경기도 여주시 교동 여주역세권 3블록")
+          location[i] = "경기 여주시 교동 184-1";
+        if (location[i] === "인천광역시 서구 당하동 847")
+          location[i] = "인천 서구 당하동 851-18";
+        if (location[i] === "경기도 평택시 고덕면 좌교리 A57-1")
+          location[i] = "경기 평택시 고덕면 좌교리 산 78";
+        if (location[i] === "경기도 오산시 궐동 세교2지구 A1블록")
+          location[i] = "경기 오산시 궐동 550-1";
+        if (
+          location[i] ===
+          "전라남도 무안군 일로읍 망월리 남악신도시 오룡택지지구 40BL"
+        )
+          location[i] = "전남 무안군 일로읍 망월리 산 131";
+        if (
+          location[i] ===
+          "전라남도 무안군 일로읍 망월리 남악신도시 오룡택지지구 39BL"
+        )
+          location[i] = "전남 무안군 일로읍 망월리 산 131";
+        if (location[i] === "인천광역시 서구 불로동 115")
+          location[i] = "인천광역시 서구 불로동 114";
+        if (
+          location[i] === "경상북도 포항시 북구 흥해읍 포항융합기술산업지구 A5"
+        )
+          location[i] = "경북 포항시 북구 흥해읍 이인리 산 64-1";
+        if (location[i] === "경기도 화성시 송산동 202-66외 22필지")
+          location[i] = "경기 화성시 송산동 202-344";
+        if (location[i] === "울산광역시 울주군 청량읍 덕하지구 B-2BL")
+          location[i] = "울산 울주군 청량읍 덕하리 646";
+        if (location[i] === "충청북도 음성군 대소면 성본리 성본산업단지 B5블록")
+          location[i] = "충북 음성군 대소면 성본리 142-1";
+        if (location[i] === "충청북도 음성군 대소면 성본산업단지 B3블록")
+          location[i] = "충북 음성군 대소면 성본리 298-1";
+
+        location[i] = location[i]
+          .split("일원")[0]
+          .split("및")[0]
+          .split("외")[0]
+          .split("(")[0]
+          .split("단지")[0];
+
         geocoder.addressSearch(location[i], async function (result, status) {
           // 정상적으로 검색이 완료됐으면
           if (status === kakao.maps.services.Status.OK) {
@@ -487,7 +613,6 @@ export default function KakaoMap() {
 
                 // clusterer 에 marker 를 하나씩 추가합니다.
                 clusterer.addMarker(marker);
-
                 // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
                 const iwContent = ` 
                                     
@@ -511,15 +636,14 @@ export default function KakaoMap() {
                                                     margin-right: 16px; 
                                                     border: 1px #20D7FF solid; 
                                                     border-radius: 20px;
-                                                    background-image: url(${
-                                                      publicInfo.length > 0
-                                                        ? publicInfo[0].ImgUrl
-                                                          ? publicInfo[0].ImgUrl
-                                                          : defaultLogoImage
-                                                        : privateInfo[0].ImgUrl
-                                                        ? privateInfo[0].ImgUrl
-                                                        : defaultLogoImage
-                                                    });
+                                                    background-img: ${
+                                                      publicInfo.length > 0 &&
+                                                      publicInfo[0].ImgUrl
+                                                    } 
+                                                    ${
+                                                      privateInfo.length > 0 &&
+                                                      privateInfo[0].ImgUrl
+                                                    }
                                                     background-size: cover;
                                                     background-repeat: no-repeat;
                                                     background-position: center;
@@ -541,18 +665,14 @@ export default function KakaoMap() {
                                                   <div style="display: flex; flex-wrap: wrap; height: 50px; margin: 0 0 6px 0;">
                                                     <span style="font-size: 16px; font-weight: bold; color: #000000; line-height: 25px; height: 25px; color: #000000">
                                                       ${
-                                                        publicInfo.length > 0
-                                                          ? publicInfo[0]
-                                                              .panName.length >
-                                                            46
-                                                            ? publicInfo[0].panName.substr(
-                                                                0,
-                                                                43
-                                                              ) + "..."
-                                                            : publicInfo[0]
-                                                                .panName
-                                                          : privateInfo[0]
+                                                        publicInfo.length > 0 &&
+                                                        publicInfo[0].panName
+                                                      }
+                                                      ${
+                                                        privateInfo.length > 0
+                                                          ? privateInfo[0]
                                                               .houseName
+                                                          : ""
                                                       }
                                                     </span>
                                                   </div>
@@ -561,10 +681,15 @@ export default function KakaoMap() {
                                                       <span style="font-size: 12px; font-weight: bold; color: #A5AAB6; line-height: 19px;  margin: 0 15px 0 0;">
                                                           <a href=${
                                                             publicInfo.length >
-                                                            0
-                                                              ? `${publicInfo[0].detailUrl}`
-                                                              : `${privateInfo[0].detailUrl}`
+                                                              0 &&
+                                                            publicInfo[0]
+                                                              .detailUrl
                                                           } 
+                                                              ${
+                                                                privateInfo[0] &&
+                                                                privateInfo[0]
+                                                                  .detailUrl
+                                                              }
                                                           target="_blank">
                                                             [ 청약하러가기 ]
                                                           </a>
@@ -572,9 +697,9 @@ export default function KakaoMap() {
                                                       <span style="font-size: 12px; font-weight: bold; color: #A5AAB6; line-height: 19px;">
                                                           <a href=${
                                                             publicInfo.length >
-                                                            0
-                                                              ? `${publicInfo[0].fileUrl}`
-                                                              : null
+                                                              0 &&
+                                                            publicInfo[0]
+                                                              .fileUrl
                                                           }>
                                                             [ 모집공고문 다운로드받기 ]
                                                           </a>
@@ -607,8 +732,73 @@ export default function KakaoMap() {
               }
             }
           } else {
-            console.log(location[i]);
-            location[i] = location[i].split("일원")[0];
+            if (
+              location[i] ===
+              "경상북도 경주시 건천읍 신경주역세권 지역개발사업지구 B5블럭"
+            )
+              location[i] = "경북 경주시 건천읍 화천리 662";
+            if (
+              location[i] ===
+              "경상북도 경주시 건천읍 신경주역세권 지역개발사업지구 B4블럭"
+            )
+              location[i] = "경북 경주시 건천읍 화천리 647";
+            if (
+              location[i] ===
+              "부산광역시 기장군 기장읍 청강리 공공지원민간임대촉진지구 일원 내 A2블록"
+            )
+              location[i] = "부산 기장군 기장읍 청강리 217";
+            if (
+              location[i] ===
+              "경기도 부천시 괴안동 부천괴안 공공주택지구 B-1블록 일원"
+            )
+              location[i] = "경기 부천시 괴안동 68-22";
+            if (location[i] === "경기도 고양시 덕양구 원흥동 507")
+              location[i] = "경기 고양시 덕양구 원흥1로 35";
+            if (location[i] === "경기도 고양시 덕양구 원흥동 498-9")
+              location[i] = "경기 고양시 덕양구 원흥1로 31";
+            if (location[i] === "경기도 여주시 교동 여주역세권 3블록")
+              location[i] = "경기 여주시 교동 184-1";
+            if (location[i] === "인천광역시 서구 당하동 847")
+              location[i] = "인천 서구 당하동 851-18";
+            if (location[i] === "경기도 평택시 고덕면 좌교리 A57-1")
+              location[i] = "경기 평택시 고덕면 좌교리 산 78";
+            if (location[i] === "경기도 오산시 궐동 세교2지구 A1블록")
+              location[i] = "경기 오산시 궐동 550-1";
+            if (
+              location[i] ===
+              "전라남도 무안군 일로읍 망월리 남악신도시 오룡택지지구 40BL"
+            )
+              location[i] = "전남 무안군 일로읍 망월리 산 131";
+            if (
+              location[i] ===
+              "전라남도 무안군 일로읍 망월리 남악신도시 오룡택지지구 39BL"
+            )
+              location[i] = "전남 무안군 일로읍 망월리 산 131";
+            if (location[i] === "인천광역시 서구 불로동 115")
+              location[i] = "인천광역시 서구 불로동 114";
+            if (
+              location[i] ===
+              "경상북도 포항시 북구 흥해읍 포항융합기술산업지구 A5"
+            )
+              location[i] = "경북 포항시 북구 흥해읍 이인리 산 64-1";
+            if (location[i] === "경기도 화성시 송산동 202-66외 22필지")
+              location[i] = "경기 화성시 송산동 202-344";
+            if (location[i] === "울산광역시 울주군 청량읍 덕하지구 B-2BL")
+              location[i] = "울산 울주군 청량읍 덕하리 646";
+            if (
+              location[i] ===
+              "충청북도 음성군 대소면 성본리 성본산업단지 B5블록"
+            )
+              location[i] = "충북 음성군 대소면 성본리 142-1";
+            if (location[i] === "충청북도 음성군 대소면 성본산업단지 B3블록")
+              location[i] = "충북 음성군 대소면 성본리 298-1";
+
+            location[i] = location[i]
+              .split("일원")[0]
+              .split("및")[0]
+              .split("외")[0]
+              .split("(")[0]
+              .split("단지")[0];
           }
         });
       }
