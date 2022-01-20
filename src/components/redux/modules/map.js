@@ -25,26 +25,26 @@ const areaState = createAction(AREA_STATE, (sido) => ({ sido }));
 export const changeCoords = createAction(CHANGE_COORDS, (coords) => ({
   coords,
 }));
-const publicAreaState = createAction(PUBLIC_AREA_STATE, (public_sido) => ({
-  public_sido,
+const publicAreaState = createAction(PUBLIC_AREA_STATE, (ftSido) => ({
+  ftSido,
 }));
-const privateAreaState = createAction(PRIVATE_AREA_STATE, (private_sido) => ({
-  private_sido,
+const privateAreaState = createAction(PRIVATE_AREA_STATE, (ftSido) => ({
+  ftSido,
 }));
 
 // middelWare
-export const getPublicListMapDB = (public_sido) => {
+export const getPublicListMapDB = (ftSido) => {
   return (dispatch, getState, { history }) => {
-    apis.getPublicLists(public_sido).then((res) => {
-      console.log(res);
+    apis.getPublicLists(ftSido).then((res) => {
+      console.log(res.data.result[0]);
       dispatch(publicAreaState(res.data.result[0]));
     });
   };
 };
-export const getPrivateListMapDB = (private_sido) => {
+export const getPrivateListMapDB = (ftSido) => {
   return (dispatch, getState, { history }) => {
-    apis.getPrivateLists(private_sido).then((res) => {
-      console.log(res);
+    apis.getPrivateLists(ftSido).then((res) => {
+      console.log(ftSido);
       dispatch(privateAreaState(res.data.result));
     });
   };
@@ -74,13 +74,13 @@ export default handleActions(
     [PUBLIC_AREA_STATE]: (state, action) => {
       return {
         ...state,
-        public_sido: action.payload.public_sido,
+        public_sido: action.payload.ftSido,
       };
     },
     [PRIVATE_AREA_STATE]: (state, action) => {
       return {
         ...state,
-        private_sido: action.payload.private_sido,
+        private_sido: action.payload.ftSido,
       };
     },
     [CHANGE_COORDS]: (state, action) => {

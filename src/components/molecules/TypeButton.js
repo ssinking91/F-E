@@ -20,19 +20,12 @@ export default function TypeButton(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // const getDB = () => {
-  //   dispatch(getPublicListMapDB(publicList));
-  //   dispatch(getPrivateListMapDB(privateList));
-  // };
   const getClickOne = (item) => {
     dispatch(clickButton(item));
   };
   const [buttonBg, setButtonBg] = useState(0);
   const division = ["공공분양", "민간분양"];
-  // const division = [
-  //   { name: "공공분양", div: "public_sido" },
-  //   { name: "민간분양", div: "private_sido" },
-  // ];
+
   return (
     <Div>
       <Grid
