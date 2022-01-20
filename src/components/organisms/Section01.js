@@ -21,7 +21,7 @@ const Section01 = (props) => {
   useEffect(() => {
     dispatch(mainAction.getTotalDB());
 
-    setInterval(imageChange, 3000); // 3초마다 imageChange 반복 실행
+    setInterval(imageChange, 4000); // 3초마다 imageChange 반복 실행
   }, []);
 
   const imageChange = () => {
@@ -49,7 +49,7 @@ const Section01 = (props) => {
           backgroundposition: "center",
           paddingTop: "97px",
           backgroundColor: "#f9f9f9",
-          transition: "all 1s",
+          transition: "all 2s",
         }}
       >
         {/* <NavBarAnchor />/ */}
@@ -109,5 +109,6 @@ const Button = styled.button`
   height: 48px;
   border-radius: 23px;
   border: none;
+  border-color: #20d7ff;
 `;
 export default Section01;
