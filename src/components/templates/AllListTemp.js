@@ -129,13 +129,24 @@ export default function AllListTemp() {
             publicList.map((item, index) => {
               const publicSales = "publicSales";
               const status = "public";
+              let onlyNumber = item.panName.replace(
+                /[^0-9]{3,4}[^0-9]{3,4}/g,
+                "/"
+              );
+              let onlyNumber1 = onlyNumber.split("/");
+              let onlyNumber2 = onlyNumber1[onlyNumber1.length - 2];
+              // console.log(item.address.split(" ")[1]);
+              let address1 = item.address.split(" ")[1];
+              // console.log(onlyNumber);
 
               return (
                 <>
                   <Card
                     key={index}
                     image={item.ImgUrl}
-                    name={item.panName}
+                    name={`${address1} ${
+                      onlyNumber2 === "" ? "" : `${onlyNumber2}호`
+                    }`}
                     startDate={item.startDate}
                     endDate={item.closeDate}
                     size={item.size}

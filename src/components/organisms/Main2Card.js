@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { savedActions } from "../redux/modules/cardSave";
 import { mypagetActions } from "../redux/modules/mypage";
@@ -12,6 +12,7 @@ import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 import defaultLogoImage from "../../images/defaultLogoImage.svg";
 
 const Main2Card = (props) => {
+  // console.log(props.asideSectionView);
   const { _onClick } = props;
   const dispatch = useDispatch();
 
@@ -23,11 +24,13 @@ const Main2Card = (props) => {
 
   const [save2, setSave2] = React.useState(islike);
 
-  // useEffect(async() => {
+  // useEffect(async () => {
   //   const userKey = localStorage.getItem("userKey");
-  //   await setTimeout(()=>{dispatch(mypagetActions.getUserInfosFB(userKey))},1000);
-
+  //   await setTimeout(() => {
+  //     dispatch(mypagetActions.getUserInfosFB(userKey));
+  //   }, 1000);
   // }, [islike]);
+
   // console.log(props.image);
   // 카드 저장
   const saveCard = () => {
@@ -107,6 +110,7 @@ const Main2Card = (props) => {
   // console.log(maxPrice4, maxPrice5, maxPrice6);
   // 평당 단가
   let pyeongMaxPrice = Math.ceil(maxPrice / pyeongMaxSize);
+
   // 자릿수 별 조건문
   function minResultPrice() {
     let price = "";
@@ -151,7 +155,8 @@ const Main2Card = (props) => {
             saveCard();
           }}
         >
-          {save2 ? <BmarkFill /> : <BmarkNone />}
+          {/* asideSection에서는 찜하기 버튼 비활성화 */}
+          {props.asideSectionView ? "" : save2 ? <BmarkFill /> : <BmarkNone />}
         </ImageDiv>
       </Imageitem>
       <Item>
@@ -197,9 +202,13 @@ const Main2Card = (props) => {
                   }`}
             </Text>
           </Info2Item2>
-          <Info2Item3>
-            <RightArrow src="img/rightArrow.png" />
-          </Info2Item3>
+          {props.asideSectionView ? (
+            <Info2Item3>
+              <RightArrow src="img/rightArrow.png" />
+            </Info2Item3>
+          ) : (
+            ""
+          )}
         </Info2>
       </Item>
     </Container>

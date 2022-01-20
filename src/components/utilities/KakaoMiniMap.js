@@ -1,9 +1,19 @@
 /* global kakao */
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getPrivateListDB, getPublicListDB } from "../redux/modules/allList";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 import "./style.css";
 
 export default function KakaoMiniMap() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getPrivateListDB(""));
+    dispatch(getPublicListDB(""));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   useEffect(() => {
     var placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 999 }),
       contentNode = document.createElement("div"), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다
