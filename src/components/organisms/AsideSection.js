@@ -103,6 +103,7 @@ const ContentArea = styled.div`
   position: absolute;
   top: 160px;
   height: 83vh;
+  overflow-x: hidden;
   overflow-y: scroll;
   & ::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/

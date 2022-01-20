@@ -17,7 +17,6 @@ const Comment = (props) => {
 
   React.useEffect(() => {
     dispatch(commentActions.getCommentsFB(aptNo));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const userKey = localStorage.getItem("userKey");

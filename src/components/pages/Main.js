@@ -9,10 +9,12 @@ import Section04 from "../organisms/Section04";
 import NavBarAnchor from "../organisms/NavBarAnchor";
 
 export default function Main() {
+  const page = "Main"
+
   return (
     <div style={{ width: "100%", height: "100%" }}>
       <NavBarAnchor />
-      <Fullpage />
+      <Fullpage page={page}/>
     </div>
   );
 }
@@ -36,7 +38,7 @@ const Fullpage = (props) => (
       return (
         <>
           <div>
-            <Section01 userName={userName} />
+            <Section01 userName={userName}  page={props.page}/>
             <Section02 userName={userName} />
             <Section03 />
             <Section04 />
