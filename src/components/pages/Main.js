@@ -9,6 +9,7 @@ import Section04 from "../organisms/Section04";
 import NavBarAnchor from "../organisms/NavBarAnchor";
 
 export default function Main() {
+
   return (
     <div style={{ width: "100%", height: "100%" }}>
       <NavBarAnchor />
