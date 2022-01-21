@@ -200,14 +200,13 @@ const MyPage = (props) => {
             </Text>
             {publicInfo.length !== 0 ? (
               publicInfo.map((item, idx) => {
-                
                 const publicSales = "publicSales";
                 const status = "public";
 
                 const panName = `[${item.aisTypeName}] ${
                   item.address.split(" ")[0]
                 } ${item.address.split(" ")[1]}`;
-               
+
                 return (
                   <Main2Card
                     key={idx}
@@ -243,7 +242,6 @@ const MyPage = (props) => {
 
             {privateInfo.length !== 0 ? (
               privateInfo.map((item, idx) => {
-
                 const status = "private";
 
                 return (
