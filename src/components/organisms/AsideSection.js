@@ -12,6 +12,7 @@ import {
   getPrivateListMapDB,
   clickOne,
 } from "../redux/modules/map";
+import topButton from "../../images/topButton.png"
 
 export default function AsideSection() {
   const dispatch = useDispatch();
@@ -48,11 +49,21 @@ export default function AsideSection() {
     console.log(address);
     dispatch(clickOne(address));
   };
+  
+  const scrollToTop = (event) => {
+    document.getElementById('TOP').scrollTo({top:0, left:0, behavior: "smooth"} );   
+  };
 
   return (
     <>
       <Wrap>
-        <ContentArea>
+        <TopButton
+          onClick={() => {
+            console.log("1");
+            scrollToTop();
+          }}
+        />
+        <ContentArea id="TOP">
           {clickButton === "민간분양"
             ? privateList &&
               privateList.map((item, index) => {
@@ -125,10 +136,26 @@ const Wrap = styled.div`
   background-color: #f5f5f5;
 `;
 
+const TopButton = styled.a`
+  width: 64px;
+  height: 64PX;
+  position: fixed;
+  right: 2%;
+  bottom: 2%;
+  background-image: url("${topButton}");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 2;
+  cursor: pointer;
+  /* background-color: red; */
+`;
+
 const ContentArea = styled.div`
   position: absolute;
   top: 160px;
   height: 83vh;
+  z-index: 1;
   overflow-x: hidden;
   overflow-y: scroll;
   overflow-x: hidden;
