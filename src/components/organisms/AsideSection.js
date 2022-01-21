@@ -86,6 +86,16 @@ export default function AsideSection() {
                 const publicSales = "publicSales";
                 const asideSectionView = "asideSection";
                 const divPublic = "public";
+                let onlyNumber = item.panName.replace(
+                  /[^0-9]{3,4}[^0-9]{3,4}/g,
+                  "/"
+                );
+                let onlyNumber1 = onlyNumber.split("/");
+                let onlyNumber2 = onlyNumber1[onlyNumber1.length - 2];
+                // console.log(item.address.split(" ")[1]);
+                // let address1 = item.address.split(" ")[1];
+                // console.log(onlyNumber);
+                console.log(item);
                 return (
                   <Grid
                     margin="10px 0 0 20px"
@@ -99,7 +109,9 @@ export default function AsideSection() {
                       startDate={item.startDate}
                       endDate={item.closeDate}
                       size={item.size}
-                      price={item.aisTypeName}
+                      price={`${item.aisTypeName} ${
+                        onlyNumber2 === "" ? "" : `${onlyNumber2}호`
+                      } `}
                       aptNo={item.panId}
                       islike={item.islike}
                       CardPanState={item.panState}

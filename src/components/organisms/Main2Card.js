@@ -12,6 +12,13 @@ import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 import defaultLogoImage from "../../images/defaultLogoImage.svg";
 import { visibleModal, detailModal } from "../redux/modules/map";
+import {
+  getDetailInfo,
+  getDetailImgDB,
+  getDetailInfoDB,
+} from "../redux/modules/detail";
+
+// import { getDetailInfo, getDetailImgDB } from "../redux/modules/detail";
 
 const Main2Card = (props) => {
   // console.log(props.asideSectionView);
@@ -26,8 +33,7 @@ const Main2Card = (props) => {
   // console.log(MypageSido);
 
   const [save2, setSave2] = React.useState(islike);
-  // const detailInfo = useSelector((state) => state.detail.info);
-  // console.log(detailInfo);
+
   // useEffect(async () => {
   //   const userKey = localStorage.getItem("userKey");
   //   await setTimeout(() => {
@@ -209,10 +215,11 @@ const Main2Card = (props) => {
           {/* history.push(`/${props.division}/${props.aptNo}`) */}
           {props.asideSectionView ? (
             <Info2Item3
-              onClick={
-                () => dispatch(visibleModal(true))
-                // dispatch(detailModal(locate)))
-              }
+              onClick={() => {
+                dispatch(visibleModal(true));
+                dispatch(getDetailInfoDB(`/${props.division}/${props.aptNo}`));
+                dispatch(getDetailImgDB(`/${props.division}/${props.aptNo}`));
+              }}
             >
               <RightArrow src="img/rightArrow.png" />
             </Info2Item3>
