@@ -22,7 +22,7 @@ export default function Router() {
         <Route path="/login" exact component={Login} />
         <Route path="/login/kakao" component={KakaoLogin} />
         <Route path="/oauth/kakao/callback" component={KakaoAuth} />
-        <Route path="/test" component={Test} />
+        <Route path="/map" component={Test} />
         <Redirect from="*" to="/" />
       </Switch>
     </ConnectedRouter>
