@@ -2,7 +2,10 @@ import { createAction, handleActions } from "redux-actions";
 import { apis } from "../../utilities/axios";
 
 // state
-const state = {};
+const state = {
+  show: true,
+  hidden: false,
+};
 
 // action
 const SAVE_STATE = `/SAVE_STATE/`;
@@ -12,6 +15,8 @@ const AREA_STATE = `/AREA_STATE/`;
 const CHANGE_COORDS = `/CHANGE_COORDS/`;
 const PUBLIC_AREA_STATE = `/PUBLIC_AREA_STATE`;
 const PRIVATE_AREA_STATE = `/PRIVATE_AREA_STATE`;
+const SHOW_MODAL = `/SHOW_MODAL/`;
+const DROP_MODAL = `/DROP_MODAL/`;
 
 // action creator
 export const saveState = createAction(SAVE_STATE, (list) => ({
@@ -31,6 +36,9 @@ const publicAreaState = createAction(PUBLIC_AREA_STATE, (ftSido) => ({
 const privateAreaState = createAction(PRIVATE_AREA_STATE, (ftSido) => ({
   ftSido,
 }));
+
+export const showModal = createAction(SHOW_MODAL, (show) => ({ show }));
+export const dropModal = createAction(SHOW_MODAL, (hidden) => ({ hidden }));
 
 // middelWare
 export const getPublicListMapDB = (ftSido) => {
@@ -87,6 +95,18 @@ export default handleActions(
       return {
         ...state,
         coords: action.payload.coords,
+      };
+    },
+    [SHOW_MODAL]: (state, action) => {
+      return {
+        ...state,
+        show: action.payload.show,
+      };
+    },
+    [DROP_MODAL]: (state, action) => {
+      return {
+        ...state,
+        hidden: action.payload.hidden,
       };
     },
   },
