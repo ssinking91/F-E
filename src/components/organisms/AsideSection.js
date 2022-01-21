@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import { useDispatch, useSelector } from "react-redux";
 import Main2Card from "./Main2Card";
 import { Grid } from "../atoms/index";
 
+import { useHistory, useLocation } from "react-router-dom";
 import {
   getPublicListMapDB,
   getPrivateListMapDB,
@@ -14,15 +15,29 @@ import {
 
 export default function AsideSection() {
   const dispatch = useDispatch();
+  const location = useLocation();
+
+  console.log(location);
+  const locate = location.pathname;
+  const history = useHistory();
   const eventList = useSelector((state) => state.map.list);
   const clickButton = useSelector((state) => state.map.divisionClick);
   const clicked = useSelector((state) => state.map.clicked);
-  console.log(clicked);
-
+  const show = useSelector((state) => state.map.show);
+  const hidden = useSelector((state) => state.map.hidden);
+  console.log(show, hidden);
   React.useEffect(() => {
     dispatch(getPublicListMapDB(eventList));
     dispatch(getPrivateListMapDB(eventList));
   }, [dispatch, eventList]);
+
+  // 모달 상태관리
+  const [modal, setModal] = useState(true);
+  const detailModal = () => {
+    if (!modal) {
+      setModal(true);
+    }
+  };
 
   const publicList = useSelector((store) => store.map.public_sido);
   const privateList = useSelector((store) => store.map.private_sido);
@@ -41,6 +56,7 @@ export default function AsideSection() {
           {clickButton === "민간분양"
             ? privateList &&
               privateList.map((item, index) => {
+                const asideSectionView = "asideSection";
                 return (
                   <Grid
                     margin="10px 0 0 20px"
@@ -57,6 +73,10 @@ export default function AsideSection() {
                       price={item.supplyAmount}
                       aptNo={item.pblancNo}
                       islike={item.islike}
+                      asideSectionView={asideSectionView}
+                      _onClick={() => {
+                        history.push(`/private/${item.pblancNo}`);
+                      }}
                     />
                   </Grid>
                 );
@@ -84,6 +104,9 @@ export default function AsideSection() {
                       CardPanState={item.panState}
                       publicSales={publicSales}
                       asideSectionView={asideSectionView}
+                      _onClick={() => {
+                        detailModal(`/public/${item.panId}`);
+                      }}
                     />
                   </Grid>
                 );
@@ -95,7 +118,7 @@ export default function AsideSection() {
 }
 
 const Wrap = styled.div`
-  width: 595px;
+  width: 610px;
   height: 100vh;
   position: relative;
   right: 0;
