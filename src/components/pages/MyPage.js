@@ -94,7 +94,7 @@ const MyPage = (props) => {
   return (
     <>
       <NavBarLink />
-      <Container>
+      <Container className="mypage">
         <MyCard>
           <MyCardImage src={userImage} />
           <MyCardList>
