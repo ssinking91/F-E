@@ -77,6 +77,8 @@ export default function AllListTemp() {
             _onClick={() => {
               setFtbg(index);
               getDB(item);
+              setPublicPage(1);
+              setPrivatePage(1);
             }}
           >
             <Grid is_flex width="100%" height="30px" cursor="pointer">
@@ -112,6 +114,8 @@ export default function AllListTemp() {
               setFtbg(index + 6);
               //   setFtSido(item);
               getDB(item);
+              setPublicPage(1);
+              setPrivatePage(1);
             }}
           >
             <Grid is_flex width="100%" height="30px" cursor="pointer">
