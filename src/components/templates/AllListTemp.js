@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Grid, Text } from "../atoms/index";
 import NavBarLink from "../organisms/NavBarLink";
+import { mypagetActions } from "../redux/modules/mypage";
 import { useDispatch, useSelector } from "react-redux";
 import { getPrivateListDB, getPublicListDB } from "../redux/modules/allList";
+import { savedFB } from "../redux/modules/cardSave";
 import Card from "../organisms/Main2Card";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
@@ -16,16 +18,20 @@ export default function AllListTemp() {
   useEffect(() => {
     dispatch(getPrivateListDB(ftSido));
     dispatch(getPublicListDB(ftSido));
+    // dispatch(savedFB(aptNo));
+    // dispatch(mypagetActions.savedFB(result));
   }, []);
-
+  const result = useSelector((store) => store.cardSave.result);
+  console.log(result);
   const publicList = useSelector((store) => store.allList.publicList);
-  const publicAdress = useSelector((store) => store.allList.publicAdress);
+  // const publicAdress = useSelector((store) => store.allList.publicAdress);
   const privateList = useSelector((store) => store.allList.privateList);
-
-  console.log(publicList);
-  console.log(publicAdress);
-  console.log(privateList);
-
+  // const result = useSelector((store) => store.cardSave);
+  // console.log(result);
+  // console.log(publicList);
+  // console.log(publicAdress);
+  // console.log(privateList);
+  // const [filterIslike, setFilterIslike] = useState(0);
   const [ftbg, setFtbg] = useState(0);
   const [ftSido] = useState("경기");
   //const [MypageSido, setMypageSido] = useState("경기");
@@ -68,6 +74,9 @@ export default function AllListTemp() {
             _onClick={() => {
               setFtbg(index);
               getDB(item);
+              // setFilterIslike(index);
+
+              // dispatch(savedFB(index));
               //setMypageSido(item);
             }}
           >
@@ -138,19 +147,20 @@ export default function AllListTemp() {
               // console.log(item.address.split(" ")[1]);
               let address1 = item.address.split(" ")[1];
               // console.log(onlyNumber);
+              console.log(item);
 
               return (
                 <>
                   <Card
                     key={index}
                     image={item.ImgUrl}
-                    name={`${address1} ${
-                      onlyNumber2 === "" ? "" : `${onlyNumber2}호`
-                    }`}
+                    name={item.panName}
                     startDate={item.startDate}
                     endDate={item.closeDate}
                     size={item.size}
-                    price={item.aisTypeName}
+                    price={`${item.aisTypeName} ${
+                      onlyNumber2 === "" ? "" : `${onlyNumber2}호`
+                    } `}
                     aptNo={item.panId}
                     CardPanState={item.panState}
                     publicSales={publicSales}
