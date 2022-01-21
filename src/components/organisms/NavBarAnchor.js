@@ -94,7 +94,7 @@ export default function NavBarAnchor() {
             </Items2In>
             <Items2In>
               <Text h4 margin="0" padding="6px 0" width="120px">
-                <NavLink to="/test" activeStyle={{ color: "#20d7ff" }}>
+                <NavLink to="/map" activeStyle={{ color: "#20d7ff" }}>
                   청약지도.zip
                 </NavLink>
               </Text>
