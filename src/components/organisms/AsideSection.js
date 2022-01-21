@@ -132,7 +132,19 @@ const ContentArea = styled.div`
   overflow-x: hidden;
   overflow-y: scroll;
   overflow-x: hidden;
-  & ::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera*/
+  &::-webkit-scrollbar {
+    width: 13px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #20d7ff;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
   }
 `;
