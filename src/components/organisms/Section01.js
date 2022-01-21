@@ -97,7 +97,7 @@ const Hr = styled.div`
   border-top: 1px solid #e3e5eb;
 `;
 const TitleSectionWrap = styled.div`
-  margin-top: 278px;
+  margin-top: 8%;
   width: 100%;
   text-align: center;
 `;
