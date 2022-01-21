@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Grid, Text } from "../atoms/index";
 import NavBarLink from "../organisms/NavBarLink";
-import { mypagetActions } from "../redux/modules/mypage";
 import { useDispatch, useSelector } from "react-redux";
 import { getPrivateListDB, getPublicListDB } from "../redux/modules/allList";
-import { savedFB } from "../redux/modules/cardSave";
 import Card from "../organisms/Main2Card";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import NoneMain2Card from "../organisms/NoneMain2Card";
+import Pagination from "../molecules/Pagination";
 // import { replace } from "connected-react-router";
 
 export default function AllListTemp() {
@@ -18,23 +17,16 @@ export default function AllListTemp() {
   useEffect(() => {
     dispatch(getPrivateListDB(ftSido));
     dispatch(getPublicListDB(ftSido));
-    // dispatch(savedFB(aptNo));
-    // dispatch(mypagetActions.savedFB(result));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const result = useSelector((store) => store.cardSave.result);
   console.log(result);
   const publicList = useSelector((store) => store.allList.publicList);
-  // const publicAdress = useSelector((store) => store.allList.publicAdress);
+
   const privateList = useSelector((store) => store.allList.privateList);
-  // const result = useSelector((store) => store.cardSave);
-  // console.log(result);
-  // console.log(publicList);
-  // console.log(publicAdress);
-  // console.log(privateList);
-  // const [filterIslike, setFilterIslike] = useState(0);
+
   const [ftbg, setFtbg] = useState(0);
   const [ftSido] = useState("경기");
-  //const [MypageSido, setMypageSido] = useState("경기");
 
   const getDB = (item) => {
     console.log(item);
@@ -46,6 +38,17 @@ export default function AllListTemp() {
   const si = ["서울", "인천", "부산", "대구", "대전", "광주", "울산", "세종"];
 
   const Page = "AllList";
+
+  const publicPagesSum = 10;
+  const [publicPage, setPublicPage] = useState(1);
+  const publicPageSet = (publicPage - 1) * publicPagesSum;
+
+  const privatePagesSum = 10;
+  const [privatePage, setPrivatePage] = useState(1);
+  const privatePageSet = (privatePage - 1) * privatePagesSum;
+
+  console.log(publicList);
+  console.log(privateList);
 
   return (
     <>
@@ -74,10 +77,6 @@ export default function AllListTemp() {
             _onClick={() => {
               setFtbg(index);
               getDB(item);
-              // setFilterIslike(index);
-
-              // dispatch(savedFB(index));
-              //setMypageSido(item);
             }}
           >
             <Grid is_flex width="100%" height="30px" cursor="pointer">
@@ -135,22 +134,20 @@ export default function AllListTemp() {
             공공 분양
           </Text>
           {publicList && publicList.length !== 0 ? (
-            publicList.map((item, index) => {
-              const publicSales = "publicSales";
-              const status = "public";
-              let onlyNumber = item.panName.replace(
-                /[^0-9]{3,4}[^0-9]{3,4}/g,
-                "/"
-              );
-              let onlyNumber1 = onlyNumber.split("/");
-              let onlyNumber2 = onlyNumber1[onlyNumber1.length - 2];
-              // console.log(item.address.split(" ")[1]);
-              let address1 = item.address.split(" ")[1];
-              // console.log(onlyNumber);
-              console.log(item);
+            publicList
+              .slice(publicPageSet, publicPageSet + publicPagesSum)
+              .map((item, index) => {
+                console.log(publicList.length);
+                const publicSales = "publicSales";
+                const status = "public";
+                let onlyNumber = item.panName.replace(
+                  /[^0-9]{3,4}[^0-9]{3,4}/g,
+                  "/"
+                );
+                let onlyNumber1 = onlyNumber.split("/");
+                let onlyNumber2 = onlyNumber1[onlyNumber1.length - 2];
 
-              return (
-                <>
+                return (
                   <Card
                     key={index}
                     image={item.ImgUrl}
@@ -167,17 +164,23 @@ export default function AllListTemp() {
                     islike={item.islike}
                     Page={Page}
                     status={status}
-                    //MypageSido={MypageSido}
                     //공공 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/public/${item.panId}`);
                     }}
                   />
-                </>
-              );
-            })
+                );
+              })
           ) : (
             <NoneMain2Card />
+          )}
+          {publicList && publicList.length !== 0 && (
+            <Pagination
+              total={publicList.length}
+              setPage={setPublicPage}
+              page={publicPage}
+              pagesSum={publicPagesSum}
+            />
           )}
         </PublicCards>
 
@@ -186,11 +189,12 @@ export default function AllListTemp() {
             민간 분양
           </Text>
           {privateList && privateList.length !== 0 ? (
-            privateList.result.map((item, index) => {
-              const status = "private";
+            privateList.result
+              .slice(privatePageSet, privatePageSet + privatePagesSum)
+              .map((item, index) => {
+                const status = "private";
 
-              return (
-                <>
+                return (
                   <Card
                     key={index}
                     image={item.ImgUrl}
@@ -211,21 +215,24 @@ export default function AllListTemp() {
                       console.log(item);
                     }}
                   />
-                </>
-              );
-            })
+                );
+              })
           ) : (
             <NoneMain2Card />
+          )}
+          {privateList && privateList.length !== 0 && (
+            <Pagination
+              total={privateList.result.length}
+              setPage={setPrivatePage}
+              page={privatePage}
+              pagesSum={privatePagesSum}
+            />
           )}
         </PrivateCards>
       </CardWrap>
     </>
   );
 }
-
-// const Span = styled.span`
-//   font-weight: 400;
-// `;
 
 const CardWrap = styled.div`
   width: 1200px;

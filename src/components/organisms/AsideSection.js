@@ -12,7 +12,8 @@ import {
   getPrivateListMapDB,
   clickOne,
 } from "../redux/modules/map";
-import topButton from "../../images/topButton.png"
+import topButton from "../../images/topButton.png";
+import Pagination from "../molecules/Pagination";
 
 export default function AsideSection() {
   const dispatch = useDispatch();
@@ -49,10 +50,20 @@ export default function AsideSection() {
     console.log(address);
     dispatch(clickOne(address));
   };
-  
+
   const scrollToTop = (event) => {
-    document.getElementById('TOP').scrollTo({top:0, left:0, behavior: "smooth"} );   
+    document
+      .getElementById("TOP")
+      .scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
+
+  const publicPagesSum = 15;
+  const [publicPage, setPublicPage] = useState(1);
+  const publicPageSet = (publicPage - 1) * publicPagesSum;
+
+  const privatePagesSum = 10;
+  const [privatePage, setPrivatePage] = useState(1);
+  const privatePageSet = (privatePage - 1) * privatePagesSum;
 
   return (
     <>
@@ -66,62 +77,83 @@ export default function AsideSection() {
         <ContentArea id="TOP">
           {clickButton === "민간분양"
             ? privateList &&
-              privateList.map((item, index) => {
-                const asideSectionView = "asideSection";
-                return (
-                  <Grid
-                    margin="10px 0 0 20px"
-                    key={index}
-                    _onClick={() => click(item.address)}
-                  >
-                    <Main2Card
+              privateList
+                .slice(privatePageSet, privatePageSet + privatePagesSum)
+                .map((item, index) => {
+                  const asideSectionView = "asideSection";
+                  return (
+                    <Grid
+                      margin="10px 0 0 20px"
                       key={index}
-                      image={item.ImgUrl}
-                      name={item.houseName}
-                      startDate={item.receptStartDate}
-                      endDate={item.receptEndDate}
-                      size={item.size}
-                      price={item.supplyAmount}
-                      aptNo={item.pblancNo}
-                      islike={item.islike}
-                      asideSectionView={asideSectionView}
-                      _onClick={() => {
-                        history.push(`/private/${item.pblancNo}`);
-                      }}
-                    />
-                  </Grid>
-                );
-              })
+                      _onClick={() => click(item.address)}
+                    >
+                      <Main2Card
+                        key={index}
+                        image={item.ImgUrl}
+                        name={item.houseName}
+                        startDate={item.receptStartDate}
+                        endDate={item.receptEndDate}
+                        size={item.size}
+                        price={item.supplyAmount}
+                        aptNo={item.pblancNo}
+                        islike={item.islike}
+                        asideSectionView={asideSectionView}
+                        _onClick={() => {
+                          history.push(`/private/${item.pblancNo}`);
+                        }}
+                      />
+                    </Grid>
+                  );
+                })
             : publicList &&
-              publicList.map((item, index) => {
-                const publicSales = "publicSales";
-                const asideSectionView = "asideSection";
-                return (
-                  <Grid
-                    margin="10px 0 0 20px"
-                    key={index}
-                    _onClick={() => click(item.address)}
-                  >
-                    <Main2Card
+              publicList
+                .slice(publicPageSet, publicPageSet + publicPagesSum)
+                .map((item, index) => {
+                  const publicSales = "publicSales";
+                  const asideSectionView = "asideSection";
+                  return (
+                    <Grid
+                      margin="10px 0 0 20px"
                       key={index}
-                      image={item.ImgUrl}
-                      name={item.panName}
-                      startDate={item.startDate}
-                      endDate={item.closeDate}
-                      size={item.size}
-                      price={item.aisTypeName}
-                      aptNo={item.panId}
-                      islike={item.islike}
-                      CardPanState={item.panState}
-                      publicSales={publicSales}
-                      asideSectionView={asideSectionView}
-                      _onClick={() => {
-                        detailModal(`/public/${item.panId}`);
-                      }}
-                    />
-                  </Grid>
-                );
-              })}
+                      _onClick={() => click(item.address)}
+                    >
+                      <Main2Card
+                        key={index}
+                        image={item.ImgUrl}
+                        name={item.panName}
+                        startDate={item.startDate}
+                        endDate={item.closeDate}
+                        size={item.size}
+                        price={item.aisTypeName}
+                        aptNo={item.panId}
+                        islike={item.islike}
+                        CardPanState={item.panState}
+                        publicSales={publicSales}
+                        asideSectionView={asideSectionView}
+                        _onClick={() => {
+                          detailModal(`/public/${item.panId}`);
+                        }}
+                      />
+                    </Grid>
+                  );
+                })}
+          {clickButton === "민간분양"
+            ? privateList && (
+                <Pagination
+                  total={privateList.length}
+                  setPage={setPrivatePage}
+                  page={privatePage}
+                  pagesSum={privatePagesSum}
+                />
+              )
+            : publicList && (
+                <Pagination
+                  total={publicList.length}
+                  setPage={setPublicPage}
+                  page={publicPage}
+                  pagesSum={publicPagesSum}
+                />
+              )}
         </ContentArea>
       </Wrap>
     </>
@@ -138,7 +170,7 @@ const Wrap = styled.div`
 
 const TopButton = styled.a`
   width: 64px;
-  height: 64PX;
+  height: 64px;
   position: fixed;
   right: 2%;
   bottom: 2%;
