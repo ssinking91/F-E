@@ -41,6 +41,7 @@ export const getPrivateListDB = (ftSido) => {
 
         const privateAd = new Set(privateAddress);
         const adress = [...privateAd];
+        dispatch(getPrivateList(null));
         dispatch(getPrivateList(privateList));
         dispatch(getPrivateAdress(adress));
       })
@@ -60,7 +61,7 @@ export const getPublicListDB = (ftSido) => {
         }
         const publicAd = new Set(publicAdress);
         const adress = [...publicAd];
-
+        dispatch(getPublicList(null));
         dispatch(getPublicList(publicList));
         dispatch(getPublicAdress(adress));
       })
