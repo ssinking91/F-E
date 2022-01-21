@@ -159,7 +159,7 @@ const Main2Card = (props) => {
           
         > 
           {/* asideSection에서는 찜하기 버튼 비활성화 */}
-          {props.asideSectionView ? "" : save2 ? <img src={BmarkFill} /> :  <img src={BmarkNone}/>}
+          {props.asideSectionView ? "" : save2 ? <><img src={BmarkFill} /></> :  <><img src={BmarkNone}/></>}
         </ImageDiv>
       </Imageitem>
       <Item>
