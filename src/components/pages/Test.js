@@ -1,3 +1,4 @@
+import { useState } from "react";
 import AsideSection from "../organisms/AsideSection";
 import NavBar from "../organisms/NavBarAnchor";
 import NavBarSub from "../organisms/NavBarSub";
@@ -6,12 +7,17 @@ import KakaoMap from "../utilities/KakaoMap";
 import styled from "styled-components";
 
 export default function Test() {
+  const [publicPage, setPublicPage] = useState(1);
+  const [privatePage, setPrivatePage] = useState(1);
   return (
     <>
       <Wrap>
         <NavBarWrap>
           <NavBar />
-          <NavBarSub />
+          <NavBarSub
+            setPublicPage={setPublicPage}
+            setPrivatePage={setPrivatePage}
+          />
         </NavBarWrap>
         <BottomWrap>
           <Left>
@@ -19,7 +25,12 @@ export default function Test() {
             <MapDetailTemp />
           </Left>
           <Right>
-            <AsideSection />
+            <AsideSection
+              publicPage={publicPage}
+              privatePage={privatePage}
+              setPublicPage={setPublicPage}
+              setPrivatePage={setPrivatePage}
+            />
           </Right>
         </BottomWrap>
       </Wrap>

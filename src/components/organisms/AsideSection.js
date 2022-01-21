@@ -15,7 +15,12 @@ import {
 import topButton from "../../images/topButton.png";
 import Pagination from "../molecules/Pagination";
 
-export default function AsideSection() {
+export default function AsideSection({
+  publicPage,
+  privatePage,
+  setPublicPage,
+  setPrivatePage,
+}) {
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -75,11 +80,9 @@ export default function AsideSection() {
   };
 
   const publicPagesSum = 15;
-  const [publicPage, setPublicPage] = useState(1);
   const publicPageSet = (publicPage - 1) * publicPagesSum;
 
   const privatePagesSum = 10;
-  const [privatePage, setPrivatePage] = useState(1);
   const privatePageSet = (privatePage - 1) * privatePagesSum;
 
   return (

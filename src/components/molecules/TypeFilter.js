@@ -15,7 +15,7 @@ import { DropDown } from "../atoms/index";
 
 import { globalSido } from "../utilities/constants.js";
 
-export default function TypeFilter() {
+export default function TypeFilter({ setPublicPage, setPrivatePage }) {
   const dispatch = useDispatch();
   const [sido, setSido] = useState();
   const [searchText, setSearchText] = useState();
@@ -39,6 +39,8 @@ export default function TypeFilter() {
     dispatch(getPublicListMapDB(item));
     dispatch(getPrivateListMapDB(item));
     dispatch(filteringChangeCoords(item));
+    setPublicPage(1);
+    setPrivatePage(1);
   };
   return (
     <Div>
@@ -58,6 +60,8 @@ export default function TypeFilter() {
           options={globalSido}
           sidoChange={sidoChange}
           name={"지역선택"}
+          setPublicPage={setPublicPage}
+          setPrivatePage={setPrivatePage}
         ></DropDown>
       </WrapRight>
     </Div>
