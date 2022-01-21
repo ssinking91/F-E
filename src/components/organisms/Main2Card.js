@@ -4,18 +4,20 @@ import { savedActions } from "../redux/modules/cardSave";
 import { mypagetActions } from "../redux/modules/mypage";
 import { actionCreators as mainActions } from "../redux/modules/main";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import Label from "../molecules/Label";
 import { Text } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 import defaultLogoImage from "../../images/defaultLogoImage.svg";
-import { visibleModal } from "../redux/modules/map";
+import { visibleModal, detailModal } from "../redux/modules/map";
 
 const Main2Card = (props) => {
   // console.log(props.asideSectionView);
   const { _onClick } = props;
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const islike = JSON.parse(props.islike);
   // console.log(props.Page, props.islike, typeof props.islike);
@@ -24,7 +26,8 @@ const Main2Card = (props) => {
   // console.log(MypageSido);
 
   const [save2, setSave2] = React.useState(islike);
-
+  // const detailInfo = useSelector((state) => state.detail.info);
+  // console.log(detailInfo);
   // useEffect(async () => {
   //   const userKey = localStorage.getItem("userKey");
   //   await setTimeout(() => {
@@ -203,8 +206,14 @@ const Main2Card = (props) => {
                   }`}
             </Text>
           </Info2Item2>
+          {/* history.push(`/${props.division}/${props.aptNo}`) */}
           {props.asideSectionView ? (
-            <Info2Item3 onClick={() => dispatch(visibleModal(true))}>
+            <Info2Item3
+              onClick={
+                () => dispatch(visibleModal(true))
+                // dispatch(detailModal(locate)))
+              }
+            >
               <RightArrow src="img/rightArrow.png" />
             </Info2Item3>
           ) : (

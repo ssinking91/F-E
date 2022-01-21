@@ -9,7 +9,7 @@ import DetailImg from "../organisms/DetailImg";
 import Comment from "../organisms/Comment";
 import Footer from "../organisms/Footer";
 
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailInfoDB, getDetailImgDB } from "../redux/modules/detail";
@@ -17,6 +17,7 @@ import { visibleModal } from "../redux/modules/map";
 
 export default function MapDetailTemp(props) {
   const dispatch = useDispatch();
+  const history = useHistory();
   // const location = useLocation();
 
   // console.log(location);

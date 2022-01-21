@@ -22,7 +22,6 @@ export default function AsideSection() {
   const history = useHistory();
   const eventList = useSelector((state) => state.map.list);
   const clickButton = useSelector((state) => state.map.divisionClick);
-
   const clicked = useSelector((state) => state.map.clicked);
   const show = useSelector((state) => state.map.show);
   const hidden = useSelector((state) => state.map.hidden);
@@ -43,6 +42,8 @@ export default function AsideSection() {
 
   const publicList = useSelector((store) => store.map.public_sido);
   const privateList = useSelector((store) => store.map.private_sido);
+  console.log(publicList);
+  console.log(privateList);
 
   const click = (address) => {
     console.log(address);
@@ -57,6 +58,7 @@ export default function AsideSection() {
             ? privateList &&
               privateList.map((item, index) => {
                 const asideSectionView = "asideSection";
+                const divPrivate = "private";
                 return (
                   <Grid
                     margin="10px 0 0 20px"
@@ -73,10 +75,8 @@ export default function AsideSection() {
                       price={item.supplyAmount}
                       aptNo={item.pblancNo}
                       islike={item.islike}
+                      division={divPrivate}
                       asideSectionView={asideSectionView}
-                      _onClick={() => {
-                        history.push(`/private/${item.pblancNo}`);
-                      }}
                     />
                   </Grid>
                 );
@@ -85,6 +85,7 @@ export default function AsideSection() {
               publicList.map((item, index) => {
                 const publicSales = "publicSales";
                 const asideSectionView = "asideSection";
+                const divPublic = "public";
                 return (
                   <Grid
                     margin="10px 0 0 20px"
@@ -103,10 +104,8 @@ export default function AsideSection() {
                       islike={item.islike}
                       CardPanState={item.panState}
                       publicSales={publicSales}
+                      division={divPublic}
                       asideSectionView={asideSectionView}
-                      _onClick={() => {
-                        detailModal(`/public/${item.panId}`);
-                      }}
                     />
                   </Grid>
                 );
