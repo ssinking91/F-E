@@ -24,7 +24,6 @@ export default function AsideSection() {
   const history = useHistory();
   const eventList = useSelector((state) => state.map.list);
   const clickButton = useSelector((state) => state.map.divisionClick);
-
   const clicked = useSelector((state) => state.map.clicked);
   const show = useSelector((state) => state.map.show);
   const hidden = useSelector((state) => state.map.hidden);
@@ -45,6 +44,8 @@ export default function AsideSection() {
 
   const publicList = useSelector((store) => store.map.public_sido);
   const privateList = useSelector((store) => store.map.private_sido);
+  console.log(publicList);
+  console.log(privateList);
 
   const click = (address) => {
     console.log(address);
@@ -101,6 +102,7 @@ export default function AsideSection() {
                 .slice(privatePageSet, privatePageSet + privatePagesSum)
                 .map((item, index) => {
                   const asideSectionView = "asideSection";
+                  const divPrivate = "private";
                   return (
                     <Grid
                       margin="10px 0 0 20px"
@@ -117,10 +119,8 @@ export default function AsideSection() {
                         price={item.supplyAmount}
                         aptNo={item.pblancNo}
                         islike={item.islike}
+                        division={divPrivate}
                         asideSectionView={asideSectionView}
-                        _onClick={() => {
-                          history.push(`/private/${item.pblancNo}`);
-                        }}
                       />
                     </Grid>
                   );
@@ -131,6 +131,17 @@ export default function AsideSection() {
                 .map((item, index) => {
                   const publicSales = "publicSales";
                   const asideSectionView = "asideSection";
+                  const divPublic = "public";
+                  let onlyNumber = item.panName.replace(
+                    /[^0-9]{3,4}[^0-9]{3,4}/g,
+                    "/"
+                  );
+                  let onlyNumber1 = onlyNumber.split("/");
+                  let onlyNumber2 = onlyNumber1[onlyNumber1.length - 2];
+                  // console.log(item.address.split(" ")[1]);
+                  // let address1 = item.address.split(" ")[1];
+                  // console.log(onlyNumber);
+                  console.log(item);
                   return (
                     <Grid
                       margin="10px 0 0 20px"
@@ -144,15 +155,15 @@ export default function AsideSection() {
                         startDate={item.startDate}
                         endDate={item.closeDate}
                         size={item.size}
-                        price={item.aisTypeName}
+                        price={`${item.aisTypeName} ${
+                          onlyNumber2 === "" ? "" : `${onlyNumber2}호`
+                        } `}
                         aptNo={item.panId}
                         islike={item.islike}
                         CardPanState={item.panState}
                         publicSales={publicSales}
+                        division={divPublic}
                         asideSectionView={asideSectionView}
-                        _onClick={() => {
-                          detailModal(`/public/${item.panId}`);
-                        }}
                       />
                     </Grid>
                   );

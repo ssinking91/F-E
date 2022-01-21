@@ -1,33 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Grid } from "../atoms/index";
 import DetailInfo from "../organisms/DetailInfo";
-import DetailTemp from "../templates/DetailTemp";
-import KakaoMiniMap from "../utilities/KakaoMiniMap";
 import DetailType from "../organisms/DetailType";
 import DetailImg from "../organisms/DetailImg";
 import Comment from "../organisms/Comment";
-import Footer from "../organisms/Footer";
-
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetailInfoDB, getDetailImgDB } from "../redux/modules/detail";
 import { visibleModal } from "../redux/modules/map";
-
 export default function MapDetailTemp(props) {
   const dispatch = useDispatch();
-  // const location = useLocation();
-
-  // console.log(location);
-  // const locate = location.pathname;
-  // console.log(locate);
-
-  // useEffect(() => {
-  //   dispatch(getDetailInfoDB(locate));
-  //   dispatch(getDetailImgDB(locate));
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
   const visible = useSelector((state) => state.map.visible);
   console.log(visible);
   const test = useSelector((state) => state);
@@ -37,6 +18,10 @@ export default function MapDetailTemp(props) {
       <Modal visible={visible}>
         <Grid>
           <DetailInfo />
+          {/* <KakaoMiniMap /> */}
+          <DetailType />
+          <DetailImg />
+          <Comment />
           <CloseModal onClick={() => dispatch(visibleModal(false))}>
             X
           </CloseModal>
@@ -56,7 +41,24 @@ const Modal = styled.div`
   margin: -595px auto 0 30px;
   position: absolute;
   z-index: 900;
-  border-radius: 20px 20px 0 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-radius: 40px 0 0 0;
+  &::-webkit-scrollbar {
+    width: 13px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #20d7ff;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+  }
 `;
 const Container = styled.div`
   background-color: #f9f9f9;
