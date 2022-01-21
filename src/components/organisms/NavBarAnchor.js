@@ -3,6 +3,7 @@ import { useHistory, useLocation, NavLink, Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../images/logo.svg";
 import Logins from "./Logins";
 import { Grid, Text } from "../atoms/index";
+import anime from "animejs/lib/anime.es.js";
 
 export default function NavBarAnchor() {
   const history = useHistory();
@@ -24,12 +25,28 @@ export default function NavBarAnchor() {
     history.replace("/");
   }
 
+  anime({
+    targets: ".line-drawing-demo .lines path",
+    strokeDashoffset: [anime.setDashoffset, 0],
+    easing: "easeInOutSine",
+    duration: 1500,
+    delay: function (el, i) {
+      return i * 250;
+    },
+    direction: "alternate",
+    loop: true,
+  });
+
   return (
     <>
       <HeaderWrap>
         <Grid width="100%">
           <Atag href="/#page1" style={{ width: "40px" }}>
-            <Logo width="40" color="black" />
+            <Logo
+              width="40"
+              color="black"
+              className="line-drawing-demo lines path"
+            />
           </Atag>
         </Grid>
         <Grid is_flex>

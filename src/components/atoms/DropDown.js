@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getPublicListMapDB,
   getPrivateListMapDB,
-  clickOne,
+  saveState,
+  filteringChangeCoords,
 } from "../redux/modules/map";
 import arrowUp from "../../images/arrow_up.svg";
 import arrowDown from "../../images/arrow_down.svg";
@@ -24,7 +25,8 @@ const Dropdown = (props) => {
     setIsActive(!isActive);
   };
   const getClickOne = (item) => {
-    dispatch(clickOne(item));
+    dispatch(saveState(item));
+    dispatch(filteringChangeCoords(item));
   };
   const getDB = (item) => {
     console.log(item);
@@ -54,7 +56,7 @@ const Dropdown = (props) => {
             onClick={() => {
               console.log(item);
               onSelectItem(item.value);
-              getClickOne(item);
+              getClickOne(item.value);
               getDB(item.value);
             }}
           >

@@ -26,7 +26,7 @@ export default function DetailTemp(props) {
     dispatch(getDetailInfoDB(locate));
     dispatch(getDetailImgDB(locate));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [locate]);
 
   return (
     <>

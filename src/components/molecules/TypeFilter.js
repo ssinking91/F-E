@@ -8,6 +8,7 @@ import {
   getPublicListMapDB,
   getPrivateListMapDB,
   clickOne,
+  filteringChangeCoords,
 } from "../redux/modules/map";
 import { DropDown } from "../atoms/index";
 
@@ -36,6 +37,7 @@ export default function TypeFilter() {
     console.log(item);
     dispatch(getPublicListMapDB(item));
     dispatch(getPrivateListMapDB(item));
+    dispatch(filteringChangeCoords(item));
   };
   return (
     <Div>

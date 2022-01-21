@@ -6,9 +6,9 @@ const state = {};
 
 // action
 const SAVE_STATE = `/SAVE_STATE/`;
+const FILTERING_CHANGE_COORDS = `/FILTER/`;
 const CLICK_ONE = `/CLICK_ONE/`;
 const CLICK_BUTTON = `/CLICK_BUTTON/`;
-const AREA_STATE = `/AREA_STATE/`;
 const CHANGE_COORDS = `/CHANGE_COORDS/`;
 const PUBLIC_AREA_STATE = `/PUBLIC_AREA_STATE`;
 const PRIVATE_AREA_STATE = `/PRIVATE_AREA_STATE`;
@@ -17,11 +17,16 @@ const PRIVATE_AREA_STATE = `/PRIVATE_AREA_STATE`;
 export const saveState = createAction(SAVE_STATE, (list) => ({
   list,
 }));
+export const filteringChangeCoords = createAction(
+  FILTERING_CHANGE_COORDS,
+  (filtering) => ({
+    filtering,
+  })
+);
 export const clickOne = createAction(CLICK_ONE, (clicked) => ({ clicked }));
 export const clickButton = createAction(CLICK_BUTTON, (divisionClick) => ({
   divisionClick,
 }));
-const areaState = createAction(AREA_STATE, (sido) => ({ sido }));
 export const changeCoords = createAction(CHANGE_COORDS, (coords) => ({
   coords,
 }));
@@ -36,7 +41,6 @@ const privateAreaState = createAction(PRIVATE_AREA_STATE, (ftSido) => ({
 export const getPublicListMapDB = (ftSido) => {
   return (dispatch, getState, { history }) => {
     apis.getPublicLists(ftSido).then((res) => {
-      console.log(res.data.result[0]);
       dispatch(publicAreaState(res.data.result[0]));
     });
   };
@@ -44,7 +48,6 @@ export const getPublicListMapDB = (ftSido) => {
 export const getPrivateListMapDB = (ftSido) => {
   return (dispatch, getState, { history }) => {
     apis.getPrivateLists(ftSido).then((res) => {
-      console.log(ftSido);
       dispatch(privateAreaState(res.data.result));
     });
   };
@@ -57,6 +60,12 @@ export default handleActions(
       return {
         ...state,
         list: action.payload.list,
+      };
+    },
+    [FILTERING_CHANGE_COORDS]: (state, action) => {
+      return {
+        ...state,
+        filteringChangeCoords: action.payload.filtering,
       };
     },
     [CLICK_ONE]: (state, action) => {

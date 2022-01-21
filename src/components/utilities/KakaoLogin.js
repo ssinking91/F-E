@@ -42,8 +42,7 @@ export default function KakaoLogin() {
   };
 
   useEffect(() => {
-    getProfile().then(history.replace("/"));
-
+    getProfile();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

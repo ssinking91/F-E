@@ -7,17 +7,14 @@ import BundleText from "../molecules/BundleText";
 // import DetailType from "./DetailType";
 
 export default function DetailInfo() {
-  console.log(useSelector((store) => store));
   // private
   const detailInfo = useSelector((store) => store.detail.info);
   const topInfo = detailInfo.detail1;
   const detailImg = useSelector((store) => store.detail.img);
-  console.log(topInfo);
 
   // public
   const publicInfo = useSelector((store) => store.detail.info.detail);
   const publicImg = useSelector((store) => store.detail.img);
-  console.log(publicInfo);
 
   // let minPrize = publicInfo.supplyAmount.split("~")[0].replace(",", "");
   // const maxPrize = publicInfo.supplyAmount.split("~")[1].replace(",", "");

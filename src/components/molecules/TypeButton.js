@@ -36,7 +36,6 @@ export default function TypeButton(props) {
         radius="36px"
       >
         {division.map((item, index) => {
-          console.log(item);
           return (
             <Grid
               is_flex

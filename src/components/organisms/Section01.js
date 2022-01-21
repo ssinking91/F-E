@@ -22,12 +22,13 @@ const Section01 = (props) => {
     dispatch(mainAction.getTotalDB());
 
     setInterval(imageChange, 3000); // 3초마다 imageChange 반복 실행
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const imageChange = () => {
-    if(imageSection.current === null){
-      return clearInterval(imageChange);//함수 종류
-    };
+    if (imageSection.current === null) {
+      return clearInterval(imageChange); //함수 종류
+    }
 
     imageCount < 4 ? imageCount++ : (imageCount = 0);
     imageSection.current.style.backgroundImage = `url(${imageArray[imageCount]})`;
@@ -57,7 +58,7 @@ const Section01 = (props) => {
 
         <Background>
           <TitleSectionWrap>
-            <Text h1 color="#fff">
+            <Text h1 color="#fff" className="anime">
               집을 모아놓다.zip
             </Text>
             {localStorage.getItem("userName") ? (

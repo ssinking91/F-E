@@ -5,7 +5,12 @@ import { getPrivateListDB, getPublicListDB } from "../redux/modules/allList";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { saveState, changeCoords } from "../redux/modules/map";
+import {
+  saveState,
+  filteringChangeCoords,
+  changeCoords,
+  clickOne,
+} from "../redux/modules/map";
 import "./style.css";
 import defaultLogoImage from "../../images/defaultLogoImage.svg";
 
@@ -20,7 +25,6 @@ export default function KakaoMap() {
 
   const publicList = useSelector((state) => state.allList.publicList);
   const privateList = useSelector((state) => state.allList.privateList);
-  console.log(publicList);
 
   const locate = useSelector((state) => state.allList);
   const publicAdress = new Set(locate.publicAdress);
@@ -34,7 +38,9 @@ export default function KakaoMap() {
 
   // AsideSection -> 클릭한 카드의 주소
   let cardClicked = useSelector((state) => state.map.clicked);
-  console.log(cardClicked);
+  const filter = useSelector((state) => state.map.filteringChangeCoords);
+
+  if (filter) cardClicked = filter;
 
   useEffect(() => {
     dispatch(saveState(clickAdress));
@@ -43,7 +49,6 @@ export default function KakaoMap() {
   // drag_end 시킨 현재 지도의 중앙 좌표를 주소로 변환시킨것을 state로 저장/변환
   const [saveLocation, setSaveLocation] = useState("");
   useEffect(() => {
-    console.log("useEffect발동");
     dispatch(saveState(saveLocation));
   }, [dispatch, saveLocation]);
 
@@ -56,10 +61,12 @@ export default function KakaoMap() {
   // 카드를 클릭했을때의 주소를 얻어내 좌표를 얻어 전역 state로 관리해줍니다.
   const clickMove = () => {
     // 주소-좌표 변환 객체를 생성합니다
-    var geocoder = new kakao.maps.services.Geocoder();
+    const geocoder = new kakao.maps.services.Geocoder();
 
     // AsideSection 의 카드를 클릭했을때의 주소를 좌표로 변환 후 지도중심으로 이동시킵니다.
     geocoder.addressSearch(cardClicked, async function (result, status) {
+      dispatch(filteringChangeCoords(undefined));
+      dispatch(clickOne(undefined));
       // 정상적으로 검색이 완료됐으면
       if (status === kakao.maps.services.Status.OK) {
         const moveLatLng = new kakao.maps.LatLng(result[0].y, result[0].x);
@@ -128,18 +135,18 @@ export default function KakaoMap() {
           if (cardClicked === "충청북도 음성군 대소면 성본산업단지 B3블록")
             cardClicked = "충북 음성군 대소면 성본리 298-1";
 
-          cardClicked = cardClicked
-            .split("일원")[0]
-            .split("및")[0]
-            .split("외")[0]
-            .split("(")[0]
-            .split("단지")[0];
-
           console.log(cardClicked);
+          if (cardClicked) {
+            cardClicked = cardClicked
+              .split("일원")[0]
+              .split("및")[0]
+              .split("외")[0]
+              .split("(")[0]
+              .split("단지")[0];
+          }
 
           geocoder.addressSearch(cardClicked, async function (result, status) {
             if (status === kakao.maps.services.Status.OK) {
-              console.log(`${cardClicked} 좌표변환 성공`);
               const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
               console.log(coords);
               dispatch(changeCoords(coords));
@@ -159,44 +166,46 @@ export default function KakaoMap() {
   }, [coords]);
 
   useEffect(() => {
-    console.log("mapFunc실행");
-    console.log(location.length);
     mapFunc();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.length >= 100]); // 로케이션의 값이 바뀔 때 마다
 
   async function mapFunc() {
-    var placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 999 }),
+    const geocoder = new kakao.maps.services.Geocoder();
+
+    let placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 999 }),
       contentNode = document.createElement("div"), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다
       markers = [], // 마커를 담을 배열입니다
       currCategory = ""; // 현재 선택된 카테고리를 가지고 있을 변수입니다
 
-    var mapContainer = document.getElementById("map"), // 지도를 표시할 div
+    const mapContainer = document.getElementById("map"), // 지도를 표시할 div
       mapOption = {
         center: new kakao.maps.LatLng(37.56682, 126.97865), // 지도의 중심좌표
         level: 8, // 지도의 확대 레벨
       };
 
     // 지도를 생성합니다
-    var map = new kakao.maps.Map(mapContainer, mapOption);
+    let map = new kakao.maps.Map(mapContainer, mapOption);
 
+    console.log(coords);
     if (coords) {
-      map.setCenter(coords);
+      let examCoords = coords;
+      map.setCenter(filter ? coords : examCoords);
       const position = map.getCenter();
-      console.log(coords);
-      console.log(position);
 
       const Lng = position.Ma;
       const Lat = position.La;
-      map.setLevel(3, {
+
+      map.setLevel(filter ? 7 : 3, {
         anchor: new kakao.maps.LatLng(Lng, Lat),
         animate: {
           duration: 500,
         },
       });
     }
+
     // 장소 검색 객체를 생성합니다
-    var ps = new kakao.maps.services.Places(map);
+    const ps = new kakao.maps.services.Places(map);
 
     // 지도에 idle 이벤트를 등록합니다
     kakao.maps.event.addListener(map, "idle", searchPlaces);
@@ -255,13 +264,13 @@ export default function KakaoMap() {
     function displayPlaces(places) {
       // 몇번째 카테고리가 선택되어 있는지 얻어옵니다
       // 이 순서는 스프라이트 이미지에서의 위치를 계산하는데 사용됩니다
-      var order = document
+      const order = document
         .getElementById(currCategory)
         .getAttribute("data-order");
 
       for (var i = 0; i < places.length; i++) {
         // 마커를 생성하고 지도에 표시합니다
-        var marker = addMarker(
+        const marker = addMarker(
           new kakao.maps.LatLng(places[i].y, places[i].x),
           order
         );
@@ -278,7 +287,7 @@ export default function KakaoMap() {
 
     // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
     function addMarker(position, order) {
-      var imageSrc =
+      const imageSrc =
           "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png", // 마커 이미지 url, 스프라이트 이미지를 씁니다
         imageSize = new kakao.maps.Size(27, 28), // 마커 이미지의 크기
         imgOptions = {
@@ -409,7 +418,6 @@ export default function KakaoMap() {
     map.addControl(zoomControl, kakao.maps.ControlPosition.BOTTOMLEFT);
 
     // 주소-좌표 변환 객체를 생성합니다
-    var geocoder = new kakao.maps.services.Geocoder();
 
     // 주소로 좌표를 검색합니다
     if (location) {
@@ -668,8 +676,10 @@ export default function KakaoMap() {
                                                   <div style="display: flex; flex-wrap: wrap; height: 50px; margin: 0 0 6px 0;">
                                                     <span style="font-size: 16px; font-weight: bold; color: #000000; line-height: 25px; height: 25px; color: #000000">
                                                       ${
-                                                        publicInfo.length > 0 &&
-                                                        publicInfo[0].panName
+                                                        publicInfo.length > 0
+                                                          ? publicInfo[0]
+                                                              .panName
+                                                          : ""
                                                       }
                                                       ${
                                                         privateInfo.length > 0

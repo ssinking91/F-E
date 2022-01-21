@@ -17,8 +17,6 @@ export default function AsideSection() {
   const dispatch = useDispatch();
   const eventList = useSelector((state) => state.map.list);
   const clickButton = useSelector((state) => state.map.divisionClick);
-  const clicked = useSelector((state) => state.map.clicked);
-  console.log(clicked);
 
   React.useEffect(() => {
     dispatch(getPublicListMapDB(eventList));
@@ -27,8 +25,6 @@ export default function AsideSection() {
 
   const publicList = useSelector((store) => store.map.public_sido);
   const privateList = useSelector((store) => store.map.private_sido);
-  console.log(publicList);
-  console.log(privateList);
 
   const click = (address) => {
     console.log(address);
