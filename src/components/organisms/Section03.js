@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Section3Slide from "./Section3Slide";
 import { Text } from "../atoms/index";
+
 const Section03 = (props) => {
   return (
     <>
