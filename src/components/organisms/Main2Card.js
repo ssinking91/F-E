@@ -7,8 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Label from "../molecules/Label";
 import { Text } from "../atoms/index";
-import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
-import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
+import  BmarkFill  from "../../images/bmark_fill.svg";
+import  BmarkNone  from "../../images/bmark_none.svg";
+
 import defaultLogoImage from "../../images/defaultLogoImage.svg";
 import { visibleModal } from "../redux/modules/map";
 
@@ -18,7 +19,7 @@ const Main2Card = (props) => {
   const dispatch = useDispatch();
 
   const islike = JSON.parse(props.islike);
-  // console.log(props.Page, props.islike, typeof props.islike);
+  console.log(props.islike);
 
   // const MypageSido = props.MypageSido;
   // console.log(MypageSido);
@@ -155,9 +156,10 @@ const Main2Card = (props) => {
           onClick={() => {
             saveCard();
           }}
-        >
+          
+        > 
           {/* asideSection에서는 찜하기 버튼 비활성화 */}
-          {props.asideSectionView ? "" : save2 ? <BmarkFill /> : <BmarkNone />}
+          {props.asideSectionView ? "" : save2 ? <img src={BmarkFill} /> :  <img src={BmarkNone}/>}
         </ImageDiv>
       </Imageitem>
       <Item>
@@ -247,8 +249,20 @@ const ImageDiv = styled.div`
   height: 38.29px;
   left: 111.36px;
   bottom: 123.35px;
+  /* background-image: url("${(props) => props.src || defaultLogoImage}"); */
   cursor: pointer;
 `;
+
+// const ImageDiv2 = styled.div`
+//   position: absolute;
+//   width: 27.27px;
+//   height: 38.29px;
+//   left: 111.36px;
+//   bottom: 123.35px;
+//   background-image: url("${(props) => props.src || defaultLogoImage}");
+//   cursor: pointer;
+// `;
+
 
 const LabelDiv = styled.div`
   width: 64px;
