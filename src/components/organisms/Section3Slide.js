@@ -9,11 +9,14 @@ import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
 // import styled from "styled-components";
 import SlideItems from "./Section3SlideItems";
 
+import "../utilities/style.css"
+
 const Showcase = () => {
   SwiperCore.use([Navigation, Pagination, Autoplay]);
 
   return (
     <Swiper
+      className="swiper"
       //   navigation={true}
       pagination={{ clickable: true }}
       autoplay={{ delay: 4000 }}
