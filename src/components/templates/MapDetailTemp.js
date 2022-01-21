@@ -32,13 +32,13 @@ export default function MapDetailTemp(props) {
 }
 
 const Modal = styled.div`
-  width: 1250px;
+  width: 66%;
   height: 80vh;
   background-color: #fff;
   ${(props) => (props.visible ? `display:block;` : `display:none;`)}
   bottom: 0px;
-  right: 640px;
-  margin: -595px auto 0 30px;
+  left: 1.2%;
+  // margin: 0px auto 0 30px;
   position: absolute;
   z-index: 900;
   overflow-y: scroll;

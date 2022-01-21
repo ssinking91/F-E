@@ -22,7 +22,7 @@ export default function DetailType() {
               margin="auto"
               background_color="#F9F9F9"
               // cursor="pointer"
-              // radius="36px"
+              radius="36px"
             >
               {typeInfo &&
                 typeInfo.map((item, index) => {
@@ -34,8 +34,7 @@ export default function DetailType() {
                         width="100%"
                         height="30px"
                         margin="auto"
-                        // radius="36px"
-                        cursor="pointer"
+                        radius="36px"
                         background_color={
                           item.modelNo === type ? "#20D7FF" : ""
                         }
@@ -43,16 +42,20 @@ export default function DetailType() {
                           setType(item.modelNo);
                         }}
                       >
-                        <Text
-                          h4
-                          color={item.modelNo === type ? `#F9F9F9` : `#A5AAB6`}
-                          margin="auto"
-                          padding="3px"
-                        >
-                          {item.type.split(".")[0].split("")[1]}
-                          {item.type.split(".")[0].split("")[2]}
-                          {item.type.split(".")[1].split("")[4]}
-                        </Text>
+                        <Grid is_flex cursor="pointer">
+                          <Text
+                            h4
+                            color={
+                              item.modelNo === type ? `#F9F9F9` : `#A5AAB6`
+                            }
+                            margin="auto"
+                            padding="3px"
+                          >
+                            {item.type.split(".")[0].split("")[1]}
+                            {item.type.split(".")[0].split("")[2]}
+                            {item.type.split(".")[1].split("")[4]}
+                          </Text>
+                        </Grid>
                       </Grid>
                     </React.Fragment>
                   );

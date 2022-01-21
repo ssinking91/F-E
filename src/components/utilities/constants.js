@@ -1,5 +1,5 @@
 const globalSido = [
-  { value: "전체", name: "전체" },
+  { value: "", name: "전체" },
   { value: "서울", name: "서울" },
   { value: "인천", name: "인천" },
   { value: "부산", name: "부산" },
@@ -33,4 +33,4 @@ const OPTIONS = [
   { value: "제주도", name: "제주도" },
 ];
 
-export {globalSido, OPTIONS}
+export { globalSido, OPTIONS };
