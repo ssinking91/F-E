@@ -51,10 +51,26 @@ export default function AsideSection() {
     dispatch(clickOne(address));
   };
 
+  const buttonRef = React.useRef();
+  const [ScrollY, setScrollY] = useState(0);
+  const [BtnStatus, setBtnStatus] = useState(false); // 버튼 상태
+
+  const onScroll = (e) => {
+    console.log(ScrollY);
+    setScrollY(e.target.scrollTop);
+    if (ScrollY > 500) {
+      // 500 이상이면 버튼이 보이게
+      setBtnStatus(true);
+    } else {
+      // 500 이하면 버튼이 사라지게
+      setBtnStatus(false);
+    }
+  };
+
+  // 클릭하면 스크롤이 위로 올라가는 함수
   const scrollToTop = (event) => {
-    document
-      .getElementById("TOP")
-      .scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    // document.getElementById('TOP').scrollTo({top:0, left:0, behavior: "smooth"} );
+    buttonRef.current.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
   const publicPagesSum = 15;
@@ -68,13 +84,17 @@ export default function AsideSection() {
   return (
     <>
       <Wrap>
-        <TopButton
-          onClick={() => {
-            console.log("1");
-            scrollToTop();
-          }}
-        />
-        <ContentArea id="TOP">
+        {BtnStatus ? (
+          <TopButton
+            onClick={() => {
+              console.log("1");
+              scrollToTop();
+            }}
+          />
+        ) : (
+          <></>
+        )}
+        <ContentArea id="TOP" ref={buttonRef} onScroll={onScroll}>
           {clickButton === "민간분양"
             ? privateList &&
               privateList

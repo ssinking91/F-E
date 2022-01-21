@@ -17,6 +17,7 @@ const Comment = (props) => {
 
   React.useEffect(() => {
     dispatch(commentActions.getCommentsFB(aptNo));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const userKey = localStorage.getItem("userKey");
@@ -57,7 +58,7 @@ const Comment = (props) => {
   // 댓글 삭제
   const commentDelete = (commentId) => {
     dispatch(commentActions.deleteCommentsFB(aptNo, commentId));
-   // window.alert("댓글이 삭제되었습니다😎");
+    // window.alert("댓글이 삭제되었습니다😎");
   };
 
   return (
@@ -211,7 +212,7 @@ const DeleteButton = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  & > p:hover{
+  & > p:hover {
     color: red;
   }
 `;
