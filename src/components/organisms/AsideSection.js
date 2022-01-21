@@ -3,7 +3,6 @@ import React from "react";
 import styled from "styled-components";
 
 import { useDispatch, useSelector } from "react-redux";
-import AsideCard from "../organisms/AsideCard";
 import Main2Card from "./Main2Card";
 import { Grid } from "../atoms/index";
 
@@ -65,6 +64,7 @@ export default function AsideSection() {
             : publicList &&
               publicList.map((item, index) => {
                 const publicSales = "publicSales";
+                const asideSectionView = "asideSection";
                 return (
                   <Grid
                     margin="10px 0 0 20px"
@@ -83,6 +83,7 @@ export default function AsideSection() {
                       islike={item.islike}
                       CardPanState={item.panState}
                       publicSales={publicSales}
+                      asideSectionView={asideSectionView}
                     />
                   </Grid>
                 );

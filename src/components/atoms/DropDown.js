@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getPublicListMapDB,
   getPrivateListMapDB,
-  clickOne,
+  saveState,
 } from "../redux/modules/map";
 import arrowUp from "../../images/arrow_up.svg";
 import arrowDown from "../../images/arrow_down.svg";
@@ -24,7 +24,7 @@ const Dropdown = (props) => {
     setIsActive(!isActive);
   };
   const getClickOne = (item) => {
-    dispatch(clickOne(item));
+    dispatch(saveState(item));
   };
   const getDB = (item) => {
     console.log(item);
