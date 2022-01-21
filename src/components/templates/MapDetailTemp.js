@@ -37,8 +37,8 @@ const Modal = styled.div`
   background-color: #fff;
   ${(props) => (props.visible ? `display:block;` : `display:none;`)}
   bottom: 0px;
-  right: 640px;
-  margin: -595px auto 0 30px;
+  right: 33%;
+  // margin: 0px auto 0 30px;
   position: absolute;
   z-index: 900;
   overflow-y: scroll;

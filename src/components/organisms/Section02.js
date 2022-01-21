@@ -32,14 +32,18 @@ const Section02 = () => {
 
   const public_regionInfo = public_list.slice(0, 3);
   console.log(public_regionInfo);
-  
+
   // 민간 공고 3개
-  let private_list = useSelector((state) => state.main.private_list.privateSido1);
+  let private_list = useSelector(
+    (state) => state.main.private_list.privateSido1
+  );
 
   let private_regionInfo = private_list.slice(0, 3);
   console.log(private_regionInfo);
 
-  let private_status_list = useSelector((state) => state.main.private_list.statusArr);
+  let private_status_list = useSelector(
+    (state) => state.main.private_list.statusArr
+  );
 
   let private_statusInfo = private_status_list.slice(0, 3);
 
@@ -96,7 +100,16 @@ const Section02 = () => {
                 public_regionInfo.map((item, index) => {
                   const publicSales = "publicSales";
                   const status = "public";
-                
+                  let onlyNumber = item.panName.replace(
+                    /[^0-9]{3,4}[^0-9]{3,4}/g,
+                    "/"
+                  );
+                  let onlyNumber1 = onlyNumber.split("/");
+                  let onlyNumber2 = onlyNumber1[onlyNumber1.length - 2];
+                  // console.log(item.address.split(" ")[1]);
+                  // let address1 = item.address.split(" ")[1];
+                  // console.log(onlyNumber);
+                  console.log(item);
                   return (
                     <Main2Card
                       key={index}
@@ -105,7 +118,9 @@ const Section02 = () => {
                       startDate={item.startDate}
                       endDate={item.closeDate}
                       size={item.size}
-                      price={item.aisTypeName}
+                      price={`${item.aisTypeName} ${
+                        onlyNumber2 === "" ? "" : `${onlyNumber2}호`
+                      } `}
                       aptNo={item.panId}
                       CardPanState={item.panState}
                       publicSales={publicSales}
@@ -131,7 +146,7 @@ const Section02 = () => {
               {private_regionInfo.length !== 0 ? (
                 private_regionInfo.map((item, index) => {
                   const status = "private";
-                
+
                   return (
                     <Main2Card
                       key={index}
