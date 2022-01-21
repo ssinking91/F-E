@@ -274,6 +274,7 @@ export default function KakaoMiniMap() {
         const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
         // 결과값으로 받은 위치를 마커로 표시합니다
+        // eslint-disable-next-line no-unused-vars
         const marker = new kakao.maps.Marker({
           map: map,
           position: coords,

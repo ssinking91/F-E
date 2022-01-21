@@ -21,6 +21,7 @@ const Section02 = () => {
       const userKey = localStorage.getItem("userKey");
       dispatch(mypagetActions.getUserInfosFB(userKey));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 로그인한 유저데이터
@@ -32,14 +33,18 @@ const Section02 = () => {
 
   const public_regionInfo = public_list.slice(0, 3);
   console.log(public_regionInfo);
-  
+
   // 민간 공고 3개
-  let private_list = useSelector((state) => state.main.private_list.privateSido1);
+  let private_list = useSelector(
+    (state) => state.main.private_list.privateSido1
+  );
 
   let private_regionInfo = private_list.slice(0, 3);
   console.log(private_regionInfo);
 
-  let private_status_list = useSelector((state) => state.main.private_list.statusArr);
+  let private_status_list = useSelector(
+    (state) => state.main.private_list.statusArr
+  );
 
   let private_statusInfo = private_status_list.slice(0, 3);
 
@@ -96,7 +101,7 @@ const Section02 = () => {
                 public_regionInfo.map((item, index) => {
                   const publicSales = "publicSales";
                   const status = "public";
-                
+
                   return (
                     <Main2Card
                       key={index}
@@ -131,7 +136,7 @@ const Section02 = () => {
               {private_regionInfo.length !== 0 ? (
                 private_regionInfo.map((item, index) => {
                   const status = "private";
-                
+
                   return (
                     <Main2Card
                       key={index}

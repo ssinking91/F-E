@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Grid } from "../atoms/index";
 import DetailInfo from "../organisms/DetailInfo";
@@ -59,10 +59,6 @@ const Modal = styled.div`
     border: 2px solid transparent;
   }
   }
-`;
-const Container = styled.div`
-  background-color: #f9f9f9;
-  border-radius: 40px 40px 0px 0px;
 `;
 
 const CloseModal = styled.div`
