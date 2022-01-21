@@ -56,12 +56,10 @@ export default function DetailInfo() {
                   </Text>
                   <Text boldText>공공분양</Text>
                 </Grid>
-                <Text h2>{`[${publicInfo.aisTypeName}] ${
-                  publicInfo.address.split(" ")[0]
-                } ${publicInfo.address.split(" ")[1]} `}</Text>
+                <Text h2>{publicInfo.panName}</Text>
                 <BundleText
                   title={"주소"}
-                  content={`${publicInfo.address}`}
+                  content={publicInfo.address}
                   margin="50px 0 0 0"
                 />
                 <BundleText

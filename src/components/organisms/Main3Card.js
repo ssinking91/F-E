@@ -113,7 +113,10 @@ const Main3Card = (props) => {
   return (
     <Container>
       <Text h4 color="#778899" margin="0 0 20px 0">
-        {props.number + 1 + " )" + (props.publicSales ? " 공공 분양" : " 민간 분양")}
+        {props.number +
+          1 +
+          " )" +
+          (props.publicSales ? " 공공 분양" : " 민간 분양")}
       </Text>
       <Imageitem>
         <Image src={props.image} />
@@ -197,6 +200,7 @@ const ImageDiv = styled.div`
   height: 59px;
   right: 32px;
   top: 32px;
+  cursor: pointer;
 `;
 
 const LabelDiv = styled.div`

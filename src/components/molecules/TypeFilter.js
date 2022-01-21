@@ -10,6 +10,7 @@ import {
   clickOne,
   filteringChangeCoords,
 } from "../redux/modules/map";
+
 import { DropDown } from "../atoms/index";
 
 import { globalSido } from "../utilities/constants.js";
@@ -45,7 +46,7 @@ export default function TypeFilter() {
         <input type="text" style={{ display: "none" }} />
         <SearchInput
           type="text"
-          placeholder="검색을 해주세요"
+          placeholder="시 도 단위 검색을 해주세요 ex. 서울, 강원도"
           value={searchText}
           onChange={(e) => {
             getDB(e.target.value);
@@ -85,7 +86,7 @@ const SearchInput = styled.input`
   padding: 0 22px;
   border: 0px;
   border-radius: 36px;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
   &:focus {
     outline: none;

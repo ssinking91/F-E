@@ -564,13 +564,14 @@ export default function KakaoMap() {
         if (location[i] === "충청북도 음성군 대소면 성본산업단지 B3블록")
           location[i] = "충북 음성군 대소면 성본리 298-1";
 
-        location[i] = location[i]
-          .split("일원")[0]
-          .split("및")[0]
-          .split("외")[0]
-          .split("(")[0]
-          .split("단지")[0];
-
+        if (location[i]) {
+          location[i] = location[i]
+            .split("일원")[0]
+            .split("및")[0]
+            .split("외")[0]
+            .split("(")[0]
+            .split("단지")[0];
+        }
         geocoder.addressSearch(location[i], async function (result, status) {
           // 정상적으로 검색이 완료됐으면
           if (status === kakao.maps.services.Status.OK) {
@@ -806,12 +807,14 @@ export default function KakaoMap() {
             if (location[i] === "충청북도 음성군 대소면 성본산업단지 B3블록")
               location[i] = "충북 음성군 대소면 성본리 298-1";
 
-            location[i] = location[i]
-              .split("일원")[0]
-              .split("및")[0]
-              .split("외")[0]
-              .split("(")[0]
-              .split("단지")[0];
+            if (location[i]) {
+              location[i] = location[i]
+                .split("일원")[0]
+                .split("및")[0]
+                .split("외")[0]
+                .split("(")[0]
+                .split("단지")[0];
+            }
           }
         });
       }

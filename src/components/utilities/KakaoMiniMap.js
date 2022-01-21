@@ -1,6 +1,9 @@
 /* global kakao */
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+
+import { useDispatch } from "react-redux";
+import { getPrivateListDB, getPublicListDB } from "../redux/modules/allList";
 import styled from "styled-components";
 import "./style.css";
 
@@ -14,6 +17,13 @@ export default function KakaoMiniMap() {
 
   let coords;
   const geocoder = new kakao.maps.services.Geocoder();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getPrivateListDB(""));
+    dispatch(getPublicListDB(""));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   useEffect(() => {
     // geocoding();
     viewMap();

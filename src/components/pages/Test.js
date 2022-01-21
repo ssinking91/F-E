@@ -1,6 +1,7 @@
 import AsideSection from "../organisms/AsideSection";
 import NavBar from "../organisms/NavBarAnchor";
 import NavBarSub from "../organisms/NavBarSub";
+import MapDetailTemp from "../templates/MapDetailTemp";
 import KakaoMap from "../utilities/KakaoMap";
 import styled from "styled-components";
 
@@ -15,6 +16,7 @@ export default function Test() {
         <BottomWrap>
           <Left>
             <KakaoMap />
+            <MapDetailTemp />
           </Left>
           <Right>
             <AsideSection />
@@ -27,6 +29,8 @@ export default function Test() {
 
 const Wrap = styled.div`
   display: flex;
+  overflow-y: hidden;
+  overflow-x: hidden;
 `;
 
 const NavBarWrap = styled.div`
@@ -35,7 +39,7 @@ const NavBarWrap = styled.div`
 
 const BottomWrap = styled.div`
   width: 100%;
-  height: 83vh;
+  height: 100vh;
   display: flex;
 `;
 
@@ -44,5 +48,5 @@ const Left = styled.div`
 `;
 
 const Right = styled.div`
-  width: 600px;
+  width: 610px;
 `;
