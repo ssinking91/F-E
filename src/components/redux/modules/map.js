@@ -13,6 +13,7 @@ const CHANGE_COORDS = `/CHANGE_COORDS/`;
 const PUBLIC_AREA_STATE = `/PUBLIC_AREA_STATE`;
 const PRIVATE_AREA_STATE = `/PRIVATE_AREA_STATE`;
 const VISIBLE_MODAL = `/VISIBLE_MODAL/`;
+const DETAIL_MODAL = `/DETAIL_MODAL/`;
 
 // action creator
 export const saveState = createAction(SAVE_STATE, (list) => ({
@@ -42,6 +43,8 @@ export const visibleModal = createAction(VISIBLE_MODAL, (visible) => ({
   visible,
 }));
 
+export const detailModal = createAction(DETAIL_MODAL, (detail) => ({ detail }));
+
 // middelWare
 export const getPublicListMapDB = (ftSido) => {
   return (dispatch, getState, { history }) => {
@@ -65,6 +68,12 @@ export default handleActions(
       return {
         ...state,
         visible: action.payload.visible,
+      };
+    },
+    [DETAIL_MODAL]: (state, action) => {
+      return {
+        ...state,
+        detail: action.payload.detail,
       };
     },
     [SAVE_STATE]: (state, action) => {

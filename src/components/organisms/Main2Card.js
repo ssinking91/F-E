@@ -4,6 +4,7 @@ import { savedActions } from "../redux/modules/cardSave";
 import { mypagetActions } from "../redux/modules/mypage";
 import { actionCreators as mainActions } from "../redux/modules/main";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import Label from "../molecules/Label";
 import { Text } from "../atoms/index";
@@ -11,12 +12,20 @@ import  BmarkFill  from "../../images/bmark_fill.svg";
 import  BmarkNone  from "../../images/bmark_none.svg";
 
 import defaultLogoImage from "../../images/defaultLogoImage.svg";
-import { visibleModal } from "../redux/modules/map";
+import { visibleModal, detailModal } from "../redux/modules/map";
+import {
+  getDetailInfo,
+  getDetailImgDB,
+  getDetailInfoDB,
+} from "../redux/modules/detail";
+
+// import { getDetailInfo, getDetailImgDB } from "../redux/modules/detail";
 
 const Main2Card = (props) => {
   // console.log(props.asideSectionView);
   const { _onClick } = props;
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const islike = JSON.parse(props.islike);
   console.log(props.islike);
@@ -205,8 +214,15 @@ const Main2Card = (props) => {
                   }`}
             </Text>
           </Info2Item2>
+          {/* history.push(`/${props.division}/${props.aptNo}`) */}
           {props.asideSectionView ? (
-            <Info2Item3 onClick={() => dispatch(visibleModal(true))}>
+            <Info2Item3
+              onClick={() => {
+                dispatch(visibleModal(true));
+                dispatch(getDetailInfoDB(`/${props.division}/${props.aptNo}`));
+                dispatch(getDetailImgDB(`/${props.division}/${props.aptNo}`));
+              }}
+            >
               <RightArrow src="img/rightArrow.png" />
             </Info2Item3>
           ) : (

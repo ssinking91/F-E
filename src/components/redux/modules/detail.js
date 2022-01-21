@@ -11,7 +11,7 @@ const GET_DETAILINFO = `/GET_DETAILINFO/`;
 const GET_DETAIL_IMG = `/GET_DETAIL_IMG`;
 
 // action creators
-const getDetailInfo = createAction(GET_DETAILINFO, (info) => ({ info }));
+export const getDetailInfo = createAction(GET_DETAILINFO, (info) => ({ info }));
 const getDetailImg = createAction(GET_DETAIL_IMG, (img) => ({ img }));
 
 // middleware thunk
@@ -21,6 +21,7 @@ export function getDetailInfoDB(locate) {
       .getDetailInfo(locate)
       .then((res) => {
         const info = res.data;
+        console.log(info);
         dispatch(getDetailInfo(info));
       })
       .catch((err) => {

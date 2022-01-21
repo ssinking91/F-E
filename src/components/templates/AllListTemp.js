@@ -145,7 +145,7 @@ export default function AllListTemp() {
               let onlyNumber1 = onlyNumber.split("/");
               let onlyNumber2 = onlyNumber1[onlyNumber1.length - 2];
               // console.log(item.address.split(" ")[1]);
-              let address1 = item.address.split(" ")[1];
+              // let address1 = item.address.split(" ")[1];
               // console.log(onlyNumber);
               console.log(item);
 
