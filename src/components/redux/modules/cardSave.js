@@ -1,7 +1,6 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import { apis } from "../../utilities/axios";
-import { mypagetActions } from "./mypage";
 
 // action type
 const SAVE_CARD = "SAVE_CARD";

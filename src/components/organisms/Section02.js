@@ -21,6 +21,7 @@ const Section02 = () => {
       const userKey = localStorage.getItem("userKey");
       dispatch(mypagetActions.getUserInfosFB(userKey));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 로그인한 유저데이터
@@ -100,6 +101,7 @@ const Section02 = () => {
                 public_regionInfo.map((item, index) => {
                   const publicSales = "publicSales";
                   const status = "public";
+
                   let onlyNumber = item.panName.replace(
                     /[^0-9]{3,4}[^0-9]{3,4}/g,
                     "/"
@@ -110,6 +112,7 @@ const Section02 = () => {
                   // let address1 = item.address.split(" ")[1];
                   // console.log(onlyNumber);
                   console.log(item);
+
                   return (
                     <Main2Card
                       key={index}

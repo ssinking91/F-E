@@ -25,6 +25,7 @@ const MyPage = (props) => {
     }
     const userKey = localStorage.getItem("userKey");
     dispatch(mypagetActions.getUserInfosFB(userKey));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // sido 변경
@@ -59,23 +60,25 @@ const MyPage = (props) => {
   };
 
   //이메일 유효성 검사
-  const isEmail = (asValue) => { 
-    let regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; 
-    return regExp.test(asValue); // 형식에 맞는 경우 true 리턴 
-  }
+  const isEmail = (asValue) => {
+    let regExp =
+      // eslint-disable-next-line no-useless-escape
+      /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    return regExp.test(asValue); // 형식에 맞는 경우 true 리턴
+  };
 
   // email 변경 api
   const emailChangeApi = () => {
     console.log(email);
     const userName = localStorage.getItem("userName");
-    if(isEmail(email)){
+    if (isEmail(email)) {
       dispatch(mypagetActions.editEmailFB(userName, email));
       setIsActive2(!isActive2);
       setEmail("");
-    }else{
-    window.alert("이메일 형식에 맞지 않습니다😀")
-    setEmail("");
-  }
+    } else {
+      window.alert("이메일 형식에 맞지 않습니다😀");
+      setEmail("");
+    }
   };
 
   const userImage = localStorage.getItem("userImage");
@@ -310,7 +313,7 @@ const MyCardList = styled.div`
 `;
 
 const TextDiv = styled.div`
-  width:  ${(props) => (props.width ? props.width : `988px`)};
+  width: ${(props) => (props.width ? props.width : `988px`)};
   display: flex;
   align-items: center;
   margin: ${(props) => (props.margin ? props.margin : ``)};
@@ -338,7 +341,6 @@ const TextInputDiv = styled.div`
     border-bottom: 1px solid #e3e5eb;
   }
 `;
-
 
 const TextInput = styled.input`
   width: 340px;
