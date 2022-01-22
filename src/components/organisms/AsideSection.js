@@ -24,7 +24,6 @@ export default function AsideSection({
   const dispatch = useDispatch();
   const location = useLocation();
 
-  console.log(location);
   const locate = location.pathname;
   const history = useHistory();
   const eventList = useSelector((state) => state.map.list);
@@ -32,7 +31,6 @@ export default function AsideSection({
   const clicked = useSelector((state) => state.map.clicked);
   const show = useSelector((state) => state.map.show);
   const hidden = useSelector((state) => state.map.hidden);
-  console.log(show, hidden);
 
   React.useEffect(() => {
     dispatch(getPublicListMapDB(eventList));

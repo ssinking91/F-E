@@ -12,18 +12,12 @@ import defaultLogoImage from "../../images/defaultLogoImage.svg";
 import { visibleModal } from "../redux/modules/map";
 import { getDetailImgDB, getDetailInfoDB } from "../redux/modules/detail";
 
-// import { getDetailInfo, getDetailImgDB } from "../redux/modules/detail";
-
 const Main2Card = (props) => {
-  // console.log(props.asideSectionView);
   const { _onClick } = props;
   const dispatch = useDispatch();
 
   const islike = JSON.parse(props.islike);
   console.log(props.islike);
-
-  // const MypageSido = props.MypageSido;
-  // console.log(MypageSido);
 
   const [save2, setSave2] = React.useState(islike);
 

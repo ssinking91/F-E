@@ -78,7 +78,6 @@ const Main3Card = (props) => {
   const maxPrice6 = `${maxPrice.split("")[0]}${maxPrice.split("")[1]}억 ${
     maxPrice.split("")[2]
   }${maxPrice.split("")[3]}${maxPrice.split("")[4]}${maxPrice.split("")[5]}`;
-  // console.log(maxPrice4, maxPrice5, maxPrice6);
   // 평당 단가
   let pyeongMaxPrice = Math.ceil(maxPrice / pyeongMaxSize);
   // 자릿수 별 조건문

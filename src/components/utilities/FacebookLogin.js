@@ -11,7 +11,6 @@ const FaceBookLogin = () => {
   const history = useHistory();
 
   const responseFacebook = (res) => {
-    console.log(res);
     const { id, name, accessToken } = res;
     localStorage.setItem("userKey", id);
     localStorage.setItem("userName", name);
@@ -21,12 +20,7 @@ const FaceBookLogin = () => {
     const userKey = localStorage.getItem("userKey");
     const nickname = localStorage.getItem("userName");
 
-    console.log(sessionStorage.getItem("accessToken"));
-    console.log(userKey, nickname);
-    apis
-      .login(userKey, nickname)
-      .then((res) => console.log(res))
-      .catch((e) => console.log(e));
+    apis.login(userKey, nickname);
 
     history.replace("/");
 

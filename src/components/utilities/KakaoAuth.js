@@ -13,8 +13,6 @@ export default function KakaoAuth() {
 
   const code = new URL(window.location.href).searchParams.get("code");
 
-  // localStorage.setItem("code", code);
-
   const getToken = async () => {
     const payload = qs.stringify({
       grant_type: "authorization_code",
@@ -30,7 +28,7 @@ export default function KakaoAuth() {
       );
 
       window.Kakao.init(REST_API_KEY);
-      console.log(res.data);
+
       window.Kakao.Auth.setAccessToken(res.data.access_token);
       localStorage.setItem("refreshToken", res.data.refresh_token);
       sessionStorage.setItem("accessToken", res.data.access_token);

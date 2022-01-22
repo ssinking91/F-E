@@ -12,10 +12,8 @@ export default function KakaoMiniMap() {
   let searchLocation;
   if (location) {
     searchLocation = location.applyAddress;
-    console.log(searchLocation);
   }
 
-  let coords;
   const geocoder = new kakao.maps.services.Geocoder();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -25,7 +23,6 @@ export default function KakaoMiniMap() {
   }, []);
 
   useEffect(() => {
-    // geocoding();
     viewMap();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchLocation]);
@@ -44,7 +41,7 @@ export default function KakaoMiniMap() {
       contentNode = document.createElement("div"), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다
       markers = [], // 마커를 담을 배열입니다
       currCategory = ""; // 현재 선택된 카테고리를 가지고 있을 변수입니다
-    console.log(coords);
+
     var mapContainer = document.getElementById("map"), // 지도를 표시할 div
       mapOption = {
         center: new kakao.maps.LatLng(37, 123), // 지도의 임시중심좌표

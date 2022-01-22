@@ -84,16 +84,12 @@ const MyPage = (props) => {
   const userImage = localStorage.getItem("userImage");
 
   const existuser = useSelector((state) => state.mypage.list.existuser);
-  console.log(existuser);
 
   const publicInfo = useSelector((state) => state.mypage.list.public);
-  console.log(publicInfo);
 
   const privateInfo = useSelector((state) => state.mypage.list.private);
-  console.log(privateInfo);
 
   const statusArr = useSelector((state) => state.mypage.list.statusArr);
-  console.log(statusArr);
 
   const Page = "myPage";
 

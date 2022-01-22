@@ -10,8 +10,6 @@ export default function Google() {
   const history = useHistory();
 
   const responseGoogle = (res) => {
-    console.log("google");
-    console.log(res);
     localStorage.setItem("userKey", res.googleId);
     localStorage.setItem("userName", res.profileObj.name);
     localStorage.setItem("userImage", res.profileObj.imageUrl);
@@ -19,11 +17,8 @@ export default function Google() {
 
     const userKey = localStorage.getItem("userKey");
     const nickname = localStorage.getItem("userName");
-    console.log(userKey, nickname);
-    apis
-      .login(userKey, nickname)
-      .then((res) => console.log(res))
-      .catch((e) => console.log(e));
+
+    apis.login(userKey, nickname);
 
     history.replace("/");
 

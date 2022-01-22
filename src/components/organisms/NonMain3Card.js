@@ -5,8 +5,6 @@ import { savedActions } from "../redux/modules/cardSave";
 import { mypagetActions } from "../redux/modules/mypage";
 import { useDispatch } from "react-redux";
 
-// import { useParams } from "react-router-dom";
-
 import Label from "../molecules/Label";
 import { Text, Image } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
@@ -26,7 +24,6 @@ const Main2Card = (props) => {
     const Page = props.Page;
     const status = props.status;
     const aptNo = props.aptNo;
-    // console.log(aptNo);
     if (userKey === null) {
       window.alert("로그인 후 사용이 가능합니다😎");
       return;

@@ -27,12 +27,11 @@ export default function KakaoMap() {
   const privateList = useSelector((state) => state.allList.privateList);
 
   const locate = useSelector((state) => state.allList);
-  console.log(locate);
+
   const publicAdress = new Set(locate.publicAdress);
   const privateAdress = new Set(locate.privateAdress);
   const location = [...publicAdress, ...privateAdress];
   let locates = [];
-  // console.log(publicList);
 
   // click 한 마커의 주소를 state로 저장/변환
   const [clickAdress, setClickAdress] = useState(null);
@@ -71,10 +70,9 @@ export default function KakaoMap() {
       // 정상적으로 검색이 완료됐으면
       if (status === kakao.maps.services.Status.OK) {
         const moveLatLng = new kakao.maps.LatLng(result[0].y, result[0].x);
-        console.log(result[0].y, result[0].x);
+
         dispatch(changeCoords(moveLatLng));
       } else {
-        console.log("좌표변환 실패, 주소오류");
         if (cardClicked) {
           if (
             cardClicked ===
@@ -136,7 +134,6 @@ export default function KakaoMap() {
           if (cardClicked === "충청북도 음성군 대소면 성본산업단지 B3블록")
             cardClicked = "충북 음성군 대소면 성본리 298-1";
 
-          console.log(cardClicked);
           if (cardClicked) {
             cardClicked = cardClicked
               .split("일원")[0]
@@ -149,7 +146,6 @@ export default function KakaoMap() {
           geocoder.addressSearch(cardClicked, async function (result, status) {
             if (status === kakao.maps.services.Status.OK) {
               const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-              console.log(coords);
               dispatch(changeCoords(coords));
             }
           });
@@ -161,7 +157,6 @@ export default function KakaoMap() {
   const coords = useSelector((state) => state.map.coords);
 
   useEffect(() => {
-    console.log("coords 변경, mapFunc() 실행");
     mapFunc();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coords]);
@@ -188,7 +183,6 @@ export default function KakaoMap() {
     // 지도를 생성합니다
     let map = new kakao.maps.Map(mapContainer, mapOption);
 
-    console.log(coords);
     if (coords) {
       let examCoords = coords;
       map.setCenter(filter ? coords : examCoords);

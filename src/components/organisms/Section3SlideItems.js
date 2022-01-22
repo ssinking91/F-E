@@ -19,24 +19,19 @@ export default function SlideItems(props) {
 
   // 공공 Hot
   const publicHotList = useSelector((state) => state.main.publicHotList);
-  console.log(publicHotList);
+
   const publicHotListSlice = publicHotList.slice(0, 3);
-  console.log(publicHotListSlice);
 
   // 민영 Hot
   const privateHotList1 = useSelector((state) => state.main.privateHotList);
   const privateHOTList2 = privateHotList1.privateHotList[0];
   const statusArr = useSelector((state) => state.main.privateHotList.statusArr);
-  console.log(privateHOTList2);
 
   let privateHotListSlice;
 
   if (privateHOTList2) {
     privateHotListSlice = privateHOTList2.slice(0, 3);
   } // 동기 끝날때 까지 -> 비동기는 안됨! 값이 할당이 되면 slice 함수를 실행해라
-
-  console.log(privateHotListSlice);
-  console.log(statusArr);
 
   const Page = "section3";
 
@@ -82,28 +77,28 @@ export default function SlideItems(props) {
             //값이 할당 되기전에 map이 실행이되서 오류남
             const status = "private";
 
-          return (
-            <Main3Card
-              key={index}
-              number={index}
-              image={item.ImgUrl}
-              name={item.houseName}
-              startDate={item.receptStartDate}
-              endDate={item.receptEndDate}
-              size={item.size}
-              price={item.supplyAmount}
-              aptNo={item.pblancNo}
-              CardPanState={statusArr[index].status}
-              islike={item.islike}
-              Page={Page}
-              status={status}
-              //민간 청약정보 ID 값
-              _onClick={() => {
-                history.push(`/private/${item.pblancNo}`);
-              }}
-            />
-          );
-        })}
+            return (
+              <Main3Card
+                key={index}
+                number={index}
+                image={item.ImgUrl}
+                name={item.houseName}
+                startDate={item.receptStartDate}
+                endDate={item.receptEndDate}
+                size={item.size}
+                price={item.supplyAmount}
+                aptNo={item.pblancNo}
+                CardPanState={statusArr[index].status}
+                islike={item.islike}
+                Page={Page}
+                status={status}
+                //민간 청약정보 ID 값
+                _onClick={() => {
+                  history.push(`/private/${item.pblancNo}`);
+                }}
+              />
+            );
+          })}
       </CardWraps>
     );
   }

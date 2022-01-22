@@ -24,7 +24,6 @@ export default function TypeFilter({ setPublicPage, setPrivatePage }) {
     setSearchText(e.target.value);
     // dispatch(getPublicListMapDB(setSearchText));
     // dispatch(getPrivateListMapDB(setSearchText));
-    console.log(e.target.value);
   };
   // sido 변경
   const sidoChange = (e) => {
@@ -35,7 +34,6 @@ export default function TypeFilter({ setPublicPage, setPrivatePage }) {
     console.log(sido);
   };
   const getDB = (item) => {
-    console.log(item);
     dispatch(getPublicListMapDB(item));
     dispatch(getPrivateListMapDB(item));
     dispatch(filteringChangeCoords(item));

@@ -26,13 +26,11 @@ const Section02 = () => {
 
   // 로그인한 유저데이터
   const existuser = useSelector((state) => state.mypage.list.existuser);
-  //console.log(existuser);
 
   // 공공 공고 3개
   const public_list = useSelector((state) => state.main.public_list);
 
   const public_regionInfo = public_list.slice(0, 3);
-  console.log(public_regionInfo);
 
   // 민간 공고 3개
   let private_list = useSelector(
@@ -40,11 +38,10 @@ const Section02 = () => {
   );
 
   let private_regionInfo = private_list.slice(0, 3);
-  console.log(private_list);
 
-
-  let private_status_list = useSelector((state) => state.main.private_list.statusArr);
-  console.log(private_status_list);
+  let private_status_list = useSelector(
+    (state) => state.main.private_list.statusArr
+  );
 
   let private_statusInfo = private_status_list.slice(0, 3);
 
@@ -108,10 +105,7 @@ const Section02 = () => {
                   );
                   let onlyNumber1 = onlyNumber.split("/");
                   let onlyNumber2 = onlyNumber1[onlyNumber1.length - 2];
-                  // console.log(item.address.split(" ")[1]);
-                  // let address1 = item.address.split(" ")[1];
-                  // console.log(onlyNumber);
-                  console.log(item);
+
                   return (
                     <Main2Card
                       key={index}
