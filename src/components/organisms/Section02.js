@@ -10,10 +10,8 @@ import { Text } from "../atoms/index";
 
 const Section02 = () => {
   const dispatch = useDispatch();
-  // console.log("page2");
 
   useEffect(() => {
-    // console.log("@@@@@page2 ue2@@@@@");
     dispatch(mainAction.getPrivateInfoDB());
     dispatch(mainAction.getPublicInfoDB());
 
@@ -42,7 +40,6 @@ const Section02 = () => {
   let private_status_list = useSelector(
     (state) => state.main.private_list.statusArr
   );
-  console.log(private_status_list);
 
   let private_statusInfo = private_status_list.slice(0, 3);
 

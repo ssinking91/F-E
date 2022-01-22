@@ -32,7 +32,6 @@ const Dropdown = (props) => {
     setPrivatePage(1);
   };
   const getDB = (item) => {
-    console.log(item);
     dispatch(getPublicListMapDB(item));
     dispatch(getPrivateListMapDB(item));
   };
