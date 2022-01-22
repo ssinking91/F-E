@@ -90,7 +90,7 @@ export default function SlideItems(props) {
               size={item.size}
               price={item.supplyAmount}
               aptNo={item.pblancNo}
-              //CardPanState={private_statusInfo[index].status}
+              CardPanState={statusArr[index].status}
               islike={item.islike}
               Page={Page}
               status={status}

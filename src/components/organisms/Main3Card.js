@@ -42,6 +42,9 @@ const Main3Card = (props) => {
   const startDate = props.startDate.replace(/-/gi, ".");
   const endDate = props.endDate.replace(/-/gi, ".");
   // 최소, 최대 분양면적
+  if (props.size === null) {
+    return "";
+  }
   let minSize = Math.ceil(props.size.split("~")[0]);
   let maxSize = Math.ceil(props.size.split("~")[1]);
   // 분양면적 => 평, 변환
@@ -131,7 +134,7 @@ const Main3Card = (props) => {
       <Item>
         <Info1 onClick={_onClick}>
           <LabelDiv>
-            <Label registration></Label>
+            <Label LabelPanState={props.CardPanState}></Label>
           </LabelDiv>
           <Text h4 margin="0 0 0 15px">
             {props.name.length > 17

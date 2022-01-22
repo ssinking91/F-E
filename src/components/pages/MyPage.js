@@ -89,6 +89,9 @@ const MyPage = (props) => {
   const privateInfo = useSelector((state) => state.mypage.list.private);
   console.log(privateInfo);
 
+  const statusArr = useSelector((state) => state.mypage.list.statusArr);
+  console.log(statusArr);
+
   const Page = "myPage";
 
   return (
@@ -254,6 +257,7 @@ const MyPage = (props) => {
                     size={item.size}
                     price={item.supplyAmount}
                     aptNo={item.pblancNo}
+                    CardPanState={statusArr[idx].status}
                     islike={item.islike}
                     Page={Page}
                     status={status}

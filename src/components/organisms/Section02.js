@@ -37,10 +37,10 @@ const Section02 = () => {
   let private_list = useSelector((state) => state.main.private_list.privateSido1);
 
   let private_regionInfo = private_list.slice(0, 3);
-  console.log(private_regionInfo);
+  console.log(private_list);
 
   let private_status_list = useSelector((state) => state.main.private_list.statusArr);
-
+  console.log(private_status_list);
   let private_statusInfo = private_status_list.slice(0, 3);
 
   const Page = "section2";
