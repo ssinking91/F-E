@@ -21,11 +21,8 @@ const mypageSavedCard = createAction(MY_SAVE_CARD, (aptNo, status) => ({
 // middleware
 const getUserInfosFB = (userKey) => {
   return async function (dispatch, getState, { history }) {
-    try {
-      console.log("getUserInfosFB 시작");
-      const response = await apis.getUserInfos(userKey);
-      console.log(response.data);
-
+    try {      
+      const response = await apis.getUserInfos(userKey);      
       dispatch(getUserInfo(response.data));
     } catch (error) {
       console.log(error);
@@ -35,12 +32,8 @@ const getUserInfosFB = (userKey) => {
 
 const editUserInfosFB = (userName, sido) => {
   return async function (dispatch, getState, { history }) {
-    try {
-      console.log("editUserInfosFB 시작");
-
-      const response = apis.editUserInfos(userName, sido);
-      console.log(response.data);
-
+    try {      
+      const response = apis.editUserInfos(userName, sido);      
       dispatch(editUserInfo(sido));
     } catch (error) {
       console.log("editUserInfosFB error");
@@ -50,16 +43,9 @@ const editUserInfosFB = (userName, sido) => {
 
 const editEmailFB = (userName, email) => {
   return async (dispatch, getState, { history }) => {
-    try {
-      console.log("mypage editEmailFB 시작");
-      const response = apis.editEmail(userName, email);
-      console.log(response);
-
-      //let result = response.data.data;
-      console.log(email);
+    try {    
+      const response = apis.editEmail(userName, email);    
       dispatch(editEmailInfo(email));
-
-      console.log("mypage editEmailFB 끝");
     } catch (error) {
       console.log(error);
     }
@@ -68,21 +54,14 @@ const editEmailFB = (userName, email) => {
 
 const savedFB = (aptNo, status, sido) => {
   return async (dispatch, getState, { history }) => {
-    try {
-      console.log("mypage savedFB 시작");
+    try {     
       const response = await apis.saved(aptNo);
       console.log(response.data.data, typeof response.data.data);
-
-      console.log("mypage savedCard 시작");
       dispatch(mypageSavedCard(aptNo, status));
-      console.log("mypage savedFB 끝");
-
       if (status === "private") {
-        dispatch(mainActions.getPrivateInfoDB());
-        //dispatch(getPrivateListDB(sido));
+        dispatch(mainActions.getPrivateInfoDB());      
       } else if (status === "public") {
-        dispatch(mainActions.getPublicInfoDB());
-        //dispatch(getPublicListDB(sido));
+        dispatch(mainActions.getPublicInfoDB());       
       }
     } catch (error) {
       console.log(error);
@@ -121,21 +100,16 @@ export default handleActions(
       }),
 
     [MY_SAVE_CARD]: (state, action) =>
-      produce(state, (draft) => {
-        console.log("mapage save_card 리듀서 시작");
-
+      produce(state, (draft) => {       
         if (action.payload.status === "public") {
-          draft.list.public = draft.list.public.filter((item, idx) => {
-            //console.log(action.payload.aptNo, typeof action.payload.aptNo);
+          draft.list.public = draft.list.public.filter((item, idx) => {          
             return item.panId !== action.payload.aptNo;
           });
         } else if (action.payload.status === "private") {
-          draft.list.private = draft.list.private.filter((item, idx) => {
-            //console.log(action.payload.aptNo, typeof action.payload.aptNo);
+          draft.list.private = draft.list.private.filter((item, idx) => {           
             return item.pblancNo !== action.payload.aptNo;
           });
-        }
-        console.log("mapage save_card 리듀서 끝");
+        }       
       }),
   },
   initialState

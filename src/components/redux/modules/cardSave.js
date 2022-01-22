@@ -12,7 +12,7 @@ const savedCard = createAction(SAVE_CARD, (result) => ({ result }));
 const savedFB = (aptNo, page) => {
   return async (dispatch, getState, { history }) => {
     try {
-      console.log("savedFB 시작");
+
       const response = await apis.saved(aptNo);
       console.log(response);
 
@@ -20,7 +20,7 @@ const savedFB = (aptNo, page) => {
       console.log(result);
       await dispatch(savedCard(result));
 
-      console.log("savedFB 끝");
+      
     } catch (error) {
       console.log(error);
     }
