@@ -74,7 +74,6 @@ const getPublicHotFB = () => {
   return async function (dispatch, getState, { history }) {
     try {
       const response = await apis.getPublicHot();
-
       dispatch(getPublicHot(response.data));
     } catch (error) {
       console.log(error);

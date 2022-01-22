@@ -42,6 +42,7 @@ const Section02 = () => {
   let private_status_list = useSelector(
     (state) => state.main.private_list.statusArr
   );
+  console.log(private_status_list);
 
   let private_statusInfo = private_status_list.slice(0, 3);
 
