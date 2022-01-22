@@ -1,12 +1,12 @@
 import { useState } from "react";
 import AsideSection from "../organisms/AsideSection";
-import NavBar from "../organisms/NavBarAnchor";
+import NavBar from "../organisms/NavBarLink";
 import NavBarSub from "../organisms/NavBarSub";
 import MapDetailTemp from "../templates/MapDetailTemp";
 import KakaoMap from "../utilities/KakaoMap";
 import styled from "styled-components";
 
-export default function Test() {
+export default function Map() {
   const [publicPage, setPublicPage] = useState(1);
   const [privatePage, setPrivatePage] = useState(1);
   return (
