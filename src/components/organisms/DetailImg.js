@@ -3,18 +3,31 @@ import { Grid } from "../atoms/index";
 
 export default function DetailImg() {
   const typeImg = useSelector((store) => store.detail.img);
+
   return (
     <>
       {typeImg && (
         <Grid width="50%" margin="0 auto">
           <Grid margin="auto">
-            <img src={`${typeImg.url1}`} alt="url1" style={{ width: "100%" }} />
+            {typeImg.url1 === null ? (
+              ""
+            ) : (
+              <img src={typeImg.url1} alt="url1" style={{ width: "100%" }} />
+            )}
           </Grid>
           <Grid>
-            <img src={`${typeImg.url2}`} alt="url2" style={{ width: "100%" }} />
+            {typeImg.url2 === null ? (
+              ""
+            ) : (
+              <img src={typeImg.url2} alt="url2" style={{ width: "100%" }} />
+            )}
           </Grid>
           <Grid>
-            <img src={`${typeImg.url3}`} alt="url3" style={{ width: "100%" }} />
+            {typeImg.url3 === null ? (
+              ""
+            ) : (
+              <img src={typeImg.url3} alt="url3" style={{ width: "100%" }} />
+            )}
           </Grid>
           {typeImg.url4 && (
             <Grid>

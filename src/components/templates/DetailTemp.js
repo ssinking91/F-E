@@ -1,25 +1,21 @@
-// import KakaoMap from "../utilities/KakaoMap";
+import { useEffect } from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { Grid } from "../atoms/index";
 import NavBarLink from "../organisms/NavBarLink";
 import DetailInfo from "../organisms/DetailInfo";
-import KakaoMiniMap from "../utilities/KakaoMiniMap";
 import DetailType from "../organisms/DetailType";
-
 import DetailImg from "../organisms/DetailImg";
 import Comment from "../organisms/Comment";
 import Footer from "../organisms/Footer";
-
-import { Grid } from "../atoms/index";
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import KakaoMiniMap from "../utilities/KakaoMiniMap";
 import { getDetailInfoDB, getDetailImgDB } from "../redux/modules/detail";
 
 export default function DetailTemp(props) {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  console.log(location);
   const locate = location.pathname;
 
   useEffect(() => {
@@ -36,7 +32,6 @@ export default function DetailTemp(props) {
         <KakaoMiniMap />
         <DetailType />
         <DetailImg />
-        {/* <KakaoMap /> */}
         <Container>
           <Comment />
           <Footer />

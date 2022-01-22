@@ -8,7 +8,7 @@ import "swiper/components/pagination/pagination.min.css";
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
 // import styled from "styled-components";
 import Youtude from "./Youtude";
-import "../utilities/style.css"
+import "../utilities/style.css";
 
 const Showcase = () => {
   SwiperCore.use([Navigation, Pagination, Autoplay]);

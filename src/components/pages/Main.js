@@ -1,5 +1,5 @@
 import ReactFullpage from "@fullpage/react-fullpage";
-
+import styled from "styled-components";
 // import Main2Card from "../organisms/Main2Card";
 // import Main3Card from "../organisms/Main3Card";
 import Section01 from "../organisms/Section01";
@@ -9,10 +9,10 @@ import Section04 from "../organisms/Section04";
 import NavBarAnchor from "../organisms/NavBarAnchor";
 
 export default function Main() {
-
   return (
     <div style={{ width: "100%", height: "100%" }}>
       <NavBarAnchor />
+
       <Fullpage />
     </div>
   );

@@ -20,7 +20,7 @@ const Main2Card = (props) => {
   const dispatch = useDispatch();
 
   const islike = JSON.parse(props.islike);
-  console.log(props.islike);
+  // console.log(props.islike);
 
   // const MypageSido = props.MypageSido;
   // console.log(MypageSido);
@@ -32,7 +32,7 @@ const Main2Card = (props) => {
     const Page = props.Page; // 페이지 구분
     const status = props.status; //공공 민영 구분 구분
     const aptNo = props.aptNo;
-    console.log(Page, status, aptNo, save2);
+    // console.log(Page, status, aptNo, save2);
 
     if (userKey === null) {
       window.alert("로그인 후 사용이 가능합니다😎");
@@ -41,20 +41,18 @@ const Main2Card = (props) => {
 
     if (Page === "myPage") {
       return (
-        console.log("mypage main2Card"),
+        // console.log("mypage main2Card"),
         dispatch(mypagetActions.savedFB(aptNo, status))
       );
     } else if (Page === "section2") {
       return (
-        console.log("section2 main2Card"),
-        setSave2(!save2),
-        dispatch(mypagetActions.savedFB(aptNo, status))
+        // console.log("section2 main2Card"),
+        setSave2(!save2), dispatch(mypagetActions.savedFB(aptNo, status))
       );
     } else if (Page === "AllList") {
       return (
-        console.log("AllList main2Card"),
-        setSave2(!save2),
-        dispatch(mypagetActions.savedFB(aptNo, status))
+        // console.log("AllList main2Card"),
+        setSave2(!save2), dispatch(mypagetActions.savedFB(aptNo, status))
       );
     }
   };

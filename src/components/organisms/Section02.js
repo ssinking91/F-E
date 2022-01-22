@@ -10,10 +10,10 @@ import { Text } from "../atoms/index";
 
 const Section02 = () => {
   const dispatch = useDispatch();
-  console.log("page2");
+  // console.log("page2");
 
   useEffect(() => {
-    console.log("@@@@@page2 ue2@@@@@");
+    // console.log("@@@@@page2 ue2@@@@@");
     dispatch(mainAction.getPrivateInfoDB());
     dispatch(mainAction.getPublicInfoDB());
 
@@ -32,7 +32,7 @@ const Section02 = () => {
   const public_list = useSelector((state) => state.main.public_list);
 
   const public_regionInfo = public_list.slice(0, 3);
-  console.log(public_regionInfo);
+  // console.log(public_regionInfo);
 
   // 민간 공고 3개
   let private_list = useSelector(
@@ -40,8 +40,6 @@ const Section02 = () => {
   );
 
   let private_regionInfo = private_list.slice(0, 3);
-  console.log(private_list);
-
 
   let private_status_list = useSelector((state) => state.main.private_list.statusArr);
   console.log(private_status_list);
@@ -108,10 +106,7 @@ const Section02 = () => {
                   );
                   let onlyNumber1 = onlyNumber.split("/");
                   let onlyNumber2 = onlyNumber1[onlyNumber1.length - 2];
-                  // console.log(item.address.split(" ")[1]);
-                  // let address1 = item.address.split(" ")[1];
-                  // console.log(onlyNumber);
-                  console.log(item);
+
                   return (
                     <Main2Card
                       key={index}

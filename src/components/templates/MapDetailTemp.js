@@ -1,24 +1,22 @@
 import React from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { visibleModal } from "../redux/modules/map";
 import { Grid } from "../atoms/index";
 import DetailInfo from "../organisms/DetailInfo";
 import DetailType from "../organisms/DetailType";
 import DetailImg from "../organisms/DetailImg";
 import Comment from "../organisms/Comment";
-import { useDispatch, useSelector } from "react-redux";
-import { visibleModal } from "../redux/modules/map";
+
 export default function MapDetailTemp(props) {
   const dispatch = useDispatch();
   const visible = useSelector((state) => state.map.visible);
-  console.log(visible);
-  const test = useSelector((state) => state);
-  console.log(test);
+
   return (
     <>
       <Modal visible={visible}>
         <Grid>
           <DetailInfo />
-          {/* <KakaoMiniMap /> */}
           <DetailType />
           <DetailImg />
           <Comment />

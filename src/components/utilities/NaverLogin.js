@@ -10,8 +10,6 @@ export default function Naver() {
   const history = useHistory();
 
   const responseNaver = (res) => {
-    console.log("success");
-    console.log(res);
     localStorage.setItem("userKey", res.id);
     localStorage.setItem("userName", res.name);
     localStorage.setItem("userImage", res.profile_image);
@@ -20,10 +18,7 @@ export default function Naver() {
     const userKey = localStorage.getItem("userKey");
     const nickname = localStorage.getItem("userName");
 
-    apis
-      .login(userKey, nickname)
-      .then((res) => console.log(res))
-      .catch((e) => console.log(e));
+    apis.login(userKey, nickname);
 
     history.replace("/");
 
