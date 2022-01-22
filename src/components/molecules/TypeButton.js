@@ -9,7 +9,7 @@ import {
 } from "../redux/modules/map";
 import { Grid, Text } from "../atoms/index";
 
-export default function TypeButton(props) {
+export default function TypeButton() {
   const dispatch = useDispatch();
   const publicList = useSelector((state) => state.map.public_sido);
   const privateList = useSelector((state) => state.map.private_sido);

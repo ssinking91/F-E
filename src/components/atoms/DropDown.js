@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   getPublicListMapDB,
   getPrivateListMapDB,
@@ -14,6 +14,7 @@ const Dropdown = (props) => {
   const dispatch = useDispatch();
   const [isActive, setIsActive] = React.useState(false);
   const [item, setItem] = React.useState(null);
+  const { setPublicPage, setPrivatePage } = props;
 
   const onActiveToggle = () => {
     setIsActive(!isActive);
@@ -27,12 +28,15 @@ const Dropdown = (props) => {
   const getClickOne = (item) => {
     dispatch(saveState(item));
     dispatch(filteringChangeCoords(item));
+    setPublicPage(1);
+    setPrivatePage(1);
   };
   const getDB = (item) => {
     console.log(item);
     dispatch(getPublicListMapDB(item));
     dispatch(getPrivateListMapDB(item));
   };
+
   return (
     <DropdownContainer props={props}>
       <DropdownBody onClick={onActiveToggle} isActive={isActive}>

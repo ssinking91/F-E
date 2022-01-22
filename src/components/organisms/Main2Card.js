@@ -1,23 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import { savedActions } from "../redux/modules/cardSave";
 import { mypagetActions } from "../redux/modules/mypage";
-import { actionCreators as mainActions } from "../redux/modules/main";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import Label from "../molecules/Label";
 import { Text } from "../atoms/index";
-import  BmarkFill  from "../../images/bmark_fill.svg";
-import  BmarkNone  from "../../images/bmark_none.svg";
+import BmarkFill from "../../images/bmark_fill.svg";
+import BmarkNone from "../../images/bmark_none.svg";
 
 import defaultLogoImage from "../../images/defaultLogoImage.svg";
-import { visibleModal, detailModal } from "../redux/modules/map";
-import {
-  getDetailInfo,
-  getDetailImgDB,
-  getDetailInfoDB,
-} from "../redux/modules/detail";
+import { visibleModal } from "../redux/modules/map";
+import { getDetailImgDB, getDetailInfoDB } from "../redux/modules/detail";
 
 // import { getDetailInfo, getDetailImgDB } from "../redux/modules/detail";
 
@@ -25,7 +18,6 @@ const Main2Card = (props) => {
   // console.log(props.asideSectionView);
   const { _onClick } = props;
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const islike = JSON.parse(props.islike);
   console.log(props.islike);
@@ -35,15 +27,6 @@ const Main2Card = (props) => {
 
   const [save2, setSave2] = React.useState(islike);
 
-  // useEffect(async () => {
-  //   const userKey = localStorage.getItem("userKey");
-  //   await setTimeout(() => {
-  //     dispatch(mypagetActions.getUserInfosFB(userKey));
-  //   }, 1000);
-  // }, [islike]);
-
-  // console.log(props.image);
-  // 카드 저장
   const saveCard = () => {
     const userKey = localStorage.getItem("userKey");
     const Page = props.Page; // 페이지 구분
@@ -72,7 +55,6 @@ const Main2Card = (props) => {
         console.log("AllList main2Card"),
         setSave2(!save2),
         dispatch(mypagetActions.savedFB(aptNo, status))
-        // dispatch(mypagetActions.savedFB(aptNo, status, MypageSido))
       );
     }
   };
@@ -80,7 +62,6 @@ const Main2Card = (props) => {
   const startDate = props.startDate.replace(/-/gi, ".");
   const endDate = props.endDate.replace(/-/gi, ".");
   // 최소, 최대 분양면적
-  // console.log(props.size);
   if (props.size === null) {
     return "";
   }
@@ -165,10 +146,19 @@ const Main2Card = (props) => {
           onClick={() => {
             saveCard();
           }}
-          
-        > 
+        >
           {/* asideSection에서는 찜하기 버튼 비활성화 */}
-          {props.asideSectionView ? "" : save2 ? <><img src={BmarkFill} /></> :  <><img src={BmarkNone}/></>}
+          {props.asideSectionView ? (
+            ""
+          ) : save2 ? (
+            <>
+              <img src={BmarkFill} alt="이미지" />
+            </>
+          ) : (
+            <>
+              <img src={BmarkNone} alt="이미지" />
+            </>
+          )}
         </ImageDiv>
       </Imageitem>
       <Item>
@@ -278,7 +268,6 @@ const ImageDiv = styled.div`
 //   background-image: url("${(props) => props.src || defaultLogoImage}");
 //   cursor: pointer;
 // `;
-
 
 const LabelDiv = styled.div`
   width: 64px;

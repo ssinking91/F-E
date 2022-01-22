@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Grid } from "../atoms/index";
 import DetailInfo from "../organisms/DetailInfo";
@@ -32,13 +32,13 @@ export default function MapDetailTemp(props) {
 }
 
 const Modal = styled.div`
-  width: 1250px;
+  width: 66%;
   height: 80vh;
   background-color: #fff;
   ${(props) => (props.visible ? `display:block;` : `display:none;`)}
   bottom: 0px;
-  right: 640px;
-  margin: -595px auto 0 30px;
+  left: 1.2%;
+  // margin: 0px auto 0 30px;
   position: absolute;
   z-index: 900;
   overflow-y: scroll;
@@ -59,10 +59,6 @@ const Modal = styled.div`
     border: 2px solid transparent;
   }
   }
-`;
-const Container = styled.div`
-  background-color: #f9f9f9;
-  border-radius: 40px 40px 0px 0px;
 `;
 
 const CloseModal = styled.div`

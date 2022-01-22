@@ -2,7 +2,6 @@ import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import { apis } from "../../utilities/axios";
 import { actionCreators as mainActions } from "./main";
-import { getPrivateListDB, getPublicListDB } from "./allList";
 
 // action type
 const GET_USERINFO = " GET_USERINFO";
@@ -77,17 +76,14 @@ const savedFB = (aptNo, status, sido) => {
       console.log("mypage savedCard 시작");
       dispatch(mypageSavedCard(aptNo, status));
       console.log("mypage savedFB 끝");
-      
+
       if (status === "private") {
         dispatch(mainActions.getPrivateInfoDB());
         //dispatch(getPrivateListDB(sido));
-      } 
-      
-      else if (status === "public") {
+      } else if (status === "public") {
         dispatch(mainActions.getPublicInfoDB());
         //dispatch(getPublicListDB(sido));
       }
-
     } catch (error) {
       console.log(error);
     }
