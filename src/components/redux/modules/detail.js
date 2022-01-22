@@ -21,7 +21,6 @@ export function getDetailInfoDB(locate) {
       .getDetailInfo(locate)
       .then((res) => {
         const info = res.data;
-        console.log(info);
         dispatch(getDetailInfo(info));
       })
       .catch((err) => {
