@@ -21,7 +21,7 @@ const Section01 = (props) => {
   useEffect(() => {
     dispatch(mainAction.getTotalDB());
 
-    setInterval(imageChange, 3000); // 3초마다 imageChange 반복 실행
+    setInterval(imageChange, 5000); // 3초마다 imageChange 반복 실행
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

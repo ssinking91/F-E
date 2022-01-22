@@ -192,6 +192,7 @@ const TopButton = styled.a`
   background-repeat: no-repeat;
   background-position: center;
   z-index: 2;
+  transition: all 3s;
   cursor: pointer;
   /* background-color: red; */
 `;
