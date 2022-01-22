@@ -21,8 +21,8 @@ const mypageSavedCard = createAction(MY_SAVE_CARD, (aptNo, status) => ({
 // middleware
 const getUserInfosFB = (userKey) => {
   return async function (dispatch, getState, { history }) {
-    try {      
-      const response = await apis.getUserInfos(userKey);      
+    try {
+      const response = await apis.getUserInfos(userKey);
       dispatch(getUserInfo(response.data));
     } catch (error) {
       console.log(error);
@@ -32,8 +32,8 @@ const getUserInfosFB = (userKey) => {
 
 const editUserInfosFB = (userName, sido) => {
   return async function (dispatch, getState, { history }) {
-    try {      
-      const response = apis.editUserInfos(userName, sido);      
+    try {
+      apis.editUserInfos(userName, sido);
       dispatch(editUserInfo(sido));
     } catch (error) {
       console.log("editUserInfosFB error");
@@ -43,8 +43,8 @@ const editUserInfosFB = (userName, sido) => {
 
 const editEmailFB = (userName, email) => {
   return async (dispatch, getState, { history }) => {
-    try {    
-      const response = apis.editEmail(userName, email);    
+    try {
+      apis.editEmail(userName, email);
       dispatch(editEmailInfo(email));
     } catch (error) {
       console.log(error);
@@ -54,14 +54,14 @@ const editEmailFB = (userName, email) => {
 
 const savedFB = (aptNo, status, sido) => {
   return async (dispatch, getState, { history }) => {
-    try {     
+    try {
       const response = await apis.saved(aptNo);
       console.log(response.data.data, typeof response.data.data);
       dispatch(mypageSavedCard(aptNo, status));
       if (status === "private") {
-        dispatch(mainActions.getPrivateInfoDB());      
+        dispatch(mainActions.getPrivateInfoDB());
       } else if (status === "public") {
-        dispatch(mainActions.getPublicInfoDB());       
+        dispatch(mainActions.getPublicInfoDB());
       }
     } catch (error) {
       console.log(error);
@@ -100,16 +100,16 @@ export default handleActions(
       }),
 
     [MY_SAVE_CARD]: (state, action) =>
-      produce(state, (draft) => {       
+      produce(state, (draft) => {
         if (action.payload.status === "public") {
-          draft.list.public = draft.list.public.filter((item, idx) => {          
+          draft.list.public = draft.list.public.filter((item, idx) => {
             return item.panId !== action.payload.aptNo;
           });
         } else if (action.payload.status === "private") {
-          draft.list.private = draft.list.private.filter((item, idx) => {           
+          draft.list.private = draft.list.private.filter((item, idx) => {
             return item.pblancNo !== action.payload.aptNo;
           });
-        }       
+        }
       }),
   },
   initialState

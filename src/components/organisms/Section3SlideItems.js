@@ -11,7 +11,6 @@ export default function SlideItems(props) {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    console.log("@@@@@  page3  @@@@@");
     dispatch(mainAction.getPublicHotFB());
     dispatch(mainAction.getPrivateHotFB());
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -25,6 +24,7 @@ export default function SlideItems(props) {
   // 민영 Hot
   const privateHotList1 = useSelector((state) => state.main.privateHotList);
   const privateHOTList2 = privateHotList1.privateHotList[0];
+
   const statusArr = useSelector((state) => state.main.privateHotList.statusArr);
 
   let privateHotListSlice;

@@ -22,8 +22,8 @@ const Showcase = () => {
       //   spaceBetween={600}
       loop={true}
       slidesOffsetBefore={0}
-      onSwiper={(swiper) => console.log(swiper)}
-      nSlideChange={() => console.log("slide change")}
+      // onSwiper={(swiper) => console.log(swiper)}
+      // nSlideChange={() => console.log("slide change")}
     >
       <SwiperSlide>
         <SlideItems I1 />

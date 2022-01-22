@@ -37,21 +37,10 @@ export default function AsideSection({
     dispatch(getPrivateListMapDB(eventList));
   }, [dispatch, eventList]);
 
-  // 모달 상태관리
-  const [modal, setModal] = useState(true);
-  const detailModal = () => {
-    if (!modal) {
-      setModal(true);
-    }
-  };
-
   const publicList = useSelector((store) => store.map.public_sido);
   const privateList = useSelector((store) => store.map.private_sido);
-  console.log(publicList);
-  console.log(privateList);
 
   const click = (address) => {
-    console.log(address);
     dispatch(clickOne(address));
   };
 
@@ -60,7 +49,6 @@ export default function AsideSection({
   const [BtnStatus, setBtnStatus] = useState(false); // 버튼 상태
 
   const onScroll = (e) => {
-    console.log(ScrollY);
     setScrollY(e.target.scrollTop);
     if (ScrollY > 500) {
       // 500 이상이면 버튼이 보이게
@@ -73,7 +61,6 @@ export default function AsideSection({
 
   // 클릭하면 스크롤이 위로 올라가는 함수
   const scrollToTop = (event) => {
-    // document.getElementById('TOP').scrollTo({top:0, left:0, behavior: "smooth"} );
     buttonRef.current.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
@@ -89,7 +76,7 @@ export default function AsideSection({
         {BtnStatus ? (
           <TopButton
             onClick={() => {
-              console.log("1");
+              // console.log("1");
               scrollToTop();
             }}
           />
@@ -139,10 +126,6 @@ export default function AsideSection({
                   );
                   let onlyNumber1 = onlyNumber.split("/");
                   let onlyNumber2 = onlyNumber1[onlyNumber1.length - 2];
-                  // console.log(item.address.split(" ")[1]);
-                  // let address1 = item.address.split(" ")[1];
-                  // console.log(onlyNumber);
-                  console.log(item);
                   return (
                     <Grid
                       margin="10px 0 0 20px"

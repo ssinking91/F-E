@@ -10,6 +10,7 @@ export default function Main() {
   return (
     <div style={{ width: "100%", height: "100%" }}>
       <NavBarAnchor />
+
       <Fullpage />
     </div>
   );
@@ -17,20 +18,14 @@ export default function Main() {
 
 const anchors = ["page1", "page2", "page3", "page4"];
 const userName = localStorage.getItem("userName");
-// console.log(userName);
+
 const Fullpage = (props) => (
   <ReactFullpage
     anchors={anchors}
-    // navigation
-    // navigationTooltips={anchors}
     verticalCentered={false}
     sectionsColor={["#fff", "#fff", "#fff", "#F9F9F9"]}
-    onLeave={(origin, destination, direction) => {
-      // console.log("onLeave event", { origin, destination, direction });
-    }}
+    onLeave={(origin, destination, direction) => {}}
     render={({ state, fullpageApi }) => {
-      // console.log("render prop change", state, fullpageApi); // eslint-disable-line no-console
-
       return (
         <>
           <div>

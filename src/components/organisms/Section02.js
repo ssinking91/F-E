@@ -10,10 +10,10 @@ import { Text } from "../atoms/index";
 
 const Section02 = () => {
   const dispatch = useDispatch();
-  console.log("page2");
+  // console.log("page2");
 
   useEffect(() => {
-    console.log("@@@@@page2 ue2@@@@@");
+    // console.log("@@@@@page2 ue2@@@@@");
     dispatch(mainAction.getPrivateInfoDB());
     dispatch(mainAction.getPublicInfoDB());
 

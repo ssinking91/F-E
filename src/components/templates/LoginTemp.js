@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Grid, Text } from "../atoms/index";
-import { ReactComponent as Logo } from "../../images/logo.svg";
 import SocialLogin from "../organisms/Logins";
+import { ReactComponent as Logo } from "../../images/logo.svg";
 
 export default function LoginTemp() {
   return (
