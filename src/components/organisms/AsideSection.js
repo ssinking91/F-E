@@ -22,38 +22,21 @@ export default function AsideSection({
   setPrivatePage,
 }) {
   const dispatch = useDispatch();
-  const location = useLocation();
-
-  console.log(location);
-  const locate = location.pathname;
-  const history = useHistory();
   const eventList = useSelector((state) => state.map.list);
   const clickButton = useSelector((state) => state.map.divisionClick);
-  const clicked = useSelector((state) => state.map.clicked);
-  const show = useSelector((state) => state.map.show);
-  const hidden = useSelector((state) => state.map.hidden);
-  console.log(show, hidden);
 
   React.useEffect(() => {
     dispatch(getPublicListMapDB(eventList));
     dispatch(getPrivateListMapDB(eventList));
   }, [dispatch, eventList]);
 
-  // 모달 상태관리
-  const [modal, setModal] = useState(true);
-  const detailModal = () => {
-    if (!modal) {
-      setModal(true);
-    }
-  };
-
   const publicList = useSelector((store) => store.map.public_sido);
   const privateList = useSelector((store) => store.map.private_sido);
-  console.log(publicList);
-  console.log(privateList);
+  // console.log(publicList);
+  // console.log(privateList);
 
   const click = (address) => {
-    console.log(address);
+    // console.log(address);
     dispatch(clickOne(address));
   };
 
@@ -62,7 +45,7 @@ export default function AsideSection({
   const [BtnStatus, setBtnStatus] = useState(false); // 버튼 상태
 
   const onScroll = (e) => {
-    console.log(ScrollY);
+    // console.log(ScrollY);
     setScrollY(e.target.scrollTop);
     if (ScrollY > 500) {
       // 500 이상이면 버튼이 보이게
@@ -91,7 +74,7 @@ export default function AsideSection({
         {BtnStatus ? (
           <TopButton
             onClick={() => {
-              console.log("1");
+              // console.log("1");
               scrollToTop();
             }}
           />
@@ -141,10 +124,6 @@ export default function AsideSection({
                   );
                   let onlyNumber1 = onlyNumber.split("/");
                   let onlyNumber2 = onlyNumber1[onlyNumber1.length - 2];
-                  // console.log(item.address.split(" ")[1]);
-                  // let address1 = item.address.split(" ")[1];
-                  // console.log(onlyNumber);
-                  console.log(item);
                   return (
                     <Grid
                       margin="10px 0 0 20px"

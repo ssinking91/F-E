@@ -2,13 +2,11 @@ import { createAction, handleActions } from "redux-actions";
 import produce from "immer";
 import { apis } from "../../utilities/axios";
 
-
 const GET_TOTAL = "GET_TOTAL";
 const GET_PRIVATEINFO = "GET_PRIVATEINFO";
 const GET_PUBLICINFO = "GET_PUBLICINFO";
 const GET_PUBLICHOT = "GET_PUBLICHOT";
 const GET_PRIVATEHOT = "GET_PRIVATEHOT";
-
 
 // Section 01
 const getTotal = createAction(GET_TOTAL, (total) => ({ total }));
@@ -75,9 +73,9 @@ const getPublicInfoDB = () => {
 const getPublicHotFB = () => {
   return async function (dispatch, getState, { history }) {
     try {
-      console.log("getPublicHotFB 시작");
+      // console.log("getPublicHotFB 시작");
       const response = await apis.getPublicHot();
-      console.log(response.data);
+      // console.log(response.data);
 
       dispatch(getPublicHot(response.data));
     } catch (error) {
@@ -89,9 +87,9 @@ const getPublicHotFB = () => {
 const getPrivateHotFB = () => {
   return async function (dispatch, getState, { history }) {
     try {
-      console.log("getPrivateHotFB 시작");
+      // console.log("getPrivateHotFB 시작");
       const response = await apis.getPrivateHot();
-      console.log(response.data);
+      // console.log(response.data);
 
       dispatch(getPrivateHot(response.data));
     } catch (error) {
@@ -134,14 +132,14 @@ export default handleActions(
     // Section 03
     [GET_PUBLICHOT]: (state, action) =>
       produce(state, (draft) => {
-        console.log("찜하기 공공 시작");
-        console.log(action.payload);
+        // console.log("찜하기 공공 시작");
+        // console.log(action.payload);
         draft.publicHotList = action.payload.publicHOTList;
       }),
     [GET_PRIVATEHOT]: (state, action) =>
       produce(state, (draft) => {
-        console.log("찜하기 민영 시작");
-        console.log(action.payload);
+        // console.log("찜하기 민영 시작");
+        // console.log(action.payload);
         draft.privateHotList = action.payload.privateHOTList;
       }),
   },
@@ -160,7 +158,6 @@ const actionCreators = {
   // Section 03
   getPublicHotFB,
   getPrivateHotFB,
- 
 };
 
 export { actionCreators };

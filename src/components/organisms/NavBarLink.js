@@ -53,7 +53,7 @@ export default function NavBar() {
               <Items2In>
                 <Text h4 margin="0" padding="6px 0" width="120px">
                   <NavLink to="/list" activeStyle={{ color: "#20d7ff" }}>
-                    전체보기.zip
+                    청약목록.zip
                   </NavLink>
                 </Text>
               </Items2In>
@@ -63,6 +63,26 @@ export default function NavBar() {
                     청약지도.zip
                   </NavLink>
                 </Text>
+              </Items2In>
+              <Items2In>
+                <SurveyButton
+                  onClick={() =>
+                    window.open(
+                      "https://docs.google.com/forms/d/e/1FAIpQLSd4YeI33Utd2_KihkQT8Ld5Fv4nARUhK7lEBX6IdyzHU__w4A/viewform",
+                      "_blank"
+                    )
+                  }
+                >
+                  <Text
+                    h4
+                    margin="0"
+                    padding="6px 0"
+                    width="120px"
+                    color="#2094FF"
+                  >
+                    설문하기.zip
+                  </Text>
+                </SurveyButton>
               </Items2In>
               {(localStorage.getItem("userKey") && (
                 <>
@@ -92,6 +112,7 @@ export default function NavBar() {
                         로그인
                       </Text>
                     </Link>
+
                     <HandleOff className="handle">
                       <Logins />
                     </HandleOff>
@@ -106,6 +127,11 @@ export default function NavBar() {
     </>
   );
 }
+const SurveyButton = styled.button`
+  background-color: #00ff0000;
+  border: 0px;
+  cursor: pointer;
+`;
 const Hr = styled.div`
   border-top: 1px solid #e3e5eb;
 `;
@@ -149,7 +175,7 @@ const Items1 = styled.div`
 const Items2 = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 800px;
+  width: 920px;
 `;
 
 const Items2In = styled.div`

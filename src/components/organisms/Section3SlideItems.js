@@ -11,7 +11,7 @@ export default function SlideItems(props) {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    console.log("@@@@@  page3  @@@@@");
+    // console.log("@@@@@  page3  @@@@@");
     dispatch(mainAction.getPublicHotFB());
     dispatch(mainAction.getPrivateHotFB());
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -19,15 +19,15 @@ export default function SlideItems(props) {
 
   // 공공 Hot
   const publicHotList = useSelector((state) => state.main.publicHotList);
-  console.log(publicHotList);
+  // console.log(publicHotList);
   const publicHotListSlice = publicHotList.slice(0, 3);
-  console.log(publicHotListSlice);
+  // console.log(publicHotListSlice);
 
   // 민영 Hot
   const privateHotList1 = useSelector((state) => state.main.privateHotList);
   const privateHOTList2 = privateHotList1.privateHotList[0];
-  const statusArr = useSelector((state) => state.main.privateHotList.statusArr);
-  console.log(privateHOTList2);
+  // const statusArr = useSelector((state) => state.main.privateHotList.statusArr);
+  // console.log(privateHOTList2);
 
   let privateHotListSlice;
 
@@ -35,8 +35,8 @@ export default function SlideItems(props) {
     privateHotListSlice = privateHOTList2.slice(0, 3);
   } // 동기 끝날때 까지 -> 비동기는 안됨! 값이 할당이 되면 slice 함수를 실행해라
 
-  console.log(privateHotListSlice);
-  console.log(statusArr);
+  // console.log(privateHotListSlice);
+  // console.log(statusArr);
 
   const Page = "section3";
 

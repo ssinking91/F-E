@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useHistory, useLocation, NavLink, Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../images/logo.svg";
 import Logins from "./Logins";
-import { Text } from "../atoms/index";
+import { Text, Button } from "../atoms/index";
 
 export default function NavBarAnchor() {
   const history = useHistory();
@@ -88,7 +88,7 @@ export default function NavBarAnchor() {
             <Items2In>
               <Text h4 margin="0" padding="6px 0" width="120px">
                 <NavLink to="/list" activeStyle={{ color: "#20d7ff" }}>
-                  전체보기.zip
+                  청약목록.zip
                 </NavLink>
               </Text>
             </Items2In>
@@ -98,6 +98,26 @@ export default function NavBarAnchor() {
                   청약지도.zip
                 </NavLink>
               </Text>
+            </Items2In>
+            <Items2In>
+              <SurveyButton
+                onClick={() =>
+                  window.open(
+                    "https://docs.google.com/forms/d/e/1FAIpQLSd4YeI33Utd2_KihkQT8Ld5Fv4nARUhK7lEBX6IdyzHU__w4A/viewform",
+                    "_blank"
+                  )
+                }
+              >
+                <Text
+                  h4
+                  margin="0"
+                  padding="6px 0"
+                  width="120px"
+                  color="#2094FF"
+                >
+                  설문하기.zip
+                </Text>
+              </SurveyButton>
             </Items2In>
             {(localStorage.getItem("userKey") && (
               <>
@@ -139,7 +159,11 @@ export default function NavBarAnchor() {
     </HeaderWrap>
   );
 }
-
+const SurveyButton = styled.button`
+  background-color: #00ff0000;
+  border: 0px;
+  cursor: pointer;
+`;
 const HeaderWrap = styled.div`
   width: 100%;
   height: 97px;
@@ -179,7 +203,7 @@ const Items1 = styled.div`
 const Items2 = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 800px;
+  width: 920px;
 `;
 
 const Items2In = styled.div`

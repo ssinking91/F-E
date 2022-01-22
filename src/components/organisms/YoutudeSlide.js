@@ -8,7 +8,7 @@ import "swiper/components/pagination/pagination.min.css";
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
 // import styled from "styled-components";
 import Youtude from "./Youtude";
-import "../utilities/style.css"
+import "../utilities/style.css";
 
 const Showcase = () => {
   SwiperCore.use([Navigation, Pagination, Autoplay]);
@@ -19,7 +19,7 @@ const Showcase = () => {
     autoplay: { delay: 4000 },
     slidesPerView: 1,
     loop: true,
-    onSwiper: (swiper) => console.log(swiper),
+    // onSwiper: (swiper) => console.log(swiper),
     // onSlideChange: () => console.log("slide change"),
   };
 

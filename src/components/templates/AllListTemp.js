@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Text } from "../atoms/index";
-import NavBarLink from "../organisms/NavBarLink";
-import { useDispatch, useSelector } from "react-redux";
-import { getPrivateListDB, getPublicListDB } from "../redux/modules/allList";
-import Card from "../organisms/Main2Card";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import NoneMain2Card from "../organisms/NoneMain2Card";
+import { Grid, Text } from "../atoms/index";
 import Pagination from "../molecules/Pagination";
-// import { replace } from "connected-react-router";
+import Card from "../organisms/Main2Card";
+import NavBarLink from "../organisms/NavBarLink";
+import NoneMain2Card from "../organisms/NoneMain2Card";
+import { getPrivateListDB, getPublicListDB } from "../redux/modules/allList";
 
 export default function AllListTemp() {
   const dispatch = useDispatch();
@@ -19,17 +18,14 @@ export default function AllListTemp() {
     dispatch(getPublicListDB(ftSido));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const result = useSelector((store) => store.cardSave.result);
-  console.log(result);
-  const publicList = useSelector((store) => store.allList.publicList);
 
+  const publicList = useSelector((store) => store.allList.publicList);
   const privateList = useSelector((store) => store.allList.privateList);
 
   const [ftbg, setFtbg] = useState(0);
   const [ftSido] = useState("경기");
 
   const getDB = (item) => {
-    console.log(item);
     dispatch(getPrivateListDB(item));
     dispatch(getPublicListDB(item));
   };
@@ -46,9 +42,6 @@ export default function AllListTemp() {
   const privatePagesSum = 10;
   const [privatePage, setPrivatePage] = useState(1);
   const privatePageSet = (privatePage - 1) * privatePagesSum;
-
-  console.log(publicList);
-  console.log(privateList);
 
   return (
     <>
@@ -112,7 +105,6 @@ export default function AllListTemp() {
             background_color={index + 6 === ftbg ? `#20D7FF` : ``}
             _onClick={() => {
               setFtbg(index + 6);
-              //   setFtSido(item);
               getDB(item);
               setPublicPage(1);
               setPrivatePage(1);
@@ -141,7 +133,6 @@ export default function AllListTemp() {
             publicList
               .slice(publicPageSet, publicPageSet + publicPagesSum)
               .map((item, index) => {
-                console.log(publicList.length);
                 const publicSales = "publicSales";
                 const status = "public";
                 let onlyNumber = item.panName.replace(
@@ -168,7 +159,6 @@ export default function AllListTemp() {
                     islike={item.islike}
                     Page={Page}
                     status={status}
-                    //공공 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/public/${item.panId}`);
                     }}
@@ -212,11 +202,8 @@ export default function AllListTemp() {
                     islike={item.islike}
                     Page={Page}
                     status={status}
-                    //MypageSido={MypageSido}
-                    //민간 청약정보 ID 값
                     _onClick={() => {
                       history.push(`/private/${item.pblancNo}`);
-                      console.log(item);
                     }}
                   />
                 );

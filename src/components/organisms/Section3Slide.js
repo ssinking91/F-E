@@ -9,7 +9,7 @@ import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
 // import styled from "styled-components";
 import SlideItems from "./Section3SlideItems";
 
-import "../utilities/style.css"
+import "../utilities/style.css";
 
 const Showcase = () => {
   SwiperCore.use([Navigation, Pagination, Autoplay]);
@@ -23,8 +23,8 @@ const Showcase = () => {
       //   spaceBetween={600}
       loop={true}
       slidesOffsetBefore={0}
-      onSwiper={(swiper) => console.log(swiper)}
-      nSlideChange={() => console.log("slide change")}
+      // onSwiper={(swiper) => console.log(swiper)}
+      // nSlideChange={() => console.log("slide change")}
     >
       <SwiperSlide>
         <SlideItems I1 />

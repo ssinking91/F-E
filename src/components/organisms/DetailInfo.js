@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { Grid, Button, Text } from "../atoms/index";
 import BundleText from "../molecules/BundleText";
-// import defaultImage from "../../images/defaultImage.png";
+import defaultImage from "../../images/defaultLogoImage.svg";
 
 // import DetailType from "./DetailType";
 
@@ -15,7 +15,7 @@ export default function DetailInfo() {
   // public
   const publicInfo = useSelector((store) => store.detail.info.detail);
   const publicImg = useSelector((store) => store.detail.img);
-
+  // console.log(publicImg);
   // let minPrize = publicInfo.supplyAmount.split("~")[0].replace(",", "");
   // const maxPrize = publicInfo.supplyAmount.split("~")[1].replace(",", "");
 
@@ -35,7 +35,7 @@ export default function DetailInfo() {
             <Grid is_flex width="1200px" margin="80px auto">
               {publicImg && (
                 <img
-                  src={publicImg.url1}
+                  src={publicImg.url1 === null ? defaultImage : publicImg.url1}
                   alt="메인이미지"
                   style={{
                     width: "600px",
@@ -153,7 +153,7 @@ export default function DetailInfo() {
           <Grid is_flex width="1200px" margin="80px auto">
             {detailImg && (
               <img
-                src={detailImg.url1}
+                src={detailImg.url1 === null ? defaultImage : detailImg.url1}
                 alt="메인이미지"
                 style={{
                   width: "600px",
