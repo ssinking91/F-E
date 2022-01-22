@@ -98,6 +98,8 @@ const initialState = {
     public: [],
 
     private: [],
+
+    statusArr: [],
   },
 };
 

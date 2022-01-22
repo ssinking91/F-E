@@ -82,28 +82,28 @@ export default function SlideItems(props) {
             //값이 할당 되기전에 map이 실행이되서 오류남
             const status = "private";
 
-            return (
-              <Main3Card
-                key={index}
-                number={index}
-                image={item.ImgUrl}
-                name={item.houseName}
-                startDate={item.receptStartDate}
-                endDate={item.receptEndDate}
-                size={item.size}
-                price={item.supplyAmount}
-                aptNo={item.pblancNo}
-                //CardPanState={private_statusInfo[index].status}
-                islike={item.islike}
-                Page={Page}
-                status={status}
-                //민간 청약정보 ID 값
-                _onClick={() => {
-                  history.push(`/private/${item.pblancNo}`);
-                }}
-              />
-            );
-          })}
+          return (
+            <Main3Card
+              key={index}
+              number={index}
+              image={item.ImgUrl}
+              name={item.houseName}
+              startDate={item.receptStartDate}
+              endDate={item.receptEndDate}
+              size={item.size}
+              price={item.supplyAmount}
+              aptNo={item.pblancNo}
+              CardPanState={statusArr[index].status}
+              islike={item.islike}
+              Page={Page}
+              status={status}
+              //민간 청약정보 ID 값
+              _onClick={() => {
+                history.push(`/private/${item.pblancNo}`);
+              }}
+            />
+          );
+        })}
       </CardWraps>
     );
   }
