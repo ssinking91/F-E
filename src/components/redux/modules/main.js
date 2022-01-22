@@ -75,11 +75,10 @@ const getPublicInfoDB = () => {
 const getPublicHotFB = () => {
   return async function (dispatch, getState, { history }) {
     try {
-      console.log("getPublicHotFB 시작");
+      
       const response = await apis.getPublicHot();
-      console.log(response.data);
-
       dispatch(getPublicHot(response.data));
+      
     } catch (error) {
       console.log(error);
     }
@@ -89,11 +88,10 @@ const getPublicHotFB = () => {
 const getPrivateHotFB = () => {
   return async function (dispatch, getState, { history }) {
     try {
-      console.log("getPrivateHotFB 시작");
-      const response = await apis.getPrivateHot();
-      console.log(response.data);
 
+      const response = await apis.getPrivateHot();
       dispatch(getPrivateHot(response.data));
+
     } catch (error) {
       console.log(error);
     }
