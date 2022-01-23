@@ -38,7 +38,9 @@ export default function AsideSection({
   }, [dispatch, eventList]);
 
   const publicList = useSelector((store) => store.map.public_sido);
+  const privateStatusArr = useSelector((store) => store.map.statusArr);
   const privateList = useSelector((store) => store.map.private_sido);
+  console.log(privateStatusArr);
 
   const click = (address) => {
     dispatch(clickOne(address));
@@ -91,6 +93,13 @@ export default function AsideSection({
                 .map((item, index) => {
                   const asideSectionView = "asideSection";
                   const divPrivate = "private";
+                  let status;
+
+                  privateStatusArr
+                    ? (status = privateStatusArr[index].status)
+                    : (status = "접수마감");
+                  console.log(status);
+
                   return (
                     <Grid
                       margin="10px 0 0 20px"
@@ -105,6 +114,7 @@ export default function AsideSection({
                         endDate={item.receptEndDate}
                         size={item.size}
                         price={item.supplyAmount}
+                        CardPanState={status}
                         aptNo={item.pblancNo}
                         islike={item.islike}
                         division={divPrivate}

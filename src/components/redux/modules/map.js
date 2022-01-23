@@ -14,6 +14,7 @@ const PUBLIC_AREA_STATE = `/PUBLIC_AREA_STATE`;
 const PRIVATE_AREA_STATE = `/PRIVATE_AREA_STATE`;
 const VISIBLE_MODAL = `/VISIBLE_MODAL/`;
 const DETAIL_MODAL = `/DETAIL_MODAL/`;
+const PRIVATE_STATUS_ARR = `/PRIVATE_STATUS_ARR/`;
 
 // action creator
 export const saveState = createAction(SAVE_STATE, (list) => ({
@@ -44,7 +45,10 @@ export const visibleModal = createAction(VISIBLE_MODAL, (visible) => ({
 }));
 
 export const detailModal = createAction(DETAIL_MODAL, (detail) => ({ detail }));
-
+export const privateStatusArr = createAction(
+  PRIVATE_STATUS_ARR,
+  (statusArr) => ({ statusArr })
+);
 // middelWare
 export const getPublicListMapDB = (ftSido) => {
   return (dispatch, getState, { history }) => {
@@ -57,6 +61,7 @@ export const getPrivateListMapDB = (ftSido) => {
   return (dispatch, getState, { history }) => {
     apis.getPrivateLists(ftSido).then((res) => {
       dispatch(privateAreaState(res.data.result));
+      dispatch(privateStatusArr(res.data.statusArr));
     });
   };
 };
@@ -116,6 +121,12 @@ export default handleActions(
       return {
         ...state,
         coords: action.payload.coords,
+      };
+    },
+    [PRIVATE_STATUS_ARR]: (state, action) => {
+      return {
+        ...state,
+        statusArr: action.payload.statusArr,
       };
     },
   },
