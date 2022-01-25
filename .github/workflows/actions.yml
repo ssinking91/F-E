@@ -26,9 +26,6 @@ jobs: # Job 설정
         run: |
           aws s3 cp --recursive --region ap-northeast-2 build s3://dotzip
 
-      # - name: Invalidate CloudFront Cache # invalidation of cloudfront cashe
-      #   run: aws cloudfront create-invalidation --distribution-id ${{secrets.DEV_DISTRIBUTION_ID}} --paths "/*"
-
       - name: Invalidate Cache CloudFront
         uses: chetan/invalidate-cloudfront-action@master
         env:
