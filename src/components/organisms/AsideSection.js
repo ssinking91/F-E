@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -53,11 +53,11 @@ export default function AsideSection({
   const [BtnStatus, setBtnStatus] = useState(false); // 버튼 상태
 
   const onScroll = (e) => {
+
     setScrollY(e.target.scrollTop);
-
-    console.log(e.target.scrollTop);
     console.log(ScrollY);
-
+    console.log(e.target.scrollTop);
+    
     if (e.target.scrollTop > 500) {
       console.log("500 초과");
       // 500 이상이면 버튼이 보이게
@@ -68,9 +68,10 @@ export default function AsideSection({
       setBtnStatus(false);
     }
   };
-
-  const throttle = _.throttle(onScroll, 500);
-  const theScroll = React.useCallback(throttle, [throttle]);
+  console.log(ScrollY);
+  const throttle = _.throttle(onScroll, 1000);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const theScroll = React.useCallback(throttle, []);
 
   // 클릭하면 스크롤이 위로 올라가는 함수
   const scrollToTop = (event) => {
