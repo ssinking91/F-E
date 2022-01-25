@@ -1,8 +1,11 @@
 import { useEffect } from "react";
 import { apis } from "./axios";
 import alert from "sweetalert2";
+import { useHistory } from "react-router-dom";
 
 export default function KakaoLogin() {
+  const history = useHistory();
+
   const getProfile = async () => {
     try {
       let data = await window.Kakao.API.request({
@@ -32,7 +35,7 @@ export default function KakaoLogin() {
       const userKey = data.id;
       const nickname = data.properties.nickname;
 
-      apis.login(userKey, nickname);
+      apis.login(userKey, nickname).then(history.push("/"));
     } catch (err) {
       console.log(err);
     }
