@@ -51,27 +51,27 @@ export default function AsideSection({
   const buttonRef = React.useRef();
   const [ScrollY, setScrollY] = useState(0);
   const [BtnStatus, setBtnStatus] = useState(false); // 버튼 상태
-  
+
   const onScroll = (e) => {
     setScrollY(e.target.scrollTop);
 
     console.log(e.target.scrollTop);
     console.log(ScrollY);
-  
+
     if (e.target.scrollTop > 500) {
       console.log("500 초과");
       // 500 이상이면 버튼이 보이게
       setBtnStatus(true);
-    } else if(e.target.scrollTop <= 500){
+    } else if (e.target.scrollTop <= 500) {
       console.log("500 이하");
       // 500 이하면 버튼이 사라지게
       setBtnStatus(false);
     }
   };
- // setScrollY(ScrollY);
+  // setScrollY(ScrollY);
 
   const throttle = _.throttle(onScroll, 500);
-  const theScroll = React.useCallback(throttle, []);
+  const theScroll = React.useCallback(throttle, [throttle]);
 
   // 클릭하면 스크롤이 위로 올라가는 함수
   const scrollToTop = (event) => {
