@@ -38,11 +38,11 @@ export default function NavBarAnchor() {
                     padding="6px 0"
                     width="120px"
                   >
-                    관심지역.zip잠시테스트
+                    관심지역.zip잠시테스트마무리
                   </Text>
                 )) || (
                   <Text h4 margin="0" padding="6px 0" width="120px">
-                    관심지역.zip잠시테슽
+                    관심지역.zip잠시테슽마무리
                   </Text>
                 )}
               </Atag>
