@@ -42,7 +42,7 @@ export default function NavBarAnchor() {
                   </Text>
                 )) || (
                   <Text h4 margin="0" padding="6px 0" width="120px">
-                    관심지역.zip
+                    관심지역.zip잠시테슽
                   </Text>
                 )}
               </Atag>
