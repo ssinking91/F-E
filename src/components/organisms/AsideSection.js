@@ -42,7 +42,7 @@ export default function AsideSection({
   const publicList = useSelector((store) => store.map.public_sido);
   const privateStatusArr = useSelector((store) => store.map.statusArr);
   const privateList = useSelector((store) => store.map.private_sido);
-  console.log(privateStatusArr);
+  //console.log(privateStatusArr);
 
   const click = (address) => {
     dispatch(clickOne(address));
@@ -68,10 +68,10 @@ export default function AsideSection({
       setBtnStatus(false);
     }
   };
- // setScrollY(ScrollY);
+  console.log(ScrollY);
 
   const throttle = _.throttle(onScroll, 500);
-  const theScroll = React.useCallback(throttle, []);
+  const theScroll = React.useCallback(throttle, [throttle]);
 
   // 클릭하면 스크롤이 위로 올라가는 함수
   const scrollToTop = (event) => {
