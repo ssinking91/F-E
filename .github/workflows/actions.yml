@@ -27,4 +27,5 @@ jobs: # Job 설정
           aws s3 cp --recursive --region ap-northeast-2 build s3://dotzip
 
       - name: Invalidation # invalidation of cloudfront cashe
-        run: aws cloudfront create-invalidation --distribution-id EXCR9YR40XCO6 --paths "/*"
+        run: |
+          aws cloudfront create-invalidation --distribution-id EXCR9YR40XCO6 --paths "/*"
