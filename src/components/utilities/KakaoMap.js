@@ -147,6 +147,7 @@ export default function KakaoMap() {
             if (status === kakao.maps.services.Status.OK) {
               const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
               dispatch(changeCoords(coords));
+              console.log(cardClicked);
             }
           });
         }

@@ -32,35 +32,35 @@ export default function NavBar() {
               <Items2In>
                 <Text h4 margin="0" padding="6px 0" width="120px">
                   <NavLink to="/#page2" style={{ textAlign: "center" }}>
-                    관심지역.zip
+                    관심지역
                   </NavLink>
                 </Text>
               </Items2In>
               <Items2In>
                 <Text h4 margin="0" padding="6px 0" width="120px">
                   <NavLink to="/#page3" style={{ textAlign: "center" }}>
-                    뜨는청약.zip
+                    뜨는청약
                   </NavLink>
                 </Text>
               </Items2In>
               <Items2In>
                 <Text h4 margin="0" padding="6px 0" width="120px">
                   <NavLink to="/#page4" style={{ textAlign: "center" }}>
-                    청약정보.zip
+                    청약정보
                   </NavLink>
                 </Text>
               </Items2In>
               <Items2In>
                 <Text h4 margin="0" padding="6px 0" width="120px">
                   <NavLink to="/list" activeStyle={{ color: "#20d7ff" }}>
-                    청약목록.zip
+                    청약목록
                   </NavLink>
                 </Text>
               </Items2In>
               <Items2In>
                 <Text h4 margin="0" padding="6px 0" width="120px">
                   <NavLink to="/map" activeStyle={{ color: "#20d7ff" }}>
-                    청약지도.zip
+                    청약지도
                   </NavLink>
                 </Text>
               </Items2In>
@@ -80,7 +80,7 @@ export default function NavBar() {
                     width="120px"
                     color="#2094FF"
                   >
-                    설문하기.zip
+                    설문하기
                   </Text>
                 </SurveyButton>
               </Items2In>

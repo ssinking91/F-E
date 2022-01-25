@@ -38,11 +38,11 @@ export default function NavBarAnchor() {
                     padding="6px 0"
                     width="120px"
                   >
-                    관심지역.zip잠시테스트마무리
+                    관심지역
                   </Text>
                 )) || (
                   <Text h4 margin="0" padding="6px 0" width="120px">
-                    관심지역.zip잠시테슽마무리
+                    관심지역
                   </Text>
                 )}
               </Atag>
@@ -57,11 +57,11 @@ export default function NavBarAnchor() {
                     padding="6px 0"
                     width="120px"
                   >
-                    뜨는청약.zip
+                    뜨는청약
                   </Text>
                 )) || (
                   <Text h4 margin="0" padding="6px 0" width="120px">
-                    뜨는청약.zip
+                    뜨는청약
                   </Text>
                 )}
               </Atag>
@@ -76,11 +76,11 @@ export default function NavBarAnchor() {
                     padding="6px 0"
                     width="120px"
                   >
-                    청약정보.zip
+                    청약정보
                   </Text>
                 )) || (
                   <Text h4 margin="0" padding="6px 0" width="120px">
-                    청약정보.zip
+                    청약정보
                   </Text>
                 )}
               </Atag>
@@ -88,14 +88,14 @@ export default function NavBarAnchor() {
             <Items2In>
               <Text h4 margin="0" padding="6px 0" width="120px">
                 <NavLink to="/list" activeStyle={{ color: "#20d7ff" }}>
-                  청약목록.zip
+                  청약목록
                 </NavLink>
               </Text>
             </Items2In>
             <Items2In>
               <Text h4 margin="0" padding="6px 0" width="120px">
                 <NavLink to="/map" activeStyle={{ color: "#20d7ff" }}>
-                  청약지도.zip
+                  청약지도
                 </NavLink>
               </Text>
             </Items2In>
@@ -115,7 +115,7 @@ export default function NavBarAnchor() {
                   width="120px"
                   color="#2094FF"
                 >
-                  설문하기.zip
+                  설문하기
                 </Text>
               </SurveyButton>
             </Items2In>
