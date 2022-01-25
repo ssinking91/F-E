@@ -25,3 +25,6 @@ jobs:                                # Job 설정
           AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_ACCESS_KEY }}
         run: |
           aws s3 cp --recursive --region ap-northeast-2 build s3://dotzip
+      
+      - name: Invalidation
+        aws cloudfront create-invalidation --distribution-id EXCR9YR40XCO6 --paths "/*"
