@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +14,8 @@ import {
 } from "../redux/modules/map";
 import topButton from "../../images/topButton.png";
 import Pagination from "../molecules/Pagination";
+
+import _ from "lodash"; // lodash 부르기
 
 export default function AsideSection({
   publicPage,
@@ -49,17 +51,27 @@ export default function AsideSection({
   const buttonRef = React.useRef();
   const [ScrollY, setScrollY] = useState(0);
   const [BtnStatus, setBtnStatus] = useState(false); // 버튼 상태
-
+  
   const onScroll = (e) => {
     setScrollY(e.target.scrollTop);
-    if (ScrollY > 500) {
+
+    console.log(e.target.scrollTop);
+    console.log(ScrollY);
+  
+    if (e.target.scrollTop > 500) {
+      console.log("500 초과");
       // 500 이상이면 버튼이 보이게
       setBtnStatus(true);
-    } else {
+    } else if(e.target.scrollTop <= 500){
+      console.log("500 이하");
       // 500 이하면 버튼이 사라지게
       setBtnStatus(false);
     }
   };
+ // setScrollY(ScrollY);
+
+  const throttle = _.throttle(onScroll, 500);
+  const theScroll = React.useCallback(throttle, []);
 
   // 클릭하면 스크롤이 위로 올라가는 함수
   const scrollToTop = (event) => {
@@ -85,7 +97,7 @@ export default function AsideSection({
         ) : (
           <></>
         )}
-        <ContentArea id="TOP" ref={buttonRef} onScroll={onScroll}>
+        <ContentArea id="TOP" ref={buttonRef} onScroll={theScroll}>
           {clickButton === "민간분양"
             ? privateList &&
               privateList
