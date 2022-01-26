@@ -49,7 +49,7 @@ const Section01 = (props) => {
           backgroundRepeat: "no-repeat",
           backgroundposition: "center",
           paddingTop: "97px",
-          backgroundColor: "#f9f9f9",
+          backgroundColor: "",
           transition: "all 2s",
         }}
       >

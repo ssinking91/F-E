@@ -9,7 +9,12 @@ const Section04 = (props) => {
     <>
       <div
         className="section"
-        style={{ paddingTop: "97px", backgroundColor: "#f9f9f9" }}
+        style={{
+          width: "100%",
+          height: "900px",
+          paddingTop: "97px",
+          backgroundColor: "#f9f9f9",
+        }}
       >
         <SectionWrap>
           <AllSpan>
@@ -35,7 +40,7 @@ export default Section04;
 const SectionWrap = styled.div`
   width: 100%;
   height: 86px;
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
   text-align: center;
   display: flex;
   flex-direction: column;
