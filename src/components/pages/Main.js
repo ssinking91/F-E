@@ -23,7 +23,7 @@ const Fullpage = (props) => (
   <ReactFullpage
     anchors={anchors}
     verticalCentered={false}
-    sectionsColor={["#fff", "#fff", "#fff", "#F9F9F9"]}
+    sectionsColor={["", "", "", "#F9F9F9"]}
     onLeave={(origin, destination, direction) => {}}
     render={({ state, fullpageApi }) => {
       return (
