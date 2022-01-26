@@ -47,7 +47,7 @@ export default function Naver() {
   return (
     <NaverLogin
       clientId="ZRzqCFcqpiEhAdr5vdzG"
-      callbackUrl="https://www.dotzip.today"
+      callbackUrl="https://dotzip.today"
       isPopup="false"
       render={(renderProps) => (
         <NaverLoginBtn
