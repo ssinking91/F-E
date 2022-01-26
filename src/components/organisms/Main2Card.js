@@ -7,6 +7,8 @@ import Label from "../molecules/Label";
 import { Text } from "../atoms/index";
 import BmarkFill from "../../images/bmark_fill.svg";
 import BmarkNone from "../../images/bmark_none.svg";
+import rightArrow from "../../images/rightArrow.png";
+import defaultCardImage from "../../images/defaultCardImage.png";
 
 import defaultLogoImage from "../../images/defaultLogoImage.svg";
 import { visibleModal } from "../redux/modules/map";
@@ -132,7 +134,7 @@ const Main2Card = (props) => {
       <Imageitem>
         <Image
           shape="card"
-          src={props.image === null ? "img/defaultCardImage.png" : props.image}
+          src={props.image === null ? `${defaultCardImage}` : props.image}
         />
         <ImageDiv
           onClick={() => {
@@ -205,7 +207,7 @@ const Main2Card = (props) => {
                 dispatch(getDetailImgDB(`/${props.division}/${props.aptNo}`));
               }}
             >
-              <RightArrow src="img/rightArrow.png" />
+              <RightArrow src={rightArrow} />
             </Info2Item3>
           ) : (
             ""
