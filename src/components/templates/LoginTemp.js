@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Grid, Text } from "../atoms/index";
 import SocialLogin from "../organisms/Logins";
 import { ReactComponent as Logo } from "../../images/logo.svg";
+import LoginImg from "../../images/image.avif";
 
 export default function LoginTemp() {
   return (
@@ -40,7 +41,7 @@ export default function LoginTemp() {
           </ContentsArea>
         </LeftArea>
         <RightArea>
-          <img src="img/image.png" alt="images" style={{ width: "100%" }} />
+          <img src={LoginImg} alt="images" style={{ width: "100%" }} />
         </RightArea>
       </Grid>
     </>
