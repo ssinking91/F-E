@@ -12,7 +12,7 @@ import {
   clickOne,
 } from "../redux/modules/map";
 import "./style.css";
-import defaultLogoImage from "../../images/defaultLogoImage.svg";
+import defaultLogoImage from "../../images/home3.avif";
 
 export default function KakaoMap() {
   const dispatch = useDispatch();
