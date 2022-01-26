@@ -24,15 +24,9 @@ export default function AsideSection({
   setPrivatePage,
 }) {
   const dispatch = useDispatch();
-  const location = useLocation();
 
-  const locate = location.pathname;
-  const history = useHistory();
   const eventList = useSelector((state) => state.map.list);
   const clickButton = useSelector((state) => state.map.divisionClick);
-  const clicked = useSelector((state) => state.map.clicked);
-  const show = useSelector((state) => state.map.show);
-  const hidden = useSelector((state) => state.map.hidden);
 
   React.useEffect(() => {
     dispatch(getPublicListMapDB(eventList));
@@ -42,7 +36,6 @@ export default function AsideSection({
   const publicList = useSelector((store) => store.map.public_sido);
   const privateStatusArr = useSelector((store) => store.map.statusArr);
   const privateList = useSelector((store) => store.map.private_sido);
-  //console.log(privateStatusArr);
 
   const click = (address) => {
     dispatch(clickOne(address));
@@ -106,7 +99,6 @@ export default function AsideSection({
                   privateStatusArr
                     ? (status = privateStatusArr[index].status)
                     : (status = "접수마감");
-                  console.log(status);
 
                   return (
                     <Grid
