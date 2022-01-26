@@ -47,9 +47,10 @@ export default function AsideSection({
 
   const onScroll = (e) => {
     setScrollY(e.target.scrollTop);
-    console.log(ScrollY);
-    console.log(e.target.scrollTop);
 
+    //console.log(ScrollY);
+   // console.log(e.target.scrollTop);
+    
     if (e.target.scrollTop > 500) {
       // 500 이상이면 버튼이 보이게
       setBtnStatus(true);
@@ -58,6 +59,7 @@ export default function AsideSection({
       setBtnStatus(false);
     }
   };
+
   const throttle = _.throttle(onScroll, 1000);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const theScroll = React.useCallback(throttle, []);
