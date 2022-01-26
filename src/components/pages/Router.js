@@ -1,8 +1,6 @@
 import { Switch, Route, Redirect } from "react-router-dom";
-import { ConnectedRouter } from "connected-react-router";
-import { history } from "../redux/configStore";
 import Main from "./Main";
-import List from "./List.jsx";
+import List from "./List.js";
 import Detail from "./Detail";
 import Login from "./Login";
 import MyPage from "./MyPage";
@@ -12,19 +10,17 @@ import Map from "./Map";
 
 export default function Router() {
   return (
-    <ConnectedRouter history={history}>
-      <Switch>
-        <Route exact path="/" component={Main} />
-        <Route path="/list" component={List} />
-        <Route path="/private/:aptNo" component={Detail} />
-        <Route path="/public/:aptNo" component={Detail} />
-        <Route path="/MyPage" component={MyPage} />
-        <Route path="/login" exact component={Login} />
-        <Route path="/login/kakao" component={KakaoLogin} />
-        <Route path="/oauth/kakao/callback" component={KakaoAuth} />
-        <Route path="/map" component={Map} />
-        <Redirect from="*" to="/" />
-      </Switch>
-    </ConnectedRouter>
+    <Switch>
+      <Route exact path="/" component={Main} />
+      <Route path="/list" component={List} />
+      <Route path="/private/:aptNo" component={Detail} />
+      <Route path="/public/:aptNo" component={Detail} />
+      <Route path="/MyPage" component={MyPage} />
+      <Route path="/login" exact component={Login} />
+      <Route path="/login/kakao" component={KakaoLogin} />
+      <Route path="/oauth/kakao/callback" component={KakaoAuth} />
+      <Route path="/map" component={Map} />
+      <Redirect from="*" to="/" />
+    </Switch>
   );
 }

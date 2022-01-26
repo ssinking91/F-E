@@ -5,11 +5,11 @@ import { Grid, Text } from "../atoms/index";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as mainAction } from "../redux/modules/main";
 import { ReactComponent as Scroll } from "../../images/scroll.svg";
-import mainBackgroundImage from "../../images/mainBackgroundImage.jpg";
-import home1 from "../../images/home1.jpg";
-import home2 from "../../images/home2.jpg";
-import home3 from "../../images/home3.jpg";
-import home4 from "../../images/home4.jpg";
+import mainBackgroundImage from "../../images/mainBackgroundImage.avif";
+import home1 from "../../images/home1.avif";
+import home2 from "../../images/home2.avif";
+import home3 from "../../images/home3.avif";
+import home4 from "../../images/home4.avif";
 
 const Section01 = (props) => {
   const dispatch = useDispatch();

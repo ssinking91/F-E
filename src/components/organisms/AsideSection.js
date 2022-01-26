@@ -24,15 +24,9 @@ export default function AsideSection({
   setPrivatePage,
 }) {
   const dispatch = useDispatch();
-  const location = useLocation();
 
-  const locate = location.pathname;
-  const history = useHistory();
   const eventList = useSelector((state) => state.map.list);
   const clickButton = useSelector((state) => state.map.divisionClick);
-  const clicked = useSelector((state) => state.map.clicked);
-  const show = useSelector((state) => state.map.show);
-  const hidden = useSelector((state) => state.map.hidden);
 
   React.useEffect(() => {
     dispatch(getPublicListMapDB(eventList));
@@ -42,7 +36,6 @@ export default function AsideSection({
   const publicList = useSelector((store) => store.map.public_sido);
   const privateStatusArr = useSelector((store) => store.map.statusArr);
   const privateList = useSelector((store) => store.map.private_sido);
-  //console.log(privateStatusArr);
 
   const click = (address) => {
     dispatch(clickOne(address));
@@ -53,22 +46,20 @@ export default function AsideSection({
   const [BtnStatus, setBtnStatus] = useState(false); // 버튼 상태
 
   const onScroll = (e) => {
-
     setScrollY(e.target.scrollTop);
+
     //console.log(ScrollY);
    // console.log(e.target.scrollTop);
     
     if (e.target.scrollTop > 500) {
-      console.log("500 초과");
       // 500 이상이면 버튼이 보이게
       setBtnStatus(true);
     } else if (e.target.scrollTop <= 500) {
-      console.log("500 이하");
       // 500 이하면 버튼이 사라지게
       setBtnStatus(false);
     }
   };
-  //console.log(ScrollY);
+
   const throttle = _.throttle(onScroll, 1000);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const theScroll = React.useCallback(throttle, []);
@@ -110,7 +101,6 @@ export default function AsideSection({
                   privateStatusArr
                     ? (status = privateStatusArr[index].status)
                     : (status = "접수마감");
-                  console.log(status);
 
                   return (
                     <Grid
