@@ -9,6 +9,8 @@ import BmarkFill from "../../images/bmark_fill.svg";
 import BmarkNone from "../../images/bmark_none.svg";
 
 import defaultLogoImage from "../../images/defaultLogoImage.svg";
+import defaultCardImage from "../../images/defaultCardImage.png";
+import rightArrow from "../../images/rightArrow.png";
 import { visibleModal } from "../redux/modules/map";
 import { getDetailImgDB, getDetailInfoDB } from "../redux/modules/detail";
 
@@ -132,7 +134,7 @@ const Main2Card = (props) => {
       <Imageitem>
         <Image
           shape="card"
-          src={props.image === null ? "img/defaultCardImage.png" : props.image}
+          src={props.image === null ? defaultCardImage : props.image}
         />
         <ImageDiv
           onClick={() => {
@@ -205,7 +207,7 @@ const Main2Card = (props) => {
                 dispatch(getDetailImgDB(`/${props.division}/${props.aptNo}`));
               }}
             >
-              <RightArrow src="img/rightArrow.png" />
+              <RightArrow src={rightArrow} />
             </Info2Item3>
           ) : (
             ""
