@@ -14,18 +14,12 @@ import { globalSido } from "../utilities/constants.js";
 export default function TypeFilter({ setPublicPage, setPrivatePage }) {
   const dispatch = useDispatch();
 
-  const debounceFunc = debounce(() => {
-    console.log("debounce");
-  }, 3000);
-
   const getDB = (item) => {
     dispatch(getPublicListMapDB(item));
     dispatch(getPrivateListMapDB(item));
     dispatch(filteringChangeCoords(item));
     setPublicPage(1);
     setPrivatePage(1);
-
-    debounceFunc();
   };
   return (
     <Div>

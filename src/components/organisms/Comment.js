@@ -10,6 +10,7 @@ const Comment = (props) => {
   const dispatch = useDispatch();
   const useParam = useParams();
   const aptNo = useParam.aptNo;
+  //console.log(aptNo);
 
   const [active, setActive] = React.useState(true); // 버튼 활성화 유무
   const [content, setContent] = React.useState(""); // 글 내용 작성
@@ -20,7 +21,10 @@ const Comment = (props) => {
   }, []);
 
   const userKey = localStorage.getItem("userKey");
+  //console.log(userKey);
   const list = useSelector((state) => state.comment.list);
+  //console.log(list);
+  //console.log(list.length);
 
   // 글 내용
   const changeContent = (e) => {
@@ -54,6 +58,7 @@ const Comment = (props) => {
   // 댓글 삭제
   const commentDelete = (commentId) => {
     dispatch(commentActions.deleteCommentsFB(aptNo, commentId));
+    // window.alert("댓글이 삭제되었습니다😎");
   };
 
   return (
