@@ -1,6 +1,6 @@
 # B-E
 
-# 🏠[집을 모아놓다.zip](https://www.dotzip.today) [backend]
+# 🏠[집을 모아놓다.zip](https://www.dotzip.today) [end]
 
 ## 🙋‍♀️ 안녕하세요. [dot.zip](https://www.kkuljohab.com/) 프론트엔드 입니다.
 
