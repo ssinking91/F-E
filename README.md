@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+# B-E
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🏠[집을 모아놓다.zip](https://www.dotzip.today) [backend]
 
-## Available Scripts
+## 🙋‍♀️ 안녕하세요. [dot.zip](https://www.kkuljohab.com/) 백엔드 입니다.
 
-In the project directory, you can run:
+<img width="673" alt="스크린샷 2022-01-25 오후 8 00 06" src="https://user-images.githubusercontent.com/80023108/150964817-baf6912d-46f3-4f66-a4c2-b596945846cc.png">
 
-### `yarn start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🐥팀노션
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+https://www.notion.so/kongom2/Team-zip-9e4ad0e0184448fc868950b076008e93
 
-### `yarn test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 😀서비스 소개
 
-### `yarn build`
+여기저기 흩어져 있는 청약 정보를 한눈에 보기 쉽게 모아놓은 dotzip입니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 👨‍👩‍👧‍👧팀원소개
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- 팀장
+  - 공성훈
+- 프론트엔드
+  - 공성훈
+  - 김형래
+  - 신항민
+- 백엔드
+  - 정하나 (https://github.com/hana-j)
+  - 곽태민 (https://github.com/kwak9898)
+  - 민수현 (https://github.com/SuHyeon-Eleven)
+- 디자이너
+  - 서가람
+  - 이세은
 
-### `yarn eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🖥Project Architecture
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![백엔드](https://user-images.githubusercontent.com/80023108/150957823-87a08bd6-52cb-4721-9a6b-7e6395bbae46.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📕주요 라이브러리
 
-## Learn More
+| 라이브러리    | 설명                       | 버전   |
+| ------------- | -------------------------- | ------ |
+| Express       | Node.js                    | 4.17.1 |
+| MYSQL         | 변동성 많은 DB. MySQL 적용 | 5.13.3 |
+|sequelize      |                        |7.0.0 |
+| CORS          | Request resouRce 제한      | 2.8.5  |
+| Swagger       | API 문서화                 | 4.1.6  |
+| Joi           | 유효성 검사                | 17.5.0 |
+| dotenv        | 환경변수 설정              | 10.0.0 |
+| nodemailer    | 메일 알림                  | 6.7.2  |
+| node-schedule | 노드 스케줄러              | 2.1.0  |
+| request       |                            | 2.88.2 |
+| xml-js        | xml 변환                   | 1.6.11 |
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🌠기능소개
 
-### Code Splitting
+- 소셜 로그인
+- 공영 민영 청약 OPEN API에서 가져온 정보 일관적이게 제공
+- 찜한 청약공고를 편하게 관리할 수 있도록 마이페이지를 제공
+- 마이페이지에서 지역, 이메일 수정 가능
+- 찜한 공고의 청약 접수날짜에 메일알림
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🔥이슈 및 트러블슈팅
+[상세보기] (https://www.notion.so/kongom2/c3584a65c5384c9d905924317c770ec0)
+1. HTTP메서드 기본이지만 가장중요
+2. 크롤링 대신에 openAPI 사용한이유!
+3. GithubActions VS Jenkins
+4. CI/CD .env참조문제
+5. 요청이 많아 지면 어떻게 대응할 것인가?
+6. MySQL을 사용한 이유
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 📌Tech Stack
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Express.js  
+MYSQL  
+Swagger  
+EC2  
+S3
+GithubActions
+Codedeploy
