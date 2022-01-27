@@ -9,7 +9,7 @@ import NoneMain2Card from "../organisms/NoneMain2Card";
 import Footer from "../organisms/Footer";
 import { Text, DropDown } from "../atoms/index";
 import { OPTIONS } from "../utilities/constants.js";
-
+import { alertsLogin, alertsLocation, alertsEmail } from "../atoms/SwalAlerts";
 const MyPage = (props) => {
   const dispatch = useDispatch();
   const [isActive, setIsActive] = React.useState(false);
@@ -20,7 +20,8 @@ const MyPage = (props) => {
 
   React.useEffect(() => {
     if (!localStorage.getItem("userKey")) {
-      window.alert("로그인 먼저 해주세요😎");
+      // window.alert("로그인 먼저 해주세요😎");
+      alertsLogin()
       return history.push("/login");
     }
     const userKey = localStorage.getItem("userKey");
@@ -37,7 +38,8 @@ const MyPage = (props) => {
   const sidoChangeApi = () => {
     console.log(sido);
     if (sido === undefined) {
-      window.alert("관심 지역 설정해 주세요😎");
+      // window.alert("관심 지역 설정해 주세요😎");
+      alertsLocation();
       return;
     }
     const userName = localStorage.getItem("userName");
@@ -76,7 +78,8 @@ const MyPage = (props) => {
       setIsActive2(!isActive2);
       setEmail("");
     } else {
-      window.alert("이메일 형식에 맞지 않습니다😀");
+      // window.alert("이메일 형식에 맞지 않습니다😀");
+      alertsEmail();
       setEmail("");
     }
   };
@@ -125,7 +128,7 @@ const MyPage = (props) => {
             ) : (
               <TextDiv margin="10px 0 0 0">
                 <Text h4 width="340px">
-                  {existuser.sido ? existuser.sido : "관심지역이 없습니다😀"}
+                  {existuser.sido ? existuser.sido : "관심지역이 없습니다 😀"}
                 </Text>
                 <MypageButton
                   onClick={() => {
@@ -152,7 +155,7 @@ const MyPage = (props) => {
                 <TextInputDiv>
                   <TextInput
                     type="text"
-                    placeholder="이메일을 입력해 주세요🔥"
+                    placeholder="이메일을 입력해 주세요 🔥"
                     value={email}
                     onChange={changeEmail}
                     onKeyUp={checkActive}
@@ -177,7 +180,7 @@ const MyPage = (props) => {
             ) : (
               <TextDiv margin="2px 0 0 0">
                 <Text h4 width="340px">
-                  {existuser.email ? existuser.email : "이메일이 없습니다😀"}
+                  {existuser.email ? existuser.email : "이메일이 없습니다 😀"}
                 </Text>
                 <MypageButton
                   onClick={() => {
