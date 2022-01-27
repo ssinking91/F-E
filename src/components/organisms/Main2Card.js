@@ -241,6 +241,7 @@ const Image = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  loading: lazy;
 `;
 
 const ImageDiv = styled.div`
