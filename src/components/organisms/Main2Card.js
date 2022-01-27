@@ -7,12 +7,12 @@ import Label from "../molecules/Label";
 import { Text } from "../atoms/index";
 import BmarkFill from "../../images/bmark_fill.svg";
 import BmarkNone from "../../images/bmark_none.svg";
-
 import defaultLogoImage from "../../images/defaultLogoImage.svg";
 import defaultCardImage from "../../images/defaultCardImage.png";
 import rightArrow from "../../images/rightArrow.png";
 import { visibleModal } from "../redux/modules/map";
 import { getDetailImgDB, getDetailInfoDB } from "../redux/modules/detail";
+import { alertsLogin } from "../atoms/SwalAlerts";
 
 const Main2Card = (props) => {
   const { _onClick } = props;
@@ -31,7 +31,8 @@ const Main2Card = (props) => {
     // console.log(Page, status, aptNo, save2);
 
     if (userKey === null) {
-      window.alert("로그인 후 사용이 가능합니다😎");
+      // window.alert("로그인 후 사용이 가능합니다😎");
+      alertsLogin();
       return;
     }
 
