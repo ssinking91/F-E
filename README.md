@@ -40,7 +40,7 @@ https://www.notion.so/kongom2/Team-zip-9e4ad0e0184448fc868950b076008e93
 
 ## 🖥Project Architecture
 
-![백엔드](https://user-images.githubusercontent.com/80023108/150957823-87a08bd6-52cb-4721-9a6b-7e6395bbae46.png)
+![프론트](https://www.notion.so/kongom2/ec96a38d64e94c459b18cabd6c960501#3e145bf7536c42409368de9187eb327eg)
 
 ---
 
