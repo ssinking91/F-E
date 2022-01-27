@@ -34,4 +34,4 @@ jobs: # Job 설정
       #   continue-on-error: true
 
       - name: 캐시 무효화
-        run: aws cloudfront create-invalidation --distribution-id $ --paths "/index.html"
+        run: aws cloudfront create-invalidation --distribution-id ${{secrets.DEV_DISTRIBUTION_ID}} --paths "/index.html"
