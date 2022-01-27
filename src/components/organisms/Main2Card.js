@@ -73,7 +73,6 @@ const Main2Card = (props) => {
   let maxPrice = props.publicSales
     ? props.price
     : props.price.split("~")[1].replace(",", "");
-  // console.log(minSize, maxSize, props.size);
   // 4, 5, 6 자릿수
   const minPrice4 = `${minPrice.split("")[0]}${minPrice.split("")[1]}${
     minPrice.split("")[2]
