@@ -22,15 +22,23 @@ const Dropdown = (props) => {
 
   const onSelectItem = (e) => {
     setItem(e);
-    props.sidoChange(e);
+    if (props.sidoChange) {
+      props.sidoChange(e);
+    }
     setIsActive(!isActive);
   };
+
   const getClickOne = (item) => {
     dispatch(saveState(item));
     dispatch(filteringChangeCoords(item));
-    setPublicPage(1);
-    setPrivatePage(1);
+    if (setPublicPage) {
+      setPublicPage(1);
+    }
+    if (setPrivatePage) {
+      setPrivatePage(1);
+    }
   };
+  
   const getDB = (item) => {
     dispatch(getPublicListMapDB(item));
     dispatch(getPrivateListMapDB(item));
