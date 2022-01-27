@@ -133,6 +133,7 @@ const Main2Card = (props) => {
     <Container>
       <Imageitem>
         <Image
+          loading="lazy"
           shape="card"
           src={props.image === null ? defaultCardImage : props.image}
         />
