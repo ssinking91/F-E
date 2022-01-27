@@ -50,7 +50,7 @@ https://www.notion.so/kongom2/Team-zip-9e4ad0e0184448fc868950b076008e93
 | ------------- | -------------------------- | ------ |
 | @fullpage/react-fullpage | 	풀페이지 스크롤 기능	| ^0.1.19| 
 | axios	| 백엔드 통신| 	^0.24.0| 
-| connected-react-router| 	히스토리 객체 관리	^6.9.2| 
+| connected-react-router| 	히스토리 객체 관리	|^6.9.2| 
 | history	| 히스토리| 	4.10.0| 
 | immer	| 불변성 관리| 	^9.0.7| 
 | lodash	| 이벤트 제어| 	^4.17.21| 
