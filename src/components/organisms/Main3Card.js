@@ -7,6 +7,7 @@ import { Text } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 import defaultLogoImage from "../../images/defaultLogoImage.svg";
+import { alertsLogin } from "../atoms/SwalAlerts";
 
 const Main3Card = (props) => {
   const { _onClick } = props;
@@ -25,7 +26,8 @@ const Main3Card = (props) => {
     console.log(Page, status, aptNo, save3);
 
     if (userKey === null) {
-      window.alert("로그인 후 사용이 가능합니다😎");
+      // window.alert("로그인 후 사용이 가능합니다😎");
+      alertsLogin();
       return;
     }
 
