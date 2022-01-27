@@ -2,7 +2,7 @@
 
 # 🏠[집을 모아놓다.zip](https://www.dotzip.today) [backend]
 
-## 🙋‍♀️ 안녕하세요. [dot.zip](https://www.kkuljohab.com/) 백엔드 입니다.
+## 🙋‍♀️ 안녕하세요. [dot.zip](https://www.kkuljohab.com/) 프론트엔드 입니다.
 
 <img width="673" alt="스크린샷 2022-01-25 오후 8 00 06" src="https://user-images.githubusercontent.com/80023108/150964817-baf6912d-46f3-4f66-a4c2-b596945846cc.png">
 
@@ -35,12 +35,6 @@ https://www.notion.so/kongom2/Team-zip-9e4ad0e0184448fc868950b076008e93
 - 디자이너
   - 서가람
   - 이세은
-
----
-
-## 🖥Project Architecture
-
-![프론트](https://www.notion.so/kongom2/ec96a38d64e94c459b18cabd6c960501#3e145bf7536c42409368de9187eb327eg)
 
 ---
 
@@ -83,23 +77,10 @@ https://www.notion.so/kongom2/Team-zip-9e4ad0e0184448fc868950b076008e93
 
 ---
 
-## 🔥이슈 및 트러블슈팅
-[상세보기] (https://www.notion.so/kongom2/c3584a65c5384c9d905924317c770ec0)
-1. HTTP메서드 기본이지만 가장중요
-2. 크롤링 대신에 openAPI 사용한이유!
-3. GithubActions VS Jenkins
-4. CI/CD .env참조문제
-5. 요청이 많아 지면 어떻게 대응할 것인가?
-6. MySQL을 사용한 이유
-
----
-
 ## 📌Tech Stack
 
-Express.js  
-MYSQL  
-Swagger  
-EC2  
-S3
-GithubActions
-Codedeploy
+React
+Redux
+AWS S3, CloudFront, Route53
+Axios
+
