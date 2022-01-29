@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import TypeButton from "../molecules/TypeButton";
+import MapToggleFilter from "../molecules/MapToggleFilter";
 import TypeFilter from "../molecules/TypeFilter";
 
 export default function MapFilter({ setPublicPage, setPrivatePage }) {
@@ -10,10 +10,10 @@ export default function MapFilter({ setPublicPage, setPrivatePage }) {
         setPublicPage={setPublicPage}
         setPrivatePage={setPrivatePage}
       ></TypeFilter>
-      <TypeButton
+      <MapToggleFilter
         setPublicPage={setPublicPage}
         setPrivatePage={setPrivatePage}
-      ></TypeButton>
+      ></MapToggleFilter>
     </Div>
   );
 }
