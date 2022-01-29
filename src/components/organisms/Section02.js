@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as mainAction } from "../redux/modules/main";
 import { mypagetActions } from "../redux/modules/mypage";
 import { history } from "../redux/configStore";
-import Main2Card from "./Main2Card";
-import NoneMain2Card from "./NoneMain2Card";
+import MiniCard from "./MiniCard";
+import NoneMiniCard from "./NoneMiniCard";
 import { Text } from "../atoms/index";
 
 const Section02 = () => {
@@ -105,7 +105,7 @@ const Section02 = () => {
                   let onlyNumber2 = onlyNumber1[onlyNumber1.length - 2];
 
                   return (
-                    <Main2Card
+                    <MiniCard
                       key={index}
                       image={item.ImgUrl}
                       name={item.panName}
@@ -129,7 +129,7 @@ const Section02 = () => {
                   );
                 })
               ) : (
-                <NoneMain2Card />
+                <NoneMiniCard />
               )}
             </PublicCards>
 
@@ -142,7 +142,7 @@ const Section02 = () => {
                   const status = "private";
 
                   return (
-                    <Main2Card
+                    <MiniCard
                       key={index}
                       image={item.ImgUrl}
                       name={item.houseName}
@@ -163,7 +163,7 @@ const Section02 = () => {
                   );
                 })
               ) : (
-                <NoneMain2Card />
+                <NoneMiniCard />
               )}
             </PrivateCards>
           </CardWrap>

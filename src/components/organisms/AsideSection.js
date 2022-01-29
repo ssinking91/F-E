@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import { useDispatch, useSelector } from "react-redux";
-import Main2Card from "./Main2Card";
+import MiniCard from "./MiniCard";
 import { Grid } from "../atoms/index";
 
 import { useHistory, useLocation } from "react-router-dom";
@@ -49,8 +49,8 @@ export default function AsideSection({
     setScrollY(e.target.scrollTop);
 
     //console.log(ScrollY);
-   // console.log(e.target.scrollTop);
-    
+    // console.log(e.target.scrollTop);
+
     if (e.target.scrollTop > 500) {
       // 500 이상이면 버튼이 보이게
       setBtnStatus(true);
@@ -108,7 +108,7 @@ export default function AsideSection({
                       key={index}
                       _onClick={() => click(item.address)}
                     >
-                      <Main2Card
+                      <MiniCard
                         key={index}
                         image={item.ImgUrl}
                         name={item.houseName}
@@ -144,7 +144,7 @@ export default function AsideSection({
                       key={index}
                       _onClick={() => click(item.address)}
                     >
-                      <Main2Card
+                      <MiniCard
                         key={index}
                         image={item.ImgUrl}
                         name={item.panName}

@@ -3,8 +3,7 @@ import styled from "styled-components";
 import { Text } from "../atoms/index";
 import defaultLogoImage from "../../images/defaultLogoImage.svg";
 
-const Main3Card = (props) => {
-
+const NoneBigCard = (props) => {
   return (
     <Container>
       <Imageitem>
@@ -24,7 +23,7 @@ const Container = styled.div`
   height: 593px;
   display: flex;
   flex-direction: column;
-  margin-Left: 50px;
+  margin-left: 50px;
 `;
 
 const Imageitem = styled.div`
@@ -53,4 +52,4 @@ const Item = styled.div`
   margin: 0px auto;
 `;
 
-export default Main3Card;
+export default NoneBigCard;

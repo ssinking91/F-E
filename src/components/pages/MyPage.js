@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { history } from "../redux/configStore";
 import { mypagetActions } from "../redux/modules/mypage";
 import NavBarLink from "../organisms/NavBarLink";
-import Main2Card from "../organisms/Main2Card";
-import NoneMain2Card from "../organisms/NoneMain2Card";
+import MiniCard from "../organisms/MiniCard";
+import NoneMiniCard from "../organisms/NoneMiniCard";
 import Footer from "../organisms/Footer";
 import { Text, DropDown } from "../atoms/index";
 import { OPTIONS } from "../utilities/constants.js";
@@ -213,7 +213,7 @@ const MyPage = (props) => {
                 } ${item.address.split(" ")[1]}`;
 
                 return (
-                  <Main2Card
+                  <MiniCard
                     key={idx}
                     image={item.ImgUrl}
                     name={panName}
@@ -236,7 +236,7 @@ const MyPage = (props) => {
               })
             ) : (
               <>
-                <NoneMain2Card />
+                <NoneMiniCard />
               </>
             )}
           </MyPostCardList>
@@ -250,7 +250,7 @@ const MyPage = (props) => {
                 const status = "private";
 
                 return (
-                  <Main2Card
+                  <MiniCard
                     key={idx}
                     image={item.ImgUrl}
                     name={item.houseName}
@@ -272,7 +272,7 @@ const MyPage = (props) => {
               })
             ) : (
               <>
-                <NoneMain2Card />
+                <NoneMiniCard />
               </>
             )}
           </MyPostCardList>

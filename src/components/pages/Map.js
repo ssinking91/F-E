@@ -1,7 +1,7 @@
 import { useState } from "react";
 import AsideSection from "../organisms/AsideSection";
 import NavBar from "../organisms/NavBarLink";
-import NavBarSub from "../organisms/NavBarSub";
+import MapFilter from "../organisms/MapFilter";
 import MapModal from "../organisms/MapModal";
 import KakaoMap from "../utilities/KakaoMap";
 import styled from "styled-components";
@@ -14,7 +14,7 @@ export default function Map() {
       <Wrap>
         <NavBarWrap>
           <NavBar />
-          <NavBarSub
+          <MapFilter
             setPublicPage={setPublicPage}
             setPrivatePage={setPrivatePage}
           />

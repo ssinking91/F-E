@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Youtude(props) {
+export default function Youtube(props) {
   const { Y1, Y2, Y3, Y4, Y5 } = props;
 
   const youtubeItems = [

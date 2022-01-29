@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as mainAction } from "../redux/modules/main";
-import Main3Card from "./Main3Card";
+import BigCard from "./BigCard";
 import { history } from "../redux/configStore";
 
 export default function SlideItems(props) {
@@ -44,7 +44,7 @@ export default function SlideItems(props) {
             const status = "public";
 
             return (
-              <Main3Card
+              <BigCard
                 key={index}
                 number={index}
                 image={item.ImgUrl}
@@ -78,7 +78,7 @@ export default function SlideItems(props) {
             const status = "private";
 
             return (
-              <Main3Card
+              <BigCard
                 key={index}
                 number={index}
                 image={item.ImgUrl}
