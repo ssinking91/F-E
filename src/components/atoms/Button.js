@@ -5,7 +5,6 @@ const Button = (props) => {
   const {
     text,
     _onClick,
-    is_float,
     ractangle,
     children,
     margin,
@@ -16,13 +15,6 @@ const Button = (props) => {
     border,
     radius,
   } = props;
-  if (is_float) {
-    return (
-      <React.Fragment>
-        <FloatButton onClick={_onClick}>{text ? text : children}</FloatButton>
-      </React.Fragment>
-    );
-  }
 
   const styles = {
     margin: margin,
@@ -74,27 +66,9 @@ const ElButton = styled.button`
   padding: ${(props) => props.padding};
   box-sizing: border-box;
   border-radius: 36px;
-
   cursor: pointer;
   border: ${(props) => props.border};
   ${(props) => (props.margin ? `margin: ${props.margin};` : "")}
-`;
-
-const FloatButton = styled.button`
-  width: 50px;
-  height: 50px;
-  background-color: #212121;
-  color: #ffffff;
-  box-sizing: border-box;
-  border-radius: 30px;
-  border: none;
-  font-size: 24px;
-  font-weight: 800;
-  position: fixed;
-  bottom: 50px;
-  right: 16px;
-  text-align: center;
-  vertical-align: middle;
 `;
 
 export default Button;

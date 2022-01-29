@@ -14,6 +14,7 @@ export default function DetailInfo() {
 
   // public
   const publicInfo = useSelector((store) => store.detail.info.detail);
+  console.log(publicInfo);
   const publicImg = useSelector((store) => store.detail.img);
   // console.log(publicImg);
   // let minPrize = publicInfo.supplyAmount.split("~")[0].replace(",", "");
@@ -74,14 +75,6 @@ export default function DetailInfo() {
                   title={"난방 방식"}
                   content={`${publicInfo.heatMethod}`}
                 />
-                {/* <BundleText
-                  title={"전용 면적"}
-                  content={`${minSize} ~ ${maxSize}m² / ${pyeongMinSize} ~ ${pyeongMaxSize}평`}
-                /> */}
-                {/* <BundleText
-                  title={"분양 가격"}
-                  content={"54,470 ~ 72,670 만원"}
-                /> */}
                 <BundleText
                   title={"모집 공고일"}
                   content={`${publicInfo.panUploadDate}`}
@@ -95,15 +88,10 @@ export default function DetailInfo() {
                   title={"당첨자 발표일"}
                   content={`${publicInfo.announceDate}`}
                 />
-                {/* <BundleText
-                  title={"서류제출기간"}
-                  content={`${publicInfo.submitStartDate} ~ ${publicInfo.submitEndDate}`}
-                /> */}
                 <BundleText
                   title={"당첨자 계약일"}
                   content={`${publicInfo.contractEndDate} ~ ${publicInfo.contractStartDate}`}
                 />
-                {/* <BundleText title={"분양 문의"} content={"02) 000 - 0000"} /> */}
                 <Grid margin="40px 0 0 0">
                   <Button
                     width="240px"
