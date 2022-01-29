@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Grid, Text } from "../atoms/index";
 import Pagination from "../molecules/Pagination";
-import Card from "../organisms/Main2Card";
+import Card from "../organisms/MiniCard";
 import NavBarLink from "../organisms/NavBarLink";
-import NoneMain2Card from "../organisms/NoneMain2Card";
+import NoneMiniCard from "../organisms/NoneMiniCard";
 import { getPrivateListDB, getPublicListDB } from "../redux/modules/allList";
 
 export default function List() {
@@ -166,7 +166,7 @@ export default function List() {
                 );
               })
           ) : (
-            <NoneMain2Card />
+            <NoneMiniCard />
           )}
           {publicList && publicList.length !== 0 && (
             <Pagination
@@ -209,7 +209,7 @@ export default function List() {
                 );
               })
           ) : (
-            <NoneMain2Card />
+            <NoneMiniCard />
           )}
           {privateList && privateList.length !== 0 && (
             <Pagination
