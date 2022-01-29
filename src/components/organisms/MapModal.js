@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { visibleModal } from "../redux/modules/map";
 import { Grid } from "../atoms/index";
-import DetailInfo from "../organisms/DetailInfo";
-import DetailType from "../organisms/DetailType";
-import DetailImg from "../organisms/DetailImg";
-import Comment from "../organisms/Comment";
+import DetailInfo from "./DetailInfo";
+import DetailType from "./DetailType";
+import DetailImg from "./DetailImg";
+import Comment from "./Comment";
 
 export default function MapDetailTemp(props) {
   const dispatch = useDispatch();
