@@ -7,11 +7,12 @@ import StatusLabel from "../molecules/StatusLabel";
 import { Text } from "../atoms/index";
 import BmarkFill from "../../images/bmark_fill.svg";
 import BmarkNone from "../../images/bmark_none.svg";
-import rightArrow from "../../images/rightArrow.png";
-import defaultCardImage from "../../images/defaultCardImage.png";
 import defaultLogoImage from "../../images/defaultLogoImage.svg";
+import defaultCardImage from "../../images/defaultCardImage.png";
+import rightArrow from "../../images/rightArrow.png";
 import { visibleModal } from "../redux/modules/map";
 import { getDetailImgDB, getDetailInfoDB } from "../redux/modules/detail";
+import { alertsLogin } from "../atoms/SwalAlerts";
 
 const MiniCard = (props) => {
   const { _onClick } = props;
@@ -30,7 +31,8 @@ const MiniCard = (props) => {
     // console.log(Page, status, aptNo, save2);
 
     if (userKey === null) {
-      window.alert("로그인 후 사용이 가능합니다😎");
+      // window.alert("로그인 후 사용이 가능합니다😎");
+      alertsLogin();
       return;
     }
 
@@ -72,7 +74,6 @@ const MiniCard = (props) => {
   let maxPrice = props.publicSales
     ? props.price
     : props.price.split("~")[1].replace(",", "");
-  // console.log(minSize, maxSize, props.size);
   // 4, 5, 6 자릿수
   const minPrice4 = `${minPrice.split("")[0]}${minPrice.split("")[1]}${
     minPrice.split("")[2]
@@ -132,6 +133,7 @@ const MiniCard = (props) => {
     <Container>
       <Imageitem>
         <Image
+          loading="lazy"
           shape="card"
           src={props.image === null ? defaultCardImage : props.image}
         />
@@ -240,6 +242,7 @@ const Image = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  loading: lazy;
 `;
 
 const ImageDiv = styled.div`

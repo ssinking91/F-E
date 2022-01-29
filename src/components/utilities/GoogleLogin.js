@@ -54,7 +54,6 @@ export default function Google() {
           disabled={renderProps.disabled}
         >
           <FcGoogle size="30" />
-          {/* 구글 아이디로 로그인 */}
         </GoogleLoginBtn>
       )}
       buttonText="Sign In With Google"

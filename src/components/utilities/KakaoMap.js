@@ -194,9 +194,6 @@ export default function KakaoMap() {
 
       map.setLevel(filter ? 7 : 3, {
         anchor: new kakao.maps.LatLng(Lng, Lat),
-        animate: {
-          duration: 500,
-        },
       });
     }
 
@@ -744,76 +741,6 @@ export default function KakaoMap() {
                 });
               }
             }
-            // } else {
-            //   if (
-            //     location[i] ===
-            //     "경상북도 경주시 건천읍 신경주역세권 지역개발사업지구 B5블럭"
-            //   )
-            //     location[i] = "경북 경주시 건천읍 화천리 662";
-            //   if (
-            //     location[i] ===
-            //     "경상북도 경주시 건천읍 신경주역세권 지역개발사업지구 B4블럭"
-            //   )
-            //     location[i] = "경북 경주시 건천읍 화천리 647";
-            //   if (
-            //     location[i] ===
-            //     "부산광역시 기장군 기장읍 청강리 공공지원민간임대촉진지구 일원 내 A2블록"
-            //   )
-            //     location[i] = "부산 기장군 기장읍 청강리 217";
-            //   if (
-            //     location[i] ===
-            //     "경기도 부천시 괴안동 부천괴안 공공주택지구 B-1블록 일원"
-            //   )
-            //     location[i] = "경기 부천시 괴안동 68-22";
-            //   if (location[i] === "경기도 고양시 덕양구 원흥동 507")
-            //     location[i] = "경기 고양시 덕양구 원흥1로 35";
-            //   if (location[i] === "경기도 고양시 덕양구 원흥동 498-9")
-            //     location[i] = "경기 고양시 덕양구 원흥1로 31";
-            //   if (location[i] === "경기도 여주시 교동 여주역세권 3블록")
-            //     location[i] = "경기 여주시 교동 184-1";
-            //   if (location[i] === "인천광역시 서구 당하동 847")
-            //     location[i] = "인천 서구 당하동 851-18";
-            //   if (location[i] === "경기도 평택시 고덕면 좌교리 A57-1")
-            //     location[i] = "경기 평택시 고덕면 좌교리 산 78";
-            //   if (location[i] === "경기도 오산시 궐동 세교2지구 A1블록")
-            //     location[i] = "경기 오산시 궐동 550-1";
-            //   if (
-            //     location[i] ===
-            //     "전라남도 무안군 일로읍 망월리 남악신도시 오룡택지지구 40BL"
-            //   )
-            //     location[i] = "전남 무안군 일로읍 망월리 산 131";
-            //   if (
-            //     location[i] ===
-            //     "전라남도 무안군 일로읍 망월리 남악신도시 오룡택지지구 39BL"
-            //   )
-            //     location[i] = "전남 무안군 일로읍 망월리 산 131";
-            //   if (location[i] === "인천광역시 서구 불로동 115")
-            //     location[i] = "인천광역시 서구 불로동 114";
-            //   if (
-            //     location[i] ===
-            //     "경상북도 포항시 북구 흥해읍 포항융합기술산업지구 A5"
-            //   )
-            //     location[i] = "경북 포항시 북구 흥해읍 이인리 산 64-1";
-            //   if (location[i] === "경기도 화성시 송산동 202-66외 22필지")
-            //     location[i] = "경기 화성시 송산동 202-344";
-            //   if (location[i] === "울산광역시 울주군 청량읍 덕하지구 B-2BL")
-            //     location[i] = "울산 울주군 청량읍 덕하리 646";
-            //   if (
-            //     location[i] ===
-            //     "충청북도 음성군 대소면 성본리 성본산업단지 B5블록"
-            //   )
-            //     location[i] = "충북 음성군 대소면 성본리 142-1";
-            //   if (location[i] === "충청북도 음성군 대소면 성본산업단지 B3블록")
-            //     location[i] = "충북 음성군 대소면 성본리 298-1";
-
-            //   if (location[i]) {
-            //     location[i] = location[i]
-            //       .split("일원")[0]
-            //       .split("및")[0]
-            //       .split("외")[0]
-            //       .split("(")[0]
-            //       .split("단지")[0];
-            //   }
           }
         });
       }
