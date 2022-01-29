@@ -6,7 +6,7 @@ import "swiper/components/navigation/navigation.min.css";
 import "swiper/components/pagination/pagination.min.css";
 
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
-import Youtude from "./Youtude";
+import Youtube from "./Youtube";
 import "../utilities/style.css";
 
 const Showcase = () => {
@@ -25,19 +25,19 @@ const Showcase = () => {
   return (
     <Swiper {...swiperParams}>
       <SwiperSlide>
-        <Youtude Y1 />
+        <Youtube Y1 />
       </SwiperSlide>
       <SwiperSlide>
-        <Youtude Y2 />
+        <Youtube Y2 />
       </SwiperSlide>
       <SwiperSlide>
-        <Youtude Y3 />
+        <Youtube Y3 />
       </SwiperSlide>
       <SwiperSlide>
-        <Youtude Y4 />
+        <Youtube Y4 />
       </SwiperSlide>
       <SwiperSlide>
-        <Youtude Y5 />
+        <Youtube Y5 />
       </SwiperSlide>
     </Swiper>
   );

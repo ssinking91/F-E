@@ -5,12 +5,12 @@ import { savedActions } from "../redux/modules/cardSave";
 import { mypagetActions } from "../redux/modules/mypage";
 import { useDispatch } from "react-redux";
 
-import Label from "../molecules/Label";
+import StatusLabel from "../molecules/StatusLabel";
 import { Text, Image } from "../atoms/index";
 import { ReactComponent as BmarkFill } from "../../images/bmark_fill.svg";
 import { ReactComponent as BmarkNone } from "../../images/bmark_none.svg";
 
-const Main2Card = (props) => {
+const MiniCard = (props) => {
   const { _onClick } = props;
   const dispatch = useDispatch();
 
@@ -53,7 +53,7 @@ const Main2Card = (props) => {
       <Item>
         <Info1 onClick={_onClick}>
           <LabelDiv>
-            <Label LabelPanState={props.CardPanState}></Label>
+            <StatusLabel LabelPanState={props.CardPanState}></StatusLabel>
           </LabelDiv>
           <Text h4 margin="0 0 0 15px" width="316px">
             {props.name}
@@ -170,4 +170,4 @@ const Info2Item2 = styled.div`
   flex-direction: column;
 `;
 
-export default Main2Card;
+export default MiniCard;

@@ -4,16 +4,16 @@ import styled from "styled-components";
 import { Text } from "../atoms/index";
 import defaultLogoImage from "../../images/defaultLogoImage.svg";
 
-const NoneMain2Card = (props) => {
+const NoneMiniCard = (props) => {
   return (
     <Container>
       <Imageitem>
         <Image />
       </Imageitem>
       <Item>
-          <Text h4 color=" #A5AAB6">
-              현재 청약정보가 없어요
-          </Text>
+        <Text h4 color=" #A5AAB6">
+          현재 청약정보가 없어요
+        </Text>
       </Item>
     </Container>
   );
@@ -54,4 +54,4 @@ const Item = styled.div`
   margin: 14px 0px 30px;
 `;
 
-export default NoneMain2Card;
+export default NoneMiniCard;

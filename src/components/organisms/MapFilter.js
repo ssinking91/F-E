@@ -3,7 +3,7 @@ import styled from "styled-components";
 import TypeButton from "../molecules/TypeButton";
 import TypeFilter from "../molecules/TypeFilter";
 
-export default function NavBarSub({ setPublicPage, setPrivatePage }) {
+export default function MapFilter({ setPublicPage, setPrivatePage }) {
   return (
     <Div>
       <TypeFilter
