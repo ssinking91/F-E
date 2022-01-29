@@ -23,7 +23,6 @@ const Main3Card = (props) => {
     const Page = props.Page; // 페이지 구분
     const status = props.status; //공공 민영 구분 구분
     const aptNo = props.aptNo;
-    console.log(Page, status, aptNo, save3);
 
     if (userKey === null) {
       // window.alert("로그인 후 사용이 가능합니다😎");
