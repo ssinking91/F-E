@@ -2,7 +2,7 @@ import { useState } from "react";
 import AsideSection from "../organisms/AsideSection";
 import NavBar from "../organisms/NavBarLink";
 import NavBarSub from "../organisms/NavBarSub";
-import MapDetailTemp from "../templates/MapDetailTemp";
+import MapModal from "../organisms/MapModal";
 import KakaoMap from "../utilities/KakaoMap";
 import styled from "styled-components";
 
@@ -22,7 +22,7 @@ export default function Map() {
         <BottomWrap>
           <Left>
             <KakaoMap />
-            <MapDetailTemp />
+            <MapModal />
           </Left>
           <Right>
             <AsideSection
