@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Footer from "./Footer";
-import YoutudeSlide from "./YoutudeSlide";
+import YoutubeSlide from "./YoutubeSlide";
 import { Text } from "../atoms/index";
 import { ReactComponent as Top } from "../../images/top.svg";
 
@@ -25,7 +25,7 @@ const Section04 = (props) => {
             청약 관련 정보를 담은 영상을 추천해드릴게요.
           </Text>
         </SectionWrap>
-        <YoutudeSlide />
+        <YoutubeSlide />
         <Atag href="/#page1">
           <Top />
         </Atag>
