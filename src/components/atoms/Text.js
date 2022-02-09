@@ -70,6 +70,7 @@ export default function Text(props) {
       </H3>
     );
   }
+  //
   if (h4) {
     return (
       <H4 {...styles} onClick={_onClick}>
