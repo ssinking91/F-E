@@ -165,7 +165,7 @@
 
 > 문제점 : 초기 로딩 속도가 현저히 떨어지는 현상
 >
-> 💡 To-Be  
+> 💡 To-Be_1  
 >
 > ![image](https://user-images.githubusercontent.com/89959952/168706016-a2254295-a3d9-4c72-b3e7-b8f9e737b040.png)
 > 
@@ -174,9 +174,68 @@
 >
 > - 서비스가 느린것같다 라는 피드백에 lighthouse로 성능분석을 해보았더니 70점의 점수를 받았습니다. netlify로 서버를 배포하던 것을 aws s3로 바꾸고, cloudfront, route53으로 연결시켜주고, 용량이 큰 이미지들을 avif확장자로 변환하여 10MB이상의 이미지들을 약300KB로 압축하였습니다.이로서 86점의 점수를 받아 사이트 성능을 개선시킬 수 있었습니다.
 >
+>
+> 💡 To-Be_2
+```javaScript
+# Workflow 이름
+name: Actions deploy
+
+# Event 감지
+on: 
+  push:
+    branches:
+      - master
+	
+# Job 설정/실행
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+    steps: #순서
+      - name: Checkout source code. # Repo checkout
+        uses: actions/checkout@v2
+
+      - name: Check Node v # Node v 확인
+        run: node -v
+
+      - name: Install Dependencies # 의존 파일 설치
+        run: yarn install --frozen-lockfile
+
+      - name: Build # React Build
+        run: yarn build
+      #############################################################################################################
+	
+       # Upload build file to S3
+      - name: Deploy 
+        env: # run이 참조(매개변수)
+          AWS_ACCESS_KEY_ID: ${{ secrets.SECRET_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_ACCESS_KEY }}
+        run: |
+          aws s3 cp --recursive --region ap-northeast-2 build s3://dotzip
+	
+      #############################################################################################################
+      - name: Invalidate Cache CloudFront
+        uses: chetan/invalidate-cloudfront-action@master # AWS CloudFront 작업 무효화
+        env:
+          AWS_ACCESS_KEY_ID: ${{secrets.SECRET_KEY}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.SECRET_ACCESS_KEY}}
+          AWS_REGION: ${{secrets.AWS_REGION}}
+          DISTRIBUTION: ${{secrets.DEV_DISTRIBUTION_ID}}
+          PATHS: "/*"
+        continue-on-error: true
+	
+# 매소드 = 객체의 함수, 객체 내부에 포함되어 있는 함수
+# 내장 메소드 = 브라우저 윈도우 객체 내부에 이미 지정되어 있는 함수
+# run : 메소드(내장함수개념) / uses : 함수 
+```	
+>	
+>❗️ 해결 
 > 2. 배포 환경 변경과 ci/cd
 >
 > - netlify에서 aws로 바꾸고 github actions로 ci/cd를 하였는데, origin server인 s3에는 배포가 잘 되는것을 확인하였는데 서비스에는 반영이 안되는 문제가 있었습니다.원인파악을 위해 aws문서를 찾아보니 cloudfront가 24시간마다 저장된 캐시를 삭제하고 origin server에서 데이터를 받아와 캐싱을 해주는 특성이 있다는걸 알게됐습니다. 24시간이 지날때까지 기다릴 수는 없기에 해결방법을 찾아보았고, 파일이 만료되기 전 파일을 삭제할 수 있는 파일 무효화가 있다는걸 알게됐습니다. 그런데 이렇게 직접 매번 파일 무효화를 시켜주면 ci/cd 중에서 cd를 제대로 하지 못한 것이라 생각했습니다. 따라서 ci/cd를 하는 작업 마지막에 파일 무효화를 시켜주는 작업을 추가하여 해결해주었고, 저희가 원하는 ci/cd를 구현하였습니다.
+
+<br/>
+	
+
 
 
 <br />
