@@ -202,6 +202,7 @@ jobs:
 
       - name: Build # React Build
         run: yarn build
+	
       #############################################################################################################
 	
        # Upload build file to S3
@@ -213,6 +214,7 @@ jobs:
           aws s3 cp --recursive --region ap-northeast-2 build s3://dotzip
 	
       #############################################################################################################
+	
       - name: Invalidate Cache CloudFront
         uses: chetan/invalidate-cloudfront-action@master # AWS CloudFront 작업 무효화
         env:
