@@ -61,9 +61,10 @@
 
 <br />
 
+
 ## 🧩 Architecture
 
-![image](https://user-images.githubusercontent.com/89959952/168700949-98dec513-8ce2-457b-bf0b-8dffc1b03cba.png)
+![image](https://user-images.githubusercontent.com/89959952/168705957-9f71551b-fac7-4f24-a3a7-edfbb6daa5ad.png)
 
 <br />
 
@@ -157,7 +158,6 @@
 
 <br />
 
-
 ## ⛔️ Trouble Shooting
 
 ### 서비스가 느리다는 대다수의 의견
@@ -166,7 +166,7 @@
 >
 > 💡 To-Be  
 >
-> ![image](https://user-images.githubusercontent.com/89959952/168704582-f24fbd26-2c4d-4270-963a-014b66bf6b9c.png)
+> ![image](https://user-images.githubusercontent.com/89959952/168706016-a2254295-a3d9-4c72-b3e7-b8f9e737b040.png)
 > 
 >❗️ 해결 
 > 1. lighthouse 성능분석
