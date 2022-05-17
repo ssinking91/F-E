@@ -1,9 +1,3 @@
-
-
-
-
-
-
 ## final project
 
 ## 👊 집을 모아놓다.zip - FrontEnd
