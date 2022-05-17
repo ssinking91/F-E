@@ -1,26 +1,32 @@
-# F-E
 
-# 🏠[집을 모아놓다.zip](https://www.dotzip.today) [Frontend]
 
-## 🙋‍♀️ 안녕하세요. [dot.zip] 프론트엔드 입니다.
 
-<img width="673" alt="스크린샷 2022-01-25 오후 8 00 06" src="https://user-images.githubusercontent.com/80023108/150964817-baf6912d-46f3-4f66-a4c2-b596945846cc.png">
 
----
 
-## 🐥팀노션
 
-https://www.notion.so/kongom2/Team-zip-9e4ad0e0184448fc868950b076008e93
+## final project
 
----
+## 👊 집을 모아놓다.zip - FrontEnd
 
-## 😀서비스 소개
+![집을 모아놓다.zip](https://user-images.githubusercontent.com/80023108/150964817-baf6912d-46f3-4f66-a4c2-b596945846cc.png)
 
-여기저기 흩어져 있는 청약 정보를 한눈에 보기 쉽게 모아놓은 dotzip입니다.
+<br />
 
----
+## 🗂 Summary
 
-## 👨‍👩‍👧‍👧팀원소개
+### 항해99 4기, 실전 프로젝트 4조
+
+> \* 서비스명 : <img width="30" alt="[dot.zip]" src="https://user-images.githubusercontent.com/80023108/150964817-baf6912d-46f3-4f66-a4c2-b596945846cc.png"> [집을 모아놓다.zip](https://www.dotzip.today) [Frontend]
+>	
+> \* 서비스 설명 : 여기저기 흩어져 있는 청약 정보를 한눈에 보기 쉽게 모아놓은 dotzip 서비스
+
+- [\[사이트 바로가기\]](https://www.dotzip.today)
+- [\[시연영상 바로가기\]](https://www.youtube.com/watch?v=_YiE4AWV-8w&feature=youtu.be)
+- [\[팀노션 바로가기\]](https://www.notion.so/kongom2/Team-zip-9e4ad0e0184448fc868950b076008e93)
+
+<br />
+
+## 👥 멤버
 
 - 팀장
   - 공성훈
@@ -36,7 +42,76 @@ https://www.notion.so/kongom2/Team-zip-9e4ad0e0184448fc868950b076008e93
   - 서가람
   - 이세은
 
----
+<br />
+
+## 🗓 프로젝트 설명
+
+- 개발기간: 2021년 12월 18일 ~ 2022년 01월 28일
+- 개발언어: JavaScript
+- 개발 라이브러리:
+	- React.js v17.0.2
+		-자바스크립트 라이브러리, 웹 인터페이스를 만들기 위해 사용됨
+- 배포 환경:
+	- Amazon S3, CloundFront
+- Yarn v1.22.10 / npm v6.14.13 / npx v6.14.13
+	- 자바스크립트 패키지 매니저
+    
+- 협업 툴: git / notion / figma / slack
+- 프로젝트 취지: 내 집 마련의 꿈을 위한 청약 정보를 한눈에 보기 쉽게 모아놓은 dotzip 서비스
+
+<br />
+
+## ♟ Information Architecture
+
+![image](https://user-images.githubusercontent.com/89959952/168701168-b5126853-aacb-4b02-8a51-9ba1309c2ee7.png)
+
+<br />
+
+## 🧩 Architecture
+
+![image](https://user-images.githubusercontent.com/89959952/168700949-98dec513-8ce2-457b-bf0b-8dffc1b03cba.png)
+
+<br />
+
+<br />
+
+## 📌 API 명세서
+
+- [\[API 명세서 바로가기\]](https://typical-guanaco-54b.notion.site/API-bda198d1807e4eff8de732ebe02f3134)
+
+<br />
+
+
+
+
+## 🌠기능소개
+
+- 소셜 로그인
+- 공영 민영 청약 OPEN API에서 가져온 정보 일관적이게 제공
+- 찜한 청약공고를 편하게 관리할 수 있도록 마이페이지를 제공
+- 마이페이지에서 지역, 이메일 수정 가능
+- 찜한 공고의 청약 접수날짜에 메일알림
+
+<br/>
+
+## 프론트엔드_기술 스택
+
+<p align="center">
+<br>
+<img src="https://img.shields.io/badge/html-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black">
+<img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white">
+<br>
+<img src="https://img.shields.io/badge/WebRTC-333333?style=for-the-badge&logo=WebRTC&logoColor=white">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/CloudFront-D05C4B?style=for-the-badge&logo=CloudFront&logoColor=white">
+<img src="https://img.shields.io/badge/Route53-E68B49?style=for-the-badge&logo=Route53s&logoColor=white">
+<img src="https://img.shields.io/badge/S3-569A31?style=for-the-badge&logo=S3&logoColor=white">
+<br>
+<br>
+<br>
 
 ## 📕주요 라이브러리
 
@@ -64,93 +139,7 @@ https://www.notion.so/kongom2/Team-zip-9e4ad0e0184448fc868950b076008e93
 | sweetalert2	| alert CSS	| ^11.3.0| 
 | swiper	| 스와이프 기능	| 6.8.4| 
 | webfontloader| 	웹폰트 로더| 	^1.6.28| 
-
----
-
-## 🌠기능소개
-
-- 소셜 로그인
-- 공영 민영 청약 OPEN API에서 가져온 정보 일관적이게 제공
-- 찜한 청약공고를 편하게 관리할 수 있도록 마이페이지를 제공
-- 마이페이지에서 지역, 이메일 수정 가능
-- 찜한 공고의 청약 접수날짜에 메일알림
-
----
-
-## 📌Tech Stack
-
-React
-Redux
-AWS S3, CloudFront, Route53
-Axios
-
-
-## final project
-
-## 👊 생드백(Thandbag) - FrontEnd
-
-![thandbag_main_thumbnail](https://user-images.githubusercontent.com/87135478/150528634-b8623912-648a-49a9-9a0a-b980a5c45610.png)
-
-<br />
-
-## 🗂 Summary
-
-### 항해99 4기, 실전 프로젝트 7조
-
-> \* 서비스명 : 생드백 (_Think + Sandbag = Thandbag!_)  
-> \* 서비스 설명 : 일상 생활속에서 받은 스트레스, 고민을 샌드백을 때리면서 재미있게 풀 수 있는 스트레스 해소 서비스
-
-- [\[사이트 바로가기\]](https://thandbag.com)
-- [\[시연영상 바로가기\]](https://youtu.be/TDr55gjFYGs)
-
-<br />
-
-## 👥 멤버
-
-- Back-end: [고성범](https://github.com/SeongBeomKo), [오규화(조장)](https://github.com/59-devv)
-- Front-end: [이준명](https://github.com/Leejunmyung), [전용태](https://github.com/yong313), [정상일](https://github.com/jsni94)
-- Design : 정서윤, 황지현
-- [\[Back-End Github\]](https://github.com/thandbag/thandbag_BE)
-
-<br />
-
-## 🗓 프로젝트 설명
-
-- 개발기간: 2021년 12월 18일 ~ 2022년 01월 28일
-- 개발언어: JavaScript
-- 개발 라이브러리:
-	- React.js v17.0.2
-		-자바스크립트 라이브러리, 웹 인터페이스를 만들기 위해 사용됨
-- 배포 환경:
-	- Amazon S3, CloundFront
-- Yarn v1.22.10 / npm v6.14.13 / npx v6.14.13
-	- 자바스크립트 패키지 매니저
-    
-- 협업 툴: git / notion / figma / slack
-- 프로젝트 취지: 일상생활에서 사람들이 받는 스트레스, 고민들을 다른 사람들과 공유하고 공감을 받고 스트레스를 해소할 수 있는 커뮤니티를 만들고자 하였습니다.
-
-<br />
-
-## ♟ Information Architecture
-
-![image](https://user-images.githubusercontent.com/87135478/150537317-d428e046-b7da-4f19-8176-351bd04c1b65.png)
-
-<br />
-
-## 🧩 Architecture
-
-![image](https://user-images.githubusercontent.com/93691859/151114837-01d5afc2-3a89-4678-9272-fc55fe00c351.png)
-
-<br />
-
-<br />
-
-## 📌 API 명세서
-
-- [\[API 명세서 바로가기\]](https://typical-guanaco-54b.notion.site/API-bda198d1807e4eff8de732ebe02f3134)
-
-<br />
-
+	
 ## ⚙️ Front-End 기술 스택
 
 - Styled-Component
