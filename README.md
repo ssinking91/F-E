@@ -95,8 +95,8 @@
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black">
 <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white">
 <br>
-<img src="https://img.shields.io/badge/WebRTC-333333?style=for-the-badge&logo=WebRTC&logoColor=white">
-<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/StyledComponents%20-DB7093?style=for-the-badge&logo=StyledComponents&logoColor=black">
+<img src="https://img.shields.io/badge/Axios%20-blueviolet?style=for-the-badge&logo=Axios&logoColor=black">
 <img src="https://img.shields.io/badge/CloudFront-D05C4B?style=for-the-badge&logo=CloudFront&logoColor=white">
 <img src="https://img.shields.io/badge/Route53-E68B49?style=for-the-badge&logo=Route53s&logoColor=white">
 <img src="https://img.shields.io/badge/S3-569A31?style=for-the-badge&logo=S3&logoColor=white">
@@ -160,21 +160,22 @@
 
 ## ⛔️ Trouble Shooting
 
-### 댓글 애니메이션이 Input박스의 크기를 벗어나는 현상
+### 서비스가 느리다는 대다수의 의견
 
-> 문제점 : 해당 애니메이션을 input cursor를 따라가도록 해서 cursor가 input의 크기를 벗어나더라도 애니메이션이 지속적으로 발생.
+> 문제점 : 초기 로딩 속도가 현저히 떨어지는 현상
 >
-> ❓ As-Is  
-> ![image](https://user-images.githubusercontent.com/93691859/151387904-188c0989-3997-4ea3-a61a-ca05af6fb41a.png)
-> ![image](https://user-images.githubusercontent.com/93691859/151386592-682910e5-748e-44ce-92e2-a511db7b88ce.png)
-
-> 
 > 💡 To-Be  
-> ![image](https://user-images.githubusercontent.com/93691859/151386685-ec295c60-7984-4780-accf-1b4a9b8b0655.png)
 >
+> ![image](https://user-images.githubusercontent.com/89959952/168704582-f24fbd26-2c4d-4270-963a-014b66bf6b9c.png)
 > 
->❗️ 해결 : 먼저 input의 크기(offsetWidth)를 구해서 커서의 위치가 input의 크기보다 작을경우엔 애니메이션이 커서의 위치를 따라가도록 하고
->          그게 아닐경우 애니메이션이 input의 최대 크기 위치에 멈춰 있도록 수정함. 
+>❗️ 해결 
+> 1. lighthouse 성능분석
+>
+> - 서비스가 느린것같다 라는 피드백에 lighthouse로 성능분석을 해보았더니 70점의 점수를 받았습니다. netlify로 서버를 배포하던 것을 aws s3로 바꾸고, cloudfront, route53으로 연결시켜주고, 용량이 큰 이미지들을 avif확장자로 변환하여 10MB이상의 이미지들을 약300KB로 압축하였습니다.이로서 86점의 점수를 받아 사이트 성능을 개선시킬 수 있었습니다.
+>
+> 2. 배포 환경 변경과 ci/cd
+>
+> - netlify에서 aws로 바꾸고 github actions로 ci/cd를 하였는데, origin server인 s3에는 배포가 잘 되는것을 확인하였는데 서비스에는 반영이 안되는 문제가 있었습니다.원인파악을 위해 aws문서를 찾아보니 cloudfront가 24시간마다 저장된 캐시를 삭제하고 origin server에서 데이터를 받아와 캐싱을 해주는 특성이 있다는걸 알게됐습니다. 24시간이 지날때까지 기다릴 수는 없기에 해결방법을 찾아보았고, 파일이 만료되기 전 파일을 삭제할 수 있는 파일 무효화가 있다는걸 알게됐습니다. 그런데 이렇게 직접 매번 파일 무효화를 시켜주면 ci/cd 중에서 cd를 제대로 하지 못한 것이라 생각했습니다. 따라서 ci/cd를 하는 작업 마지막에 파일 무효화를 시켜주는 작업을 추가하여 해결해주었고, 저희가 원하는 ci/cd를 구현하였습니다.
 
 
 <br />
