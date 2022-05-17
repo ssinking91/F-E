@@ -2,8 +2,9 @@
 
 ## 👊 집을 모아놓다.zip - FrontEnd
 
-![집을 모아놓다.zip](https://user-images.githubusercontent.com/80023108/150964817-baf6912d-46f3-4f66-a4c2-b596945846cc.png)
-
+<p align="center">
+<img width="600" alt="[dot.zip]" src="https://user-images.githubusercontent.com/80023108/150964817-baf6912d-46f3-4f66-a4c2-b596945846cc.png">
+	
 <br />
 
 ## 🗂 Summary
