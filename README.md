@@ -21,6 +21,25 @@
 
 <br />
 
+## ⚙️ Front-End 기술 스택
+
+<p align="center">
+<br>
+<img src="https://img.shields.io/badge/html-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black">
+<img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white">
+<br>
+<img src="https://img.shields.io/badge/StyledComponents%20-DB7093?style=for-the-badge&logo=StyledComponents&logoColor=black">
+<img src="https://img.shields.io/badge/Axios%20-blueviolet?style=for-the-badge&logo=Axios&logoColor=black">
+<img src="https://img.shields.io/badge/CloudFront-D05C4B?style=for-the-badge&logo=CloudFront&logoColor=white">
+<img src="https://img.shields.io/badge/Route53-E68B49?style=for-the-badge&logo=Route53s&logoColor=white">
+<img src="https://img.shields.io/badge/S3-569A31?style=for-the-badge&logo=S3&logoColor=white">
+<br>
+<br>
+<br>
+	
 ## 👥 멤버
 
 - 팀장
@@ -86,25 +105,6 @@
 - 찜한 공고의 청약 접수날짜에 메일알림
 
 <br/>
-
-## ⚙️ Front-End 기술 스택
-
-<p align="center">
-<br>
-<img src="https://img.shields.io/badge/html-E34F26?style=for-the-badge&logo=html5&logoColor=white">
-<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
-<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black">
-<img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white">
-<br>
-<img src="https://img.shields.io/badge/StyledComponents%20-DB7093?style=for-the-badge&logo=StyledComponents&logoColor=black">
-<img src="https://img.shields.io/badge/Axios%20-blueviolet?style=for-the-badge&logo=Axios&logoColor=black">
-<img src="https://img.shields.io/badge/CloudFront-D05C4B?style=for-the-badge&logo=CloudFront&logoColor=white">
-<img src="https://img.shields.io/badge/Route53-E68B49?style=for-the-badge&logo=Route53s&logoColor=white">
-<img src="https://img.shields.io/badge/S3-569A31?style=for-the-badge&logo=S3&logoColor=white">
-<br>
-<br>
-<br>
 
 ## 📕주요 라이브러리
 
